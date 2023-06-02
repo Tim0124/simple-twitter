@@ -5,8 +5,8 @@ input {
   height: 26px;
   margin: 0 0 16px 0;
   background-color: #f5f8fa;
-  padding: 24px 9.69px 4px 9.69px;
   outline: medium;
+  padding: 24px 9.69px 4px 9.69px;
 }
 
 input:focus,
@@ -18,7 +18,7 @@ label {
   .inputTitle {
     position: absolute;
     left: 10px;
-    padding-top: 3px;
+    padding-top: 2px;
     font-size: 14px;
     height: 22px;
     color: #696974;
