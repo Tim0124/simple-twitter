@@ -1,0 +1,57 @@
+a,ul,li {
+  list-style: none;
+}
+
+.container {
+  margin: 20px auto;
+  padding: 0 24px;
+  .title {
+    color: black;
+    font-size: 26px;
+  }
+}
+input {
+  width: 100%;
+  height: 54px;
+  margin-bottom: 32px;
+  border: none;
+  border-bottom: 2px solid #657786;
+  background-color: #F5F8FA;
+  border-radius: 2px;
+}
+
+.group {
+  margin: 10px 0;
+  width: 100%;
+  
+  .button {
+    width: 100%;
+    background-color: #ff6600;
+    border: none;
+    color: aliceblue;
+    height: 46px;
+    border-radius: 50px;
+    font-size: 20px;
+  }
+}
+
+.link {
+  display: flex;
+  justify-content: end;
+  a {
+  color: #0062FF;
+  }
+}
+
+label {
+  position: relative;
+
+  .inputTitle {
+    position: absolute;
+  }
+}
+
+::-webkit-input-placeholder {
+  position: relative;
+  top: 15px;
+}
