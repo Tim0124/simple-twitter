@@ -4,30 +4,31 @@ import './LoginForm.scss'
 function LoginForm() {
   return (
     <div className='container'>
-      <div><Logo/></div>
+      <div className='title'><Logo/></div>
       <h1 className='title'>登入Alphitter</h1>
       <form action="">
         <div>
           <label htmlFor="">
-            <div>
+            <div className='inputTitle'>帳號</div>
               <input 
-                value="帳號"
                 placeholder="請輸入帳號"
                 type="text"
+                name='帳號'
               />
-            </div>
-            <div>
+             </label>
+              <label htmlFor="">
+            <div className='inputTitle'>密碼</div>
               <input 
-                value="密碼"
                 placeholder="請輸入密碼"
                 type="text"
                />
-            </div>
           </label>
-          <button>登入</button>
+          <div className='group'>
+            <button className='button'>登入</button>
+          </div>
         </div>
-        <div>
-          <a href="">註冊</a>
+        <div className='link'>
+          <a href="">註冊</a>・
           <a href="">後台登入</a>
         </div>
       </form>

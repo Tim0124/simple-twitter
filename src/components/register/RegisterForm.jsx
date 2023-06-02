@@ -31,8 +31,10 @@ export default function Register() {
           <input placeholder='請再次輸入密碼'></input>
         </label>
       </div>
+      <div className='buttonGroup'>
       <button>註冊</button>
       <button>取消重填</button>
+      </div>
     </section>
 
   )
