@@ -28,7 +28,7 @@ export default function Register() {
         </div>
       </form>
       <div className='buttonGroup'>
-      <button className='registerBotton'>註冊</button>
+      <button className='registerButton'>註冊</button>
       <Link>
         <p className='cancelLink' >取消重填</p>
       </Link>

@@ -9,9 +9,12 @@ input {
   outline: medium;
 }
 
+input:focus,
+:hover {
+  border-color:#50B5FF
+}
 label {
   position: relative;
-
   .inputTitle {
     position: absolute;
     left: 10px;

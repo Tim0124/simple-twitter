@@ -7,7 +7,7 @@ function App() {
   return (
     <BrowserRouter>
     <div className="App">
-      
+      <Register/>
     </div>
     </BrowserRouter>
   );
