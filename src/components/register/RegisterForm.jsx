@@ -6,8 +6,10 @@ import { Link } from 'react-router-dom'
 export default function Register() {
   return (
     <section className='register'>
-      <Logo />
-      <h1>建立你的帳號</h1>
+      <div className='logo'>
+        <Logo />
+      </div>
+      <h1 className='registerTitle'>建立你的帳號</h1>
       <form>
         <div className='inputGroup'>
           <Input
@@ -37,3 +39,4 @@ export default function Register() {
 
   )
 }
+
