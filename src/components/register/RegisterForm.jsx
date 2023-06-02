@@ -6,13 +6,13 @@ import { Link } from 'react-router-dom'
 export default function Register() {
   return (
     <section className='register'>
-      <Logo/>
+      <Logo />
       <h1>建立你的帳號</h1>
       <form>
         <div className='inputGroup'>
-          <Input 
+          <Input
             name='帳號'
-            placeholder='請輸入帳號'/>
+            placeholder='請輸入帳號' />
           <Input
             name='名稱'
             placeholder='請輸入使用者名稱' />
@@ -28,10 +28,10 @@ export default function Register() {
         </div>
       </form>
       <div className='buttonGroup'>
-      <button className='registerBotton'>註冊</button>
-      <Link>
-        <p className='cancelLink' >取消重填</p>
-      </Link>
+        <button className='registerButton'>註冊</button>
+        <Link>
+          <p className='cancelLink' >取消重填</p>
+        </Link>
       </div>
     </section>
 
