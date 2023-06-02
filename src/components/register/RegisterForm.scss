@@ -1,48 +1,41 @@
-.register {
+.registerContainer {
   padding: 0 24px;
   margin-top: 45px;
 }
 
-.logo {
+.registerLogo {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.registerTitle{
+.registerTitle {
   color: #000000;
   padding: 0 24px 0 24px;
   margin-top: 29px;
   text-align: center;
 }
 
-.inputGroup {
+.registerInputGroup {
   margin: 16px 0 24px 0;
 }
 
-.buttonGroup {
+.registerButtonGroup {
   display: flex;
   flex-direction: column;
+  margin-bottom: 30px;
 }
 
-
-.registerButton {
-  background-color: #ff6600;
-  color: #ffffff;
-  border: none;
-  border-radius: 50px;
-  height: 46px;
-  padding: 8px 24px;
-}
-
-.cancelLink {
-  color: #0062ff;
+.registerSecButtonGroup {
   text-align: center;
-  margin-top: 30px;
+}
+
+.registerCancelLink {
+  color: #0062ff;
 }
 
 @media screen and (min-width: 991px) {
-  .register {
+  .registerContainer {
     width: 356px;
     padding: 0 24px;
     margin: 45px auto;

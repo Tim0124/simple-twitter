@@ -1,3 +1,4 @@
+import Button from 'UIcomponents/buttons/Button'
 import Input from '../../UIcomponents/input/Input'
 import { ReactComponent as Logo } from '../../assets/logo.svg'
 import './RegisterForm.scss'
@@ -5,13 +6,13 @@ import { Link } from 'react-router-dom'
 
 export default function Register() {
   return (
-    <section className='register'>
-      <div className='logo'>
+    <section className='registerContainer'>
+      <div className='registerLogo'>
         <Logo />
       </div>
       <h1 className='registerTitle'>建立你的帳號</h1>
       <form>
-        <div className='inputGroup'>
+        <div className='registerInputGroup'>
           <Input
             name='帳號'
             placeholder='請輸入帳號' />
@@ -29,14 +30,15 @@ export default function Register() {
             placeholder='請再次輸入密碼' />
         </div>
       </form>
-      <div className='buttonGroup'>
-        <button className='registerButton'>註冊</button>
+      <div className='registerButtonGroup'>
+        <Button text='註冊' size='large'/>
+      </div>
+      <div className='registerSecButtonGroup'>
         <Link>
-          <p className='cancelLink' >取消重填</p>
+          <u className='registerCancelLink'>取消重填</u>
         </Link>
       </div>
     </section>
-
   )
 }
 
