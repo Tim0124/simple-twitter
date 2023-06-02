@@ -1,0 +1,28 @@
+.button {
+    background-color: #ff6600;
+    border: none;
+    color: aliceblue;
+    height: 46px;
+    border-radius: 50px;
+    font-size: 20px;
+    &.large {
+      width: 100%;
+    }
+    &.middle {
+      width: 50%;
+      height: 40px;
+      font-size:16px;
+    }
+    &.small {
+      width: 30%;
+      height: 40px;
+      font-size:16px;
+    }
+    &.extremely-small {
+      width:10%;
+      height: 40px;
+      font-size:16px;
+    }
+  }
+
+ 
