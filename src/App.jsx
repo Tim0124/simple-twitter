@@ -1,4 +1,3 @@
-
 import Register from './components/register/RegisterForm'
 import { BrowserRouter } from 'react-router-dom'
 import './App.scss';
