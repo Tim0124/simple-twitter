@@ -47,3 +47,11 @@
     margin: 45px auto;
   }
 }
+
+@media screen and (min-width: 1200px) {
+  .loginContainer {
+    max-width: 1140px;
+    padding: 0 24px;
+    margin: 45px auto;
+  }
+}

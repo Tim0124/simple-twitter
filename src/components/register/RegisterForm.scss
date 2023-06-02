@@ -34,9 +34,17 @@
   color: #0062ff;
 }
 
-@media screen and (min-width: 991px) {
+@media screen and (min-width: 991px) and (max-width: 1199px) {
   .registerContainer {
-    width: 356px;
+    max-width: 960px;
+    padding: 0 24px;
+    margin: 45px auto;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .registerContainer {
+    max-width: 1140px;
     padding: 0 24px;
     margin: 45px auto;
   }
