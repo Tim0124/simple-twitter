@@ -1,0 +1,105 @@
+// .sideBarItems {
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: space-around;
+//   padding: 10px 0;
+// }
+
+.iconGroup {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 10px 0;
+}
+
+.logo{
+  display: none;
+}
+.buttonItem{
+  display: none;
+}
+
+@media screen and (min-width:992px) {
+  .sideBarWrapper {
+    height: 100vh;
+
+    .sideBarContainer {
+      height: 100%;
+      width: 178px;
+    }
+
+    .sideBarGroup {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin: 8px 0;
+
+    }
+
+    .iconGroup {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      gap: 45px;
+ 
+    }
+    .sideBarItems {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 25px;
+    }
+    .logo {
+      display: block;
+    }
+    .loginOut {
+      margin: 17px 0;
+    }
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .sideBarWrapper {
+    width: 300px;
+    .iconGroup {
+      display: flex;
+      align-items: start;
+      justify-content: center;
+      padding: 0 15px;
+      gap: 25px;
+    } 
+  }
+  .sideBarContainer {
+      height: 100%;
+      width: 300px;
+      margin: 8px auto;
+    }
+  .sideBarItems {
+    display: flex;
+    align-items: start;
+    width: 100%;
+
+    .logo {
+      width: 100%;
+      display: flex;
+      justify-content: start;
+      padding: 0 15px;
+    }
+  }
+
+  .buttonItem {
+    display: block;
+    width: 100%;
+  }
+  .loginOut {
+    display: flex;
+    padding: 0 15px;
+  }
+
+}
