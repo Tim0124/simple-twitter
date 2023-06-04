@@ -2,6 +2,11 @@
   border-bottom: 1px solid #E6ECF0;
 }
 
+.settingContainer {
+  width: 100%;
+  border-bottom: 1px solid #E6ECF0;
+}
+
 .settingTitle {
   color: #000000;
   padding: 24px;
@@ -19,26 +24,24 @@
   margin: 32px 24px;
 }
 
-.settingFooterBorder {
-  border-top: 1px solid #E6ECF0;
-}
-
 @media screen and (min-width: 991px) {
   .settingContainer {
     max-width: 960px;
-    margin: 45px auto;
+    border: none;
+    border-left: 1px solid #E6ECF0;
+    border-right: 1px solid #E6ECF0;
+  }
+  .rightContainer{
+    width: 427px;
   }
 
   .settingFooter {
     display: none;
   }
-
-  .settingContainer {
-    border: 1px solid #E6ECF0;
-    border-top: none;
-    border-bottom: none;
+  .settingWrapper {
+    display: flex;
+    flex-direction: row-reverse;
   }
-
 }
 
 @media screen and (min-width: 1200px) {

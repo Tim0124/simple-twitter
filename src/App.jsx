@@ -12,7 +12,7 @@ function App() {
   return (
     <BrowserRouter>
     <div className="App">
-        <PopularUserList />
+        <Setting />
     </div>
     </BrowserRouter>
   );
