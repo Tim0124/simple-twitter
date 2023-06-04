@@ -1,9 +1,9 @@
-import './Button.scss'
+import style from './Button.module.scss'
 
 export default function Button ({text, size}) {
   return (
     <>
-      <button className={`button ${size}`}>{text}</button>
+      <button className={`${style.button} ${style[size]}`}>{text}</button>
     </>
   )
 }

@@ -1,18 +1,19 @@
 import Button from 'UIcomponents/buttons/Button'
 import Input from '../../UIcomponents/input/Input'
 import { ReactComponent as Logo } from '../../assets/logo.svg'
-import './RegisterForm.scss'
+import style from './RegisterForm.module.scss'
 import { Link } from 'react-router-dom'
+
 
 export default function Register() {
   return (
-    <section className='registerContainer'>
-      <div className='registerLogo'>
+    <section className={`${style.registerContainer}`}>
+      <div className={`${style.registerLogo}`}>
         <Logo />
       </div>
-      <h1 className='registerTitle'>建立你的帳號</h1>
+      <h1 className={`${style.registerTitle}`}>建立你的帳號</h1>
       <form>
-        <div className='registerInputGroup'>
+        <div className={`${style.registerInputGroup}`}>
           <Input
             name='帳號'
             placeholder='請輸入帳號' />
@@ -30,12 +31,12 @@ export default function Register() {
             placeholder='請再次輸入密碼' />
         </div>
       </form>
-      <div className='registerButtonGroup'>
+        <div className={`${style.registerButtonGroup}`}>
         <Button text='註冊' size='large'/>
       </div>
-      <div className='registerSecButtonGroup'>
+        <div className={`${style.registerSecButtonGroup}`}>
         <Link>
-          <u className='registerCancelLink'>取消重填</u>
+            <u className={`${style.registerCancelLink}`}>取消重填</u>
         </Link>
       </div>
     </section>

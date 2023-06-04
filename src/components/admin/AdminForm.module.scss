@@ -1,33 +1,33 @@
-.loginContainer {
+.adminContainer {
   padding: 0 24px;
   margin-top: 45px;
 }
 
-.loginLogo {
+.adminLogo {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.loginTitle {
+.adminTitle {
   color: #000000;
   padding: 0 24px 0 24px;
   margin-top: 29px;
   text-align: center;
 }
 
-.loginInputGroup {
+.adminInputGroup {
   margin: 16px 0 24px 0;
 }
 
-.loginButtonGroup {
+.adminButtonGroup {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   margin: 22px 10px;
 }
 
-.loginButtonSecGroup {
+.adminButtonSecGroup {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -35,13 +35,13 @@
   gap: 10px;
 }
 
-.loginRegisterButton,
-.loginAdminButton {
+.adminRegisterButton,
+.forntButton {
   color: #0062ff;
 }
 
 @media screen and (min-width: 991px) {
-  .loginContainer {
+  .adminContainer {
     width: 356px;
     padding: 0 24px;
     margin: 45px auto;
@@ -49,7 +49,7 @@
 }
 
 @media screen and (min-width: 1200px) {
-  .loginContainer {
+  .adminContainer {
     max-width: 1140px;
     padding: 0 24px;
     margin: 45px auto;

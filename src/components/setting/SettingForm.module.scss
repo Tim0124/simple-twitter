@@ -1,0 +1,48 @@
+.settingHeaderBorder{
+  border-bottom: 1px solid #E6ECF0;
+}
+
+.settingTitle {
+  color: #000000;
+  padding: 24px;
+  text-align: left;
+}
+
+.settingInputGroup {
+  padding: 16px 24px ;
+}
+
+.settingButtonGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  margin: 32px 24px;
+}
+
+.settingFooterBorder {
+  border-top: 1px solid #E6ECF0;
+}
+
+@media screen and (min-width: 991px) {
+  .settingContainer {
+    max-width: 960px;
+    margin: 45px auto;
+  }
+
+  .settingFooter {
+    display: none;
+  }
+
+  .settingContainer {
+    border: 1px solid #E6ECF0;
+    border-top: none;
+    border-bottom: none;
+  }
+
+}
+
+@media screen and (min-width: 1200px) {
+  .settingContainer {
+    max-width: 1140px;
+  }
+}
