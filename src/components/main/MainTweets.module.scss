@@ -1,3 +1,16 @@
+.tweetsContainer {
+display: flex;
+flex-direction: column;
+height: 100vh;
+padding-bottom: 52px;
+}
+
+.mainTweets {
+  height: 100vh;
+  overflow-y: scroll;
+  flex: 1;
+}
+
 .tweetsHeader {
   border-bottom: 1px solid #E6ECF0; 
 }
@@ -21,4 +34,10 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
+}
+
+@media screen and (min-width:992px){
+  .tweetsContainer {
+    padding-bottom: unset;
+  }
 }

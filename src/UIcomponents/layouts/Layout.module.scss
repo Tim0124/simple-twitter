@@ -1,0 +1,36 @@
+.LayoutPopularContainer {
+  display: none;
+}
+
+@media screen and (min-width:992px){
+  .LayoutContainer {
+    display: flex;
+  }
+
+.LayoutSidebarContainer {
+  width: 56px;
+  padding-left: 23px;
+}
+
+.LayoutMainContainer {
+  flex: 1;
+  margin: 0 25px;
+  border: 1px solid #E6ECF0;
+}
+
+.LayoutPopularContainer {
+  display: block;
+  width: 273px;
+  padding-top: 16px;
+}
+}
+
+@media screen and (min-width:1200px){
+  .LayoutSidebarContainer {
+  width: 178px;
+  margin-left: 138px;
+}
+  .LayoutPopularContainer {
+  margin-right: 138px;
+}
+}

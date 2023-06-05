@@ -1,13 +1,69 @@
 .mainTweetsContainer {
-  display: flex;
+  border-bottom: 1px solid #E6ECF0;
+  padding: 16px 23px;
+  flex:1;
 }
 
-.tweetsUserGroup {
+.mainTweetsList {
   display: flex;
+  gap: 8px;
 }
 
-.mainTweetsAvatar {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
+.mainTweetsInfo{
+  display: flex;
+  flex-direction: column;
+  flex:1;
+  gap: 8px;
+}
+
+.mainTweetsSecInfo {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.mainTweetsNameGroup {
+  display: flex;
+  flex-direction: row;
+  gap: 7px;
+}
+
+.mainTweetsSmallAccount{
+  display: flex;
+  flex-direction: row;
+  color: #6C757D;
+  align-items: center;
+  font-weight: 400;
+  font-size: 14px;
+  gap: 1px
+}
+
+.mainTweetsX {
+  margin-right: 5px;
+}
+
+.mainTweetsName{
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.mainTweetsContent {
+  display: flex;
+  gap: 8px;
+}
+
+.mainTweetsImg {
+  border-radius: 999rem;
+}
+
+.mainTweetsQuantityGroup {
+  display: flex;
+  gap: 40px;
+
+  .mainTweetsQuantity{
+    display: flex;
+  }
+  .mainTweetsLikeQuantity {
+    display: flex;
+  }
 }
