@@ -1,6 +1,9 @@
+.registerWrapper {
+  width: 100;
+}
+
 .registerContainer {
-  padding: 0 24px;
-  margin-top: 45px;
+  padding: 45px 24px;
 }
 
 .registerLogo {
@@ -11,13 +14,14 @@
 
 .registerTitle {
   color: #000000;
-  padding: 0 24px 0 24px;
   margin-top: 29px;
   text-align: center;
 }
 
 .registerInputGroup {
-  margin: 16px 0 24px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .registerButtonGroup {
@@ -34,17 +38,18 @@
   color: #0062ff;
 }
 
-@media screen and (min-width: 991px) and (max-width: 1199px) {
-  .registerContainer {
-    max-width: 960px;
+@media screen and (min-width: 991px) {
+  .registerWrapper {
+    width: 356px;
+
     padding: 0 24px;
     margin: 45px auto;
   }
 }
 
 @media screen and (min-width: 1200px) {
-  .registerContainer {
-    max-width: 1140px;
+  .registerWrapper {
+    max-width: 356px;
     padding: 0 24px;
     margin: 45px auto;
   }

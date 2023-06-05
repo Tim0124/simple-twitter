@@ -15,6 +15,12 @@
   font-weight: 700;
 }
 
+.adminTweetsItem {
+  height: 100%;
+  overflow-y: scroll;
+  flex: 1;
+}
+
 .adminTweetsContainer {
   max-width: 936px;
   border-left: 1px solid #E6ECF0;
@@ -22,10 +28,4 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-}
-
-.adminTweetsItem {
-  height: 100%;
-  overflow-y: scroll;
-  flex: 1;
 }
