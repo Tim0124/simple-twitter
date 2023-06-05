@@ -7,7 +7,8 @@ import { Link } from 'react-router-dom'
 
 export default function Register() {
   return (
-    <section className={`${style.registerContainer}`}>
+  <div className={`${style.registerWrapper}`}>
+    <div className={`${style.registerContainer}`}>
       <div className={`${style.registerLogo}`}>
         <Logo />
       </div>
@@ -39,7 +40,8 @@ export default function Register() {
             <u className={`${style.registerCancelLink}`}>取消重填</u>
         </Link>
       </div>
-    </section>
+    </div>
+  </div>
   )
 }
 
