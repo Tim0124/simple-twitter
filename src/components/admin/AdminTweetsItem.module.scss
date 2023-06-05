@@ -1,0 +1,54 @@
+.adminTweetsContainer {
+  border-bottom: 1px solid #E6ECF0;
+  padding: 16px 0 16px 23px;
+}
+
+.adminTweetsList {
+  display: flex;
+}
+
+.adminTweetsInfo{
+  display: flex;
+  flex-direction: column;
+}
+
+.adminTweetsSecInfo {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.adminTweetsNameGroup {
+  display: flex;
+  flex-direction: row;
+  margin: 0 8px 8px 8px;
+  gap: 7px;
+}
+
+.adminTweetsSmallAccount{
+  display: flex;
+  flex-direction: row;
+  color: #6C757D;
+  align-items: center;
+  font-weight: 400;
+  font-size: 14px;
+  gap: 1px
+}
+
+.adminTweetsX {
+  margin-right: 5px;
+}
+
+.adminTweetsName{
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.adminTweetsContent {
+  display: flex;
+  margin: 0 8px 8px 8px;
+}
+
+.adminTweetsImg {
+  border-radius: 999rem;
+}

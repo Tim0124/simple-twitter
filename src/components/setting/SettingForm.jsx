@@ -39,8 +39,7 @@ export default function Register() {
           </div>
         </section>
         <section className={`${style.settingFooter}`}>
-          <div className={`${style.settingFooterBorder}`}>
-          </div>
+          <div className={`${style.settingFooterBorder}`}></div>
         </section>
         <Sidebar />
       </div>

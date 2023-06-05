@@ -1,0 +1,31 @@
+.adminTweetsWrapper {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+}
+
+.adminTweetsHeader {
+  border-bottom: 1px solid #E6ECF0;
+  width: 100%;
+  height: 51px;
+  display: flex;
+  align-items: center;
+  padding: 24px 20px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.adminTweetsContainer {
+  max-width: 936px;
+  border-left: 1px solid #E6ECF0;
+  border-right: 1px solid #E6ECF0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.adminTweetsItem {
+  height: 100%;
+  overflow-y: scroll;
+  flex: 1;
+}
