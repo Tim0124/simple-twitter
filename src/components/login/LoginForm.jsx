@@ -29,7 +29,7 @@ function LoginForm() {
           </Link>
           <p>・</p>
           <Link>
-        <u className={`${style.loginAdminButton}`} >後台登入</u>
+          <u className={`${style.loginAdminButton}`} >後台登入</u>
           </Link>
           </div>
         </div>
