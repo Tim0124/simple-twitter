@@ -33,13 +33,14 @@ export default function Register() {
             </form>
           </div>
           <div className={`${style.settingButtonGroup}`}>
-            <Button text='儲存' size='extremely-small' />
-            <div className={`${style.settingButtonSecGroup}`}>
+            <div className={`${style.settingButton}`}>
+              <Button text='儲存' size='middle' />
             </div>
-          </div>
-        </section>
-        <section className={`${style.settingFooter}`}>
-          <div className={`${style.settingFooterBorder}`}>
+            <div className={`${style.settingLoginout}`}>
+              <Link className={`${style.loginout}`}>
+                <u>登出</u> 
+              </Link>
+            </div>
           </div>
         </section>
         <Sidebar />

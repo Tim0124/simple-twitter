@@ -6,13 +6,14 @@ import AdminForm from './components/admin/AdminForm'
 import Setting from './components/setting/SettingForm'
 import PopularUserList from './UIcomponents/layouts/PopularUserList'
 import PopularUser from 'UIcomponents/layouts/PopularUser';
+import MainTweets from 'components/main/MainTweets';
 
 
 function App() {
   return (
     <BrowserRouter>
     <div className="App">
-        <Setting />
+        <MainTweets />
     </div>
     </BrowserRouter>
   );

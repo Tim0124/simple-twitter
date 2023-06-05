@@ -1,4 +1,11 @@
-
+.sideBarWrapper {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  border-top: 1px solid #E6ECF0;;
+  background-color: #fff;
+  z-index: 1;
+}
 .iconGroup {
   display: flex;
   flex-direction: row;
@@ -16,7 +23,9 @@
 @media screen and (min-width:992px) {
   .sideBarWrapper {
     height: 100vh;
-
+    background-color: unset;
+    position: static;
+    width: 300px;
     .sideBarContainer {
       height: 100%;
       width: 178px;

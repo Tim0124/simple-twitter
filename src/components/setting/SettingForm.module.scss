@@ -1,10 +1,18 @@
+.settingWrapper {
+  height: 100vh;
+  overflow-y: hidden;
+}
+
+.rightContainer {
+  display: none;
+}
 .settingHeaderBorder{
   border-bottom: 1px solid #E6ECF0;
 }
 
 .settingContainer {
   width: 100%;
-  border-bottom: 1px solid #E6ECF0;
+  height: 100%;
 }
 
 .settingTitle {
@@ -18,10 +26,19 @@
 }
 
 .settingButtonGroup {
+  width: 100%;
+  padding: 16px 24px ;
   display: flex;
   flex-direction: column;
   align-items: end;
-  margin: 32px 24px;
+  gap: 22px;
+  .settingButton {
+    width: 88px;
+  }
+  .loginout {
+    padding: 0 16px;
+    color: #0062ff;
+  }
 }
 
 @media screen and (min-width: 991px) {
@@ -32,6 +49,7 @@
     border-right: 1px solid #E6ECF0;
   }
   .rightContainer{
+    display: block;
     width: 427px;
   }
 
@@ -41,6 +59,9 @@
   .settingWrapper {
     display: flex;
     flex-direction: row-reverse;
+  }
+  .settingLoginout {
+    display: none;
   }
 }
 
