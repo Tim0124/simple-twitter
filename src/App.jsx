@@ -20,7 +20,6 @@ function App() {
       <Routes>
          <Route path='/login' element={<LoginForm/>}/>
          <Route path='/register' element={<Register/>}/>
-         
             <Route path='/admin' element={<AdminForm/>}/>
          <Route element={<AdminLayout/>}>
             <Route path='admin/tweets' element={<AdminTweetsList/>}/>
@@ -34,6 +33,5 @@ function App() {
     </BrowserRouter>
   );
 }
-//test
 
 export default App;

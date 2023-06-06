@@ -98,12 +98,22 @@
   height: 40px;
 }
 
+.titleArrow {
+  cursor: pointer;
+}
+
+.titleClose {
+  display: none;
+  cursor: pointer;
+}
+
 
 @media screen and (min-width:992px) {
   .titleArrow {
     display: none;
   }
   .titleClose {
+    display: block;
     color: #ff6600;
   }
 

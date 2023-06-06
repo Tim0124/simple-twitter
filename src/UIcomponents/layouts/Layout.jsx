@@ -23,7 +23,7 @@ export default function Layout () {
           <ModalPostTweet/>
       </div>
       </div>
-      
+
     </div>
   )
 }
