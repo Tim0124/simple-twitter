@@ -3,8 +3,12 @@ import { ReactComponent as Logo } from '../../assets/logo.svg'
 import style from './AdminForm.module.scss'
 import Input from 'UIcomponents/input/Input'
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
 
 function AdminForm() {
+  const [account, setAccount] = useState('')
+  const [password, setPassword] = useState('')
+
   return (
     <div className={`${style.adminContainer}`}>
       <div className={`${style.adminLogo}`}><Logo /></div>
@@ -12,12 +16,17 @@ function AdminForm() {
       <form action="">
         <div className={`${style.adminInputGroup}`}>
           <Input
-            name='帳號'
+            label='帳號'
             placeholder='請輸入帳號'
+            value={account}
+            onChange={(accountInputValue) => setAccount(accountInputValue)}
           />
           <Input
-            name='密碼'
+            type='password'
+            label='密碼'
             placeholder='請輸入密碼'
+            value={password}
+            onChange={(passwordInputValue) => setPassword(passwordInputValue)}
           />
         </div>
         <Button text='登入' size='large' />
