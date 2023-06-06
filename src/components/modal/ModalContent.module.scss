@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   height: calc(100% - var.$sidebar-height);
+  width: 100%;
 }
 
 .avatar{
@@ -19,8 +20,7 @@
 
 .postTweetContent {
   height: 100%;
-  flex: 1;
-  padding: 16px 55px 16px 24px;
+  padding:16px 24px;
 }
 
 .contentGroup {
@@ -29,11 +29,9 @@
   height: 100%;
 
   .postTweetInputGroup {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     height: 100%;
     width: 100%;
+    position: relative;
   }
   
 
@@ -52,8 +50,12 @@
   }
 
   .footerText {
+    position: absolute;
+    bottom: 0;
+    right: 0;
     text-align: right;
     color: #FC5A5A;
   }
   
 }
+

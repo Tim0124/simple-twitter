@@ -8,6 +8,9 @@ import PopularUserList from './UIcomponents/layouts/PopularUserList'
 import PopularUser from 'UIcomponents/layouts/PopularUser';
 import MainTweets from 'components/main/MainTweets';
 import Layout from 'UIcomponents/layouts/Layout';
+import AdminTweetsCardList from 'components/admin/AdminTweetsCardsList';
+import AdminTweetsList from 'components/admin/AdminTweetsList';
+import AdminLayout from 'UIcomponents/layouts/AdminLayout';
 
 
 function App() {
@@ -15,9 +18,16 @@ function App() {
     <BrowserRouter>
     <div className="App">
       <Routes>
-        <Route path='/' element={<Layout/>}>
-          <Route path='/' element={<Outlet/>}/>
-          <Route path='/main' element={<MainTweets/>} />
+         <Route path='/login' element={<LoginForm/>}/>
+         <Route path='/register' element={<Register/>}/>
+         
+            <Route path='/admin' element={<AdminForm/>}/>
+         <Route element={<AdminLayout/>}>
+            <Route path='admin/tweets' element={<AdminTweetsList/>}/>
+            <Route path='admin/users' element={<AdminTweetsCardList/>}/>
+         </Route>
+         <Route element={<Layout/>}>
+          <Route path='/home' element={<MainTweets/>} />
           </Route>
       </Routes>  
     </div>

@@ -3,7 +3,6 @@ import style from './MainHeader.module.scss'
 
 export default function MainHeader({title, arrow}) {
   return (
-    
       <header className={`${style.tweetsHeader}`}>
         <nav className={`${style.tweetsNavbar}`}>
           <div className={`${style.navAvatarItem}`}>
