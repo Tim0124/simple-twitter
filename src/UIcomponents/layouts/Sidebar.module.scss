@@ -1,3 +1,5 @@
+@use '../../styles/variable.module' as var;
+
 .sideBarWrapper {
   width: 100%;
   position: fixed;
@@ -5,6 +7,8 @@
   border-top: 1px solid #E6ECF0;;
   background-color: #fff;
   z-index: 1;
+  height: var.$sidebar-height;
+  
 }
 .iconGroup {
   display: flex;
@@ -25,15 +29,15 @@
     height: 100vh;
     background-color: unset;
     position: static;
-    width: 300px;
+
     .sideBarContainer {
       height: 100%;
-      width: 178px;
+
     }
 
     .sideBarGroup {
       height: 100%;
-      width: 100%;
+      
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -69,7 +73,7 @@
 
 @media screen and (min-width:1200px) {
   .sideBarWrapper {
-    width: 300px;
+
     .iconGroup {
       display: flex;
       align-items: start;
@@ -80,7 +84,7 @@
   }
   .sideBarContainer {
       height: 100%;
-      width: 300px;
+
       margin: 8px auto;
     }
   .sideBarItems {
@@ -103,6 +107,10 @@
   .loginOut {
     display: flex;
     padding: 0 15px;
+  }
+
+  .sideBarGroup {
+    width: 178px;
   }
 
 }

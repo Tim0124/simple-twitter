@@ -72,9 +72,6 @@ const data = [
 export default function AdminTweetsList() {
   return (
     <div className={`${style.adminTweetsWrapper}`}>
-      <div className={`${style.adminTweetsSidebar}`}>
-      <Sidebar />
-      </div>
       <div className={`${style.adminTweetsContainer}`}>
         <div className={`${style.adminTweetsHeader}`}>推文清單</div>
         <div className={`${style.adminTweetsItem}`}>

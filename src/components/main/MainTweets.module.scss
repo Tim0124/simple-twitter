@@ -36,8 +36,18 @@ padding-bottom: 52px;
   border-radius: 50%;
 }
 
+.tweetPostArea {
+  display: none;
+}
+
 @media screen and (min-width:992px){
   .tweetsContainer {
     padding-bottom: unset;
   }
+
+  .tweetPostArea {
+  display: block;
+  border-bottom: 10px solid #E6ECF0;
+  height: 130px;
+} 
 }

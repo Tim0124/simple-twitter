@@ -10,5 +10,5 @@ return (
       placeholder={placeholder || ''}
       onChange={(event) => onChange?.(event.target.value)}></input>
   </label>
-)
+  )
 }
