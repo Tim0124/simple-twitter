@@ -4,7 +4,7 @@ export default function Input({name, placeholder}) {
 return (
   <label>
     <div className={`${style.inputTitle}`}>{name}</div>
-    <input placeholder={placeholder}></input>
+    <input className={`${style.inputUI}`} placeholder={placeholder}></input>
   </label>
-)
+  )
 }

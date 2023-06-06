@@ -16,6 +16,9 @@ export default function Layout () {
       <div className={`${style.LayoutPopularContainer}`}>
         <PopularUserList/>
       </div>
+      <div className={`${style.modalPostTweet}`}>
+        <modalPostTweet/>
+      </div>
     </div>
   )
 }

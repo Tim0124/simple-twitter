@@ -1,4 +1,4 @@
-input {
+.inputUI {
   border: none;
   border-bottom: 2px solid #657786;
   width: 100%;
@@ -9,7 +9,7 @@ input {
   margin: 8px 0;
 }
 
-input:focus,
+.inputUI:focus,
 :hover {
   border-color: #50B5FF
 }

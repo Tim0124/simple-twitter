@@ -1,3 +1,7 @@
+.LayoutMainContainer {
+  height: 100vh;
+}
+
 .LayoutPopularContainer {
   display: none;
 }
@@ -8,7 +12,7 @@
   }
 
 .LayoutSidebarContainer {
-  width: 56px;
+
   padding-left: 23px;
 }
 
@@ -22,12 +26,12 @@
   display: block;
   width: 273px;
   padding-top: 16px;
+  margin-right: 23px;
 }
 }
 
 @media screen and (min-width:1200px){
   .LayoutSidebarContainer {
-  width: 178px;
   margin-left: 138px;
 }
   .LayoutPopularContainer {
