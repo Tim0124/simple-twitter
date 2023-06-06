@@ -15,7 +15,6 @@ import AdminLayout from 'UIcomponents/layouts/AdminLayout';
 
 function App() {
   return (
-    <BrowserRouter>
     <div className="App">
       <Routes>
          <Route path='/login' element={<LoginForm/>}/>
@@ -30,7 +29,6 @@ function App() {
           </Route>
       </Routes>  
     </div>
-    </BrowserRouter>
   );
 }
 
