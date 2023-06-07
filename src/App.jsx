@@ -38,6 +38,7 @@ function App() {
              <Route path='/replylist' element={<ReplyList/>} />
            </Route>
            <Route path='/user' element={<UserInfo/>}/>
+           <Route path='/' element={<LoginForm/>}/>
         </Routes>  
       </BrowserRouter>
     </div>
