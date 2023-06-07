@@ -3,8 +3,16 @@ import Input from '../../UIcomponents/input/Input'
 import style from './SettingForm.module.scss'
 import { Link } from 'react-router-dom'
 import Sidebar from 'UIcomponents/layouts/Sidebar'
+import { useState } from 'react'
 
 export default function Register() {
+
+  const [account, setAccount] = useState('')
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const [email, setEmail] = useState('')
+  const [ckeck, setCheck] = useState('')
+
   return (
     <>
       <div className={`${style.settingWrapper}`}>
@@ -16,20 +24,32 @@ export default function Register() {
           <div className={`${style.settingInputGroup}`}>
             <form>
               <Input
-                name='帳號'
-                placeholder='請輸入帳號' />
+                label='帳號'
+                placeholder='請輸入帳號'
+                value={account}
+                onChange={(accountInputValue) => setAccount(accountInputValue)} />
               <Input
-                name='名稱'
-                placeholder='請輸入使用者名稱' />
+                label='名稱'
+                placeholder='請輸入使用者名稱'
+                value={username}
+                onChange={(nameInputValue) => setUsername(nameInputValue)} />
               <Input
-                name='Email'
-                placeholder='請輸入Email' />
+                label='Email'
+                placeholder='請輸入Email'
+                value={email}
+                onChange={(emailInputValue) => setEmail(emailInputValue)} />
               <Input
-                name='密碼'
-                placeholder='請設定密碼' />
+                label='密碼'
+                placeholder='請設定密碼'
+                type='password'
+                value={password}
+                onChange={(passwordInputValue) => setPassword(passwordInputValue)} />
               <Input
-                name='密碼再確認'
-                placeholder='請再次輸入密碼' />
+                label='密碼確認'
+                placeholder='請再次輸入密碼'
+                type='password'
+                value={ckeck}
+                onChange={(checkInputValue) => setCheck(checkInputValue)} />
             </form>
           </div>
           <div className={`${style.settingButtonGroup}`}>
