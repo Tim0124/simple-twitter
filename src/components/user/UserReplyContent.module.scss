@@ -1,0 +1,89 @@
+.userReplyContainer {
+  border-bottom: 1px solid #E6ECF0;
+  padding: 16px 23px;
+  flex:1;
+}
+
+.userReplyList {
+  display: flex;
+  gap: 8px;
+}
+
+.userReplyInfo{
+  display: flex;
+  flex-direction: column;
+  flex:1;
+  gap: 8px;
+}
+
+.userReplySecInfo {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.userReplyNameGroup {
+  display: flex;
+  flex-direction: row;
+  gap: 7px;
+}
+
+.userReplySmallAccount{
+  display: flex;
+  flex-direction: row;
+  color: #6C757D;
+  align-items: center;
+  font-weight: 400;
+  font-size: 14px;
+  gap: 1px
+
+}
+
+.userReplyTime {
+    display: flex;
+  }
+
+.userReplyName{
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.userReplyContent {
+  display: flex;
+  gap: 8px;
+}
+
+.userReplyImg {
+  border-radius: 50%;
+}
+
+.replyListItemAccountGroup {
+  display: flex;
+  gap: 3px;
+
+  .replyListItemText {
+    color: #6C757D;
+  }
+  .replyListItemAccount {
+    color: #FF6600;
+    line-height: 22px;
+    cursor: pointer;
+  }
+}
+
+.userReplyQuantityGroup {
+  display: flex;
+  gap: 40px;
+  color: #6C757D;
+
+  .userReplyQuantity{
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .userReplyLikeQuantity {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+}

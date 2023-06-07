@@ -12,6 +12,7 @@
   display: flex;
   gap: 8px;
 
+
   .avatarItem {
     display: flex;
     flex-direction: column;
@@ -26,7 +27,7 @@
       width: 2px;
       flex: 1;
       background-color: #B5B5BE;
-      margin: 16px;
+      margin: 10px;
     } 
   }  
 
@@ -68,11 +69,17 @@
 }
 
 .replyTweetReplyGroup {
+
   .replyTweetReplyAccountItem {
+    
     .replyTweetAccountText {
       color: #ff6600;
+      
     }
   }
+  .replyTweetText {
+      color: #6C757D;
+    }
 }
 
 .replyTweetForm {
