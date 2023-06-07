@@ -1,0 +1,31 @@
+@use '../../styles/variable.module' as var;
+
+.userTweetsContainer {
+  height: 100%;
+}
+
+.userTweetsWrapper {
+  height: 53px;
+  border: 1px solid #657786;
+  .userTweetsGroup {
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 6px;
+  }
+}
+
+.UserTweetsContent {
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+@media screen and (min-width:1200px) {
+    .userTweetsItem,
+    .userReplyItem,
+    .userLikeItem {
+      width: 130px;
+      
+    }
+}
