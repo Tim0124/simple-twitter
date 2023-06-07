@@ -2,10 +2,11 @@ import { Outlet } from 'react-router-dom';
 import PopularUserList from './PopularUserList';
 import SideItem from './SideItem';
 import Sidebar from './Sidebar';
-import style from './Layout.module.scss'
-import ModalPostTweet from '../../components/modal/ModalPostTweet'
+import style from './ReplyListLayout.module.scss'
+import ModalReplyTweet from '../../components/modal/ModalReplyTweet'
 
-export default function Layout () {
+
+export default function ReplyListLayout () {
   return (
     <div className={`${style.LayoutContainer}`}>
       <div className={`${style.LayoutSidebarContainer}`}>
@@ -17,12 +18,12 @@ export default function Layout () {
       <div className={`${style.LayoutPopularContainer}`}>
         <PopularUserList/>
       </div>
-      {/* <div>
+      <div>
         <div className={`${style.modalBackground}`}></div>
         <div className={`${style.modalPostTweet}`}>
-          <ModalPostTweet/>
+          <ModalReplyTweet/>
         </div>
-      </div> */}
+      </div>
     </div>
   )
 }

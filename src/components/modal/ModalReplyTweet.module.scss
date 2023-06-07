@@ -24,6 +24,8 @@
   padding: 16px 55px 16px 24px;
 }
 
+
+
 .contentGroup {
   display: flex;
   gap: 8px;
@@ -107,6 +109,10 @@
   cursor: pointer;
 }
 
+.footerText {
+  display: none;
+}
+
 
 @media screen and (min-width:992px) {
   .titleArrow {
@@ -123,10 +129,16 @@
   .footerButtonItem {
     display: flex;
     justify-content: flex-end;
+    align-items: center;
   }
   .footerButton {
   display: block;
   margin: 12px 24px 13px;;
   
-}
+  }
+  
+  .footerText {
+    display: block;
+    color: #FC5A5A;
+  }
 }

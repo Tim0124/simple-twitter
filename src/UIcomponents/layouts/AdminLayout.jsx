@@ -1,7 +1,6 @@
 import style from './AdminLayout.module.scss'
 import { Outlet } from 'react-router-dom';
 import PopularUserList from './PopularUserList';
-import SideItem from './SideItem';
 import Sidebar from './Sidebar';
 
 export default function AdminLayout () {
@@ -15,9 +14,6 @@ export default function AdminLayout () {
       </div>
       <div className={`${style.LayoutPopularContainer}`}>
         <PopularUserList/>
-      </div>
-      <div className={`${style.modalPostTweet}`}>
-        <modalPostTweet/>
       </div>
     </div>
   )
