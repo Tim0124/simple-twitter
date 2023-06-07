@@ -17,13 +17,12 @@ export default function Layout () {
       <div className={`${style.LayoutPopularContainer}`}>
         <PopularUserList/>
       </div>
-      <div>
+      {/* <div>
         <div className={`${style.modalBackground}`}></div>
         <div className={`${style.modalPostTweet}`}>
           <ModalPostTweet/>
-      </div>
-      </div>
-
+        </div>
+      </div> */}
     </div>
   )
 }
