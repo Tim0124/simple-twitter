@@ -15,13 +15,14 @@ import UserInfo from 'UIcomponents/layouts/UserInfo';
 import ReplyListLayout from 'UIcomponents/layouts/ReplyListLayout';
 import ReplyList from 'components/replyList/ReplyList';
 
+const basename = process.env.PUBLIC_URL
 
 
 function App() { 
   return (
 
     <div className="App">
-      <BrowserRouter>
+      <BrowserRouter basename={basename}>
         <Routes>
            <Route path='/login' element={<LoginForm/>}/>
            <Route path='/register' element={<Register/>}/>
@@ -37,6 +38,7 @@ function App() {
              <Route path='/replylist' element={<ReplyList/>} />
            </Route>
            <Route path='/user' element={<UserInfo/>}/>
+           <Route path='/' element={<LoginForm/>}/>
         </Routes>  
       </BrowserRouter>
     </div>
