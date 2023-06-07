@@ -1,6 +1,8 @@
 import Button from 'UIcomponents/buttons/Button'
 import style from './MainContent.module.scss'
 
+
+
 export default function PostContent () {
   return(
     <main className={`${style.postTweetContent}`}>
@@ -15,7 +17,7 @@ export default function PostContent () {
             </div>
           <footer className={`${style.footerArea}`}>
             <div className={`${style.footerButton}`}>
-              <Button text='推文' size='middle'/>
+              <Button text='推文' size='middle' />
             </div>
             </footer>
           </div>

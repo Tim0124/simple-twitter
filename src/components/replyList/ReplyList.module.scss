@@ -1,0 +1,24 @@
+.replyContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.replyListContent {
+  
+  flex: 1;
+  overflow-y: scroll;
+  padding-bottom: 52px;
+}
+
+// @media screen and (min-width:992px) {
+//   .replyListContent {
+//     padding-bottom: 0px;
+//   }
+// }
+// @media screen and (min-width:1200px) {
+//   .replyListContent {
+//     padding-bottom: 130px;
+//   }
+// }
+
