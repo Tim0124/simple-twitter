@@ -10,7 +10,9 @@ export default function PostContent () {
           </div>
           <div className={`${style.postTweetInputGroup}`}>
             <textarea className={`${style.postTweetInput}`} type="text" placeholder='有什麼新鮮事？'/>
-          <footer className={`${style.footerText}`}><p>字數不可超過140字</p></footer>
+          <footer className={`${style.footerText}`}>
+            <p>字數不可超過140字</p>
+          </footer>
           </div>
         </div>
         </form>

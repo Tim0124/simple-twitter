@@ -1,0 +1,144 @@
+@use '../../styles/variable.module' as var;
+
+.postTweetContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.avatar{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.postTweetForm {
+  height: 100%;
+
+}
+
+.postTweetContent {
+  height: 100%;
+  flex: 1;
+  padding: 16px 55px 16px 24px;
+}
+
+
+
+.contentGroup {
+  display: flex;
+  gap: 8px;
+  height: 100%;
+
+  .postTweetInputGroup {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+  }
+  
+
+  .postTweetInput {
+    resize: none;
+    border: none;
+    box-shadow: none;
+    outline: none;
+    color: #6c757d;
+    font-size: 18px;
+    font-weight: 700;
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+    margin-top: 5px;
+  }
+
+  .footerText {
+    text-align: right;
+    color: #FC5A5A;
+  }
+  
+}
+
+.footerButton {
+  display: none;
+  width: 64px;
+}
+
+//header
+.tweetsHeader {
+  border-bottom: 1px solid #E6ECF0; 
+}
+.tweetsNavbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin: 12px 24px 13px;
+  
+}
+
+.navAvatarItem {
+  display: none;
+  .navAvatar{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+}
+
+.mainTweetsAvatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.navButton {
+  width: 64px;
+  height: 40px;
+}
+
+.titleArrow {
+  cursor: pointer;
+}
+
+.titleClose {
+  display: none;
+  cursor: pointer;
+}
+
+.footerText {
+  display: none;
+}
+
+
+@media screen and (min-width:992px) {
+  .titleArrow {
+    display: none;
+  }
+  .titleClose {
+    display: block;
+    color: #ff6600;
+  }
+
+  .navButton {
+    display: none;
+  }
+  .footerButtonItem {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  .footerButton {
+  display: block;
+  margin: 12px 24px 13px;;
+  
+  }
+  
+  .footerText {
+    display: block;
+    color: #FC5A5A;
+  }
+}

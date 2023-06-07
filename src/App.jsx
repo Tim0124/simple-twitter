@@ -11,11 +11,15 @@ import Layout from 'UIcomponents/layouts/Layout';
 import AdminTweetsCardList from 'components/admin/AdminTweetsCardsList';
 import AdminTweetsList from 'components/admin/AdminTweetsList';
 import AdminLayout from 'UIcomponents/layouts/AdminLayout';
+import ReplyListLayout from 'UIcomponents/layouts/ReplyListLayout';
+import ReplyList from 'components/replyList/ReplyList';
 
 
-function App() {
+
+function App() { 
   return (
     <div className="App">
+      <BrowserRouter>
       <Routes>
          <Route path='/login' element={<LoginForm/>}/>
          <Route path='/register' element={<Register/>}/>
@@ -26,8 +30,12 @@ function App() {
          </Route>
          <Route element={<Layout/>}>
           <Route path='/home' element={<MainTweets/>} />
-          </Route>
+         </Route>
+         <Route element={<ReplyListLayout/>}>
+          <Route path='/replylist' element={<ReplyList/>} />
+         </Route>
       </Routes>  
+      </BrowserRouter>
     </div>
   );
 }

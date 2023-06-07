@@ -1,0 +1,127 @@
+@use '../../styles/variable.module' as var;
+
+.replyTweetContent {
+  height: 100%;
+  .replyTweetForm {
+    height: 100%;
+    padding:16px 24px;
+  }
+}
+
+.contentGroup {
+  display: flex;
+  gap: 8px;
+
+  .avatarItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .avatar{
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+    .line {
+      display: block;
+      width: 2px;
+      flex: 1;
+      background-color: #B5B5BE;
+      margin: 16px;
+    } 
+  }  
+
+}
+
+.replyTweetInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  .replyTweetReplyGroup {
+    display: flex;
+    gap: 8px;
+  }
+}
+
+
+.replyTweetContainer {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - var.$sidebar-height);
+  width: 100%;
+}
+
+.replyTweetNameGroup {
+  display: flex;
+  gap: 8px;
+
+  .replyTweetName {
+
+    .tweetName {
+      font-weight: 700;
+    }
+  }
+
+  .replyTweetSmallAccount {
+    display: flex;
+    color: #6C757D;
+  }
+}
+
+.replyTweetReplyGroup {
+  .replyTweetReplyAccountItem {
+    .replyTweetAccountText {
+      color: #ff6600;
+    }
+  }
+}
+
+.replyTweetForm {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.replyTweetInputGroup {
+    width: 100%;
+    position: relative;
+    display: flex;
+    gap: 8px;
+    flex: 1;
+  }
+  
+
+  .replyTweetInput {
+    resize: none;
+    border: none;
+    box-shadow: none;
+    outline: none;
+    color: #6C757D;
+    font-size: 18px;
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+    margin-top: 5px;
+  }
+
+  .footerText {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    text-align: right;
+    color: #FC5A5A;
+  }
+
+.replyTweetAvatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+
+  @media screen and (min-width:992px) {
+    .replyTweetInput {
+      height: 200px;
+    }
+    .footerText {
+      display: none;
+    }
+  }
