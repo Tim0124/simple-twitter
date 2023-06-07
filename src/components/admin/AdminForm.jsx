@@ -4,16 +4,32 @@ import style from './AdminForm.module.scss'
 import Input from 'UIcomponents/input/Input'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
+import { adminLogin } from 'api/auth'
 
 function AdminForm() {
   const [account, setAccount] = useState('')
   const [password, setPassword] = useState('')
 
+  const handleClick = async () => {
+
+    if (account.length === 0) {
+      return;
+    }
+    if (password.length === 0) {
+      return;
+    }
+
+    const { success, token } = await adminLogin({ account, password })
+
+    if (success) {
+      localStorage.setItem('authToken', token);
+    }
+  }
+
   return (
     <div className={`${style.adminContainer}`}>
       <div className={`${style.adminLogo}`}><Logo /></div>
       <h1 className={`${style.adminTitle}`}>後台登入</h1>
-      <form action="">
         <div className={`${style.adminInputGroup}`}>
           <Input
             label='帳號'
@@ -29,15 +45,17 @@ function AdminForm() {
             onChange={(passwordInputValue) => setPassword(passwordInputValue)}
           />
         </div>
-        <Button text='登入' size='large' />
+        <Button 
+          text='登入' 
+          size='large'
+          onClick={handleClick} />
         <div className={`${style.adminButtonGroup}`}>
           <div className={`${style.adminButtonSecGroup}`}>
-            <Link>
+            <Link to='/login'>
               <u className={`${style.forntButton}`} >前台登入</u>
             </Link>
           </div>
         </div>
-      </form>
     </div>
   )
 }

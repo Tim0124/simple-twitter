@@ -33,7 +33,6 @@ function LoginForm() {
     <div className={`${style.loginContainer}`}>
       <div className={`${style.loginLogo}`}><Logo /></div>
       <h1 className={`${style.loginTitle}`}>登入Alphitter</h1>
-      <form action="">
         <div className={`${style.loginInputGroup}`}>
           <Input
             label='帳號'
@@ -52,19 +51,18 @@ function LoginForm() {
         <Button
           text='登入'
           size='large'
-          onRegister={handleClick} />
+          onClick={handleClick} />
         <div className={`${style.loginButtonGroup}`}>
           <div className={`${style.loginButtonSecGroup}`}>
-            <Link>
+            <Link to='/register'>
               <u className={`${style.loginRegisterButton}`}>註冊</u>
             </Link>
             <p>・</p>
-            <Link>
+            <Link to='/admin'>
               <u className={`${style.loginAdminButton}`} >後台登入</u>
             </Link>
           </div>
         </div>
-      </form>
     </div>
   )
 }
