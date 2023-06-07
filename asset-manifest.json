@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/simple-twitter/static/css/main.b33a3879.css",
+    "main.js": "/simple-twitter/static/js/main.b73ab070.js",
+    "static/js/787.aa94361f.chunk.js": "/simple-twitter/static/js/787.aa94361f.chunk.js",
+    "static/media/unsetting.svg": "/simple-twitter/static/media/unsetting.1afcc18d232b9ff04df7.svg",
+    "static/media/logo.svg": "/simple-twitter/static/media/logo.c2e36cd5e2b0cceebd68552ab49d410a.svg",
+    "static/media/exit.svg": "/simple-twitter/static/media/exit.62021863de1680246f40.svg",
+    "static/media/unperson.svg": "/simple-twitter/static/media/unperson.1ca7260a1c9db7a5f27f.svg",
+    "static/media/unhome.svg": "/simple-twitter/static/media/unhome.eca4b1ed0ae14f2e0a59.svg",
+    "static/media/message.svg": "/simple-twitter/static/media/message.03544a04581c89dc438bd368c1e856d5.svg",
+    "static/media/tweet.svg": "/simple-twitter/static/media/tweet.6e5a0abd7253081c0895.svg",
+    "static/media/untweet.svg": "/simple-twitter/static/media/untweet.62508591febba3467ee1.svg",
+    "static/media/greytweet.svg": "/simple-twitter/static/media/greytweet.b81f6066c7900622a3effd74e06552b6.svg",
+    "static/media/greylike.svg": "/simple-twitter/static/media/greylike.9a3a0c8638abe3bfe9dc1977d2f38272.svg",
+    "static/media/unlike.svg": "/simple-twitter/static/media/unlike.6b2b60f5db5362b3db01254d1eecbfab.svg",
+    "static/media/X.svg": "/simple-twitter/static/media/X.2f84d5aa2ef38b6eff39bc18ab7e0de4.svg",
+    "index.html": "/simple-twitter/index.html",
+    "static/media/Vector.svg": "/simple-twitter/static/media/Vector.c91a0ef5b9debf3a1ef0a76114a0a0a8.svg",
+    "static/media/arrow.svg": "/simple-twitter/static/media/arrow.dd78ecddc8616f77e8398e82e3c59302.svg",
+    "main.b33a3879.css.map": "/simple-twitter/static/css/main.b33a3879.css.map",
+    "main.b73ab070.js.map": "/simple-twitter/static/js/main.b73ab070.js.map",
+    "787.aa94361f.chunk.js.map": "/simple-twitter/static/js/787.aa94361f.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b33a3879.css",
+    "static/js/main.b73ab070.js"
+  ]
+}
