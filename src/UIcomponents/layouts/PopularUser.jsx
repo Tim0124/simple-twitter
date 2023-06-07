@@ -20,7 +20,9 @@ export default function PopularUser({name, avatar, account, isFollow}) {
         <div className={`${style.popularUserButton}`}>
           {isFollow === true ?
             <Button size='middle' text='正在跟隨'/>:
+            <div className={`${style.popularUserFollower}`}>
             <Button size='white-exsmall' text='跟隨'/>
+            </div>
           }  
         </div>
       </div>

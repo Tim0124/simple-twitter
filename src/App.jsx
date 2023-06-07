@@ -11,24 +11,28 @@ import Layout from 'UIcomponents/layouts/Layout';
 import AdminTweetsCardList from 'components/admin/AdminTweetsCardsList';
 import AdminTweetsList from 'components/admin/AdminTweetsList';
 import AdminLayout from 'UIcomponents/layouts/AdminLayout';
+import UserInfo from 'UIcomponents/layouts/UserInfo';
 
 
 function App() {
   return (
+
     <div className="App">
-      <Routes>
-         <Route path='/login' element={<LoginForm/>}/>
-         <Route path='/register' element={<Register/>}/>
-         
-            <Route path='/admin' element={<AdminForm/>}/>
-         <Route element={<AdminLayout/>}>
-            <Route path='admin/tweets' element={<AdminTweetsList/>}/>
-            <Route path='admin/users' element={<AdminTweetsCardList/>}/>
-         </Route>
-         <Route element={<Layout/>}>
-          <Route path='/home' element={<MainTweets/>} />
+      <BrowserRouter>
+        <Routes>
+          <Route path='/login' element={<LoginForm />} />
+          <Route path='/register' element={<Register />} />
+          <Route path='/admin' element={<AdminForm />} />
+          <Route element={<AdminLayout />}>
+            <Route path='admin/tweets' element={<AdminTweetsList />} />
+            <Route path='admin/users' element={<AdminTweetsCardList />} />
           </Route>
-      </Routes>  
+          <Route element={<Layout />}>
+            <Route path='/home' element={<MainTweets />} />
+          </Route>
+          <Route path='/user' element={<UserInfo/>}/>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
