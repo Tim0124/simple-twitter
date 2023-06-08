@@ -1,0 +1,10 @@
+@use '../../../styles/variable.module' as var;
+
+.userFollowerContainer {
+  height: 100%;
+}
+
+.userFollowerContent {
+  height: 100vh;
+  overflow-y: scroll;
+}
