@@ -1,7 +1,9 @@
 import UserNavbar from './UserNavbar'
-import style from './UserReplyList.module.scss'
-import UserReplyContent from './UserReplyContent'
+import style from './UserLike.module.scss'
+import UserLikeContent from './UserLikeContent'
+import FollowTab from 'UIcomponents/tabs/FollowTab'
 import UserTab from 'UIcomponents/tabs/UserTab'
+import UserInfo from 'UIcomponents/layouts/UserInfo'
 
 const dummyData = [
   {
@@ -107,13 +109,14 @@ const dummyData = [
 ]
 
 
-export default function UserReplyList () {
+export default function UserLike () {
   return (
-    <div className={`${style.userReplyContainer}`}>
+    <div className={`${style.userTweetsContainer}`}>
+      <UserInfo/>
       <UserTab/>
-      <section className={`${style.userReplyContent}`}>
+      <section className={`${style.UserTweetsContent}`}>
         {dummyData.map((data) => (
-          <UserReplyContent key={data.id} {...data}/>
+          <UserLikeContent key={data.id} {...data}/>
         ))}
       </section>
     </div>

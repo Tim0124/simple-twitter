@@ -2,9 +2,11 @@
   background-color: #FAFAFB;
   font-weight: 700;
   font-size: 24px;
-  height: 100%;
+  height: 731px;
   width: 273px;
   border-radius: 16px;
+  display: flex;
+  flex-direction: column;
 }
 
 .popularUserListHeader {
@@ -13,5 +15,7 @@
   border-bottom: 1px solid #E6ECF0;
 }
 .popularUserList {
-  flex-wrap: wrap;
+  flex: 1;
+  height: 100vh;
+  overflow-y: scroll;
 }

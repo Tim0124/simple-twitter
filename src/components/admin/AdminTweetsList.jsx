@@ -67,6 +67,22 @@ const data = [
     content: 'Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor. Voluptate exercitation incididunt aliquip deserunt reprehenderit elit laborum.',
     time: '6小時',
   },
+  {
+    id: 9,
+    name: 'Apple',
+    avatar: 'https://picsum.photos/300/300?text=1',
+    account: '@apple',
+    content: 'Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor. Voluptate exercitation incididunt aliquip deserunt reprehenderit elit laborum.',
+    time: '6小時',
+  },
+  {
+    id: 10,
+    name: 'Apple',
+    avatar: 'https://picsum.photos/300/300?text=1',
+    account: '@apple',
+    content: 'Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor. Voluptate exercitation incididunt aliquip deserunt reprehenderit elit laborum.',
+    time: '6小時',
+  },
 ]
 
 export default function AdminTweetsList() {

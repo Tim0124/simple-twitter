@@ -1,6 +1,6 @@
 import style from './UserInfo.module.scss'
-import { ReactComponent as Arrow } from '../../assets/arrow.svg'
 import Button from 'UIcomponents/buttons/Button'
+import UserInfoHeader from './UserInfoHeader'
 
 const data = [
   {
@@ -20,17 +20,6 @@ export default function UserInfo() {
   return (
     <div className={`${style.userInfoContainer}`}>
       <div className={`${style.userInfoWrapper}`}>
-        <header className={`${style.userInfoHeader}`}>
-          <nav className={`${style.userInfoNavbar}`}>
-            <div className={`${style.userInfoNavTitle}`}>
-              <h1 className={`${style.userInfoText}`}><Arrow /></h1>
-            </div>
-            <div className={`${style.userInfoHeaderGroup}`}>
-              <div className={`${style.userInfoNavName}`}>{data[0].name}</div>
-              <div className={`${style.userInfoTweet}`}>{data[0].tweet}&nbsp;推文</div>
-            </div>
-          </nav>
-        </header>
         <div className={`${style.userInfoImgGroup}`}>
           <div className={`${style.userInfobackground}`}>
             <img src={data[0].background} className={`${style.userInfoCardImg}`} alt='' />

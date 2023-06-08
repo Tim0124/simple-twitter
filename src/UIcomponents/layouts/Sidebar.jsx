@@ -2,6 +2,7 @@ import SideItem from './SideItem'
 import style from'./Sidebar.module.scss'
 import { ReactComponent as Logo } from '../../assets/logo.svg'
 import Button from 'UIcomponents/buttons/Button'
+import { Link } from 'react-router-dom'
 
 export default function Sidebar () {
   return (
@@ -14,7 +15,7 @@ export default function Sidebar () {
             </div>
               <div className={`${style.iconGroup}`}>
                 <SideItem 
-                styleName='iconHome'
+                styleName='actionHome'
                 itemName='首頁'
                 />
                 <SideItem 

@@ -47,10 +47,10 @@ export  default function ReplyListTweet ({avatar, name, account, content, quanti
           </div>
           <div className={`${style.replyTweetsIconGroup}`}>
             <div className={`${style.replyTweetsIcon}`}>
-              <Message/>
+              <Message width='19px' height='19px'/>
             </div>
             <div className={`${style.replyTweetsLikeIcon}`}>
-              <Like/>
+              <Like width='19px' height='19px'/>
             </div>
           </div>
         </div>
