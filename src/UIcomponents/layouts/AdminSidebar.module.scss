@@ -4,13 +4,11 @@
   width: 100%;
   position: fixed;
   bottom: 0;
-  border-top: 1px solid #E6ECF0;;
+  border-top: 1px solid #E6ECF0;
+  ;
   background-color: #fff;
   z-index: 1;
   height: var.$sidebar-height;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
 .iconGroup {
@@ -18,13 +16,13 @@
   flex-direction: row;
   justify-content: space-around;
   padding: 10px 0;
-  align-items: center;
 }
 
-.logo{
+.logo {
   display: none;
 }
-.buttonItem{
+
+.buttonItem {
   display: none;
 }
 
@@ -36,17 +34,14 @@
 
     .sideBarContainer {
       height: 100%;
-
     }
 
     .sideBarGroup {
       height: 100%;
-      
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       margin: 8px 0;
-
     }
 
     .iconGroup {
@@ -57,8 +52,8 @@
       align-items: center;
       justify-content: space-between;
       gap: 45px;
- 
     }
+
     .sideBarItems {
       display: flex;
       flex-direction: column;
@@ -66,9 +61,11 @@
       justify-content: center;
       gap: 25px;
     }
+
     .logo {
       display: block;
     }
+
     .loginOut {
       margin: 17px 0;
     }
@@ -84,12 +81,14 @@
       justify-content: center;
       padding: 0 15px;
       gap: 25px;
-    } 
-  }
-  .sideBarContainer {
-      height: 100%;
-      margin: 8px auto;
     }
+  }
+
+  .sideBarContainer {
+    height: 100%;
+    margin: 8px auto;
+  }
+
   .sideBarItems {
     display: flex;
     align-items: start;
@@ -106,8 +105,9 @@
   .buttonItem {
     display: block;
     width: 100%;
-    height: 86px;
+    height: 98px;
   }
+
   .loginOut {
     display: flex;
     padding: 0 15px;

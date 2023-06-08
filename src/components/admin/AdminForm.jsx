@@ -45,10 +45,12 @@ function AdminForm() {
             onChange={(passwordInputValue) => setPassword(passwordInputValue)}
           />
         </div>
+      <div className={`${style.adminButtonGroup}`}>
         <Button 
           text='登入' 
           size='large'
           onClick={handleClick} />
+          </div>
         <div className={`${style.adminButtonGroup}`}>
           <div className={`${style.adminButtonSecGroup}`}>
             <Link to='/login'>
