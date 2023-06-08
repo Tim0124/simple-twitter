@@ -49,33 +49,33 @@ export default function Register() {
         </div>
         <h1 className={`${style.registerTitle}`}>建立你的帳號</h1>
         <div className={`${style.registerInputGroup}`}>
-          <Input
-            label='帳號'
-            placeholder='請輸入帳號'
-            value={account}
-            onChange={(accountInputValue) => setAccount(accountInputValue)} />
-          <Input
-            label='名稱'
-            placeholder='請輸入使用者名稱'
-            value={name}
-            onChange={(nameInputValue) => setName(nameInputValue)} />
-          <Input
-            label='Email'
-            placeholder='請輸入Email'
-            value={email}
-            onChange={(emailInputValue) => setEmail(emailInputValue)} />
-          <Input
-            label='密碼'
-            placeholder='請設定密碼'
-            type='password'
-            value={password}
-            onChange={(passwordInputValue) => setPassword(passwordInputValue)} />
-          <Input
-            label='密碼確認'
-            placeholder='請再次輸入密碼'
-            type='password'
-            value={checkPassword}
-            onChange={(checkInputValue) => setCheckPassword(checkInputValue)} />
+            <Input
+              label='帳號'
+              placeholder='請輸入帳號'
+              value={account}
+              onChange={(accountInputValue) => setAccount(accountInputValue)} />
+            <Input
+              label='名稱'
+              placeholder='請輸入使用者名稱'
+              value={name}
+              onChange={(nameInputValue) => setName(nameInputValue)} />
+            <Input
+              label='Email'
+              placeholder='請輸入Email'
+              value={email}
+              onChange={(emailInputValue) => setEmail(emailInputValue)} />
+            <Input
+              label='密碼'
+              placeholder='請設定密碼'
+              type='password'
+              value={password}
+              onChange={(passwordInputValue) => setPassword(passwordInputValue)} />
+            <Input
+              label='密碼確認'
+              placeholder='請再次輸入密碼'
+              type='password'
+              value={checkPassword}
+              onChange={(checkInputValue) => setCheckPassword(checkInputValue)} />
         </div>
         <div className={`${style.registerButtonGroup}`}>
           <Button

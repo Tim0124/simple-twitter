@@ -1,0 +1,158 @@
+@use '../../styles/variable.module' as var;
+
+.userInfoMdContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.userInfoMdNavbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.userInfoMdTitle {
+  display: flex;
+  justify-content: center;
+  margin: 24px 28px;
+  gap: 19px;
+}
+
+.userInfoMdButton {
+  width: 64px;
+  height: 40px;
+}
+
+.userInfoMdButtonGroup {
+  display: flex;
+  align-items: center;
+  margin: 17px 24px;
+}
+
+.userInfoMdArrow {
+  cursor: pointer;
+}
+
+.userInfoClose {
+  display: none;
+  cursor: pointer;
+}
+
+.userInfoMdCardImg {
+  width: 100%;
+  height: 100%;
+}
+
+.userInfoMdImgAvatar {
+  height: 100%;
+  border-radius: 50%;
+}
+
+.userInfoMdBackground {
+  height: 200px;
+}
+
+.userInfoMdAvatar {
+  position: absolute;
+  top: 158px;
+  left: 25px;
+  height: 80px;
+}
+
+.userInfoInputArea {
+  margin: 34px 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.userInfoMdBackground {
+  background-color: #171725;
+}
+
+.userInfoMdCardImg {
+  opacity: 0.5;
+}
+
+.userInfoMdAvatar {
+  border-radius: 50%;
+  background-color: #171725;
+}
+
+.userInfoMdImgAvatar {
+  opacity: 0.5;
+}
+
+.userInfoMdImgGroup {
+  position: relative;
+
+  .userInfoIcon {
+    position: absolute;
+    z-index: 99;
+    width: 80px;
+    height: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .userInfoSecIcon {
+    position: absolute;
+    z-index: 98;
+    top: 190px;
+    left: 55px;
+  }
+}
+
+.userInfoMdWhite {
+  cursor: pointer;
+}
+
+.userInfoInputText {
+  display: none;
+}
+
+
+@media screen and (min-width: 991px) {
+  .userInfoMdArrow {
+    display: none;
+  }
+
+  .userInfoClose {
+    display: block;
+  }
+
+  .userInfoMdContainer {
+    width: 634px;
+    border-radius: 14px;
+  }
+
+  .userInfoInputArea {
+    display: flex;
+
+    .userInfoInputContent {
+      height: 147px;
+    }
+  }
+  .userInfoInputContent,
+  .userInfoInputText {
+    display: block;
+    font-weight: 500;
+    font-size: 12px;
+    color: #696974;
+    text-align: end;
+  }
+  
+  .userInfoInputContentGroup{
+    height: 147px;
+    width: 100%;
+    .inputTextarea{
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
