@@ -19,7 +19,7 @@ export default function AdminTweetsItem({ name, avatar, account, content, time }
               </div>
             </div>
             <div className={`${style.adminTweetsX}`}>
-              <X></X>
+              <X/>
             </div>
           </div>
           <div className={`${style.adminTweetsContent}`}>{content}</div>

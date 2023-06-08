@@ -1,3 +1,5 @@
+@use '../../styles/variable.module' as var;
+
 .replyContainer {
   display: flex;
   flex-direction: column;
@@ -7,17 +9,13 @@
 .replyListContent {
   flex: 1;
   overflow-y: scroll;
-  padding-bottom: 52px;
+  padding-bottom: var.$sidebar-height;
 }
 
-// @media screen and (min-width:992px) {
-//   .replyListContent {
-//     padding-bottom: 0px;
-//   }
-// }
-// @media screen and (min-width:1200px) {
-//   .replyListContent {
-//     padding-bottom: 130px;
-//   }
-// }
-
+@media screen and (min-width:992px) {
+  .replyListContent {
+    flex: 1;
+    overflow-y: scroll;
+    padding-bottom: 0;
+  }
+}

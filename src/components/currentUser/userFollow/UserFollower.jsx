@@ -1,6 +1,22 @@
 import style from './UserFollower.module.scss'
 import FollowTab from 'UIcomponents/tabs/FollowTab'
 import UserFollowerContent from './UserFollowContent'
+import UserInfo from 'UIcomponents/layouts/UserInfo'
+import UserInfoHeader from 'UIcomponents/layouts/UserInfoHeader'
+
+const data = [
+  {
+    id: 1,
+    avatar: 'https://picsum.photos/300/300?text=2',
+    background: 'https://picsum.photos/300/300?text=1',
+    name: 'John Doe',
+    account: '@heyjone',
+    tweet: 25,
+    following: 34,
+    follower: 59,
+    content: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.'
+  }
+]
 
 const dummyData = [
   {
@@ -118,6 +134,15 @@ const dummyData = [
 export default function UserFollower () {
   return (
     <div className={`${style.userFollowerContainer}`}>
+       <div className={`${style.userInfoHeaderContainer}`}>
+        <UserInfoHeader 
+          name={data[0].name}
+          tweet={data[0].tweet}
+        />
+      </div>
+      <div className={`${style.userInfoContainer}`}>
+        <UserInfo/>
+      </div>
       <FollowTab/>
       <section className={`${style.userFollowerContent}`}>
         {dummyData.map((data) => (

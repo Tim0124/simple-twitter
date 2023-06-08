@@ -94,10 +94,12 @@
 .replyTweetsIconGroup {
   display: flex;
   gap: 40px;
-  padding: 16px 24px 7px;
+  padding: 20px 24px;
   
   .replyTweetsIcon, 
   .replyTweetsLikeIcon {
+    display: flex;
+    align-items: center;
     cursor: pointer;
   }
 }

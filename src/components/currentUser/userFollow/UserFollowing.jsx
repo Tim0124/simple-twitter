@@ -1,7 +1,22 @@
-import UserNavbar from './UserNavbar'
-import style from './UserTweets.module.scss'
-import UserTweetsContent from './UserTweetsContent'
-import UserTab from 'UIcomponents/tabs/UserTab'
+import style from './UserFollowing.module.scss'
+import FollowTab from 'UIcomponents/tabs/FollowTab'
+import UserFollowerContent from './UserFollowContent'
+import UserInfo from 'UIcomponents/layouts/UserInfo'
+import UserInfoHeader from 'UIcomponents/layouts/UserInfoHeader'
+
+const data = [
+  {
+    id: 1,
+    avatar: 'https://picsum.photos/300/300?text=2',
+    background: 'https://picsum.photos/300/300?text=1',
+    name: 'John Doe',
+    account: '@heyjone',
+    tweet: 25,
+    following: 34,
+    follower: 59,
+    content: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.'
+  }
+]
 
 const dummyData = [
   {
@@ -13,6 +28,7 @@ const dummyData = [
     time:3,
     quantity:20,
     likeQuantity:12,
+    isFollow:true,
   },
   {
     id: '2',
@@ -23,6 +39,7 @@ const dummyData = [
     time:1,
     quantity:20,
     likeQuantity:12,
+    isFollow:true,
   },
   {
     id: '3',
@@ -33,6 +50,7 @@ const dummyData = [
     time:2,
     quantity:20,
     likeQuantity:12,
+    isFollow:true,
   },
   {
     id: '4',
@@ -43,6 +61,7 @@ const dummyData = [
     time:2,
     quantity:20,
     likeQuantity:12,
+    isFollow:true,
   },
   {
     id: '5',
@@ -53,6 +72,7 @@ const dummyData = [
     time:2,
     quantity:20,
     likeQuantity:12,
+    isFollow:true,
   },
   {
     id: '6',
@@ -63,6 +83,7 @@ const dummyData = [
     time:2,
     quantity:20,
     likeQuantity:12,
+    isFollow:true,
   },
   {
     id: '7',
@@ -73,6 +94,7 @@ const dummyData = [
     time:2,
     quantity:20,
     likeQuantity:12,
+    isFollow:true,
   },
   {
     id: '8',
@@ -83,6 +105,7 @@ const dummyData = [
     time:2,
     quantity:20,
     likeQuantity:12,
+    isFollow:true,
   },
   {
     id: '9',
@@ -93,6 +116,7 @@ const dummyData = [
     time:2,
     quantity:20,
     likeQuantity:12,
+    isFollow:true,
   },
   {
     id: '10',
@@ -103,17 +127,26 @@ const dummyData = [
     time:2,
     quantity:20,
     likeQuantity:12,
+    isFollow:true,
   },
 ]
 
-
-export default function UserTweets () {
+export default function UserFollowing () {
   return (
-    <div className={`${style.userTweetsContainer}`}>
-      <UserTab/>
-      <section className={`${style.UserTweetsContent}`}>
+    <div className={`${style.userFollowingContainer}`}>
+      <div className={`${style.userInfoHeaderContainer}`}>
+        <UserInfoHeader 
+          name={data[0].name}
+          tweet={data[0].tweet}
+        />
+      </div>
+      <div className={`${style.userInfoContainer}`}>
+        <UserInfo/>
+      </div>
+      <FollowTab/>
+      <section className={`${style.userFollowingContent}`}>
         {dummyData.map((data) => (
-          <UserTweetsContent key={data.id} {...data}/>
+          <UserFollowerContent key={data.id} {...data}/>
         ))}
       </section>
     </div>

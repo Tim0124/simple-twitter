@@ -24,11 +24,11 @@ export default function MainTweetsContent ({name, avatar, account, content,time,
           <div className={`${style.mainTweetsContent}`}>{content}</div>
           <div className={`${style.mainTweetsQuantityGroup}`}>
             <div className={`${style.mainTweetsQuantity}`}>
-              <Message/>
+              <Message width='16px' height='16px'/>
               <p>{quantity}</p>
               </div>
             <div className={`${style.mainTweetsLikeQuantity}`}>
-              <Like/>
+              <Like width='16px' height='16px'/>
               <p>{likeQuantity}</p>
               </div>
           </div>

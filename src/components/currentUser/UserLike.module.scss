@@ -1,0 +1,19 @@
+@use '../../styles/variable.module' as var;
+
+.userTweetsContainer {
+  height: calc(100% - var.$sidebar-height);
+  display: flex;
+  flex-direction: column;
+}
+
+.UserTweetsContent {
+  flex: 1;
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+@media screen and (min-width:992px) {
+  .userTweetsContainer {
+    height: 100%;
+  }
+}

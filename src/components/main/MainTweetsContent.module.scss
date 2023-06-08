@@ -59,11 +59,13 @@
 .mainTweetsQuantityGroup {
   display: flex;
   gap: 40px;
+  color: #6C757D;
 
-  .mainTweetsQuantity{
+  .mainTweetsQuantity,
+  .mainTweetsLikeQuantity{
     display: flex;
+    align-items: center;
+    gap: 8px;
   }
-  .mainTweetsLikeQuantity {
-    display: flex;
-  }
+   
 }
