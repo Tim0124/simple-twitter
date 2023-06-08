@@ -3,26 +3,26 @@ import PopularUserList from './PopularUserList';
 import SideItem from './SideItem';
 import Sidebar from './Sidebar';
 import style from './Layout.module.scss'
-import ModalPostTweet from '../../components/modal/ModalPostTweet'
+import ModalPostTweet from '../modal/ModalPostTweet'
 
 export default function Layout () {
   return (
-    <div className={`${style.LayoutContainer}`}>
-      <div className={`${style.LayoutSidebarContainer}`}>
+    <div className={`${style.layoutContainer}`}>
+      <div className={`${style.layoutSidebarContainer}`}>
         <Sidebar/>
       </div>
-      <div className={`${style.LayoutMainContainer}`}>
+      <div className={`${style.layoutMainContainer}`}>
         <Outlet/>
       </div>
-      <div className={`${style.LayoutPopularContainer}`}>
+      <div className={`${style.layoutPopularContainer}`}>
         <PopularUserList/>
       </div>
-      {/* <div>
+      <div className={`${style.layoutModalContainer}`}>
         <div className={`${style.modalBackground}`}></div>
         <div className={`${style.modalPostTweet}`}>
           <ModalPostTweet/>
         </div>
-      </div> */}
+      </div>
     </div>
   )
 }

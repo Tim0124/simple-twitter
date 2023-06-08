@@ -1,8 +1,8 @@
-.LayoutMainContainer {
+.layoutMainContainer {
   height: 100vh;
 }
 
-.LayoutPopularContainer {
+.layoutPopularContainer {
   display: none;
 }
 
@@ -16,23 +16,27 @@
   z-index: 3;
 }
 
+.layoutModalContainer {
+  display: none;
+}
+
 @media screen and (min-width:992px){
-  .LayoutContainer {
+  .layoutContainer {
     display: flex;
   }
 
-.LayoutSidebarContainer {
+.layoutSidebarContainer {
 
   padding-left: 23px;
 }
 
-.LayoutMainContainer {
+.layoutMainContainer {
   flex: 1;
   margin: 0 25px;
   border: 1px solid #E6ECF0;
 }
 
-.LayoutPopularContainer {
+.layoutPopularContainer {
   display: block;
   width: 273px;
   padding-top: 16px;
@@ -58,10 +62,10 @@
 }
 
 @media screen and (min-width:1200px){
-  .LayoutSidebarContainer {
+  .layoutSidebarContainer {
   margin-left: 138px;
 }
-  .LayoutPopularContainer {
+  .layoutPopularContainer {
   margin-right: 138px;
 }
 }

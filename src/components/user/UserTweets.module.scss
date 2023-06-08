@@ -1,0 +1,10 @@
+@use '../../styles/variable.module' as var;
+
+.userTweetsContainer {
+  height: 100%;
+}
+
+.UserTweetsContent {
+  height: 100vh;
+  overflow-y: scroll;
+}

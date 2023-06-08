@@ -5,7 +5,7 @@ const replyData = {
     name: 'Pizza Hut1',
     avatar: 'https://picsum.photos/300/300?text=188',
     account: `@Pizza Hut1`,
-    content: 'lla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor. Voluptate exercitation incididunt aliquip deserunt reprehenderit elit laborum.',
+    content: 'lla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor. Voluptate exercitation incididunt aliquip deserunt reprehenderit elit laborumlla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor.',
     time:"10:05",
     quantity:20,
     likeQuantity:12,
