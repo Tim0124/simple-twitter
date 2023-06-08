@@ -1,6 +1,8 @@
 import UserNavbar from './UserNavbar'
 import style from './UserLike.module.scss'
 import UserLikeContent from './UserLikeContent'
+import FollowTab from 'UIcomponents/tabs/FollowTab'
+import UserTab from 'UIcomponents/tabs/UserTab'
 
 const dummyData = [
   {
@@ -109,7 +111,7 @@ const dummyData = [
 export default function UserLike () {
   return (
     <div className={`${style.userTweetsContainer}`}>
-      <UserNavbar/>
+      <UserTab/>
       <section className={`${style.UserTweetsContent}`}>
         {dummyData.map((data) => (
           <UserLikeContent key={data.id} {...data}/>

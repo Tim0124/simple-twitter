@@ -1,6 +1,7 @@
 import UserNavbar from './UserNavbar'
 import style from './UserTweets.module.scss'
 import UserTweetsContent from './UserTweetsContent'
+import UserTab from 'UIcomponents/tabs/UserTab'
 
 const dummyData = [
   {
@@ -109,7 +110,7 @@ const dummyData = [
 export default function UserTweets () {
   return (
     <div className={`${style.userTweetsContainer}`}>
-      <UserNavbar/>
+      <UserTab/>
       <section className={`${style.UserTweetsContent}`}>
         {dummyData.map((data) => (
           <UserTweetsContent key={data.id} {...data}/>
