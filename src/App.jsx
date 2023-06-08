@@ -20,6 +20,8 @@ import UserReplyList from 'components/user/UserReplyList';
 import UserLike from 'components/user/UserLike';
 import UserFollower from 'components/user/userFollow/UserFollower';
 import UserFollowing from 'components/user/userFollow/UserFollowing';
+import OtherUserInfo from './UIcomponents/layouts/OtherUserInfo'
+import Sidebar from './UIcomponents/layouts/AdminSidebar'
 
 const basename = process.env.PUBLIC_URL
 
@@ -47,7 +49,7 @@ function App() {
                 <Route path='user/self/follower' element={<UserFollower/>}/>
                 <Route path='user/self/following' element={<UserFollowing/>}/>
              </Route>
-
+          <Route path='/' element={<Sidebar />} />
            <Route path='/' element={<LoginForm/>}/>
         </Routes>  
       </BrowserRouter>
