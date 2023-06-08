@@ -47,7 +47,7 @@ function App() {
                 <Route path='user/self/follower' element={<UserFollower/>}/>
                 <Route path='user/self/following' element={<UserFollowing/>}/>
              </Route>
-           
+
            <Route path='/' element={<LoginForm/>}/>
         </Routes>  
       </BrowserRouter>

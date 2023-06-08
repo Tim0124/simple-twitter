@@ -18,6 +18,9 @@
 
 .loginInputGroup {
   margin: 16px 0 24px 0;
+  display: flex;
+  flex-direction: column;
+  gap:32px;
 }
 
 .loginButtonGroup {
