@@ -1,0 +1,10 @@
+@use '../../styles/variable.module' as var;
+
+.userReplyContainer {
+  height: 100%;
+}
+
+.userReplyContent {
+  height: 100vh;
+  overflow-y: scroll;
+}

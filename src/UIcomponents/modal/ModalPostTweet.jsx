@@ -1,12 +1,12 @@
-import style from './ModalReplyTweet.module.scss'
+import style from './ModalPostTweet.module.scss'
 import { ReactComponent as Arrow } from '../../assets/arrow.svg'
-import ModalReplyContent from '../../components/modal/ModalReplyContent'
+import ModalContent from './ModalContent'
 import Button from 'UIcomponents/buttons/Button'
 import { ReactComponent as Close } from '../../assets/Vector.svg'
 
-export default function ModalReplyTweet () {
+export default function PostTweet () {
   return (
-     <div className={`${style.postTweetContainer}`}>
+    <div className={`${style.postTweetContainer}`}>
       <header className={`${style.tweetsHeader}`}>
         <nav className={`${style.tweetsNavbar}`}>
           <div className={`${style.navTitle}`}>
@@ -14,17 +14,14 @@ export default function ModalReplyTweet () {
             <h1 className={`${style.titleClose}`}><Close style={{color:'#ff6600'}}/></h1>
           </div>
           <div className={`${style.navButton}`}>
-            <Button size='middle' text='回覆'/>
+            <Button size='middle' text='推文'/>
           </div>
         </nav>
       </header>
-      <ModalReplyContent/>
+      <ModalContent/>
       <div className={`${style.footerButtonItem}`}>
-        <footer className={`${style.footerText}`}>
-              <p>內容不可空白</p>
-            </footer>
         <div className={`${style.footerButton}`}>
-        <Button size='middle' text='回覆'/>
+        <Button size='middle' text='推文'/>
       </div>
       </div>
     </div>

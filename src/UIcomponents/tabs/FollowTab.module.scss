@@ -1,0 +1,48 @@
+@use '../../styles/variable.module' as var;
+
+.userTweetsContainer {
+  height: 100%;
+}
+
+.userTweetsWrapper {
+  height: 53px;
+  border-bottom: 1px solid #E6ECF0;
+  .userTweetsGroup {
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 6px;
+    
+    .userTweetsItem,
+    .userReplyItem,
+    .userLikeItem {
+      width: 90px;
+      height: 52px;
+      text-align: center;
+      line-height: 52px;
+      margin: 0 5px;
+      cursor: pointer;
+      
+    }
+    .userAction {
+      color: #ff6600;
+      border-bottom:2px solid #ff6600
+    }
+
+  }
+}
+
+.UserTweetsContent {
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+@media screen and (min-width:1200px) {
+    .userTweetsItem,
+    .userReplyItem,
+    .userLikeItem {
+      width: 130px;
+      
+    }
+}
