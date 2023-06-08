@@ -14,6 +14,7 @@ import AdminLayout from 'UIcomponents/layouts/AdminLayout';
 import UserInfo from 'UIcomponents/layouts/UserInfo';
 import ReplyListLayout from 'UIcomponents/layouts/ReplyListLayout';
 import ReplyList from 'components/replyList/ReplyList';
+import ModalUser from './components/modal/ModalUserInfo'
 
 const basename = process.env.PUBLIC_URL
 
@@ -37,7 +38,7 @@ function App() {
              <Route element={<ReplyListLayout/>}>
              <Route path='/replylist' element={<ReplyList/>} />
            </Route>
-           <Route path='/user' element={<UserInfo/>}/>
+          <Route path='/user' element={<ModalUser />}/>
            <Route path='/' element={<LoginForm/>}/>
         </Routes>  
       </BrowserRouter>

@@ -56,10 +56,18 @@ export default function UserInfo() {
           <p className={`${style.userInfoInputText}`}>8/50</p>
         </div>
         <div className={`${style.userInfoInputContent}`}>
-          <Input
-            label='自我介紹'
-            value={data[0].content} />
-          <p className={`${style.userInfoInputText}`}>8/160</p>
+          <div className={`${style.userInfoInput}`}>
+            <Input
+              label='自我介紹'
+              value={data[0].content} />
+          </div>
+          <div className={`${style.userInfoLabelGroup}`}>
+            <label className={`${style.userInfoLabel}`}>
+              <p className={`${style.userInfoLabelTitle}`}>自我介紹</p>
+              <textarea className={`${style.userInfoTextArea}`} value={data[0].content}></textarea>
+            </label>
+          </div>
+            <p className={`${style.userInfoInputText}`}>0/160</p>
         </div>
       </div>
     </div>
