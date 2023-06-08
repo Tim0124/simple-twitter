@@ -9,7 +9,8 @@ return (
       type={type || 'text'}
       value={value || ''}
       placeholder={placeholder || ''}
-      onChange={(event) => onChange?.(event.target.value)}></input>
+      onChange={(event) => onChange?.(event.target.value)}
+      ></input>
   </label>
   )
 }
