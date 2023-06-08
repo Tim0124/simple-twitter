@@ -11,18 +11,17 @@ export default function Register() {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [email, setEmail] = useState('')
-  const [ckeck, setCheck] = useState('')
+  const [check, setCheck] = useState('')
 
   return (
     <>
       <div className={`${style.settingWrapper}`}>
-        <div className={`${style.rightContainer}`}></div>
         <section className={`${style.settingContainer}`}>
           <div className={`${style.settingHeaderBorder}`}>
             <h1 className={`${style.settingTitle}`}>帳戶設定</h1>
           </div>
-          <div className={`${style.settingInputGroup}`}>
-            <form>
+          <div>
+            <form className={`${style.settingInputGroup}`}>
               <Input
                 label='帳號'
                 placeholder='請輸入帳號'
@@ -48,7 +47,7 @@ export default function Register() {
                 label='密碼確認'
                 placeholder='請再次輸入密碼'
                 type='password'
-                value={ckeck}
+                value={check}
                 onChange={(checkInputValue) => setCheck(checkInputValue)} />
             </form>
           </div>
@@ -63,7 +62,6 @@ export default function Register() {
             </div>
           </div>
         </section>
-        <Sidebar />
       </div>
     </>
   )

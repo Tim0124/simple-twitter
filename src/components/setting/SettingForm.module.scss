@@ -23,6 +23,9 @@
 
 .settingInputGroup {
   padding: 16px 24px ;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .settingButtonGroup {
@@ -34,6 +37,7 @@
   gap: 22px;
   .settingButton {
     width: 88px;
+    height: 46px;
   }
   .loginout {
     padding: 0 16px;

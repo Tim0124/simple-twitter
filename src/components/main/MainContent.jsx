@@ -3,6 +3,7 @@ import style from './MainContent.module.scss'
 
 
 
+
 export default function PostContent () {
   return(
     <main className={`${style.postTweetContent}`}>
