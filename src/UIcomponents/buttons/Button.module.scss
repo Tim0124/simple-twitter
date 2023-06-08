@@ -2,26 +2,27 @@
     background-color: #ff6600;
     border: none;
     color: aliceblue;
-    height: 46px;
+    height: 100%;
     border-radius: 50px;
     font-size: 20px;
     cursor: pointer;
     &.large {
       width: 100%;
+      height: 100%;
     }
     &.middle {
       width: 100%;
-      height: 40px;
+      height: 100%;
       font-size:16px;
     }
     &.small {
       width: 30%;
-      height: 40px;
+      height: 100%;
       font-size:16px;
     }
     &.extremely-small {
       width:10%;
-      height: 40px;
+      height: 100%;
       font-size:16px;
     }
     &.white-exsmall {

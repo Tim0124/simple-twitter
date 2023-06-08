@@ -33,36 +33,38 @@ function LoginForm() {
     <div className={`${style.loginContainer}`}>
       <div className={`${style.loginLogo}`}><Logo /></div>
       <h1 className={`${style.loginTitle}`}>登入Alphitter</h1>
-        <div className={`${style.loginInputGroup}`}>
-          <Input
-            label='帳號'
-            placeholder='請輸入帳號'
-            value={account}
-            onChange={(accountInputValue) => setAccount(accountInputValue)}
-          />
-          <Input
-            type='password'
-            label='密碼'
-            placeholder='請輸入密碼'
-            value={password}
-            onChange={(passwordInputValue) => setPassword(passwordInputValue)}
-          />
-        </div>
+      <div className={`${style.loginInputGroup}`}>
+        <Input
+          label='帳號'
+          placeholder='請輸入帳號'
+          value={account}
+          onChange={(accountInputValue) => setAccount(accountInputValue)}
+        />
+        <Input
+          type='password'
+          label='密碼'
+          placeholder='請輸入密碼'
+          value={password}
+          onChange={(passwordInputValue) => setPassword(passwordInputValue)}
+        />
+      </div>
+      <div className={`${style.loginButton}`}>
         <Button
           text='登入'
           size='large'
           onClick={handleClick} />
-        <div className={`${style.loginButtonGroup}`}>
-          <div className={`${style.loginButtonSecGroup}`}>
-            <Link to='/register'>
-              <u className={`${style.loginRegisterButton}`}>註冊</u>
-            </Link>
-            <p>・</p>
-            <Link to='/admin'>
-              <u className={`${style.loginAdminButton}`} >後台登入</u>
-            </Link>
-          </div>
+      </div>
+      <div className={`${style.loginButtonGroup}`}>
+        <div className={`${style.loginButtonSecGroup}`}>
+          <Link to='/register'>
+            <u className={`${style.loginRegisterButton}`}>註冊</u>
+          </Link>
+          <p>・</p>
+          <Link to='/admin'>
+            <u className={`${style.loginAdminButton}`} >後台登入</u>
+          </Link>
         </div>
+      </div>
     </div>
   )
 }
