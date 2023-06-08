@@ -1,7 +1,6 @@
-import UserNavbar from './UserNavbar'
-import style from './UserTweets.module.scss'
-import UserTweetsContent from './UserTweetsContent'
-import UserTab from 'UIcomponents/tabs/UserTab'
+import style from './UserFollower.module.scss'
+import FollowTab from 'UIcomponents/tabs/FollowTab'
+import UserFollowerContent from './UserFollowContent'
 
 const dummyData = [
   {
@@ -13,6 +12,7 @@ const dummyData = [
     time:3,
     quantity:20,
     likeQuantity:12,
+    isFollow:true,
   },
   {
     id: '2',
@@ -23,6 +23,7 @@ const dummyData = [
     time:1,
     quantity:20,
     likeQuantity:12,
+    isFollow:true,
   },
   {
     id: '3',
@@ -33,6 +34,7 @@ const dummyData = [
     time:2,
     quantity:20,
     likeQuantity:12,
+    isFollow:true,
   },
   {
     id: '4',
@@ -43,6 +45,7 @@ const dummyData = [
     time:2,
     quantity:20,
     likeQuantity:12,
+    isFollow:true,
   },
   {
     id: '5',
@@ -53,6 +56,7 @@ const dummyData = [
     time:2,
     quantity:20,
     likeQuantity:12,
+    isFollow:true,
   },
   {
     id: '6',
@@ -63,6 +67,7 @@ const dummyData = [
     time:2,
     quantity:20,
     likeQuantity:12,
+    isFollow:false,
   },
   {
     id: '7',
@@ -73,6 +78,7 @@ const dummyData = [
     time:2,
     quantity:20,
     likeQuantity:12,
+    isFollow:false,
   },
   {
     id: '8',
@@ -83,6 +89,7 @@ const dummyData = [
     time:2,
     quantity:20,
     likeQuantity:12,
+    isFollow:false,
   },
   {
     id: '9',
@@ -93,6 +100,7 @@ const dummyData = [
     time:2,
     quantity:20,
     likeQuantity:12,
+    isFollow:false,
   },
   {
     id: '10',
@@ -103,17 +111,17 @@ const dummyData = [
     time:2,
     quantity:20,
     likeQuantity:12,
+    isFollow:false,
   },
 ]
 
-
-export default function UserTweets () {
+export default function UserFollower () {
   return (
-    <div className={`${style.userTweetsContainer}`}>
-      <UserTab/>
-      <section className={`${style.UserTweetsContent}`}>
+    <div className={`${style.userFollowerContainer}`}>
+      <FollowTab/>
+      <section className={`${style.userFollowerContent}`}>
         {dummyData.map((data) => (
-          <UserTweetsContent key={data.id} {...data}/>
+          <UserFollowerContent key={data.id} {...data}/>
         ))}
       </section>
     </div>

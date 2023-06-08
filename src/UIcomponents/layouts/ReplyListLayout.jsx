@@ -3,7 +3,7 @@ import PopularUserList from './PopularUserList';
 import SideItem from './SideItem';
 import Sidebar from './Sidebar';
 import style from './ReplyListLayout.module.scss'
-import ModalReplyTweet from '../../components/modal/ModalReplyTweet'
+import ModalReplyTweet from '../modal/ModalReplyTweet'
 
 
 export default function ReplyListLayout () {

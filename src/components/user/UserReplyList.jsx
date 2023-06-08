@@ -1,6 +1,7 @@
 import UserNavbar from './UserNavbar'
 import style from './UserReplyList.module.scss'
 import UserReplyContent from './UserReplyContent'
+import UserTab from 'UIcomponents/tabs/UserTab'
 
 const dummyData = [
   {
@@ -109,7 +110,7 @@ const dummyData = [
 export default function UserReplyList () {
   return (
     <div className={`${style.userReplyContainer}`}>
-      <UserNavbar/>
+      <UserTab/>
       <section className={`${style.userReplyContent}`}>
         {dummyData.map((data) => (
           <UserReplyContent key={data.id} {...data}/>

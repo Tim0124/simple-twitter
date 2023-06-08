@@ -18,6 +18,8 @@ import UserTweets from 'components/user/UserTweets'
 import UserReplyContent from 'components/user/UserReplyContent';
 import UserReplyList from 'components/user/UserReplyList';
 import UserLike from 'components/user/UserLike';
+import UserFollower from 'components/user/userFollow/UserFollower';
+import UserFollowing from 'components/user/userFollow/UserFollowing';
 
 const basename = process.env.PUBLIC_URL
 
@@ -37,14 +39,15 @@ function App() {
            </Route>
              <Route element={<Layout/>}>
                 <Route path='/home' element={<MainTweets/>} />
+                <Route path='/replylist' element={<ReplyList/>} />
+                <Route path='/user' element={<UserInfo/>}/>
+                <Route path='user/self' element={<UserTweets/>}/>
+                <Route path='user/self/reply' element={<UserReplyList/>}/>
+                <Route path='user/self/like' element={<UserLike/>}/>
+                <Route path='user/self/follower' element={<UserFollower/>}/>
+                <Route path='user/self/following' element={<UserFollowing/>}/>
              </Route>
-             <Route element={<ReplyListLayout/>}>
-             <Route path='/replylist' element={<ReplyList/>} />
-           </Route>
-           <Route path='/user' element={<UserInfo/>}/>
-           <Route path='user/self' element={<UserTweets/>}/>
-           <Route path='user/self/reply' element={<UserReplyList/>}/>
-           <Route path='user/self/like' element={<UserLike/>}/>
+           
            <Route path='/' element={<LoginForm/>}/>
         </Routes>  
       </BrowserRouter>
