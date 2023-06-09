@@ -36,17 +36,14 @@
 
     .sideBarContainer {
       height: 100%;
-
     }
 
     .sideBarGroup {
       height: 100%;
-      
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       margin: 8px 0;
-
     }
 
     .iconGroup {
@@ -81,15 +78,21 @@
     .iconGroup {
       display: flex;
       align-items: start;
-      justify-content: center;
+      justify-content: space-between;
       padding: 0 15px;
-      gap: 25px;
+      gap: 20px;
     } 
   }
   .sideBarContainer {
-      height: 100%;
-      margin: 8px auto;
-    }
+    height: 100%;
+    margin-bottom: 16px;
+  }
+
+  .sideBarGroup {
+    width: 178px;
+    
+  }
+
   .sideBarItems {
     display: flex;
     align-items: start;
@@ -113,8 +116,6 @@
     padding: 0 15px;
   }
 
-  .sideBarGroup {
-    width: 178px;
-  }
+  
 
 }

@@ -7,6 +7,7 @@ import { Outlet } from 'react-router-dom'
 import Layout from 'UIcomponents/layouts/Layout'
 import MainContent from './MainContent'
 import { Tweets } from '../../api/allAPI'
+import MainHeader from './MainHeader'
 
 
 export default function MainTweets() {
@@ -27,11 +28,7 @@ export default function MainTweets() {
   return (
     <div className={`${style.tweetsContainer}`}>
       <header className={`${style.tweetsHeader}`}>
-        <nav className={`${style.tweetsNavbar}`}>
-          <div className={`${style.navTitle}`}>
-            <h1 className={`${style.titleText}`}>首頁</h1>
-          </div>
-        </nav>
+        <MainHeader/>
       </header>
       <div className={`${style.tweetPostArea}`}>
         <MainContent />

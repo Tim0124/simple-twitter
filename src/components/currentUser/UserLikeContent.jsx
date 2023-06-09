@@ -17,7 +17,10 @@ export default function UserLikeContent ({name, account, avatar, content, quanti
               <div className={`${style.mainTweetsSmallAccount}`}>
                 <div className={`${style.mainTweetsAccount}`}>{account}</div>
                 <div className={`${style.mainTweetsdot}`}>・</div>
-                <div className={`${style.mainTweetsTime}`}>{time}</div>
+                <div className={`${style.mainTweetsTime}`}>
+                  <p>{time}</p> 
+                  <p>小時</p>
+                  </div>
               </div>
             </div>
           </div>
