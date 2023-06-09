@@ -2,13 +2,10 @@ import Button from 'UIcomponents/buttons/Button'
 import Input from '../../UIcomponents/input/Input'
 import { ReactComponent as Logo } from '../../assets/logo.svg'
 import style from './RegisterForm.module.scss'
-import { Link } from 'react-router-dom'
-import { useState } from 'react'
 import { register } from 'api/auth'
 import Swal from 'sweetalert2'
 import { Link, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { register } from '../../api/auth'
 
 export default function Register() {
 
@@ -19,7 +16,41 @@ export default function Register() {
   const [checkPassword, setCheckPassword] = useState('')
   const navigate = useNavigate();
 
-  const handleRegisterClick = async () => {
+  // const handleRegisterClick = async () => {
+
+  //   // if (account.length === 0) {
+  //   //   return;
+  //   // }
+  //   // if (name.length === 0) {
+  //   //   return;
+  //   // }
+  //   // if (email.length === 0) {
+  //   //   return;
+  //   // }
+  //   // if (password.length === 0) {
+  //   //   return;
+  //   // }
+  //   // if (checkPassword.length === 0) {
+  //   //   return;
+  //   // }
+
+  //   // const { success, token } = await register({ account, name, email, password, checkPassword })
+
+  //   // if (success) {
+  //   //   localStorage.setItem('authToken', token);
+  //   //   Swal.fire({
+  //   //     position: 'top',
+  //   //     title: '註冊成功！',
+  //   //     timer: 1000,
+  //   //     icon: 'success',
+  //   //     showConfirmButton: false,
+  //   //   });
+  //   //   return
+  //   // }
+
+  // }
+
+  const handleClick = async () => {
 
     if (account.length === 0) {
       return;
@@ -37,7 +68,13 @@ export default function Register() {
       return;
     }
 
-    const { success, token } = await register({ account, name, email, password, checkPassword })
+    const { success, token } = await register({
+      account,
+      name,
+      email,
+      password,
+      checkPassword,
+    });
 
     if (success) {
       localStorage.setItem('authToken', token);
@@ -48,10 +85,16 @@ export default function Register() {
         icon: 'success',
         showConfirmButton: false,
       });
-      return
+      return;
     }
-
-  }
+    Swal.fire({
+      position: 'top',
+      title: '註冊失敗！',
+      timer: 1000,
+      icon: 'error',
+      showConfirmButton: false,
+    });
+  };
 
   const handleAccountChange = (e) => {
     setAccount(e.target.value)
@@ -119,39 +162,12 @@ export default function Register() {
               type='password'
               value={checkPassword}
               onChange={handleCheckPasswordChange} />
-          <Input
-            label='帳號'
-            placeholder='請輸入帳號'
-            value={account}
-            onChange={(accountInputValue) => setAccount(accountInputValue)} />
-          <Input
-            label='名稱'
-            placeholder='請輸入使用者名稱'
-            value={name}
-            onChange={(nameInputValue) => setName(nameInputValue)} />
-          <Input
-            label='Email'
-            placeholder='請輸入Email'
-            value={email}
-            onChange={(emailInputValue) => setEmail(emailInputValue)} />
-          <Input
-            label='密碼'
-            placeholder='請設定密碼'
-            type='password'
-            value={password}
-            onChange={(passwordInputValue) => setPassword(passwordInputValue)} />
-          <Input
-            label='密碼確認'
-            placeholder='請再次輸入密碼'
-            type='password'
-            value={checkPassword}
-            onChange={(checkInputValue) => setCheckPassword(checkInputValue)} />
         </div>
         <div className={`${style.registerButtonGroup}`}>
           <Button
             text='註冊'
             size='large'
-            onClick={handleRegisterClick} />
+            onClick={handleClick} />
         </div>
         <div className={`${style.registerSecButtonGroup}`}>
           <Link to='/login'>

@@ -39,13 +39,14 @@ export const register = async ({ account, name, email, password, checkPassword }
   try {
     const response = await axios.post(`${authURL}/users `, { account, name, email, password, checkPassword })
     const { data } = response
-
+    debugger
     const { token } = data.data
     debugger
 
     if (token) {
       return { success: true, ...data.data }
     }
+    debugger
     console.log(data)
 
     return data.data
