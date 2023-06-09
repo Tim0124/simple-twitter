@@ -28,7 +28,7 @@ export default function Layout () {
       <div className={`${style.layoutModalContainer} ${showModal ? 'block' : 'none'}`}>
         <div className={`${style.modalBackground}`}></div>
         <div className={`${style.modalPostTweet}`}>
-          {/* <ModalUserInfo/> */}
+          <ModalUserInfo/>
           <ModalPostTweet/>
         </div>
       </div>

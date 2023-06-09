@@ -5,6 +5,7 @@ import { ReactComponent as Close } from '../../assets/Vector.svg'
 import Input from 'UIcomponents/input/Input'
 import { ReactComponent as WhiteX } from '../../assets/whiteX.svg'
 import { ReactComponent as WhiteCamera } from '../../assets/whitecamera.svg'
+import { useState } from 'react'
 
 
 const data = [
@@ -18,6 +19,20 @@ const data = [
 ]
 
 export default function UserInfo() {
+
+  const [name, setName] = useState('John Doe')
+  const [intro, setIntro] = useState('Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.')
+  const [text, setText] = useState('Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.')
+
+  const handleNameChange = (e) => {
+    setName(e.target.value)
+  }
+  const handleIntroChange = (e) => {
+    setIntro(e.target.value)
+  }
+  const handleTextChange = (e) => {
+    setText(e.target.value)
+  }
 
   return (
     <div className={`${style.userInfoMdContainer}`}>
@@ -54,22 +69,29 @@ export default function UserInfo() {
         <div className={`${style.userInfoInputName}`}>
           <Input
             label='名稱'
-            value={data[0].name} />
+            value={name}
+            onChange={handleNameChange}
+          />
           <p className={`${style.userInfoInputText}`}>8/50</p>
         </div>
         <div className={`${style.userInfoInputContent}`}>
           <div className={`${style.userInfoInput}`}>
             <Input
               label='自我介紹'
-              value={data[0].content} />
+              value={intro}
+              onChange={handleIntroChange}
+            />
           </div>
           <div className={`${style.userInfoLabelGroup}`}>
             <label className={`${style.userInfoLabel}`}>
               <p className={`${style.userInfoLabelTitle}`}>自我介紹</p>
-              <textarea className={`${style.userInfoTextArea}`} value={data[0].content}></textarea>
+              <textarea 
+                className={`${style.userInfoTextArea}`}
+                value={text}
+                onChange={handleTextChange}></textarea>
             </label>
           </div>
-            <p className={`${style.userInfoInputText}`}>0/160</p>
+          <p className={`${style.userInfoInputText}`}>0/160</p>
         </div>
       </div>
     </div>

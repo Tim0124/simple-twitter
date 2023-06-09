@@ -4,62 +4,62 @@ const authURL = 'https://gentle-temple-56514.herokuapp.com/api'
 
 export const login = async ({ account, password }) => {
   try {
-    const response = await axios.post(`${authURL}/users/signin`, { account, password })
-    const { data } = response
+    const { data } = await axios.post(`${authURL}/users/signin`, { account, password })
     const { token } = data.data
 
     if (token) {
       return { success: true, ...data.data }
     }
-    console.log(data)
     return data.data
+
   } catch (error) {
     console.error('[Login Failed]', error)
+    return { success: false, error: error.message }
   }
 }
 
 export const adminLogin = async ({ account, password }) => {
   try {
-    const response = await axios.post(`${authURL}/adminSignin `, { account, password })
-    const { data } = response
+    const {data} = await axios.post(`${authURL}/adminSignin `, { account, password })
 
     const { token } = data.data
     if (token) {
+      console.log(data)
+      debugger
       return { success: true, ...data.data }
     }
-    console.log(data)
-
     return data.data
   } catch (error) {
     console.error('[Login Failed]', error)
+    return { success: false, error: error.message }
   }
 }
 
 export const register = async ({ account, name, email, password, checkPassword }) => {
   try {
-    const response = await axios.post(`${authURL}/users `, { account, name, email, password, checkPassword })
-    const { data } = response
+    const { data } = await axios.post(`${authURL}/users `, { account, name, email, password, checkPassword })
+    const success = data.status === 'success'
 
-    const { token } = data.data
-    debugger
-
-    if (token) {
+    if (success) {
+      console.log(data)
+      debugger
+      
       return { success: true, ...data.data }
     }
-    console.log(data)
+    return data
 
-    return data.data
   } catch (error) {
     console.error('[Register Failed]', error)
+    return { success: false, error: error.message }
   }
 }
 
-export const checkPermission = async(authToken) => {
-  const response = await axios.get(`${authURL}/test-token`,{
-  header: {
-      Authorization: 'Bearer ' + authToken,
-    }
-  })
-}
+// export const checkPermission = async(authToken) => {
+//   const response = await axios.get(`${authURL}/test-token`,{
+//   header: {
+//       Authorization: 'Bearer ' + authToken,
+//     }
+//   })
+// }
 
 
