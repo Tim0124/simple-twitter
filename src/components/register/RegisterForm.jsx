@@ -8,47 +8,12 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 
 export default function Register() {
-
   const [account, setAccount] = useState('')
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [checkPassword, setCheckPassword] = useState('')
   const navigate = useNavigate();
-
-  // const handleRegisterClick = async () => {
-
-  //   // if (account.length === 0) {
-  //   //   return;
-  //   // }
-  //   // if (name.length === 0) {
-  //   //   return;
-  //   // }
-  //   // if (email.length === 0) {
-  //   //   return;
-  //   // }
-  //   // if (password.length === 0) {
-  //   //   return;
-  //   // }
-  //   // if (checkPassword.length === 0) {
-  //   //   return;
-  //   // }
-
-  //   // const { success, token } = await register({ account, name, email, password, checkPassword })
-
-  //   // if (success) {
-  //   //   localStorage.setItem('authToken', token);
-  //   //   Swal.fire({
-  //   //     position: 'top',
-  //   //     title: '註冊成功！',
-  //   //     timer: 1000,
-  //   //     icon: 'success',
-  //   //     showConfirmButton: false,
-  //   //   });
-  //   //   return
-  //   // }
-
-  // }
 
   const handleClick = async () => {
 
@@ -68,7 +33,7 @@ export default function Register() {
       return;
     }
 
-    const { success, token } = await register({
+    const { success } = await register({
       account,
       name,
       email,
@@ -77,19 +42,18 @@ export default function Register() {
     });
 
     if (success) {
-      localStorage.setItem('authToken', token);
       Swal.fire({
         position: 'top',
-        title: '註冊成功！',
+        title: '登入成功！',
         timer: 1000,
         icon: 'success',
         showConfirmButton: false,
       });
-      return;
-    }
-    Swal.fire({
+      navigate('/login')
+      return
+    } Swal.fire({
       position: 'top',
-      title: '註冊失敗！',
+      title: '登入失敗！',
       timer: 1000,
       icon: 'error',
       showConfirmButton: false,

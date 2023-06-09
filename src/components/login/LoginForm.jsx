@@ -12,10 +12,7 @@ function LoginForm() {
   const [password, setPassword] = useState('')
   const navigate = useNavigate()
 
-  
-
   const handleLoginClick = async () => {
-
     if (account.length === 0) {
       return;
     }
@@ -23,10 +20,12 @@ function LoginForm() {
       return;
     }
 
-    const { success, token } = await login({ account, password })
-   
+    const { success, token } = await login({
+      account,
+      password,
+    });
     if (success) {
-      localStorage.setItem("authToken", token)
+      localStorage.setItem('authToken', token);
       Swal.fire({
         position: 'top',
         title: '登入成功！',
@@ -34,17 +33,16 @@ function LoginForm() {
         icon: 'success',
         showConfirmButton: false,
       });
+      navigate('/home')
       return
-    }
-    Swal.fire({
+    }Swal.fire({
       position: 'top',
       title: '登入失敗！',
       timer: 1000,
       icon: 'error',
       showConfirmButton: false,
-    })
-  
-  }
+    });
+    }
 
   const handleAccountChange = (e) => { 
     setAccount(e.target.value)
@@ -53,7 +51,6 @@ function LoginForm() {
    const handlePasswordChange = (e) => { 
     setPassword(e.target.value)
   }
-
 
   return (
     <div className={`${style.loginContainer}`}>

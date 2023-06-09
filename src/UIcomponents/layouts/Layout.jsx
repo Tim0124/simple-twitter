@@ -29,7 +29,7 @@ export default function Layout () {
         <div className={`${style.modalBackground}`}></div>
         <div className={`${style.modalPostTweet}`}>
           <ModalUserInfo/>
-          {/* <ModalPostTweet/> */}
+          <ModalPostTweet/>
         </div>
       </div>
     </div>
