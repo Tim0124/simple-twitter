@@ -25,7 +25,6 @@ export default function Sidebar () {
                 styleName='iconTweet'
                 itemName='推文'
                 customName='custom'
-                page='tweet'
                 />
                 <SideItem 
                 styleName='iconPerson'

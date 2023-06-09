@@ -26,7 +26,7 @@ export const adminLogin = async ({ account, password }) => {
 
     const { token } = data
 
-    if (token) {
+    if (token) { 
       return { success: true, ...data }
     }
     console.log(data)

@@ -113,7 +113,7 @@ const dummyData = [
 
 
 
-export default function MainTweets () {
+export default function MainTweets ({onTweetClick}) {
   
   return (
     <div className={`${style.tweetsContainer}`}>
@@ -121,7 +121,7 @@ export default function MainTweets () {
         <MainHeader/>
       </header>
       <div className={`${style.tweetPostArea}`}>
-        <MainContent/>
+        <MainContent onClick={onTweetClick}/>
       </div>
       <main className={`${style.mainTweets}`}>
         {dummyData.map((data) => (

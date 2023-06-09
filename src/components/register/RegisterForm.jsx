@@ -5,7 +5,7 @@ import style from './RegisterForm.module.scss'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import { register } from 'api/auth'
-
+import Swal from 'sweetalert2'
 
 export default function Register() {
 
@@ -16,7 +16,7 @@ export default function Register() {
   const [checkPassword, setCheckPassword] = useState('')
 
 
-  const handleClick = async () => {
+  const handleRegisterClick = async () => {
 
     if (account.length === 0) {
       return;
@@ -38,7 +38,32 @@ export default function Register() {
 
     if (success) {
       localStorage.setItem('authToken', token);
+      Swal.fire({
+        position: 'top',
+        title: '註冊成功！',
+        timer: 1000,
+        icon: 'success',
+        showConfirmButton: false,
+      });
+      return
     }
+
+  }
+
+  const handleAccountChange = (e) => {
+    setAccount(e.target.value)
+  }
+  const handleNameChange = (e) => {
+    setName(e.target.value)
+  }
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value)
+  }
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value)
+  }
+  const handleCheckPasswordChange = (e) => {
+    setCheckPassword(e.target.value)
   }
 
   return (
@@ -53,35 +78,35 @@ export default function Register() {
               label='帳號'
               placeholder='請輸入帳號'
               value={account}
-              onChange={(accountInputValue) => setAccount(accountInputValue)} />
+              onChange={handleAccountChange} />
             <Input
               label='名稱'
               placeholder='請輸入使用者名稱'
               value={name}
-              onChange={(nameInputValue) => setName(nameInputValue)} />
+              onChange={handleNameChange} />
             <Input
               label='Email'
               placeholder='請輸入Email'
               value={email}
-              onChange={(emailInputValue) => setEmail(emailInputValue)} />
+              onChange={handleEmailChange} />
             <Input
               label='密碼'
               placeholder='請設定密碼'
               type='password'
               value={password}
-              onChange={(passwordInputValue) => setPassword(passwordInputValue)} />
+              onChange={handlePasswordChange} />
             <Input
               label='密碼確認'
               placeholder='請再次輸入密碼'
               type='password'
               value={checkPassword}
-              onChange={(checkInputValue) => setCheckPassword(checkInputValue)} />
+              onChange={handleCheckPasswordChange} />
         </div>
         <div className={`${style.registerButtonGroup}`}>
           <Button
             text='註冊'
             size='large'
-            onClick={handleClick} />
+            onClick={handleRegisterClick} />
         </div>
         <div className={`${style.registerSecButtonGroup}`}>
           <Link to='/login'>
