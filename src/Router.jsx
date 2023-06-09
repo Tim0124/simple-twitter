@@ -20,6 +20,9 @@ import UserLike from 'components/currentUser/UserLike';
 import UserFollower from 'components/currentUser/userFollow/UserFollower';
 import UserFollowing from 'components/currentUser/userFollow/UserFollowing';
 import SettingFrom from 'components/setting/SettingForm'
+import AdminLogin from 'pages/admin/AdminLogin';
+import AdminTweets from 'pages/admin/AdminTweets';
+import AdminUsers from 'pages/admin/AdminUsers';
 
 
 const basename = process.env.PUBLIC_URL
@@ -31,10 +34,10 @@ export default function Router () {
         <Routes>
           <Route path='/login' element={<LoginForm/>}/>
           <Route path='/register' element={<Register/>}/>
-          <Route path='/admin' element={<AdminForm/>}/>
+          <Route path='/admin' element={<AdminLogin/>}/>
           <Route element={<AdminLayout/>}>
-            <Route path='admin/tweets' element={<AdminTweetsList/>}/>
-            <Route path='admin/users' element={<AdminTweetsCardList/>}/>
+            <Route path='admin/tweets' element={<AdminTweets/>}/>
+            <Route path='admin/users' element={<AdminUsers/>}/>
           </Route>
           <Route element={<Layout/>}>
             <Route path='/home' element={<MainTweets/>} />

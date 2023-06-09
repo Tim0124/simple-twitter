@@ -42,7 +42,7 @@ function LoginForm() {
       icon: 'error',
       showConfirmButton: false,
     });
-    }
+   }
 
   const handleAccountChange = (e) => { 
     setAccount(e.target.value)
