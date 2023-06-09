@@ -49,10 +49,13 @@ function LoginForm() {
         />
       </div>
       <div className={`${style.loginButton}`}>
+        <Link to='/home'>
         <Button
           text='登入'
           size='large'
-          onClick={handleClick} />
+          onClick={handleClick}
+        />
+        </Link>
       </div>
       <div className={`${style.loginButtonGroup}`}>
         <div className={`${style.loginButtonSecGroup}`}>
