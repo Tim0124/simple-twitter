@@ -10,7 +10,7 @@ import { Tweets } from '../../api/allAPI'
 import MainHeader from './MainHeader'
 
 
-export default function MainTweets() {
+export default function MainTweets({onTweetClick}) {
   const [tweets, setTweets] = useState([])
 
   useEffect(() => {
@@ -31,6 +31,7 @@ export default function MainTweets() {
         <MainHeader/>
       </header>
       <div className={`${style.tweetPostArea}`}>
+        <MainContent onClick={onTweetClick}/>
         <MainContent />
       </div>
       <main className={`${style.mainTweets}`}>

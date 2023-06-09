@@ -4,7 +4,7 @@ import style from './MainContent.module.scss'
 
 
 
-export default function PostContent () {
+export default function PostContent ({onTweetClick}) {
   return(
     <main className={`${style.postTweetContent}`}>
         <div className={`${style.postTweetForm}`}>
@@ -18,7 +18,7 @@ export default function PostContent () {
             </div>
           <footer className={`${style.footerArea}`}>
             <div className={`${style.footerButton}`}>
-              <Button text='推文' size='middle' />
+              <Button text='推文' size='middle' onClick={onTweetClick}/>
             </div>
             </footer>
           </div>
