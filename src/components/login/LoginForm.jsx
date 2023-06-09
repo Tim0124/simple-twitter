@@ -35,14 +35,15 @@ function LoginForm() {
         showConfirmButton: false,
       });
       return
-    }
-    Swal.fire({
+    }else {
+      Swal.fire({
       position: 'top',
       title: '登入失敗！',
       timer: 1000,
       icon: 'error',
       showConfirmButton: false,
     })
+    }
   
   }
 

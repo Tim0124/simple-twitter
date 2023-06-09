@@ -1,6 +1,7 @@
 .adminTweetsContainer {
   border-bottom: 1px solid #E6ECF0;
   padding: 16px 0 16px 23px;
+  overflow-x: hidden;
 }
 
 .adminTweetsList {
@@ -8,12 +9,13 @@
 }
 
 .adminTweetsInfo{
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
 
 .adminTweetsSecInfo {
-  width: 100%;
+  
   display: flex;
   justify-content: space-between;
 }
@@ -46,6 +48,7 @@
 }
 
 .adminTweetsContent {
+  min-width: 100%;
   display: flex;
   margin: 0 8px 8px 8px;
 }
