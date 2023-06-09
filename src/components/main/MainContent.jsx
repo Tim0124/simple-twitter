@@ -1,9 +1,6 @@
 import Button from 'UIcomponents/buttons/Button'
 import style from './MainContent.module.scss'
 
-
-
-
 export default function PostContent ({onTweetClick}) {
   return(
     <main className={`${style.postTweetContent}`}>

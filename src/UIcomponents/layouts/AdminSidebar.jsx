@@ -2,9 +2,17 @@ import SideItem from './SideItem'
 import style from './AdminSidebar.module.scss'
 import { ReactComponent as Logo } from '../../assets/logo.svg'
 import Button from 'UIcomponents/buttons/Button'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 export default function AdminSidebar() {
+
+    const navigate = useNavigate();
+    const handleClick = () => {
+      localStorage.removeItem('authToken');
+      console.log(localStorage.getItem('authToken'))
+      navigate('/admin');
+    };
+
   return (
     <div className={`${style.sideBarWrapper}`}>
       <div className={`${style.sideBarContainer}`}>
@@ -28,7 +36,7 @@ export default function AdminSidebar() {
               />
             </div>
           </div>
-          <div className={`${style.loginOut}`}>
+          <div className={`${style.loginOut}`} onClick={handleClick}>
               <SideItem
                 styleName='iconLoginOut'
                 itemName='登出'

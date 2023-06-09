@@ -32,7 +32,6 @@ export default function MainTweets({onTweetClick}) {
       </header>
       <div className={`${style.tweetPostArea}`}>
         <MainContent onClick={onTweetClick}/>
-        <MainContent />
       </div>
       <main className={`${style.mainTweets}`}>
         {tweets.map((data) => (
