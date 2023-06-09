@@ -1,6 +1,7 @@
 import style from './UserInfo.module.scss'
 import Button from 'UIcomponents/buttons/Button'
 import UserInfoHeader from './UserInfoHeader'
+import { Link } from 'react-router-dom'
 
 const data = [
   {
@@ -21,7 +22,7 @@ export default function UserInfo() {
     <div className={`${style.userInfoContainer}`}>
       <div className={`${style.userInfoWrapper}`}>
         <div className={`${style.userInfoImgGroup}`}>
-          <div className={`${style.userInfobackground}`}>
+          <div className={`${style.userInfoBackground}`}>
             <img src={data[0].background} className={`${style.userInfoCardImg}`} alt='' />
           </div>
           <div className={`${style.userInfoCardAvatar}`}>
@@ -47,12 +48,16 @@ export default function UserInfo() {
               <p>{data[0].content}</p>
             </div>
             <div className={`${style.adminTweetsCardFollowGroup}`}>
-              <div className={`${style.adminTweetsCardFollowing}`}>
+              <Link to='/user/self/following'>
+                <div className={`${style.adminTweetsCardFollowing}`}>
                 <p className={`${style.following}`}>{data[0].following}&nbsp;個</p><p>跟隨中</p>
               </div>
-              <div className={`${style.adminTweetsCardFollower}`}>
-                <p className={`${style.follower}`}>{data[0].follower}&nbsp;位</p><p>跟隨中</p>
+              </Link>
+              <Link to='/user/self/follower'>
+                <div className={`${style.adminTweetsCardFollower}`}>
+                <p className={`${style.follower}`}>{data[0].follower}&nbsp;位</p><p>跟隨者</p>
               </div>
+              </Link>
             </div>
           </div>
         </div>

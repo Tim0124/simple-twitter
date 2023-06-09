@@ -61,7 +61,7 @@ const dummyData = [
     time:2,
     quantity:20,
     likeQuantity:12,
-    isFollow:true,
+    isFollow:false,
   },
   {
     id: '5',
@@ -72,7 +72,7 @@ const dummyData = [
     time:2,
     quantity:20,
     likeQuantity:12,
-    isFollow:true,
+    isFollow:false,
   },
   {
     id: '6',
@@ -138,6 +138,7 @@ export default function UserFollower () {
         <UserInfoHeader 
           name={data[0].name}
           tweet={data[0].tweet}
+          page='/user/self'
         />
       </div>
       <div className={`${style.userInfoContainer}`}>

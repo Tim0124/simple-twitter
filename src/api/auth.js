@@ -22,6 +22,7 @@ export const adminLogin = async ({ account, password }) => {
   try {
     const response = await axios.post(`${authURL}/adminSignin `, { account, password })
     const { data } = response
+
     const { token } = data.data
     if (token) {
       return { success: true, ...data.data }

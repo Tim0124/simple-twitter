@@ -1,6 +1,6 @@
 import style from './ModalPostTweet.module.scss'
 import { ReactComponent as Arrow } from '../../assets/arrow.svg'
-import ModalContent from './ModalContent'
+import ModalContent from '../modal/ModalContent'
 import Button from 'UIcomponents/buttons/Button'
 import { ReactComponent as Close } from '../../assets/Vector.svg'
 

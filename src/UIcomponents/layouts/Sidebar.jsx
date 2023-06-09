@@ -11,12 +11,15 @@ export default function Sidebar () {
         <div className={`${style.sideBarGroup}`}>
           <div className={`${style.sideBarItems}`}>
             <div className={`${style.logo}`}>
-              <Logo/>
+              <Link to='home'>
+                <Logo/>
+              </Link>
             </div>
               <div className={`${style.iconGroup}`}>
                 <SideItem 
                 styleName='actionHome'
                 itemName='首頁'
+                page='home'
                 />
                 <SideItem 
                 styleName='iconTweet'
@@ -26,10 +29,12 @@ export default function Sidebar () {
                 <SideItem 
                 styleName='iconPerson'
                 itemName='個人資料'
+                page='user/self'
                 />
                 <SideItem 
                 styleName='iconSetting'
                 itemName='設定'
+                page='setting'
                 />
                 <SideItem 
                 styleName='iconUnTweet'
@@ -45,6 +50,7 @@ export default function Sidebar () {
             <SideItem     
               styleName='iconLoginOut'
               itemName='登出'
+               page='/login'
             />
           </div>   
         </div> 

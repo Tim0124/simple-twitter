@@ -11,3 +11,9 @@
   height: 100vh;
   overflow-y: scroll;
 }
+
+@media screen and (min-width:992px) {
+  .userTweetsContainer {
+    height: 100%;
+  }
+}

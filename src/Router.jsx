@@ -19,6 +19,8 @@ import UserReplyList from 'components/currentUser/UserReplyList';
 import UserLike from 'components/currentUser/UserLike';
 import UserFollower from 'components/currentUser/userFollow/UserFollower';
 import UserFollowing from 'components/currentUser/userFollow/UserFollowing';
+import SettingFrom from 'components/setting/SettingForm'
+
 
 const basename = process.env.PUBLIC_URL
 
@@ -42,6 +44,7 @@ export default function Router () {
             <Route path='user/self/like' element={<UserLike/>}/>
             <Route path='user/self/follower' element={<UserFollower/>}/>
             <Route path='user/self/following' element={<UserFollowing/>}/>
+            <Route path='setting' element={<SettingFrom/>}/>
           </Route>
           <Route path='/' element={<LoginForm/>}/>
         </Routes>  

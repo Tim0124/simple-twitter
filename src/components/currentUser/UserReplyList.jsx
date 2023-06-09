@@ -3,6 +3,21 @@ import style from './UserReplyList.module.scss'
 import UserReplyContent from './UserReplyContent'
 import UserTab from 'UIcomponents/tabs/UserTab'
 import UserInfo from 'UIcomponents/layouts/UserInfo'
+import UserInfoHeader from 'UIcomponents/layouts/UserInfoHeader'
+
+const data = [
+  {
+    id: 1,
+    avatar: 'https://picsum.photos/300/300?text=2',
+    background: 'https://picsum.photos/300/300?text=1',
+    name: 'John Doe',
+    account: '@heyjone',
+    tweet: 25,
+    following: 34,
+    follower: 59,
+    content: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.'
+  }
+]
 
 const dummyData = [
   {
@@ -111,6 +126,13 @@ const dummyData = [
 export default function UserReplyList () {
   return (
     <div className={`${style.userReplyContainer}`}>
+      <div className={`${style.userInfoHeaderContainer}`}>
+        <UserInfoHeader 
+          name={data[0].name}
+          tweet={data[0].tweet}
+          page='/home'
+        />
+      </div>
       <UserInfo/>
       <UserTab/>
       <section className={`${style.userReplyContent}`}>
