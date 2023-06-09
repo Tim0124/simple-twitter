@@ -11,6 +11,46 @@ import authorization from 'api/authorization'
 
 
 export default function AdminForm({account, password, onAccountChange, onPasswordChange, onLoginClick, disabled}) {
+  const [account, setAccount] = useState('')
+  const [password, setPassword] = useState('')
+
+  const handleClick = async () => {
+
+    if (account.length === 0) {
+      return;
+    }
+    if (password.length === 0) {
+      return;
+    }
+
+    const { success, token } = await adminLogin({ account, password })
+
+    if (success) {
+      localStorage.setItem('authToken', token);
+      Swal.fire({
+        position: 'top',
+        title: '登入成功！',
+        timer: 1000,
+        icon: 'success',
+        showConfirmButton: false,
+      });
+      return
+    } Swal.fire({
+      position: 'top',
+      title: '登入失敗！',
+      timer: 1000,
+      icon: 'error',
+      showConfirmButton: false,
+    });
+  }
+
+  const handleAccountChange = (e) => {
+    setAccount(e.target.value)
+  }
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value)
+  }
 
   return (
     <div className={`${style.adminContainer}`}>
@@ -48,6 +88,7 @@ export default function AdminForm({account, password, onAccountChange, onPasswor
             </Link>
           </div>
         </div>
+      </div>
     </div>
   )
 }

@@ -7,7 +7,7 @@ const data = [
   {
     id: 1,
     avatar: 'https://picsum.photos/300/300?text=2',
-    background: 'https://picsum.photos/300/300?text=1',
+    background: 'https://i.imgur.com/5ZDLPuU.jpeg',
     name: 'John Doe',
     account: '@heyjone',
     tweet: 25,
