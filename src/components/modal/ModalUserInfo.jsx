@@ -6,6 +6,7 @@ import Input from 'UIcomponents/input/Input'
 import { ReactComponent as WhiteX } from '../../assets/whiteX.svg'
 import { ReactComponent as WhiteCamera } from '../../assets/whitecamera.svg'
 
+
 const data = [
   {
     id: 1,
@@ -17,6 +18,7 @@ const data = [
 ]
 
 export default function UserInfo() {
+
   return (
     <div className={`${style.userInfoMdContainer}`}>
       <header className={`${style.userInfoMdHeader}`}>

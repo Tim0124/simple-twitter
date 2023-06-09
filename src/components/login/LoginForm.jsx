@@ -23,8 +23,8 @@ function LoginForm() {
       return;
     }
 
-    const {success, token} = await login({ account, password})
-
+    const { success, token } = await login({ account, password })
+   
     if (success) {
       localStorage.setItem("authToken", token)
       Swal.fire({
@@ -54,12 +54,6 @@ function LoginForm() {
     setPassword(e.target.value)
   }
 
-  useEffect(() => {
-
-      navigate('/login')
-
-    
-  },[navigate,])
 
   return (
     <div className={`${style.loginContainer}`}>
