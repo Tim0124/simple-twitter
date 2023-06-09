@@ -23,7 +23,7 @@ function LoginForm() {
     }
 
     const { success, token } = await login({ account, password })
-
+   
     if (success) {
       localStorage.setItem('authToken', token);
     }
