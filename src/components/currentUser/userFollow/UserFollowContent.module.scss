@@ -1,81 +1,81 @@
 .userFollowContainer {
-  border-bottom: 1px solid #E6ECF0;
-  padding: 16px 23px;
-  flex:1;
+	border-bottom: 1px solid #e6ecf0;
+	padding: 16px 23px;
+	flex: 1;
 }
 
 .userFollowList {
-  display: flex;
-  gap: 8px;
+	display: flex;
+	gap: 8px;
 }
 
-.userFollowInfo{
-  display: flex;
-  flex-direction: column;
-  flex:1;
-  gap: 8px;
+.userFollowInfo {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	gap: 8px;
 }
 
 .userFollowSecInfo {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
 .userFollowNameGroup {
-  display: flex;
-  flex-direction: row;
-  gap: 7px;
+	display: flex;
+	flex-direction: row;
+	gap: 7px;
 }
 
-.userFollowSmallAccount{
-  display: flex;
-  flex-direction: row;
-  color: #6C757D;
-  align-items: center;
-  font-weight: 400;
-  font-size: 14px;
-  gap: 1px
+.userFollowSmallAccount {
+	display: flex;
+	flex-direction: row;
+	color: #6c757d;
+	align-items: center;
+	font-weight: 400;
+	font-size: 14px;
+	gap: 1px;
 }
 
 .userFollowingButton {
-  width: 80px;
-  height: 32px;
+	width: 80px;
+	height: 32px;
 }
 
 .userFollowButton {
-  width: 48px;
-  height: 32px;
+	width: 48px;
+	height: 32px;
 }
 
-.userFollowName{
-  font-weight: 700;
-  font-size: 16px;
+.userFollowName {
+	font-weight: 700;
+	font-size: 16px;
 }
 
 .userFollowContent {
-  display: flex;
-  gap: 8px;
+	display: flex;
+	gap: 8px;
 }
 
 .userFollowImg {
-  border-radius: 999rem;
+	border-radius: 999rem;
 }
 
 .userFollowQuantityGroup {
-  display: flex;
-  gap: 40px;
-   color: #6C757D;
+	display: flex;
+	gap: 40px;
+	color: #6c757d;
 
-  .userFollowQuantity{
-    display: flex;
-    gap: 8px;
-    align-items: center;;
-  }
-  .userFollowLikeQuantity {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-  }
+	.userFollowQuantity {
+		display: flex;
+		gap: 8px;
+		align-items: center;
+	}
+	.userFollowLikeQuantity {
+		display: flex;
+		gap: 8px;
+		align-items: center;
+	}
 }

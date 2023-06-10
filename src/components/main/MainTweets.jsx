@@ -9,43 +9,43 @@ import MainContent from './MainContent'
 import { Tweets } from '../../api/allAPI'
 import MainHeader from './MainHeader'
 
+export default function MainTweets({ onTweetClick }) {
+	const [tweets, setTweets] = useState([])
 
-export default function MainTweets({onTweetClick}) {
-  const [tweets, setTweets] = useState([])
+	useEffect(() => {
+		;(async () => {
+			try {
+				const responce = await Tweets.get('/')
+				const tweetData = responce.data
+				setTweets(tweetData)
+			} catch (error) {
+				console.log('fail')
+			}
+		})()
+	}, [])
 
-  useEffect(() => {
-    (async () => {
-      try{
-        const responce = await Tweets.get('/')
-        const tweetData = responce.data
-        setTweets(tweetData)
-      }catch(error){
-        console.log('fail')
-      }
-    })();
-  },[])
-
-  return (
-    <div className={`${style.tweetsContainer}`}>
-      <header className={`${style.tweetsHeader}`}>
-        <MainHeader/>
-      </header>
-      <div className={`${style.tweetPostArea}`}>
-        <MainContent onClick={onTweetClick}/>
-      </div>
-      <main className={`${style.mainTweets}`}>
-        {tweets.map((data) => (
-          <MainTweetsContent 
-            key={data.id}
-            name={data.User.name}
-            avatar={data.User.avatar}
-            account={data.User.account}
-            content={data.description}
-            time={data.relativeTimeFromNow}
-            quantity={data.repliesCount}
-            likeQuantity={data.likesCount}/>
-        ))}
-      </main>
-    </div>
-  )
+	return (
+		<div className={`${style.tweetsContainer}`}>
+			<header className={`${style.tweetsHeader}`}>
+				<MainHeader />
+			</header>
+			<div className={`${style.tweetPostArea}`}>
+				<MainContent onClick={onTweetClick} />
+			</div>
+			<main className={`${style.mainTweets}`}>
+				{tweets.map((data) => (
+					<MainTweetsContent
+						key={data.id}
+						name={data.User.name}
+						avatar={data.User.avatar}
+						account={data.User.account}
+						content={data.description}
+						time={data.relativeTimeFromNow}
+						quantity={data.repliesCount}
+						likeQuantity={data.likesCount}
+					/>
+				))}
+			</main>
+		</div>
+	)
 }

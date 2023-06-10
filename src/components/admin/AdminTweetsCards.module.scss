@@ -1,94 +1,93 @@
-
 .adminTweetsCardContainer {
-  background-color: #F6F7F8;
-  border-radius: 10px;
-  margin: 8px;
-  display: flex;
-  height: 314px;
-  width: 210px;
+	background-color: #f6f7f8;
+	border-radius: 10px;
+	margin: 8px;
+	display: flex;
+	height: 314px;
+	width: 210px;
 }
 
 .adminTweetsCardWrapper {
-  position: relative;
-  display: flex;
-  flex-direction: column;
+	position: relative;
+	display: flex;
+	flex-direction: column;
 }
 
 .adminTweetsCardImg {
-  height: 140px;
-  width: 210px;
-  border-radius: 10px 10px 0px 0px;
+	height: 140px;
+	width: 210px;
+	border-radius: 10px 10px 0px 0px;
 }
 
 .adminTweetsCardAvatar {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -90%);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -90%);
 }
 
 .adminTweetsCardImgAvatar {
-  height: 100px;
-  width: 100px;
-  border-radius: 50%;
-  border: 4px solid #FFFFFF;
+	height: 100px;
+	width: 100px;
+	border-radius: 50%;
+	border: 4px solid #ffffff;
 }
 
 .adminTweetsCardInfo {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  justify-content: center;
-  align-items: center;
-  gap: 19px;
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	justify-content: center;
+	align-items: center;
+	gap: 19px;
 }
 
 .adminTweetsCardSecInfo {
-  display: flex;
-  flex-direction: column;
-  gap: 9px;
+	display: flex;
+	flex-direction: column;
+	gap: 9px;
 }
 
-.adminTweetsCardFollowGroup{
-  display: flex;
-  color: #6C757D;
-  font-weight: 400;
-  font-size: 14px;
-  gap: 10px;
+.adminTweetsCardFollowGroup {
+	display: flex;
+	color: #6c757d;
+	font-weight: 400;
+	font-size: 14px;
+	gap: 10px;
 }
 
 .adminTweetsCardName {
-  font-weight: 700;
-  font-size: 16px;
+	font-weight: 700;
+	font-size: 16px;
 }
 
 .adminTweetsCardAccount {
-  color: #6C757D;
-  font-weight: 400;
-  font-size: 14px;
+	color: #6c757d;
+	font-weight: 400;
+	font-size: 14px;
 }
 
 .adminTweetsCardIconGroup {
-  display: flex;
-  font-weight: 500;
-  font-size: 16px;
-  justify-content: center;
-  gap: 15px;
+	display: flex;
+	font-weight: 500;
+	font-size: 16px;
+	justify-content: center;
+	gap: 15px;
 }
 
 .adminTweetsCardTweet,
 .adminTweetsCardLike {
-  display: flex;
-  align-items: center;
-  gap:6px;
+	display: flex;
+	align-items: center;
+	gap: 6px;
 }
 
 .follower,
 .following {
-  color: black;
+	color: black;
 }
 
 .adminTweetsCardFollowing,
 .adminTweetsCardFollower {
-  display: flex;
+	display: flex;
 }

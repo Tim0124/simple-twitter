@@ -1,58 +1,57 @@
 .adminTweetsContainer {
-  border-bottom: 1px solid #E6ECF0;
-  padding: 16px 0 16px 23px;
-  overflow-x: hidden;
+	border-bottom: 1px solid #e6ecf0;
+	padding: 16px 0 16px 23px;
+	overflow-x: hidden;
 }
 
 .adminTweetsList {
-  display: flex;
+	display: flex;
 }
 
-.adminTweetsInfo{
-  width: 100%;
-  display: flex;
-  flex-direction: column;
+.adminTweetsInfo {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
 }
 
 .adminTweetsSecInfo {
-  
-  display: flex;
-  justify-content: space-between;
+	display: flex;
+	justify-content: space-between;
 }
 
 .adminTweetsNameGroup {
-  display: flex;
-  flex-direction: row;
-  margin: 0 8px 8px 8px;
-  gap: 7px;
+	display: flex;
+	flex-direction: row;
+	margin: 0 8px 8px 8px;
+	gap: 7px;
 }
 
-.adminTweetsSmallAccount{
-  display: flex;
-  flex-direction: row;
-  color: #6C757D;
-  align-items: center;
-  font-weight: 400;
-  font-size: 14px;
-  gap: 1px
+.adminTweetsSmallAccount {
+	display: flex;
+	flex-direction: row;
+	color: #6c757d;
+	align-items: center;
+	font-weight: 400;
+	font-size: 14px;
+	gap: 1px;
 }
 
 .adminTweetsX {
-  margin-right: 5px;
-  cursor: pointer;
+	margin-right: 5px;
+	cursor: pointer;
 }
 
-.adminTweetsName{
-  font-weight: 700;
-  font-size: 16px;
+.adminTweetsName {
+	font-weight: 700;
+	font-size: 16px;
 }
 
 .adminTweetsContent {
-  min-width: 100%;
-  display: flex;
-  margin: 0 8px 8px 8px;
+	min-width: 100%;
+	display: flex;
+	margin: 0 8px 8px 8px;
 }
 
 .adminTweetsImg {
-  border-radius: 999rem;
+	border-radius: 999rem;
 }

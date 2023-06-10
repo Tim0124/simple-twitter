@@ -1,150 +1,146 @@
 .replyTweetsList {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  border-bottom: 1px solid #E6ECF0;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	border-bottom: 1px solid #e6ecf0;
 }
 
-.replyTweetsInfo{
-  display: flex;
-  flex-direction: column;
-  flex:1;
-  gap: 8px;
-  padding: 16px 24px 9px 24px; 
+.replyTweetsInfo {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	gap: 8px;
+	padding: 16px 24px 9px 24px;
 }
 
 .replyTweetsSecInfo {
-  width: 100%;
-  display: flex;
-  gap: 8px;
+	width: 100%;
+	display: flex;
+	gap: 8px;
 }
 
 .replyTweetsNameGroup {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
+	display: flex;
+	flex-direction: column;
+	gap: 3px;
 }
 
-.replyTweetsSmallAccount{
-  display: flex;
-  flex-direction: row;
-  color: #6C757D;
-  align-items: center;
-  font-weight: 400;
-  font-size: 14px;
-  gap: 1px
+.replyTweetsSmallAccount {
+	display: flex;
+	flex-direction: row;
+	color: #6c757d;
+	align-items: center;
+	font-weight: 400;
+	font-size: 14px;
+	gap: 1px;
 }
 
-
-.replyTweetsName{
-  font-weight: 700;
-  font-size: 16px;
+.replyTweetsName {
+	font-weight: 700;
+	font-size: 16px;
 }
 
 .replyTweetsContent {
-  display: flex;
-  gap: 8px;
+	display: flex;
+	gap: 8px;
 }
 
 .replyTweetsImg {
-  border-radius: 50%;
+	border-radius: 50%;
 }
 
 .replyTweetsCreateGroup {
-  display: flex;
-  color: #6C757D;
-  border-bottom:  1px solid #E6ECF0;
-  padding: 16px 0px;
-  
+	display: flex;
+	color: #6c757d;
+	border-bottom: 1px solid #e6ecf0;
+	padding: 16px 0px;
 
-  .replyTweetsTimeItem {
-    display: flex ;
-  }
+	.replyTweetsTimeItem {
+		display: flex;
+	}
 }
 
 .replyTweetsQuantityGroup {
-  display: flex;
-  gap: 24px;
-  font-size: 19px;
-  padding: 16px 24px 16px 24px;
-  border-bottom:  1px solid #E6ECF0;
+	display: flex;
+	gap: 24px;
+	font-size: 19px;
+	padding: 16px 24px 16px 24px;
+	border-bottom: 1px solid #e6ecf0;
 
-  .replyTweetsQuantity{
-    display: flex;
-    gap: 2px;
-    .replyQuantity {
-      font-weight: 700;
-      line-height: 25px;
-    }
-  }
-  .replyTweetsLikeQuantity {
-    display: flex;
-    gap: 2px;
-    .replyLikeQuantity {
-      font-weight: 700;
-      line-height: 25px;
-    }
-  }
+	.replyTweetsQuantity {
+		display: flex;
+		gap: 2px;
+		.replyQuantity {
+			font-weight: 700;
+			line-height: 25px;
+		}
+	}
+	.replyTweetsLikeQuantity {
+		display: flex;
+		gap: 2px;
+		.replyLikeQuantity {
+			font-weight: 700;
+			line-height: 25px;
+		}
+	}
 }
 
 .replyQuantityText {
-  color: #6C757D;
+	color: #6c757d;
 }
 
 .replyTweetsIconGroup {
-  display: flex;
-  gap: 40px;
-  padding: 20px 24px;
-  
-  .replyTweetsIcon, 
-  .replyTweetsLikeIcon {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-  }
+	display: flex;
+	gap: 40px;
+	padding: 20px 24px;
+
+	.replyTweetsIcon,
+	.replyTweetsLikeIcon {
+		display: flex;
+		align-items: center;
+		cursor: pointer;
+	}
 }
 
 //tweetListForm
 .replyTweetsForm {
-  border-bottom: 1px solid #E6ECF0;
+	border-bottom: 1px solid #e6ecf0;
 
-  .replyTweetsContentGroup {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    padding: 16px 24px;
+	.replyTweetsContentGroup {
+		display: flex;
+		width: 100%;
+		justify-content: space-between;
+		padding: 16px 24px;
 
-    .replyTweetsInputGroup {
-      display: flex;
-      gap: 8px;
+		.replyTweetsInputGroup {
+			display: flex;
+			gap: 8px;
 
-      .replyTweetsInputItem {
-       display: flex;
-       align-items: center;
-       color: #6C757D;
-      }
-     
-    }
-     .replyTweetsButtonGroup {
-        display: flex;
-        align-items: center;
-        
-        .replyTweetsButtonItem {
-          width: 64px;
-        }
-      }
-    
-  }
+			.replyTweetsInputItem {
+				display: flex;
+				align-items: center;
+				color: #6c757d;
+			}
+		}
+		.replyTweetsButtonGroup {
+			display: flex;
+			align-items: center;
+
+			.replyTweetsButtonItem {
+				width: 64px;
+			}
+		}
+	}
 }
 
 .replyTweetsAvatar {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
 }
 
-@media screen and (min-width:992px) {
-  .replyTweetsForm {
-    display: none;
-  }
+@media screen and (min-width: 992px) {
+	.replyTweetsForm {
+		display: none;
+	}
 }

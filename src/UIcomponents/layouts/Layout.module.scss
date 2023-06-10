@@ -1,71 +1,70 @@
 .layoutMainContainer {
-  height: 100vh;
+	height: 100vh;
 }
 
 .layoutPopularContainer {
-  display: none;
+	display: none;
 }
 
 .modalPostTweet {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100vw;
-  background-color: #fff;
-  z-index: 3;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	width: 100vw;
+	background-color: #fff;
+	z-index: 3;
 }
 
 .layoutModalContainer {
-  display: none;
+	display: none;
 }
 
-@media screen and (min-width:992px){
-  .layoutContainer {
-    display: flex;
-  }
+@media screen and (min-width: 992px) {
+	.layoutContainer {
+		display: flex;
+	}
 
-.layoutSidebarContainer {
+	.layoutSidebarContainer {
+		padding-left: 23px;
+	}
 
-  padding-left: 23px;
+	.layoutMainContainer {
+		flex: 1;
+		margin: 0 25px;
+		border: 1px solid #e6ecf0;
+	}
+
+	.layoutPopularContainer {
+		display: block;
+		width: 273px;
+		padding-top: 16px;
+		margin-right: 23px;
+	}
+	.modalPostTweet {
+		height: 300px;
+		width: 634px;
+		border-radius: 14px;
+		top: 56px;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+	.modalBackground {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100vh;
+		width: 100vw;
+		background-color: #787878;
+		opacity: 0.7;
+	}
 }
 
-.layoutMainContainer {
-  flex: 1;
-  margin: 0 25px;
-  border: 1px solid #E6ECF0;
-}
-
-.layoutPopularContainer {
-  display: block;
-  width: 273px;
-  padding-top: 16px;
-  margin-right: 23px;
-}
-.modalPostTweet {
-    height: 300px;
-    width: 634px;
-    border-radius: 14px;
-    top: 56px;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  .modalBackground {
-    position: absolute;
-    top: 0;
-    left: 0;
-      height: 100vh;
-      width: 100vw;
-      background-color: #787878 ;
-      opacity: .7;
-    } 
-}
-
-@media screen and (min-width:1200px){
-  .layoutSidebarContainer {
-  margin-left: 138px;
-}
-  .layoutPopularContainer {
-  margin-right: 138px;
-}
+@media screen and (min-width: 1200px) {
+	.layoutSidebarContainer {
+		margin-left: 138px;
+	}
+	.layoutPopularContainer {
+		margin-right: 138px;
+	}
 }
