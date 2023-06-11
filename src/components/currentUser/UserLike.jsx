@@ -13,7 +13,7 @@ const data = [
     background: 'https://picsum.photos/300/300?text=1',
     name: 'John Doe',
     account: '@heyjone',
-    tweet: 25,
+    tweet: 27,
     following: 34,
     follower: 59,
     content: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.'
@@ -28,7 +28,7 @@ const dummyData = [
     account: `@Pizza Hut1`,
     content: 'Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor. Voluptate exercitation incididunt aliquip deserunt reprehenderit elit laborum.',
     time:3,
-    quantity:20,
+    quantity:28,
     likeQuantity:12,
   },
   {

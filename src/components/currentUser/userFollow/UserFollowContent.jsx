@@ -3,7 +3,7 @@ import { ReactComponent as Like } from '../../../assets/like.svg'
 import { ReactComponent as Message } from '../../../assets/message.svg'
 import Button from 'UIcomponents/buttons/Button'
 
-export default function UserFollowerContent ({name, account, avatar, content, isFollow}) {
+export default function UserFollowerContent ({name, avatar, content, isFollow}) {
 
   return (
     <div className={`${style.userFollowContainer}`}>
@@ -15,9 +15,6 @@ export default function UserFollowerContent ({name, account, avatar, content, is
           <div className={`${style.userFollowSecInfo}`}>
             <div className={`${style.userFollowNameGroup}`}>
               <div className={`${style.userFollowName}`}>{name}</div>
-              <div className={`${style.userFollowSmallAccount}`}>
-                <div className={`${style.userFollowAccount}`}>{account}</div>
-              </div>
             </div>
             {isFollow === true ?
             <div className={`${style.userFollowingButton}`}>

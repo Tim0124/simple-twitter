@@ -8,7 +8,6 @@ export default function Sidebar() {
   const navigate = useNavigate();
   const handleClick = () => {
     localStorage.removeItem('authToken');
-    console.log(localStorage.getItem('authToken'))
     navigate('/login');
   };
 

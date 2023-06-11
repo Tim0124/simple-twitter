@@ -1,8 +1,21 @@
 import style from './UserReplyContent.module.scss'
-import { ReactComponent as Like } from '../../assets/unlike.svg'
+import { ReactComponent as Like } from '../../assets/redlike.svg'
 import { ReactComponent as Message } from '../../assets/message.svg'
+import { ReactComponent as Dislike } from '../../assets/unlike.svg'
+import { useState } from 'react';
 
-export default function UserReplyContent ({name, account, avatar, content, quantity, likeQuantity, time}) {
+export default function UserReplyContent ({name, account, avatar, content, isLike, quantity, likeQuantity, time}) {
+  const [like, setLike] = useState(isLike);
+  const [isLikeQuantity, setIsLikeQuantity] = useState(likeQuantity)
+
+  const handleLikeClick = () => {
+    setLike(!like);
+    if (!like) {
+      setIsLikeQuantity(isLikeQuantity + 1);
+    } else {
+      setIsLikeQuantity(isLikeQuantity - 1);
+    }
+  }
   return (
     <div className={`${style.userReplyContainer}`}>
       <div className={`${style.userReplyList}`}>
@@ -40,8 +53,10 @@ export default function UserReplyContent ({name, account, avatar, content, quant
               <p>{quantity}</p>
               </div>
             <div className={`${style.userReplyLikeQuantity}`}>
-              <Like width='16px' height='16px'/>
-              <p>{likeQuantity}</p>
+              {like === true ?
+                <Like width='16px' height='16px' onClick={handleLikeClick} /> :
+                <Dislike width='16px' height='16px' onClick={handleLikeClick} />}
+              <p>{isLikeQuantity}</p>
               </div>
           </div>
         </div>

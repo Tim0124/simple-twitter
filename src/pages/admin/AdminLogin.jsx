@@ -3,7 +3,7 @@ import { ReactComponent as Logo } from '../../assets/logo.svg'
 import Input from 'UIcomponents/input/Input'
 import { Link, useNavigate } from 'react-router-dom'
 import { useContext, useEffect, useState } from 'react'
-import { adminLogin } from 'api/auth'
+import { adminLogin, checkPermission } from 'api/auth'
 import Swal from 'sweetalert2'
 import { AuthContext } from 'context/AuthContent'
 import authorization from 'api/authorization'
@@ -51,19 +51,7 @@ export default function AdminLogin () {
       console.error(error)
     }
 
-    // const { success, token } = await adminLogin({ account, password })
-    // console.log(success)
-    // if (success) {
-    //   localStorage.setItem('authToken', token);
-    //   Swal.fire({
-    //     title: '登入成功',
-    //     icon: 'success',
-    //     showConfirmButton:false,
-    //     timer:1000,
-    //     position: 'top',
-    //   })
-    //   return
-    // }
+
   }
 
   const handleAccountChange = (e) => {
@@ -74,11 +62,6 @@ export default function AdminLogin () {
     setPassword(e.target.value)
   }
 
-  useEffect(() => {
-    if(isAuthenticated) {
-      navigate('/tweets')
-    }
-  },[navigate])
 
   return (
     <>

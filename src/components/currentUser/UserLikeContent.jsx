@@ -1,8 +1,21 @@
 import style from './UserLikeContent.module.scss'
-import { ReactComponent as Like } from '../../assets/RedVector.svg'
+import { ReactComponent as Like } from '../../assets/redlike.svg'
+import { ReactComponent as Dislike } from '../../assets/unlike.svg'
 import { ReactComponent as Message } from '../../assets/message.svg'
+import { useState } from 'react';
 
-export default function UserLikeContent ({name, account, avatar, content, quantity, likeQuantity, time}) {
+export default function UserLikeContent({ name, account, avatar, content, quantity, isLike, likeQuantity, time}) {
+  const [like, setLike] = useState(isLike || true);
+  const [isLikeQuantity, setIsLikeQuantity] = useState(likeQuantity)
+
+  const handleLikeClick = () => {
+    setLike(!like);
+    if (!like) {
+      setIsLikeQuantity(isLikeQuantity + 1);
+    } else if (like && isLikeQuantity >= 0) {
+      setIsLikeQuantity(isLikeQuantity - 1);
+    }
+  };
 
   return (
     <div className={`${style.mainTweetsContainer}`}>
@@ -31,8 +44,10 @@ export default function UserLikeContent ({name, account, avatar, content, quanti
               <p>{quantity}</p>
               </div>
             <div className={`${style.mainTweetsLikeQuantity}`}>
-              <Like width='16px' height='16px'/>
-              <p>{likeQuantity}</p>
+              {like ?
+                <Like width='16px' height='16px' onClick={handleLikeClick}/> :
+                <Dislike width='16px' height='16px' onClick={handleLikeClick}/>}
+              <p>{isLikeQuantity}</p>
               </div>
           </div>
         </div>

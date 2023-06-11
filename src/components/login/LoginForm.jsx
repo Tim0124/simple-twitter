@@ -52,6 +52,23 @@ function LoginForm() {
     setPassword(e.target.value)
   }
 
+  useEffect(() => {
+    const checkTokenIsVaild = async () => {
+      const authToken = localStorage.getItem('authToken');
+
+      if (!authToken) {
+        return
+      }
+
+      const result = await checkPermission(authToken)
+
+      if (result) {
+        navigate('/home')
+      }
+    }
+    checkTokenIsVaild()
+  }, [navigate])
+
   return (
     <div className={`${style.loginContainer}`}>
       <div className={`${style.loginLogo}`}><Logo /></div>

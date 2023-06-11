@@ -6,6 +6,7 @@ import tweetAPI from 'api/tweetAPI';
 import { ToastAlert, Toast } from 'heplers/helpers';
 import Swal from 'sweetalert2'
 import { useNavigate } from 'react-router-dom';
+import { checkPermission } from '../../api/auth'
 
 export default function AdminTweets () {
   const [tweets, setTweets] = useState([])
@@ -48,8 +49,7 @@ export default function AdminTweets () {
         setIsDelete(true)
       })
       }
-    })
-      
+    })      
     } catch (error) {
       console.error(error)
       Toast.fire({
@@ -60,7 +60,6 @@ export default function AdminTweets () {
      
   }
 
-  //
   useEffect( () =>{
      userAPI.getAdminTweets().then((response) => {
       const {data} = response.data

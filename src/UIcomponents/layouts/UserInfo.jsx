@@ -2,12 +2,14 @@ import style from './UserInfo.module.scss'
 import Button from 'UIcomponents/buttons/Button'
 import UserInfoHeader from './UserInfoHeader'
 import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import followingAPI from 'api/followingAPI'
 
 const data = [
   {
     id: 1,
     avatar: 'https://picsum.photos/300/300?text=2',
-    background: 'https://i.imgur.com/5ZDLPuU.jpeg',
+    background: 'https://picsum.photos/300/300?text=1',
     name: 'John Doe',
     account: '@heyjone',
     tweet: 25,
@@ -18,6 +20,24 @@ const data = [
 ]
 
 export default function UserInfo() {
+  const [followings, setFollowing] = useState([])
+  const [current, setCurrent] = useState([])
+
+  // const handleOnFollowing = () => {
+  //     followingAPI.getFollowings().then((response) => {
+  //       const { data } = response
+  //       setFollowing(data)
+  //       if (response.status !== 200) {
+  //         throw new Error(response.message)
+  //       }
+  //     })
+  //   }
+
+  //   useEffect(() => {
+  //     followingAPI.getCurrentUser().then((response) => {
+  //       console.log(response)
+  //     })
+  //   })
   return (
     <div className={`${style.userInfoContainer}`}>
       <div className={`${style.userInfoWrapper}`}>
@@ -49,7 +69,7 @@ export default function UserInfo() {
             </div>
             <div className={`${style.adminTweetsCardFollowGroup}`}>
               <Link to='/user/self/following'>
-                <div className={`${style.adminTweetsCardFollowing}`}>
+              <div className={`${style.adminTweetsCardFollowing}`}>
                 <p className={`${style.following}`}>{data[0].following}&nbsp;個</p><p>跟隨中</p>
               </div>
               </Link>

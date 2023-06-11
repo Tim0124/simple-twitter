@@ -1,4 +1,4 @@
-.popularUserContainer{
+.popularUserContainer {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -38,10 +38,17 @@
 .popularUserLogo {
   width: 50px;
   height: 50px;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
 }
 
-.popularUserImg{
-  border-radius: 999rem;
+.popularUserImg {
+  height: 100%;
+  display: block;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .popularUserButton {
@@ -51,7 +58,7 @@
   justify-content: end;
 }
 
-.popularUserFollower{
+.popularUserFollower {
   width: 64px;
   height: 40px;
 }
