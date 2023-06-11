@@ -1,21 +1,21 @@
 @use '../../styles/variable.module' as var;
 
 .replyContainer {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
 }
 
 .replyListContent {
-  flex: 1;
-  overflow-y: scroll;
-  padding-bottom: var.$sidebar-height;
+	flex: 1;
+	overflow-y: scroll;
+	padding-bottom: var.$sidebar-height;
 }
 
-@media screen and (min-width:992px) {
-  .replyListContent {
-    flex: 1;
-    overflow-y: scroll;
-    padding-bottom: 0;
-  }
+@media screen and (min-width: 992px) {
+	.replyListContent {
+		flex: 1;
+		overflow-y: scroll;
+		padding-bottom: 0;
+	}
 }

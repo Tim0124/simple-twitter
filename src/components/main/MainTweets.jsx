@@ -1,51 +1,106 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import style from './MainTweets.module.scss'
 import MainTweetsContent from './MainTweetsContent'
 import AdminTweetsItem from 'components/admin/AdminTweetsItem'
 import Sidebar from 'UIcomponents/layouts/Sidebar'
-import { Outlet } from 'react-router-dom'
+import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import Layout from 'UIcomponents/layouts/Layout'
 import MainContent from './MainContent'
 import { Tweets } from '../../api/allAPI'
 import MainHeader from './MainHeader'
+import {
+	ReplyTweetModalContext,
+	ShowReplyModalContext,
+} from 'context/ModalContext'
+import ModalReplyTweet from 'UIcomponents/modal/ModalReplyTweet'
+import tweetAPI from 'api/tweetAPI'
+import ReplyList from 'components/replyList/ReplyList'
+import { ChangeStepContext } from 'context/SideBarContext'
 
+export default function MainTweets({ onTweetClick }) {
+	const navigate = useNavigate()
+	const [tweets, setTweets] = useState([])
+	const useModalClick = useContext(ShowReplyModalContext)
+	const [isPostText, setIsPostText] = useState('')
+	const [isDisabled, setIsDisable] = useState(true)
+	const { pathname } = useLocation()
+	const handleChangeStep = useContext(ChangeStepContext)
 
-export default function MainTweets({onTweetClick}) {
-  const [tweets, setTweets] = useState([])
+	useEffect(() => {
+		console.log(handleChangeStep)
+		if (pathname === '/home') {
+			handleChangeStep(1)
+		}
+	}, [])
 
-  useEffect(() => {
-    (async () => {
-      try{
-        const responce = await Tweets.get('/')
-        const tweetData = responce.data
-        setTweets(tweetData)
-      }catch(error){
-        console.log('fail')
-      }
-    })();
-  },[])
+	const handleButtonChange = (e) => {
+		const text = e.target.value
+		setIsPostText(text)
+		console.log(text.length)
+	}
 
-  return (
-    <div className={`${style.tweetsContainer}`}>
-      <header className={`${style.tweetsHeader}`}>
-        <MainHeader/>
-      </header>
-      <div className={`${style.tweetPostArea}`}>
-        <MainContent onClick={onTweetClick}/>
-      </div>
-      <main className={`${style.mainTweets}`}>
-        {tweets.map((data) => (
-          <MainTweetsContent 
-            key={data.id}
-            name={data.User.name}
-            avatar={data.User.avatar}
-            account={data.User.account}
-            content={data.description}
-            time={data.relativeTimeFromNow}
-            quantity={data.repliesCount}
-            likeQuantity={data.likesCount}/>
-        ))}
-      </main>
-    </div>
-  )
+	const handleTweetsClick = ({ id, userId }) => {
+		console.log(id)
+		console.log(userId)
+		// tweetAPI.getCurrentTweetUser(userId).then((response) => {
+		// 	const {data} = response
+		// 	console.log(data)
+		// })
+
+		// tweetAPI.getTweet(id).then((response) => {
+		// 	const {data} = response
+		// 	console.log(data)
+		// })
+		// navigate('/reply')
+	}
+
+	useEffect(() => {
+		setIsDisable(isPostText.length === 0)
+	}, [isPostText])
+
+	useEffect(() => {
+		;(async () => {
+			try {
+				const response = await Tweets.get('/')
+				const tweetData = response.data
+				setTweets(tweetData)
+			} catch (error) {
+				console.log('fail')
+			}
+		})()
+	}, [])
+
+	return (
+		<div className={`${style.tweetsContainer}`}>
+			<header className={`${style.tweetsHeader}`}>
+				<MainHeader />
+			</header>
+			<div className={`${style.tweetPostArea}`}>
+				<MainContent
+					onClick={onTweetClick}
+					onDisabled={isDisabled}
+					onButtonChange={handleButtonChange}
+					onPostText={isPostText}
+				/>
+			</div>
+			<main className={`${style.mainTweets}`}>
+				{tweets.map((data) => (
+					<MainTweetsContent
+						key={data.id}
+						tweetId={data.id}
+						userId={data.UserId}
+						name={data.User.name}
+						avatar={data.User.avatar}
+						account={data.User.account}
+						content={data.description}
+						time={data.relativeTimeFromNow}
+						quantity={data.repliesCount}
+						likeQuantity={data.likesCount}
+						onReplyClick={useModalClick}
+						onTweetsClick={handleTweetsClick}
+					/>
+				))}
+			</main>
+		</div>
+	)
 }

@@ -1,20 +1,19 @@
-import { apiHelper } from 'heplers/helpers';
+import { apiHelper } from 'heplers/helpers'
 
 const getToken = () => localStorage.getItem('authToken')
 
 export default {
-  getAdminTweets () {
-    return apiHelper.get('/admin/tweets', {
-      headers:{Authorization:`Bearer ${getToken()}`}
-    })
-  },
-  getAdminUsers () {
-    return apiHelper.get('/admin/users', {
-      headers:{Authorization:`Bearer ${getToken()}`}
-    })
-  }
+	getAdminTweets() {
+		return apiHelper.get('/admin/tweets', {
+			headers: { Authorization: `Bearer ${getToken()}` },
+		})
+	},
+	getAdminUsers() {
+		return apiHelper.get('/admin/users', {
+			headers: { Authorization: `Bearer ${getToken()}` },
+		})
+	},
 }
-
 
 //拿到頁數跟categoryID
 //帶入page跟categoryID

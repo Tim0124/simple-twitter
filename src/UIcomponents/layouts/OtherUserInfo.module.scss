@@ -1,145 +1,144 @@
 .userInfoNavbar {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 24px;
-  margin: 12px 24px 13px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 24px;
+	margin: 12px 24px 13px;
 }
 
 .userInfoNavName {
-  font-weight: 700;
-  font-size: 18px;
+	font-weight: 700;
+	font-size: 18px;
 }
 
 .userInfoTweet {
-  color: #6C757D;
-  font-weight: 500;
-  font-size: 13px;
+	color: #6c757d;
+	font-weight: 500;
+	font-size: 13px;
 }
 
 .userInfobackground {
-  width: 100%;
-  height: 124px;
+	width: 100%;
+	height: 124px;
 }
 
 .userInfoCardImg {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
 }
 
 .userInfoCardAvatar {
-  position: absolute;
-  top: 150px;
-  left: 15px;
+	position: absolute;
+	top: 150px;
+	left: 15px;
 }
 
 .userInfoImgAvatar {
-  border-radius: 50%;
-  height: 80px;
+	border-radius: 50%;
+	height: 80px;
 }
 
 .userInfoButton {
-  width: 80px;
-  height: 32px;
+	width: 80px;
+	height: 32px;
 }
 
 .userInfoMsg,
 .userInfoNoti {
- border: 1px solid #ff6600;
- border-radius: 50%;
- height: 32px;
- width: 32px;
- display: flex;
- justify-content: center;
- align-items: center;
+	border: 1px solid #ff6600;
+	border-radius: 50%;
+	height: 32px;
+	width: 32px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
-
 .userInfoAllContent {
-  display: flex;
-  justify-content: end;
-  flex-direction: column;
-  margin: 0px 24px;
+	display: flex;
+	justify-content: end;
+	flex-direction: column;
+	margin: 0px 24px;
 }
 
 .userInfoBottonArea {
-  display: flex;
-  justify-content: end;
-  align-items: center;
-  margin: 16px 24px;
-  gap: 16px;
+	display: flex;
+	justify-content: end;
+	align-items: center;
+	margin: 16px 24px;
+	gap: 16px;
 }
 
 .userInfoBottomArea {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
 }
 
 .userInfoNameGroup {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
 }
 
 .userInfoName {
-  font-weight: 700;
-  font-size: 18px;
+	font-weight: 700;
+	font-size: 18px;
 }
 
 .userInfoAccount {
-  color: #6C757D;
-  font-weight: 400;
-  font-size: 14px;
+	color: #6c757d;
+	font-weight: 400;
+	font-size: 14px;
 }
 
 .adminTweetsCardFollowGroup {
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
+	display: flex;
+	flex-direction: row;
+	gap: 20px;
 }
 
 .adminTweetsCardFollowing,
 .adminTweetsCardFollower {
-  display: flex;
-  flex-direction: row;
-  color: #6C757D;
+	display: flex;
+	flex-direction: row;
+	color: #6c757d;
 }
 
 .follower,
 .following {
-  color: black;
+	color: black;
 }
 
 @media screen and (min-width: 991px) {
-  .userInfobackground {
-    height: 200px;
-  }
+	.userInfobackground {
+		height: 200px;
+	}
 
-  .userInfoImgAvatar {
-    border-radius: 50%;
-    height: 140px;
-    border: 4px solid #FFFFFF;
-  }
+	.userInfoImgAvatar {
+		border-radius: 50%;
+		height: 140px;
+		border: 4px solid #ffffff;
+	}
 
-  .userInfoCardAvatar {
-    position: absolute;
-    top: 190px;
-    left: 16px;
-  }
+	.userInfoCardAvatar {
+		position: absolute;
+		top: 190px;
+		left: 16px;
+	}
 
-  .userInfoAllContent {
-    display: flex;
-    justify-content: end;
-    flex-direction: column;
-    margin: 0px 16px;
-  }
+	.userInfoAllContent {
+		display: flex;
+		justify-content: end;
+		flex-direction: column;
+		margin: 0px 16px;
+	}
 
-  .userInfoBottomArea {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin-top: 8px;
-  }
+	.userInfoBottomArea {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+		margin-top: 8px;
+	}
 }

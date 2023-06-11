@@ -1,36 +1,35 @@
 .inputUI {
-  border: none;
-  border-bottom: 2px solid #657786;
-  width: 100%;
-  height: 100%;
-  background-color: #F5F8FA;
-  outline: medium;
-  padding: 24px 9.69px 2px 9.69px;
+	border: none;
+	border-bottom: 2px solid #657786;
+	width: 100%;
+	height: 100%;
+	background-color: #f5f8fa;
+	outline: medium;
+	padding: 24px 9.69px 2px 9.69px;
 }
-
 
 .inputUI:focus,
 :hover {
-  border-color: #50B5FF
+	border-color: #50b5ff;
 }
 
 label {
-  position: relative;
-  height: 100%;
-  height: 54px;
-  display: block;
-  .inputTitle {
-    position: absolute;
-    font-size: 14px;
-    height: 22px;
-    color: #696974;
-    top: 5px;
-  left: 10px;
-  }
+	position: relative;
+	height: 100%;
+	height: 54px;
+	display: block;
+	.inputTitle {
+		position: absolute;
+		font-size: 14px;
+		height: 22px;
+		color: #696974;
+		top: 5px;
+		left: 10px;
+	}
 }
 
 ::-webkit-input-placeholder {
-  position: relative;
-  font-size: 16px;
-  color: #B5B5BE;
+	position: relative;
+	font-size: 16px;
+	color: #b5b5be;
 }

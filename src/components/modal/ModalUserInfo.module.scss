@@ -1,204 +1,204 @@
 @use '../../styles/variable.module' as var;
 
 .userInfoMdContainer {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
-  background-color: white;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	width: 100%;
+	background-color: white;
 }
 
 .userInfoMdNavbar {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
 }
 
 .userInfoMdTitle {
-  display: flex;
-  justify-content: center;
-  margin: 24px 28px;
-  gap: 19px;
+	display: flex;
+	justify-content: center;
+	margin: 24px 28px;
+	gap: 19px;
 }
 
 .userInfoMdButton {
-  width: 64px;
-  height: 40px;
+	width: 64px;
+	height: 40px;
 }
 
 .userInfoMdButtonGroup {
-  display: flex;
-  align-items: center;
-  margin: 17px 24px;
+	display: flex;
+	align-items: center;
+	margin: 17px 24px;
 }
 
 .userInfoMdArrow {
-  cursor: pointer;
+	cursor: pointer;
 }
 
 .userInfoClose {
-  display: none;
-  cursor: pointer;
+	display: none;
+	cursor: pointer;
 }
 
 .userInfoMdCardImg {
-  width: 100%;
-  height: 100%;
+	width: 100%;
+	height: 100%;
 }
 
 .userInfoMdImgAvatar {
-  height: 100%;
-  border-radius: 50%;
+	height: 100%;
+	border-radius: 50%;
 }
 
 .userInfoMdBackground {
-  height: 200px;
+	height: 200px;
 }
 
 .userInfoMdAvatar {
-  position: absolute;
-  top: 158px;
-  left: 25px;
-  height: 80px;
+	position: absolute;
+	top: 158px;
+	left: 25px;
+	height: 80px;
 }
 
 .userInfoInputArea {
-  margin: 56px 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
+	margin: 56px 24px;
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
 }
 
 .userInfoMdBackground {
-  background-color: #171725;
+	background-color: #171725;
 }
 
 .userInfoMdCardImg {
-  opacity: 0.5;
+	opacity: 0.5;
 }
 
 .userInfoMdAvatar {
-  border-radius: 50%;
-  background-color: #171725;
+	border-radius: 50%;
+	background-color: #171725;
 }
 
 .userInfoMdImgAvatar {
-  opacity: 0.5;
+	opacity: 0.5;
 }
 
 .userInfoMdImgGroup {
-  position: relative;
+	position: relative;
 
-  .userInfoIcon {
-    position: absolute;
-    z-index: 99;
-    width: 80px;
-    height: 24px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
+	.userInfoIcon {
+		position: absolute;
+		z-index: 99;
+		width: 80px;
+		height: 24px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
 
-  .userInfoSecIcon {
-    position: absolute;
-    z-index: 98;
-    top: 190px;
-    left: 55px;
-  }
+	.userInfoSecIcon {
+		position: absolute;
+		z-index: 98;
+		top: 190px;
+		left: 55px;
+	}
 }
 
 .userInfoMdWhite {
-  cursor: pointer;
+	cursor: pointer;
 }
 
 .userInfoInputText {
-  display: none;
+	display: none;
 }
 
 .userInfoLabel {
-  display: none;
+	display: none;
 }
 
 @media screen and (min-width: 991px) {
-  .userInfoMdArrow {
-    display: none;
-  }
+	.userInfoMdArrow {
+		display: none;
+	}
 
-  .userInfoClose {
-    display: block;
-  }
+	.userInfoClose {
+		display: block;
+	}
 
-  .userInfoMdContainer {
-    width: 634px;
-    height: 610px;
-    border-radius: 14px;
-  }
+	.userInfoMdContainer {
+		width: 634px;
+		height: 610px;
+		border-radius: 14px;
+	}
 
-  .userInfoInputArea {
-    display: flex;
+	.userInfoInputArea {
+		display: flex;
 
-    .userInfoInputContent {
-      height: 147px;
-    }
-  }
+		.userInfoInputContent {
+			height: 147px;
+		}
+	}
 
-  .userInfoInputContent,
-  .userInfoInputText {
-    display: block;
-    font-weight: 500;
-    font-size: 12px;
-    color: #696974;
-    text-align: end;
-  }
+	.userInfoInputContent,
+	.userInfoInputText {
+		display: block;
+		font-weight: 500;
+		font-size: 12px;
+		color: #696974;
+		text-align: end;
+	}
 
-  .userInfoInputContentGroup {
-    height: 147px;
-    width: 100%;
+	.userInfoInputContentGroup {
+		height: 147px;
+		width: 100%;
 
-    .inputTextarea {
-      height: 100%;
-      width: 100%;
-    }
-  }
+		.inputTextarea {
+			height: 100%;
+			width: 100%;
+		}
+	}
 
-  .userInfoLabel {
-    display: block;
-    background-color: #F5F8FA;
-    height: 145px;
+	.userInfoLabel {
+		display: block;
+		background-color: #f5f8fa;
+		height: 145px;
 
-    .userInfoLabelTitle {
-      position: absolute;
-      font-size: 14px;
-      height: 22px;
-      color: #696974;
-      top: 5px;
-      left: 10px;
-    }
+		.userInfoLabelTitle {
+			position: absolute;
+			font-size: 14px;
+			height: 22px;
+			color: #696974;
+			top: 5px;
+			left: 10px;
+		}
 
-    .userInfoTextArea {
-      resize: none;
-      width: 100%;
-      height: 125px;
-      border: none;
-      background-color: #F5F8FA;
-      margin-top: 20px;
-      padding: 8px 9.69px;
-      border-bottom: 2px solid #657786;
-    }
+		.userInfoTextArea {
+			resize: none;
+			width: 100%;
+			height: 125px;
+			border: none;
+			background-color: #f5f8fa;
+			margin-top: 20px;
+			padding: 8px 9.69px;
+			border-bottom: 2px solid #657786;
+		}
 
-    .userInfoTextArea:focus,
-      :hover {
-        border-color: #50B5FF
-      }
-    .userInfoTextArea:focus {
-      outline: none;
-    }
-  }
+		.userInfoTextArea:focus,
+		:hover {
+			border-color: #50b5ff;
+		}
+		.userInfoTextArea:focus {
+			outline: none;
+		}
+	}
 
-  .userInfoInput {
-    display: none;
-  }
+	.userInfoInput {
+		display: none;
+	}
 }

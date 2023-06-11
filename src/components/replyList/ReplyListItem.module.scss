@@ -1,46 +1,45 @@
-
 .replyListItemList {
-  display: flex;
-  gap: 8px;
-  padding: 16px 24px;
+	display: flex;
+	gap: 8px;
+	padding: 16px 24px;
 }
 
 .replyListItemInfo {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 8px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 8px;
 }
 
 .replyListItemImg {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
 }
 
 .replyListItemNameGroup {
-  display: flex;
-  gap: 8px;
+	display: flex;
+	gap: 8px;
 
-  .replyListItemSmallAccount {
-    display: flex;
-    color: #6C757D;
-  }
-  .replyListItemTimeGroup {
-    display: flex;
-    gap: 2px;
-  }
+	.replyListItemSmallAccount {
+		display: flex;
+		color: #6c757d;
+	}
+	.replyListItemTimeGroup {
+		display: flex;
+		gap: 2px;
+	}
 }
 
 .replyListItemAccountGroup {
-  display: flex;
-  gap: 3px;
+	display: flex;
+	gap: 3px;
 
-  .replyListItemText {
-    color: #6C757D;
-  }
-  .replyListItemAccount {
-    color: #FF6600;
-    cursor: pointer;
-  }
+	.replyListItemText {
+		color: #6c757d;
+	}
+	.replyListItemAccount {
+		color: #ff6600;
+		cursor: pointer;
+	}
 }

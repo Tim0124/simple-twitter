@@ -1,76 +1,76 @@
 .settingWrapper {
-  height: 100vh;
-  overflow-y: hidden;
+	height: 100vh;
+	overflow-y: hidden;
 }
 
 .rightContainer {
-  display: none;
+	display: none;
 }
-.settingHeaderBorder{
-  border-bottom: 1px solid #E6ECF0;
+.settingHeaderBorder {
+	border-bottom: 1px solid #e6ecf0;
 }
 
 .settingContainer {
-  width: 100%;
-  height: 100%;
+	width: 100%;
+	height: 100%;
 }
 
 .settingTitle {
-  color: #000000;
-  padding: 24px;
-  text-align: left;
+	color: #000000;
+	padding: 24px;
+	text-align: left;
 }
 
 .settingInputGroup {
-  padding: 16px 24px ;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+	padding: 16px 24px;
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
 }
 
 .settingButtonGroup {
-  width: 100%;
-  padding: 16px 24px ;
-  display: flex;
-  flex-direction: column;
-  align-items: end;
-  gap: 22px;
-  .settingButton {
-    width: 88px;
-    height: 46px;
-  }
-  .loginout {
-    padding: 0 16px;
-    color: #0062ff;
-  }
+	width: 100%;
+	padding: 16px 24px;
+	display: flex;
+	flex-direction: column;
+	align-items: end;
+	gap: 22px;
+	.settingButton {
+		width: 88px;
+		height: 46px;
+	}
+	.loginout {
+		padding: 0 16px;
+		color: #0062ff;
+	}
 }
 
 @media screen and (min-width: 991px) {
-  .settingContainer {
-    max-width: 960px;
-    border: none;
-    border-left: 1px solid #E6ECF0;
-    border-right: 1px solid #E6ECF0;
-  }
-  .rightContainer{
-    display: block;
-    width: 427px;
-  }
+	.settingContainer {
+		max-width: 960px;
+		border: none;
+		border-left: 1px solid #e6ecf0;
+		border-right: 1px solid #e6ecf0;
+	}
+	.rightContainer {
+		display: block;
+		width: 427px;
+	}
 
-  .settingFooter {
-    display: none;
-  }
-  .settingWrapper {
-    display: flex;
-    flex-direction: row-reverse;
-  }
-  .settingLoginout {
-    display: none;
-  }
+	.settingFooter {
+		display: none;
+	}
+	.settingWrapper {
+		display: flex;
+		flex-direction: row-reverse;
+	}
+	.settingLoginout {
+		display: none;
+	}
 }
 
 @media screen and (min-width: 1200px) {
-  .settingContainer {
-    max-width: 1140px;
-  }
+	.settingContainer {
+		max-width: 1140px;
+	}
 }
