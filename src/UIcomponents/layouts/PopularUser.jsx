@@ -3,7 +3,6 @@ import { ReactComponent as Logo } from '../../assets/logo.svg'
 import Button from '../../UIcomponents/buttons/Button'; 
 import { useState } from 'react'
 
-
 export default function PopularUser({ name, avatar, account, isFollow }) {
   const [follow, setFollow] = useState(isFollow)
 

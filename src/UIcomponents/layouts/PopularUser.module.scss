@@ -7,32 +7,32 @@
 }
 
 .popularUserList {
-  display: flex;
-  gap: 10px;
+	display: flex;
+	gap: 10px;
 }
 
 .popularUserItems {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 15px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 15px;
 }
 
 .popularUserName {
-  color: #171725;
-  font-weight: 700;
-  font-size: 16px;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  width: 83px;
+	color: #171725;
+	font-weight: 700;
+	font-size: 16px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	width: 83px;
 }
 
 .popularUserAccount {
-  color: #92929D;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 22px;
+	color: #92929d;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 22px;
 }
 
 .popularUserLogo {
@@ -52,10 +52,10 @@
 }
 
 .popularUserButton {
-  height: 40px;
-  width: 96px;
-  display: flex;
-  justify-content: end;
+	height: 40px;
+	width: 96px;
+	display: flex;
+	justify-content: end;
 }
 
 .popularUserFollower {

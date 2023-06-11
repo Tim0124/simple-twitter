@@ -1,41 +1,38 @@
-
-
 .LayoutMainContainer {
-  height: 100vh;
+	height: 100vh;
 }
 
 .LayoutPopularContainer {
-  display: none;
+	display: none;
 }
 
-@media screen and (min-width:992px){
-  .LayoutContainer {
-    display: flex;
-  }
+@media screen and (min-width: 992px) {
+	.LayoutContainer {
+		display: flex;
+	}
 
-.LayoutSidebarContainer {
+	.LayoutSidebarContainer {
+		padding-left: 23px;
+	}
 
-  padding-left: 23px;
+	.LayoutMainContainer {
+		flex: 1;
+		margin: 0 25px;
+	}
+
+	.LayoutPopularContainer {
+		display: none;
+		width: 273px;
+		padding-top: 16px;
+		margin-right: 23px;
+	}
 }
 
-.LayoutMainContainer {
-  flex: 1;
-  margin: 0 25px;
-}
-
-.LayoutPopularContainer {
-  display: none;
-  width: 273px;
-  padding-top: 16px;
-  margin-right: 23px;
-}
-}
-
-@media screen and (min-width:1200px){
-  .LayoutSidebarContainer {
-  margin-left: 138px;
-}
-  .LayoutPopularContainer {
-  margin-right: 138px;
-}
+@media screen and (min-width: 1200px) {
+	.LayoutSidebarContainer {
+		margin-left: 138px;
+	}
+	.LayoutPopularContainer {
+		margin-right: 138px;
+	}
 }

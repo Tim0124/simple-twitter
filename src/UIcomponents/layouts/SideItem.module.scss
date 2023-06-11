@@ -1,84 +1,101 @@
 .iconHome {
-  content: url('../../assets/unhome.svg');
+	content: url('../../assets/unhome.svg');
 }
 
 .iconTweet {
-  content: url('../../assets/tweet.svg');
+	content: url('../../assets/tweet.svg');
 }
 
 .iconPerson {
-  content: url('../../assets/unperson.svg');
+	content: url('../../assets/unperson.svg');
 }
 
 .iconSetting {
-  content: url('../../assets/unsetting.svg');
+	content: url('../../assets/unsetting.svg');
 }
 
 .iconUnTweet {
-  content: url('../../assets//untweet.svg');
+	content: url('../../assets/untweet.svg');
+	display: none;
 }
 
 .iconLoginOut {
-  content: url('../../assets/exit.svg');
-  display: none;
+	content: url('../../assets/exit.svg');
+	display: none;
 }
 
 .actionHome {
-  content: url('../../assets//checkhome.svg');
+	content: url('../../assets/checkhome.svg');
+}
+
+.actionUser {
+	content: url('../../assets/orangeuser.svg');
+}
+
+.actionSetting {
+	content: url('../../assets/orangesetting.svg');
 }
 
 .itemTitle {
-  display: none;
-  color: #000000;
-  font-weight: 700;
+	display: none;
+	color: #000000;
+	font-weight: 700;
 }
 
 .customTweet {
-  display: none;
+	display: none;
 }
 
 .itemIcon {
-  display: flex;
-  align-items: center;
+	display: flex;
+	align-items: center;
 }
 
-@media screen and (min-width:992px){
-  .customTweet {
-    display: block;
-    background-color: #ff6600;
-    border-radius: 50px;
-    width: 40px;
-    height: 40px;
-  }
-  .itemIcon {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .iconLoginOut {
-    display: block;
-  }
-  .custom {
-    display: none;
-  }
-
+@media screen and (min-width: 992px) {
+	.customTweet {
+		display: block;
+		background-color: #ff6600;
+		border-radius: 50px;
+		width: 40px;
+		height: 40px;
+	}
+	.itemIcon {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.iconLoginOut {
+		display: block;
+	}
+	.custom {
+		display: none;
+	}
+	.iconUnTweet {
+		display: block;
+	}
+	.iconName {
+		color: #000000;
+	}
+	.onName {
+		color: #ff6600;
+	}
 }
 
-@media screen and (min-width:1200px) {
-  .itemIcon {
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-  }
-  .itemTitle {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: start;
-  }
-  .customTweet {
-    display: none;
-  }
+@media screen and (min-width: 1200px) {
+	.itemIcon {
+		display: flex;
+		flex-direction: row;
+		gap: 20px;
+	}
+	.itemTitle {
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		justify-content: start;
+	}
+	.customTweet {
+		display: none;
+	}
 }

@@ -1,19 +1,19 @@
 @use '../../styles/variable.module' as var;
 
 .userReplyContainer {
-  height: calc(100% - var.$sidebar-height);
-  display: flex;
-  flex-direction: column;
+	height: calc(100% - var.$sidebar-height);
+	display: flex;
+	flex-direction: column;
 }
 
 .userReplyContent {
-  flex: 1;
-  height: 100vh;
-  overflow-y: scroll;
+	flex: 1;
+	height: 100vh;
+	overflow-y: scroll;
 }
 
-@media screen and (min-width:992px) {
-  .userReplyContainer {
-    height: 100%;
-  }
+@media screen and (min-width: 992px) {
+	.userReplyContainer {
+		height: 100%;
+	}
 }

@@ -3,20 +3,20 @@ import FollowTab from 'UIcomponents/tabs/FollowTab'
 import UserFollowerContent from './UserFollowContent'
 import UserInfo from 'UIcomponents/layouts/UserInfo'
 import UserInfoHeader from 'UIcomponents/layouts/UserInfoHeader'
-import { followingAPI } from '../../../api/followingAPI'
 
 const data = [
-  {
-    id: 1,
-    avatar: 'https://picsum.photos/300/300?text=2',
-    background: 'https://picsum.photos/300/300?text=1',
-    name: 'John Doe',
-    account: '@heyjone',
-    tweet: 25,
-    following: 34,
-    follower: 59,
-    content: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.'
-  }
+	{
+		id: 1,
+		avatar: 'https://picsum.photos/300/300?text=2',
+		background: 'https://picsum.photos/300/300?text=1',
+		name: 'John Doe',
+		account: '@heyjone',
+		tweet: 25,
+		following: 34,
+		follower: 59,
+		content:
+			'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.',
+	},
 ]
 
 const dummyData = [

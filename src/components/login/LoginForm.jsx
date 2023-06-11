@@ -5,52 +5,55 @@ import Input from 'UIcomponents/input/Input'
 import { Link, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { checkPermission, login } from 'api/auth'
-import Swal from 'sweetalert2'
+import { Toast } from 'heplers/helpers'
 
 function LoginForm() {
-  const [account, setAccount] = useState('')
-  const [password, setPassword] = useState('')
-  const navigate = useNavigate()
+	const [account, setAccount] = useState('')
+	const [password, setPassword] = useState('')
+	const navigate = useNavigate()
 
-  const handleLoginClick = async () => {
-    if (account.length === 0) {
-      return;
-    }
-    if (password.length === 0) {
-      return;
-    }
+	const handleLoginClick = async () => {
+		try {
+			if (account.length === 0) {
+				return
+			}
+			if (password.length === 0) {
+				return
+			}
 
-    const { success, token } = await login({
-      account,
-      password,
-    });
-    if (success) {
-      localStorage.setItem('authToken', token);
-      Swal.fire({
-        position: 'top',
-        title: '登入成功！',
-        timer: 1000,
-        icon: 'success',
-        showConfirmButton: false,
-      });
-      navigate('/home')
-      return
-    }Swal.fire({
-      position: 'top',
-      title: '登入失敗！',
-      timer: 1000,
-      icon: 'error',
-      showConfirmButton: false,
-    });
-   }
+			const { success, token } = await login({
+				account,
+				password,
+			})
+			if (success) {
+				localStorage.setItem('authToken', token)
+				Toast.fire({
+					title: '登入成功！',
+					timer: 2000,
+					icon: 'success',
+					showConfirmButton: false,
+				})
+				navigate('/home')
+				return
+			}
+			Toast.fire({
+				title: '登入失敗！',
+				timer: 2000,
+				icon: 'error',
+				showConfirmButton: false,
+			})
+		} catch (error) {
+			console.error(error)
+		}
+	}
 
-  const handleAccountChange = (e) => { 
-    setAccount(e.target.value)
-  }
+	const handleAccountChange = (e) => {
+		setAccount(e.target.value)
+	}
 
-   const handlePasswordChange = (e) => { 
-    setPassword(e.target.value)
-  }
+	const handlePasswordChange = (e) => {
+		setPassword(e.target.value)
+	}
 
   useEffect(() => {
     const checkTokenIsVaild = async () => {

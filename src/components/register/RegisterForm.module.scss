@@ -1,59 +1,59 @@
 .registerWrapper {
-  width: 100;
+	width: 100;
 }
 
 .registerContainer {
-  padding: 45px 24px;
+	padding: 45px 24px;
 }
 
 .registerLogo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .registerTitle {
-  color: #000000;
-  margin: 29px 0 32px 0;
-  text-align: center;
+	color: #000000;
+	margin: 29px 0 32px 0;
+	text-align: center;
 }
 
 .registerInputGroup {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-  margin: 8px 0;
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+	margin: 8px 0;
 }
 
 .registerButtonGroup {
-  display: flex;
-  flex-direction: column;
-  margin: 40px 0 30px 0;
-  height: 46px;
+	display: flex;
+	flex-direction: column;
+	margin: 40px 0 30px 0;
+	height: 46px;
 }
 
 .registerSecButtonGroup {
-  text-align: center;
+	text-align: center;
 }
 
 .registerCancelLink {
-  color: #0062ff;
+	color: #0062ff;
 }
 
 @media screen and (min-width: 991px) {
-  .registerWrapper {
-    width: 356px;
-    padding: 0 24px;
-    margin: 0px auto;
-  }
+	.registerWrapper {
+		width: 356px;
+		padding: 0 24px;
+		margin: 0px auto;
+	}
 }
 
 @media screen and (min-width: 1200px) {
-  .registerWrapper {
-    padding: 0;
-  }
+	.registerWrapper {
+		padding: 0;
+	}
 
-  .registerContainer {
-    padding: 45px 0;
-  }
+	.registerContainer {
+		padding: 45px 0;
+	}
 }
