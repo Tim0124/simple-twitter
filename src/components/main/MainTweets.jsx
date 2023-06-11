@@ -6,8 +6,11 @@ import Sidebar from 'UIcomponents/layouts/Sidebar'
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import Layout from 'UIcomponents/layouts/Layout'
 import MainContent from './MainContent'
-import { Tweets } from '../../api/allAPI'
+import { getTweets } from '../../api/allAPI'
 import MainHeader from './MainHeader'
+import { useNavigate } from 'react-router-dom'
+import { checkPermission } from 'api/auth'
+import followingAPI from 'api/followingAPI'
 import {
 	ReplyTweetModalContext,
 	ShowReplyModalContext,
@@ -25,6 +28,33 @@ export default function MainTweets({ onTweetClick }) {
 	const [isDisabled, setIsDisable] = useState(true)
 	const { pathname } = useLocation()
 	const handleChangeStep = useContext(ChangeStepContext)
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const responce = await getTweets.get('/')
+        const tweetData = responce.data
+        setTweets(tweetData)
+      } catch (error) {
+        console.log('Failed to tweets:', error)
+      }
+    })();
+  }, [])
+
+  useEffect(() => {
+    const checkTokenIsValid = async () => {
+      const authToken = localStorage.getItem('authToken');
+      if (!authToken) {
+        navigate('/login');
+      }
+      const result = await checkPermission(authToken);
+      if (!result) {
+        navigate('/login');
+      }
+    };
+
+    checkTokenIsValid();
+  }, [navigate]);
 
 	useEffect(() => {
 		console.log(handleChangeStep)

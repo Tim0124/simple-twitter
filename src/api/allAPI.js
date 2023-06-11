@@ -16,4 +16,4 @@ axiosInstance.interceptors.request.use(
 	},
 	(err) => Promise.reject(err)
 )
-export const Tweets = axiosInstance
+export const getTweets = axiosInstance

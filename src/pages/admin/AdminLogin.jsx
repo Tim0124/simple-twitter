@@ -3,7 +3,7 @@ import { ReactComponent as Logo } from '../../assets/logo.svg'
 import Input from 'UIcomponents/input/Input'
 import { Link, useNavigate } from 'react-router-dom'
 import { useContext, useEffect, useState } from 'react'
-import { adminLogin } from 'api/auth'
+import { adminLogin, checkPermission } from 'api/auth'
 import Swal from 'sweetalert2'
 import { AuthContext } from 'context/AuthContext'
 import authorization from 'api/authorization'
@@ -68,7 +68,7 @@ export default function AdminLogin() {
 			navigate('/tweets')
 		}
 	}, [navigate])
-
+  
 	return (
 		<>
 			<AdminForm

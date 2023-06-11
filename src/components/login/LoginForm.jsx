@@ -55,43 +55,62 @@ function LoginForm() {
 		setPassword(e.target.value)
 	}
 
-	return (
-		<div className={`${style.loginContainer}`}>
-			<div className={`${style.loginLogo}`}>
-				<Logo />
-			</div>
-			<h1 className={`${style.loginTitle}`}>登入Alphitter</h1>
-			<div className={`${style.loginInputGroup}`}>
-				<Input
-					label='帳號'
-					placeholder='請輸入帳號'
-					value={account}
-					onChange={handleAccountChange}
-				/>
-				<Input
-					type='password'
-					label='密碼'
-					placeholder='請輸入密碼'
-					value={password}
-					onChange={handlePasswordChange}
-				/>
-			</div>
-			<div className={`${style.loginButton}`}>
-				<Button text='登入' size='large' onClick={handleLoginClick} />
-			</div>
-			<div className={`${style.loginButtonGroup}`}>
-				<div className={`${style.loginButtonSecGroup}`}>
-					<Link to='/register'>
-						<u className={`${style.loginRegisterButton}`}>註冊</u>
-					</Link>
-					<p>・</p>
-					<Link to='/admin'>
-						<u className={`${style.loginAdminButton}`}>後台登入</u>
-					</Link>
-				</div>
-			</div>
-		</div>
-	)
+  useEffect(() => {
+    const checkTokenIsVaild = async () => {
+      const authToken = localStorage.getItem('authToken');
+
+      if (!authToken) {
+        return
+      }
+
+      const result = await checkPermission(authToken)
+
+      if (result) {
+        navigate('/home')
+      }
+    }
+    checkTokenIsVaild()
+  }, [navigate])
+
+  return (
+    <div className={`${style.loginContainer}`}>
+      <div className={`${style.loginLogo}`}><Logo /></div>
+      <h1 className={`${style.loginTitle}`}>登入Alphitter</h1>
+      <div className={`${style.loginInputGroup}`}>
+        <Input
+          label='帳號'
+          placeholder='請輸入帳號'
+          value={account}
+          onChange={handleAccountChange}
+        />
+        <Input
+          type='password'
+          label='密碼'
+          placeholder='請輸入密碼'
+          value={password}
+          onChange={handlePasswordChange}
+        />
+      </div>
+      <div className={`${style.loginButton}`}>
+        <Button
+          text='登入'
+          size='large'
+          onClick={handleLoginClick}
+        />
+      </div>
+      <div className={`${style.loginButtonGroup}`}>
+        <div className={`${style.loginButtonSecGroup}`}>
+          <Link to='/register'>
+            <u className={`${style.loginRegisterButton}`}>註冊</u>
+          </Link>
+          <p>・</p>
+          <Link to='/admin'>
+            <u className={`${style.loginAdminButton}`} >後台登入</u>
+          </Link>
+        </div>
+      </div>
+    </div>
+  )
 }
 
 export default LoginForm
