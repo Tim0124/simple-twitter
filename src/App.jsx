@@ -1,13 +1,18 @@
 import './App.scss'
 
 import Router from 'Router'
-import { AuthProvider } from 'context/AuthContent'
+import { ModalContextProvider } from 'context/ModalContext'
+import { SideBarContextProvider } from 'context/SideBarContext'
 
 function App() {
 	return (
-		<div className='App'>
-			<Router />
-		</div>
+		<SideBarContextProvider>
+			<ModalContextProvider>
+				<div className='App'>
+					<Router />
+				</div>
+			</ModalContextProvider>
+		</SideBarContextProvider>
 	)
 }
 

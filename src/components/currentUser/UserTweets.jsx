@@ -4,6 +4,9 @@ import UserTweetsContent from './UserTweetsContent'
 import UserTab from 'UIcomponents/tabs/UserTab'
 import UserInfo from 'UIcomponents/layouts/UserInfo'
 import UserInfoHeader from 'UIcomponents/layouts/UserInfoHeader'
+import { useLocation } from 'react-router-dom'
+import { useContext, useEffect } from 'react'
+import { ChangeStepContext } from 'context/SideBarContext'
 
 const data = [
 	{
@@ -134,6 +137,15 @@ const dummyData = [
 ]
 
 export default function UserTweets() {
+	const {pathname} = useLocation()
+	console.log(pathname)
+	const handleChangeStep = useContext(ChangeStepContext)
+	
+	useEffect(() => {
+		if(pathname === '/user/self'){
+			handleChangeStep(2)
+		}
+	},[])
 	return (
 		<div className={`${style.userTweetsContainer}`}>
 			<div className={`${style.userInfoHeaderContainer}`}>

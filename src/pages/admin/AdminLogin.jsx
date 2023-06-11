@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useContext, useEffect, useState } from 'react'
 import { adminLogin } from 'api/auth'
 import Swal from 'sweetalert2'
-import { AuthContext } from 'context/AuthContent'
+import { AuthContext } from 'context/AuthContext'
 import authorization from 'api/authorization'
 import AdminForm from 'components/admin/AdminForm'
 import { Toast } from 'heplers/helpers'
@@ -53,20 +53,6 @@ export default function AdminLogin() {
 			})
 			console.error(error)
 		}
-
-		// const { success, token } = await adminLogin({ account, password })
-		// console.log(success)
-		// if (success) {
-		//   localStorage.setItem('authToken', token);
-		//   Swal.fire({
-		//     title: '登入成功',
-		//     icon: 'success',
-		//     showConfirmButton:false,
-		//     timer:1000,
-		//     position: 'top',
-		//   })
-		//   return
-		// }
 	}
 
 	const handleAccountChange = (e) => {

@@ -6,16 +6,17 @@ export default function SideItem({
 	itemName,
 	customName,
 	page,
-	handleClick,
+	onClick,
+	onStepClick,
+	iconName
 }) {
-	console.log('Clicked')
 	return (
 		<>
-			<Link to={page} className={`${style[customName]}`} onClick={handleClick}>
-				<div className={`${style.itemIcon}`}>
+			<Link to={page} className={`${style[customName]}`} onClick={onClick}>
+				<div className={`${style.itemIcon}`} onClick={onStepClick}>
 					<img className={`${style[styleName]}`} alt={styleName} />
 					<div className={`${style.itemTitle}`}>
-						<div>{itemName}</div>
+						<div className={`${style[iconName]}`}>{itemName}</div>
 					</div>
 				</div>
 			</Link>

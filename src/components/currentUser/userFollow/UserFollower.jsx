@@ -3,6 +3,8 @@ import FollowTab from 'UIcomponents/tabs/FollowTab'
 import UserFollowerContent from './UserFollowContent'
 import UserInfo from 'UIcomponents/layouts/UserInfo'
 import UserInfoHeader from 'UIcomponents/layouts/UserInfoHeader'
+import { useContext, useEffect } from 'react'
+import { ChangeStepContext } from 'context/SideBarContext'
 
 const data = [
 	{
@@ -143,6 +145,7 @@ const dummyData = [
 ]
 
 export default function UserFollower() {
+	
 	return (
 		<div className={`${style.userFollowerContainer}`}>
 			<div className={`${style.userInfoHeaderContainer}`}>

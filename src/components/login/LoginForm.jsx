@@ -5,7 +5,6 @@ import Input from 'UIcomponents/input/Input'
 import { Link, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { checkPermission, login } from 'api/auth'
-import Swal from 'sweetalert2'
 import { Toast } from 'heplers/helpers'
 
 function LoginForm() {
@@ -14,7 +13,8 @@ function LoginForm() {
 	const navigate = useNavigate()
 
 	const handleLoginClick = async () => {
-		if (account.length === 0) {
+    try {
+      if (account.length === 0) {
 			return
 		}
 		if (password.length === 0) {
@@ -42,6 +42,11 @@ function LoginForm() {
 			icon: 'error',
 			showConfirmButton: false,
 		})
+
+    } catch (error) {
+      console.error(error)
+    }
+		
 	}
 
 	const handleAccountChange = (e) => {

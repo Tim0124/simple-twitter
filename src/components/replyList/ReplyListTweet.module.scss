@@ -69,7 +69,7 @@
 
 	.replyTweetsQuantity {
 		display: flex;
-		gap: 2px;
+		gap: 5px;
 		.replyQuantity {
 			font-weight: 700;
 			line-height: 25px;
@@ -77,7 +77,7 @@
 	}
 	.replyTweetsLikeQuantity {
 		display: flex;
-		gap: 2px;
+		gap: 5px;
 		.replyLikeQuantity {
 			font-weight: 700;
 			line-height: 25px;
@@ -128,19 +128,52 @@
 
 			.replyTweetsButtonItem {
 				width: 64px;
+				height: 40px;
 			}
 		}
 	}
 }
 
-.replyTweetsAvatar {
+.replyTweetsLogo {
 	width: 50px;
 	height: 50px;
+	position: relative;
 	border-radius: 50%;
+	overflow: hidden;
+}
+
+.replyTweetsImg {
+	display: block;
+	position: relative;
+	height: 100%;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.replyTweetsAvatarItem {
+	width: 50px;
+	height: 50px;
+	position: relative;
+	border-radius: 50%;
+	overflow: hidden;
+	.replyTweetsAvatar {
+		display: block;
+	position: relative;
+	height: 100%;
+	left: 50%;
+	transform: translateX(-50%);
+	}
 }
 
 @media screen and (min-width: 992px) {
 	.replyTweetsForm {
 		display: none;
+	}
+	.replyTweetsQuantityGroup {
+		padding: 16px 0;
+	}
+	.replyTweetsIconGroup {
+		padding: 16px 0;
+		gap: 110px;
 	}
 }

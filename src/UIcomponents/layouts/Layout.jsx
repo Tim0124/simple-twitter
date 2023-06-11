@@ -5,14 +5,14 @@ import Sidebar from './Sidebar'
 import style from './Layout.module.scss'
 import ModalPostTweet from '../modal/ModalPostTweet'
 import ModalUserInfo from '../../components/modal/ModalUserInfo'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import ModalReplyTweet from 'UIcomponents/modal/ModalReplyTweet'
+import { ModalHiddenContext, ReplyTweetModalContext, TweetModalContext } from 'context/ModalContext'
 
 export default function Layout() {
-	const [showModal, setShowModal] = useState(false)
 
-	const handleClickModal = () => {
-		setShowModal(true)
-	}
+  const useTweetModal = useContext(TweetModalContext)
+  const useReplyModal = useContext(ReplyTweetModalContext)
 
 	return (
 		<div className={`${style.layoutContainer}`}>
@@ -25,13 +25,7 @@ export default function Layout() {
 			<div className={`${style.layoutPopularContainer}`}>
 				<PopularUserList />
 			</div>
-			<div className={`${style.layoutModalContainer}`}>
-				<div className={`${style.modalBackground}`}></div>
-				<div className={`${style.modalPostTweet}`}>
-					<ModalUserInfo />
-					<ModalPostTweet />
-				</div>
-			</div>
+      {useTweetModal && <ModalPostTweet />}
 		</div>
 	)
 }

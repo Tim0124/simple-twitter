@@ -3,11 +3,16 @@ import style from './AdminSidebar.module.scss'
 import { ReactComponent as Logo } from '../../assets/logo.svg'
 import Button from 'UIcomponents/buttons/Button'
 import { Link, useNavigate } from 'react-router-dom'
+import { Toast } from 'heplers/helpers'
 
 export default function AdminSidebar() {
 	const navigate = useNavigate()
 	const handleClick = () => {
 		localStorage.removeItem('authToken')
+		Toast.fire({
+			title:'以登出',
+			icon:'info',
+		})
 		console.log(localStorage.getItem('authToken'))
 		navigate('/admin')
 	}

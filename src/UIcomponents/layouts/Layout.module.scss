@@ -29,17 +29,18 @@
 		padding-left: 23px;
 	}
 
-	.layoutMainContainer {
-		flex: 1;
-		margin: 0 25px;
-		border: 1px solid #e6ecf0;
-	}
+	
 
 	.layoutPopularContainer {
 		display: block;
 		width: 273px;
 		padding-top: 16px;
 		margin-right: 23px;
+	}
+	.layoutMainContainer {
+		flex: 1;
+		margin: 0 25px;
+		border: 1px solid #e6ecf0;
 	}
 	.modalPostTweet {
 		height: 300px;

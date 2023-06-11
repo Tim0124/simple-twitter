@@ -6,7 +6,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useContext, useEffect, useState } from 'react'
 import { adminLogin } from 'api/auth'
 import Swal from 'sweetalert2'
-import { AuthContext } from 'context/AuthContent'
+import { AuthContext } from 'context/AuthContext'
 import authorization from 'api/authorization'
 
 export default function AdminForm({

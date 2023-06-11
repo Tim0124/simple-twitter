@@ -15,7 +15,8 @@
 }
 
 .iconUnTweet {
-	content: url('../../assets//untweet.svg');
+	content: url('../../assets/untweet.svg');
+	display: none;
 }
 
 .iconLoginOut {
@@ -24,7 +25,15 @@
 }
 
 .actionHome {
-	content: url('../../assets//checkhome.svg');
+	content: url('../../assets/checkhome.svg');
+}
+
+.actionUser {
+	content: url('../../assets/orangeuser.svg');
+}
+
+.actionSetting {
+	content: url('../../assets/orangesetting.svg')
 }
 
 .itemTitle {
@@ -62,6 +71,15 @@
 	}
 	.custom {
 		display: none;
+	}
+	.iconUnTweet {
+		display: block;
+	}
+	.iconName {
+		color: #000000;
+	}
+	.onName {
+		color: #ff6600;
 	}
 }
 

@@ -1,9 +1,10 @@
 import Button from 'UIcomponents/buttons/Button'
 import Input from '../../UIcomponents/input/Input'
 import style from './SettingForm.module.scss'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import Sidebar from 'UIcomponents/layouts/Sidebar'
-import { useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
+import { ChangeStepContext } from 'context/SideBarContext'
 
 export default function Register() {
 	const [account, setAccount] = useState('')
@@ -11,6 +12,15 @@ export default function Register() {
 	const [password, setPassword] = useState('')
 	const [email, setEmail] = useState('')
 	const [check, setCheck] = useState('')
+	const {pathname} = useLocation()
+	console.log(pathname)
+	const handleChangeStep = useContext(ChangeStepContext)
+	
+	useEffect(() => {
+		if(pathname === '/setting'){
+			handleChangeStep(3)
+		}
+	},[])
 
 	const handleAccountChange = (e) => {
 		setAccount(e.target.value)

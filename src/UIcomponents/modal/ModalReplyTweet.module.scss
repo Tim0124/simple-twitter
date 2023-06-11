@@ -1,5 +1,27 @@
 @use '../../styles/variable.module' as var;
 
+.modalPostTweet {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	width: 100vw;
+	background-color: #fff;
+	z-index: 3;
+}
+
+.replyTweetContainer {
+	display: none;
+}
+
+.postTweetContainer {
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	width: 100%;
+}
+
 .postTweetContainer {
 	display: flex;
 	flex-direction: column;
@@ -108,6 +130,29 @@
 }
 
 @media screen and (min-width: 992px) {
+	.layoutMainContainer {
+		flex: 1;
+		margin: 0 25px;
+		border: 1px solid #e6ecf0;
+	}
+	.modalPostTweet {
+		height: 450px;
+		width: 634px;
+		border-radius: 14px;
+		top: 56px;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+	.modalBackground {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100vh;
+		width: 100vw;
+		background-color: #787878;
+		opacity: 0.7;
+	}
+
 	.titleArrow {
 		display: none;
 	}
@@ -126,6 +171,8 @@
 	}
 	.footerButton {
 		display: block;
+		width: 66px;
+		height: 38px;
 		margin: 12px 24px 13px;
 	}
 

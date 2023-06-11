@@ -21,7 +21,7 @@ export default function AdminTweets() {
 				showCancelButton: true,
 				confirmButtonColor: '#3085d6',
 				cancelButtonColor: '#d33',
-				confirmButtonText: 'Sure!',
+				confirmButtonText: 'Sure',
 			}).then((result) => {
 				if (result.isConfirmed) {
 					Swal.fire('刪除成功!', '推文已刪除', 'success')

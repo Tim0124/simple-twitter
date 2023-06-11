@@ -12,7 +12,13 @@ export default function ReplyListTweet({
 	likeQuantity,
 	time,
 	date,
+	onShowReplyModal
 }) {
+	// const dateObj = new Date(date) 
+	// const year = dateObj.getFullYear()
+	// const month = dateObj.getMonth() + 1
+	// const day = dateObj.getDay()
+	// const formatteDate = `${year}年${month}月${day}日`
 	return (
 		<div className={`${style.replyTweetsContainer}`}>
 			<div className={`${style.replyTweetsList}`}>
@@ -22,9 +28,7 @@ export default function ReplyListTweet({
 							<img
 								src={avatar}
 								className={`${style.replyTweetsImg}`}
-								alt=''
-								width='50px'
-								heigh='50px'
+								alt={account}
 							/>
 						</div>
 						<div className={`${style.replyTweetsNameGroup}`}>
@@ -37,18 +41,9 @@ export default function ReplyListTweet({
 						</div>
 					</div>
 					<div className={`${style.replyTweetsContent}`}>
-						<p>
-							Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis
-							ullamco cillum dolor. Voluptate exercitation incididunt aliquip
-							deserunt reprehenderit elit laborum.
-						</p>
+						<p>{content}</p>
 					</div>
 					<div className={`${style.replyTweetsCreateGroup}`}>
-						<div className={`${style.replyTweetsTimeItem}`}>
-							<p className={`${style.replyTweetsTimeText}`}>上午</p>
-							<p className={`${style.replyTweetsTime}`}>{time}</p>
-						</div>
-						<div className={`${style.replyTweetsDotItem}`}>・</div>
 						<div className={`${style.replyTweetsDateItem}`}>
 							<p className={`${style.replyTweetsDate}`}>{date}</p>
 						</div>
@@ -64,7 +59,7 @@ export default function ReplyListTweet({
 						</div>
 					</div>
 					<div className={`${style.replyTweetsIconGroup}`}>
-						<div className={`${style.replyTweetsIcon}`}>
+						<div className={`${style.replyTweetsIcon}`} onClick={onShowReplyModal}>
 							<Message width='19px' height='19px' />
 						</div>
 						<div className={`${style.replyTweetsLikeIcon}`}>
@@ -78,8 +73,8 @@ export default function ReplyListTweet({
 					<div className={`${style.replyTweetsInputGroup}`}>
 						<div className={`${style.replyTweetsAvatarItem}`}>
 							<img
-								src='https://picsum.photos/300/300?text=82'
-								alt=''
+								src={avatar}
+								alt={account}
 								className={`${style.replyTweetsAvatar}`}
 							/>
 						</div>

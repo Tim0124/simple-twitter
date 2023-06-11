@@ -1,8 +1,11 @@
 import style from './MainTweetsContent.module.scss'
 import { ReactComponent as Like } from '../../assets/unlike.svg'
 import { ReactComponent as Message } from '../../assets/message.svg'
+import { Link } from 'react-router-dom'
 
 export default function MainTweetsContent({
+	tweetId,
+	userId,
 	name,
 	avatar,
 	account,
@@ -10,6 +13,8 @@ export default function MainTweetsContent({
 	time,
 	quantity,
 	likeQuantity,
+	onReplyClick,
+	onTweetsClick
 }) {
 	return (
 		<div className={`${style.mainTweetsContainer}`}>
@@ -19,8 +24,6 @@ export default function MainTweetsContent({
 						src={avatar}
 						className={`${style.mainTweetsImg}`}
 						alt=''
-						width='50px'
-						heigh='50px'
 					/>
 				</div>
 				<div className={`${style.mainTweetsInfo}`}>
@@ -34,10 +37,12 @@ export default function MainTweetsContent({
 							</div>
 						</div>
 					</div>
-					<div className={`${style.mainTweetsContent}`}>{content}</div>
+					<Link to={`/reply/${tweetId}`} >
+						<div className={`${style.mainTweetsContent}`}>{content}</div>
+					</Link>
 					<div className={`${style.mainTweetsQuantityGroup}`}>
-						<div className={`${style.mainTweetsQuantity}`}>
-							<Message width='16px' height='16px' />
+						<div className={`${style.mainTweetsQuantity}`} >
+							<Message width='16px' height='16px'/>
 							<p>{quantity}</p>
 						</div>
 						<div className={`${style.mainTweetsLikeQuantity}`}>

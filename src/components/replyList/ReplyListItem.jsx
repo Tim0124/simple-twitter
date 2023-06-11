@@ -1,12 +1,13 @@
 import style from './ReplyListItem.module.scss'
 
 export default function ReplyListItem({
-	name,
+	user,
 	account,
 	time,
-	content,
+	comment,
 	avatar,
 }) {
+
 	return (
 		<div className={`${style.replyListItemContainer}`}>
 			<div className={`${style.replyListItemList}`}>
@@ -17,18 +18,17 @@ export default function ReplyListItem({
 					<div className={`${style.replyListItemSecInfo}`}>
 						<div className={`${style.replyListItemNameGroup}`}>
 							<div className={`${style.replyListItemName}`}>
-								<p>{name}</p>
+								<p>{user}</p>
 							</div>
 							<div className={`${style.replyListItemSmallAccount}`}>
 								<div className={`${style.replyListItemAccount}`}>
-									<p>{account}</p>
+									<p>@{account}</p>
 								</div>
 								<div className={`${style.replyListItemdot}`}>
 									<p>・</p>
 								</div>
 								<div className={`${style.replyListItemTimeGroup}`}>
 									<p className={`${style.replyListItemTime}`}>{time}</p>
-									<p className={`${style.replyListItemTimeText}`}>小時</p>
 								</div>
 							</div>
 						</div>
@@ -38,7 +38,7 @@ export default function ReplyListItem({
 						<p className={`${style.replyListItemAccount}`}>{account}</p>
 					</div>
 					<div className={`${style.replyListItemContentGroup}`}>
-						<p className={`${style.replyListItemContentItem}`}>{content}</p>
+						<p className={`${style.replyListItemContentItem}`}>{comment}</p>
 					</div>
 				</div>
 			</div>
