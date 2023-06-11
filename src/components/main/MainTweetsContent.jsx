@@ -1,10 +1,11 @@
 import style from './MainTweetsContent.module.scss'
-import { ReactComponent as Like } from '../../assets/unlike.svg'
+import { ReactComponent as Dislike } from '../../assets/unlike.svg'
+import { ReactComponent as Like } from '../../assets/redlike.svg'
 import { ReactComponent as Message } from '../../assets/message.svg'
-import { Link } from 'react-router-dom'
+import { useState } from 'react'
 
 export default function MainTweetsContent({
-	tweetId,
+  tweetId,
 	userId,
 	name,
 	avatar,
@@ -13,9 +14,21 @@ export default function MainTweetsContent({
 	time,
 	quantity,
 	likeQuantity,
+  isLike, 
+  isLikeQuantity,
 	onReplyClick,
-	onTweetsClick,
-}) {
+	onTweetsClick,) {
+  const [like, setLike] = useState(isLike);
+  const [likeQuantity, setLikeQuantity] = useState(isLikeQuantity);
+
+  const handleLikeClick = () => {
+    setLike(!like);
+    if (!like) {
+      setLikeQuantity(prevQuantity => prevQuantity + 1);
+    } else {
+      setLikeQuantity(prevQuantity => prevQuantity - 1);
+    }
+  };
 	return (
 		<div className={`${style.mainTweetsContainer}`}>
 			<div className={`${style.mainTweetsList}`}>
@@ -42,8 +55,10 @@ export default function MainTweetsContent({
 							<p>{quantity}</p>
 						</div>
 						<div className={`${style.mainTweetsLikeQuantity}`}>
-							<Like width='16px' height='16px' />
-							<p>{likeQuantity}</p>
+							{like === true ? 
+                <Like width='16px' height='16px' onClick={handleLikeClick} /> :
+                <Dislike width='16px' height='16px' onClick={handleLikeClick}/> }
+              <p>{likeQuantity}</p>
 						</div>
 					</div>
 				</div>

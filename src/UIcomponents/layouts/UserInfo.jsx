@@ -2,6 +2,8 @@ import style from './UserInfo.module.scss'
 import Button from 'UIcomponents/buttons/Button'
 import UserInfoHeader from './UserInfoHeader'
 import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import followingAPI from 'api/followingAPI'
 
 const data = [
 	{

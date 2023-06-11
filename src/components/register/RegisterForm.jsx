@@ -2,7 +2,7 @@ import Button from 'UIcomponents/buttons/Button'
 import Input from '../../UIcomponents/input/Input'
 import { ReactComponent as Logo } from '../../assets/logo.svg'
 import style from './RegisterForm.module.scss'
-import { register } from 'api/auth'
+import { checkPermission, register } from 'api/auth'
 import Swal from 'sweetalert2'
 import { Link, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
@@ -74,21 +74,6 @@ export default function Register() {
 	const handleCheckPasswordChange = (e) => {
 		setCheckPassword(e.target.value)
 	}
-
-	// useEffect(() => {
-	//   const checkTokenIsVaild = async () => {
-	//     const authToken = localStorage.getItem('authToken');
-
-	//     if(!authToken){
-	//       return
-	//     }
-	//     const result = await checkPassword(authToken)
-	//     if(result){
-	//       navigate('/home')
-	//     }
-	//   }
-	//   checkTokenIsVaild()
-	// }, [navigate])
 
 	return (
 		<div className={`${style.registerWrapper}`}>

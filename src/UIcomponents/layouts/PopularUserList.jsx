@@ -1,89 +1,32 @@
 import PopularUser from './PopularUser'
 import style from './PopularUserList.module.scss'
 import { ReactComponent as Logo } from '../../assets/logo.svg'
-
-export const data = [
-	{
-		id: '1',
-		name: 'Pizza Hut1',
-		avatar: 'https://picsum.photos/300/300?text=1',
-		account: `@Pizza Hut1`,
-		isFollow: true,
-	},
-	{
-		id: '2',
-		name: 'Pizza Hut2',
-		avatar: 'https://picsum.photos/300/300?text=2',
-		account: `@Pizza Hut2`,
-		isFollow: true,
-	},
-	{
-		id: '3',
-		name: 'Pizza Hut2',
-		avatar: 'https://picsum.photos/300/300?text=3',
-		account: `@Pizza Hut2`,
-		isFollow: true,
-	},
-	{
-		id: '4',
-		name: 'Pizza Hut2',
-		avatar: 'https://picsum.photos/300/300?text=15',
-		account: `@Pizza Hut2`,
-		isFollow: false,
-	},
-	{
-		id: '5',
-		name: 'Pizza Hut12345678',
-		avatar: 'https://picsum.photos/300/300?text=16',
-		account: `@Pizza Hut2`,
-		isFollow: false,
-	},
-	{
-		id: '6',
-		name: 'Pizza Hut2',
-		avatar: 'https://picsum.photos/300/300?text=11',
-		account: `@Pizza Hut2`,
-		isFollow: true,
-	},
-	{
-		id: '7',
-		name: 'Pizza Hut2',
-		avatar: 'https://picsum.photos/300/300?text=1',
-		account: `@Pizza Hut2`,
-		isFollow: true,
-	},
-	{
-		id: '8',
-		name: 'Pizza Hut2',
-		avatar: 'https://picsum.photos/300/300?text=12',
-		account: `@Pizza Hut2`,
-		isFollow: false,
-	},
-	{
-		id: '9',
-		name: 'Pizza Hut2',
-		avatar: 'https://picsum.photos/300/300?text=1',
-		account: `@Pizza Hut2`,
-		isFollow: false,
-	},
-	{
-		id: '10',
-		name: 'Pizza Hut2',
-		avatar: 'https://picsum.photos/300/300?text=81',
-		account: `@Pizza Hut2`,
-		isFollow: false,
-	},
-]
+import followingAPI from 'api/followingAPI'
+import { useEffect, useState } from 'react'
 
 export default function PopularUserList() {
-	return (
-		<div className={`${style.popularUserListContainer}`}>
-			<h4 className={`${style.popularUserListHeader}`}>推薦跟隨</h4>
-			<div className={`${style.popularUserList}`}>
-				{data.map((data) => (
-					<PopularUser key={data.id} {...data} />
-				))}
-			</div>
-		</div>
-	)
+  const [followers, setFollowers] = useState([])
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const responce = await followingAPI.getTopFollower()
+        const followerData = responce.data
+        setFollowers(followerData)
+      } catch (error) {
+        console.log('Failed to follower:', error)
+      }
+    })();
+  }, [])
+
+  return (
+    <div className={`${style.popularUserListContainer}`}>
+      <h4 className={`${style.popularUserListHeader}`}>推薦跟隨</h4>
+      <div className={`${style.popularUserList}`}>
+        {followers.map((follower) => (
+          <PopularUser key={follower.id} {...follower}/>
+        ))}
+      </div>
+    </div>
+  )
 }
