@@ -12,15 +12,15 @@ export default function Register() {
 	const [password, setPassword] = useState('')
 	const [email, setEmail] = useState('')
 	const [check, setCheck] = useState('')
-	const {pathname} = useLocation()
+	const { pathname } = useLocation()
 	console.log(pathname)
 	const handleChangeStep = useContext(ChangeStepContext)
-	
+
 	useEffect(() => {
-		if(pathname === '/setting'){
+		if (pathname === '/setting') {
 			handleChangeStep(3)
 		}
-	},[])
+	}, [])
 
 	const handleAccountChange = (e) => {
 		setAccount(e.target.value)

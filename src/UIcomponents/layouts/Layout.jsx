@@ -7,12 +7,15 @@ import ModalPostTweet from '../modal/ModalPostTweet'
 import ModalUserInfo from '../../components/modal/ModalUserInfo'
 import { useContext, useState } from 'react'
 import ModalReplyTweet from 'UIcomponents/modal/ModalReplyTweet'
-import { ModalHiddenContext, ReplyTweetModalContext, TweetModalContext } from 'context/ModalContext'
+import {
+	ModalHiddenContext,
+	ReplyTweetModalContext,
+	TweetModalContext,
+} from 'context/ModalContext'
 
 export default function Layout() {
-
-  const useTweetModal = useContext(TweetModalContext)
-  const useReplyModal = useContext(ReplyTweetModalContext)
+	const useTweetModal = useContext(TweetModalContext)
+	const useReplyModal = useContext(ReplyTweetModalContext)
 
 	return (
 		<div className={`${style.layoutContainer}`}>
@@ -25,7 +28,7 @@ export default function Layout() {
 			<div className={`${style.layoutPopularContainer}`}>
 				<PopularUserList />
 			</div>
-      {useTweetModal && <ModalPostTweet />}
+			{useTweetModal && <ModalPostTweet />}
 		</div>
 	)
 }

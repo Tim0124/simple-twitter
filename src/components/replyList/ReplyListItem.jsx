@@ -7,7 +7,6 @@ export default function ReplyListItem({
 	comment,
 	avatar,
 }) {
-
 	return (
 		<div className={`${style.replyListItemContainer}`}>
 			<div className={`${style.replyListItemList}`}>

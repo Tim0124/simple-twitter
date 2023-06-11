@@ -14,17 +14,13 @@ export default function MainTweetsContent({
 	quantity,
 	likeQuantity,
 	onReplyClick,
-	onTweetsClick
+	onTweetsClick,
 }) {
 	return (
 		<div className={`${style.mainTweetsContainer}`}>
 			<div className={`${style.mainTweetsList}`}>
 				<div className={`${style.mainTweetsLogo}`}>
-					<img
-						src={avatar}
-						className={`${style.mainTweetsImg}`}
-						alt=''
-					/>
+					<img src={avatar} className={`${style.mainTweetsImg}`} alt='' />
 				</div>
 				<div className={`${style.mainTweetsInfo}`}>
 					<div className={`${style.mainTweetsSecInfo}`}>
@@ -37,12 +33,12 @@ export default function MainTweetsContent({
 							</div>
 						</div>
 					</div>
-					<Link to={`/reply/${tweetId}`} >
+					<Link to={`/reply/${tweetId}`}>
 						<div className={`${style.mainTweetsContent}`}>{content}</div>
 					</Link>
 					<div className={`${style.mainTweetsQuantityGroup}`}>
-						<div className={`${style.mainTweetsQuantity}`} >
-							<Message width='16px' height='16px'/>
+						<div className={`${style.mainTweetsQuantity}`}>
+							<Message width='16px' height='16px' />
 							<p>{quantity}</p>
 						</div>
 						<div className={`${style.mainTweetsLikeQuantity}`}>

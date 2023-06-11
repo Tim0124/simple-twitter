@@ -8,7 +8,10 @@ import Layout from 'UIcomponents/layouts/Layout'
 import MainContent from './MainContent'
 import { Tweets } from '../../api/allAPI'
 import MainHeader from './MainHeader'
-import { ReplyTweetModalContext, ShowReplyModalContext } from 'context/ModalContext'
+import {
+	ReplyTweetModalContext,
+	ShowReplyModalContext,
+} from 'context/ModalContext'
 import ModalReplyTweet from 'UIcomponents/modal/ModalReplyTweet'
 import tweetAPI from 'api/tweetAPI'
 import ReplyList from 'components/replyList/ReplyList'
@@ -17,26 +20,26 @@ import { ChangeStepContext } from 'context/SideBarContext'
 export default function MainTweets({ onTweetClick }) {
 	const navigate = useNavigate()
 	const [tweets, setTweets] = useState([])
-  const useModalClick = useContext(ShowReplyModalContext)
-  const [isPostText, setIsPostText] = useState('')
-  const [isDisabled, setIsDisable] = useState(true)
-	const {pathname} = useLocation()
+	const useModalClick = useContext(ShowReplyModalContext)
+	const [isPostText, setIsPostText] = useState('')
+	const [isDisabled, setIsDisable] = useState(true)
+	const { pathname } = useLocation()
 	const handleChangeStep = useContext(ChangeStepContext)
-	
+
 	useEffect(() => {
 		console.log(handleChangeStep)
-		if(pathname === '/home'){
+		if (pathname === '/home') {
 			handleChangeStep(1)
 		}
-	},[])
+	}, [])
 
-  const handleButtonChange = (e) => {
-    const text = e.target.value
-    setIsPostText(text)
-    console.log(text.length)
-  }
+	const handleButtonChange = (e) => {
+		const text = e.target.value
+		setIsPostText(text)
+		console.log(text.length)
+	}
 
-	const handleTweetsClick = ({id, userId}) => {
+	const handleTweetsClick = ({ id, userId }) => {
 		console.log(id)
 		console.log(userId)
 		// tweetAPI.getCurrentTweetUser(userId).then((response) => {
@@ -51,10 +54,9 @@ export default function MainTweets({ onTweetClick }) {
 		// navigate('/reply')
 	}
 
-  useEffect(() => {
-    setIsDisable(isPostText.length === 0)
-  },[isPostText])
-
+	useEffect(() => {
+		setIsDisable(isPostText.length === 0)
+	}, [isPostText])
 
 	useEffect(() => {
 		;(async () => {
@@ -68,16 +70,18 @@ export default function MainTweets({ onTweetClick }) {
 		})()
 	}, [])
 
-	
-
 	return (
 		<div className={`${style.tweetsContainer}`}>
 			<header className={`${style.tweetsHeader}`}>
 				<MainHeader />
 			</header>
 			<div className={`${style.tweetPostArea}`}>
-				<MainContent onClick={onTweetClick} onDisabled={isDisabled} onButtonChange={handleButtonChange}
-        onPostText={isPostText}/>
+				<MainContent
+					onClick={onTweetClick}
+					onDisabled={isDisabled}
+					onButtonChange={handleButtonChange}
+					onPostText={isPostText}
+				/>
 			</div>
 			<main className={`${style.mainTweets}`}>
 				{tweets.map((data) => (
@@ -92,7 +96,7 @@ export default function MainTweets({ onTweetClick }) {
 						time={data.relativeTimeFromNow}
 						quantity={data.repliesCount}
 						likeQuantity={data.likesCount}
-            onReplyClick={useModalClick}
+						onReplyClick={useModalClick}
 						onTweetsClick={handleTweetsClick}
 					/>
 				))}

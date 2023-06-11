@@ -8,7 +8,7 @@ export default function SideItem({
 	page,
 	onClick,
 	onStepClick,
-	iconName
+	iconName,
 }) {
 	return (
 		<>

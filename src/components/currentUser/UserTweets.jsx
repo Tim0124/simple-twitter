@@ -137,15 +137,15 @@ const dummyData = [
 ]
 
 export default function UserTweets() {
-	const {pathname} = useLocation()
+	const { pathname } = useLocation()
 	console.log(pathname)
 	const handleChangeStep = useContext(ChangeStepContext)
-	
+
 	useEffect(() => {
-		if(pathname === '/user/self'){
+		if (pathname === '/user/self') {
 			handleChangeStep(2)
 		}
-	},[])
+	}, [])
 	return (
 		<div className={`${style.userTweetsContainer}`}>
 			<div className={`${style.userInfoHeaderContainer}`}>

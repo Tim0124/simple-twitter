@@ -4,7 +4,10 @@ import style from './ReplyList.module.scss'
 import { data } from 'UIcomponents/layouts/PopularUserList'
 import ReplyListItem from './ReplyListItem'
 import { useContext, useEffect, useState } from 'react'
-import { ReplyTweetModalContext, ShowReplyModalContext } from 'context/ModalContext'
+import {
+	ReplyTweetModalContext,
+	ShowReplyModalContext,
+} from 'context/ModalContext'
 import ModalReplyTweet from 'UIcomponents/modal/ModalReplyTweet'
 import { useParams } from 'react-router-dom'
 import tweetAPI from 'api/tweetAPI'
@@ -139,22 +142,22 @@ export default function ReplyList() {
 	const [currentTweet, setCurrentTweet] = useState([])
 	const [tweetReply, setTweetReply] = useState([])
 	const useReplyModal = useContext(ReplyTweetModalContext)
-	const tweetId =useParams().tweet_id
+	const tweetId = useParams().tweet_id
 	console.log(currentTweet)
 	useEffect(() => {
 		tweetAPI.getTweet(tweetId).then((response) => {
-			const {data} = response
+			const { data } = response
 			setCurrentTweet(data)
 		})
 		tweetAPI.getReplyTweet(tweetId).then((response) => {
-			const {data} = response
+			const { data } = response
 			console.log(data)
 			setTweetReply(data)
 		})
-	},[])
+	}, [])
 
 	return (
-		<div className={`${style.replyContainer}`} >
+		<div className={`${style.replyContainer}`}>
 			<ReplyListHeader />
 			<ReplyListTweet
 				avatar={currentTweet.User?.avatar}
@@ -168,18 +171,18 @@ export default function ReplyList() {
 			/>
 			<div className={`${style.replyListContent}`}>
 				{tweetReply.map((data) => (
-					<ReplyListItem 
-					key={data.id}
-					id={data.id}
-					account={data.tweet.User.account}
-					comment={data.comment}
-					time={data.relativeTimeFromNow}
-					avatar={data.User.avatar}
-					user={data.User.name}
+					<ReplyListItem
+						key={data.id}
+						id={data.id}
+						account={data.tweet.User.account}
+						comment={data.comment}
+						time={data.relativeTimeFromNow}
+						avatar={data.User.avatar}
+						user={data.User.name}
 					/>
 				))}
 			</div>
-			{useReplyModal && <ModalReplyTweet/>}
+			{useReplyModal && <ModalReplyTweet />}
 		</div>
 	)
 }

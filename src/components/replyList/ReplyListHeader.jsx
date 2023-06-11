@@ -9,9 +9,9 @@ export default function ReplyListHeader({ title, arrow }) {
 			<nav className={`${style.tweetsNavbar}`}>
 				<div className={`${style.navIconItem}`}>
 					<Link to='/home'>
-					<div className={`${style.navIcon}`}>
-						<Arrow />
-					</div>
+						<div className={`${style.navIcon}`}>
+							<Arrow />
+						</div>
 					</Link>
 				</div>
 				<div className={`${style.navTitleItem}`}>

@@ -4,16 +4,20 @@ import { ReactComponent as Logo } from '../../assets/logo.svg'
 import Button from 'UIcomponents/buttons/Button'
 import { Link, useNavigate } from 'react-router-dom'
 import { useContext } from 'react'
-import { ModalHiddenContext, ShowTweetModalContext, TweetModalContext } from 'context/ModalContext'
+import {
+	ModalHiddenContext,
+	ShowTweetModalContext,
+	TweetModalContext,
+} from 'context/ModalContext'
 import ModalPostTweet from 'UIcomponents/modal/ModalPostTweet'
 import { ChangeStepContext, StepContext } from 'context/SideBarContext'
 
 export default function Sidebar() {
 	const navigate = useNavigate()
 	const useModalClick = useContext(ShowTweetModalContext)
-  const useTweetModal = useContext(TweetModalContext)
+	const useTweetModal = useContext(TweetModalContext)
 	const useStep = useContext(StepContext)
-	const useChangeStep = useContext(ChangeStepContext) 
+	const useChangeStep = useContext(ChangeStepContext)
 	const step = useContext(StepContext)
 
 	const handleClick = () => {
@@ -32,7 +36,12 @@ export default function Sidebar() {
 							</Link>
 						</div>
 						<div className={`${style.iconGroup}`}>
-							<SideItem styleName={step === 1 ? 'actionHome' : 'iconHome'} itemName='首頁' page='home' iconName={step === 1 ? 'onName' : 'itemName'}/>
+							<SideItem
+								styleName={step === 1 ? 'actionHome' : 'iconHome'}
+								itemName='首頁'
+								page='home'
+								iconName={step === 1 ? 'onName' : 'itemName'}
+							/>
 							<SideItem
 								styleName='iconTweet'
 								itemName='推文'
@@ -40,16 +49,16 @@ export default function Sidebar() {
 								onClick={useModalClick}
 							/>
 							<SideItem
-								styleName={step === 2 ? "actionUser" : 'iconPerson'}
+								styleName={step === 2 ? 'actionUser' : 'iconPerson'}
 								itemName='個人資料'
 								page='user/self'
 								iconName={step === 2 ? 'onName' : 'itemName'}
 							/>
 							<SideItem
-								styleName={step === 3 ? "actionSetting" : 'iconSetting'}
+								styleName={step === 3 ? 'actionSetting' : 'iconSetting'}
 								itemName='設定'
 								page='setting'
-							  iconName={step === 3 ? 'onName' : 'itemName'}
+								iconName={step === 3 ? 'onName' : 'itemName'}
 							/>
 							<SideItem
 								styleName='iconUnTweet'
@@ -67,7 +76,6 @@ export default function Sidebar() {
 					</div>
 				</div>
 			</div>
-			
 		</div>
 	)
 }

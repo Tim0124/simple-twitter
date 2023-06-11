@@ -1,7 +1,12 @@
 import Button from 'UIcomponents/buttons/Button'
 import style from './MainContent.module.scss'
 
-export default function PostContent({ onTweetClick, onDisabled, onButtonChange, isPostText }) {
+export default function PostContent({
+	onTweetClick,
+	onDisabled,
+	onButtonChange,
+	isPostText,
+}) {
 	return (
 		<main className={`${style.postTweetContent}`}>
 			<div className={`${style.postTweetForm}`}>
@@ -15,16 +20,17 @@ export default function PostContent({ onTweetClick, onDisabled, onButtonChange, 
 					</div>
 					<div className={`${style.postTweetInputGroup}`}>
 						<div className={`${style.postTweetInput}`}>
-							<textarea className={`${style.postTweetTextArea}`}
-              type='text'
-              placeholder='有什麼新鮮事？'
-              onChange={onButtonChange}
-              value={isPostText}
-              ></textarea>
+							<textarea
+								className={`${style.postTweetTextArea}`}
+								type='text'
+								placeholder='有什麼新鮮事？'
+								onChange={onButtonChange}
+								value={isPostText}
+							></textarea>
 						</div>
 						<footer className={`${style.footerArea}`}>
-							<div className={`${style.footerButton}`} >
-								<Button text='推文' size='middle' onDisabled={onDisabled}/>
+							<div className={`${style.footerButton}`}>
+								<Button text='推文' size='middle' onDisabled={onDisabled} />
 							</div>
 						</footer>
 					</div>

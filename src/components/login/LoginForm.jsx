@@ -13,40 +13,38 @@ function LoginForm() {
 	const navigate = useNavigate()
 
 	const handleLoginClick = async () => {
-    try {
-      if (account.length === 0) {
-			return
-		}
-		if (password.length === 0) {
-			return
-		}
+		try {
+			if (account.length === 0) {
+				return
+			}
+			if (password.length === 0) {
+				return
+			}
 
-		const { success, token } = await login({
-			account,
-			password,
-		})
-		if (success) {
-			localStorage.setItem('authToken', token)
+			const { success, token } = await login({
+				account,
+				password,
+			})
+			if (success) {
+				localStorage.setItem('authToken', token)
+				Toast.fire({
+					title: '登入成功！',
+					timer: 2000,
+					icon: 'success',
+					showConfirmButton: false,
+				})
+				navigate('/home')
+				return
+			}
 			Toast.fire({
-				title: '登入成功！',
+				title: '登入失敗！',
 				timer: 2000,
-				icon: 'success',
+				icon: 'error',
 				showConfirmButton: false,
 			})
-			navigate('/home')
-			return
+		} catch (error) {
+			console.error(error)
 		}
-		Toast.fire({
-			title: '登入失敗！',
-			timer: 2000,
-			icon: 'error',
-			showConfirmButton: false,
-		})
-
-    } catch (error) {
-      console.error(error)
-    }
-		
 	}
 
 	const handleAccountChange = (e) => {

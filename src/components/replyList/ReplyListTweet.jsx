@@ -12,9 +12,9 @@ export default function ReplyListTweet({
 	likeQuantity,
 	time,
 	date,
-	onShowReplyModal
+	onShowReplyModal,
 }) {
-	// const dateObj = new Date(date) 
+	// const dateObj = new Date(date)
 	// const year = dateObj.getFullYear()
 	// const month = dateObj.getMonth() + 1
 	// const day = dateObj.getDay()
@@ -59,7 +59,10 @@ export default function ReplyListTweet({
 						</div>
 					</div>
 					<div className={`${style.replyTweetsIconGroup}`}>
-						<div className={`${style.replyTweetsIcon}`} onClick={onShowReplyModal}>
+						<div
+							className={`${style.replyTweetsIcon}`}
+							onClick={onShowReplyModal}
+						>
 							<Message width='19px' height='19px' />
 						</div>
 						<div className={`${style.replyTweetsLikeIcon}`}>

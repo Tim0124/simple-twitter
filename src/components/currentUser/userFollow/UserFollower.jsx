@@ -145,7 +145,6 @@ const dummyData = [
 ]
 
 export default function UserFollower() {
-	
 	return (
 		<div className={`${style.userFollowerContainer}`}>
 			<div className={`${style.userInfoHeaderContainer}`}>
