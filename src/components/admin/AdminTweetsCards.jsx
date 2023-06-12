@@ -11,13 +11,14 @@ export default function AdminTweetsCard({
 	like,
 	following,
 	follower,
+	backgroundImage,
 }) {
 	return (
 		<div className={`${style.adminTweetsCardContainer}`}>
 			<div className={`${style.adminTweetsCardWrapper}`}>
 				<div className={`${style.adminTweetsCardList}`}>
 					<img
-						src={background}
+						src={backgroundImage}
 						className={`${style.adminTweetsCardImg}`}
 						alt=''
 					/>

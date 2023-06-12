@@ -5,6 +5,7 @@ import style from './AdminUsers.module.scss'
 
 export default function AdminUsers() {
 	const [users, setUsers] = useState([])
+	console.log(users)
 
 	useEffect(() => {
 		userAPI.getAdminUsers().then((response) => {
@@ -31,6 +32,7 @@ export default function AdminUsers() {
 							like={user.likesCount}
 							following={user.followersCount}
 							follower={user.followingsCount}
+							backgroundImage={user.backgroundImage}
 						/>
 					))}
 				</div>

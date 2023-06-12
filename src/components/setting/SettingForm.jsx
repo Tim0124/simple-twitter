@@ -1,10 +1,11 @@
 import Button from 'UIcomponents/buttons/Button'
 import Input from '../../UIcomponents/input/Input'
 import style from './SettingForm.module.scss'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import Sidebar from 'UIcomponents/layouts/Sidebar'
 import { useContext, useEffect, useState } from 'react'
 import { ChangeStepContext } from 'context/SideBarContext'
+import { Toast } from 'heplers/helpers'
 
 export default function Register() {
 	const [account, setAccount] = useState('')
@@ -13,6 +14,7 @@ export default function Register() {
 	const [email, setEmail] = useState('')
 	const [check, setCheck] = useState('')
 	const { pathname } = useLocation()
+	const navigate = useNavigate()
 	console.log(pathname)
 	const handleChangeStep = useContext(ChangeStepContext)
 
@@ -40,6 +42,16 @@ export default function Register() {
 
 	const handleCheckPasswordChange = (e) => {
 		setCheck(e.target.value)
+	}
+
+	const handleClick = () => {
+		localStorage.removeItem('authToken')
+		Toast.fire({
+			title: '已登出',
+			icon: 'info',
+		})
+		console.log(localStorage.getItem('authToken'))
+		navigate('/login')
 	}
 
 	return (
@@ -87,12 +99,12 @@ export default function Register() {
 					</div>
 					<div className={`${style.settingButtonGroup}`}>
 						<div className={`${style.settingButton}`}>
-							<Button text='儲存' size='middle' />
+							<Button text='儲存' size='middle'/>
 						</div>
 						<div className={`${style.settingLoginout}`}>
-							<Link className={`${style.loginout}`}>
+							<div className={`${style.loginout}`} onClick={handleClick}>
 								<u>登出</u>
-							</Link>
+							</div>
 						</div>
 					</div>
 				</section>

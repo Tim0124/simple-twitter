@@ -10,7 +10,7 @@ export default function AdminSidebar() {
 	const handleClick = () => {
 		localStorage.removeItem('authToken')
 		Toast.fire({
-			title: '以登出',
+			title: '已登出',
 			icon: 'info',
 		})
 		console.log(localStorage.getItem('authToken'))
