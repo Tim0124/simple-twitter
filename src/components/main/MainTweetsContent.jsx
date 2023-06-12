@@ -3,9 +3,11 @@ import { ReactComponent as Dislike } from '../../assets/unlike.svg'
 import { ReactComponent as Like } from '../../assets/redlike.svg'
 import { ReactComponent as Message } from '../../assets/message.svg'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
+import likeAPI from 'api/likeAPI'
 
 export default function MainTweetsContent({
-  tweetId,
+	tweetId,
 	userId,
 	name,
 	avatar,
@@ -13,22 +15,26 @@ export default function MainTweetsContent({
 	content,
 	time,
 	quantity,
-	likeQuantity,
-  isLike, 
-  isLikeQuantity,
+	isLikeQuantity,
 	onReplyClick,
-	onTweetsClick,) {
-  const [like, setLike] = useState(isLike);
-  const [likeQuantity, setLikeQuantity] = useState(isLikeQuantity);
+	onTweetsClick,
+}) {
+	const [like, setLike] = useState()
+	const [likeQuantity, setLikeQuantity] = useState(isLikeQuantity)
 
-  const handleLikeClick = () => {
-    setLike(!like);
-    if (!like) {
-      setLikeQuantity(prevQuantity => prevQuantity + 1);
-    } else {
-      setLikeQuantity(prevQuantity => prevQuantity - 1);
-    }
-  };
+	const handleLikeClick = (tweetId) => {
+		setLike(!like)
+		if (!like) {
+			setLikeQuantity((prevQuantity) => prevQuantity + 1)
+
+			// likeAPI.getlike(tweetId).then((response) => {
+			// 	console.log(response)
+			// })
+		} else {
+			setLikeQuantity((prevQuantity) => prevQuantity - 1)
+		}
+	}
+
 	return (
 		<div className={`${style.mainTweetsContainer}`}>
 			<div className={`${style.mainTweetsList}`}>
@@ -55,10 +61,20 @@ export default function MainTweetsContent({
 							<p>{quantity}</p>
 						</div>
 						<div className={`${style.mainTweetsLikeQuantity}`}>
-							{like === true ? 
-                <Like width='16px' height='16px' onClick={handleLikeClick} /> :
-                <Dislike width='16px' height='16px' onClick={handleLikeClick}/> }
-              <p>{likeQuantity}</p>
+							{like === true ? (
+								<Like
+									width='16px'
+									height='16px'
+									onClick={() => handleLikeClick(tweetId)}
+								/>
+							) : (
+								<Dislike
+									width='16px'
+									height='16px'
+									onClick={() => handleLikeClick(tweetId)}
+								/>
+							)}
+							<p>{likeQuantity}</p>
 						</div>
 					</div>
 				</div>

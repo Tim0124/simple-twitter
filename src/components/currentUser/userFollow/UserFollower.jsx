@@ -20,128 +20,137 @@ const data = [
 ]
 
 const dummyData = [
-  {
-    id: '1',
-    name: 'Pizza Hut1',
-    avatar: 'https://picsum.photos/300/300?text=1',
-    content: 'Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor. Voluptate exercitation incididunt aliquip deserunt reprehenderit elit laborum.',
-    time: 3,
-    quantity: 20,
-    likeQuantity: 12,
-    isFollow: true,
-  },
-  {
-    id: '2',
-    name: 'Pizza Hut1',
-    avatar: 'https://picsum.photos/300/300?text=2',
-    content: 'Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor. Voluptate exercitation incididunt aliquip deserunt reprehenderit elit laborum.',
-    time: 1,
-    quantity: 20,
-    likeQuantity: 12,
-    isFollow: true,
-  },
-  {
-    id: '3',
-    name: 'Pizza Hut1',
-    avatar: 'https://picsum.photos/300/300?text=3',
-    content: 'Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor. Voluptate exercitation incididunt aliquip deserunt reprehenderit elit laborum.',
-    time: 2,
-    quantity: 20,
-    likeQuantity: 12,
-    isFollow: true,
-  },
-  {
-    id: '4',
-    name: 'Pizza Hut1',
-    avatar: 'https://picsum.photos/300/300?text=4',
-    content: 'Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor. Voluptate exercitation incididunt aliquip deserunt reprehenderit elit laborum.',
-    time: 2,
-    quantity: 20,
-    likeQuantity: 12,
-    isFollow: false,
-  },
-  {
-    id: '5',
-    name: 'Pizza Hut1',
-    avatar: 'https://picsum.photos/300/300?text=5',
-    content: 'Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor. Voluptate exercitation incididunt aliquip deserunt reprehenderit elit laborum.',
-    time: 2,
-    quantity: 20,
-    likeQuantity: 12,
-    isFollow: false,
-  },
-  {
-    id: '6',
-    name: 'Pizza Hut1',
-    avatar: 'https://picsum.photos/300/300?text=6',
-    content: 'Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor. Voluptate exercitation incididunt aliquip deserunt reprehenderit elit laborum.',
-    time: 2,
-    quantity: 20,
-    likeQuantity: 12,
-    isFollow: false,
-  },
-  {
-    id: '7',
-    name: 'Pizza Hut1',
-    avatar: 'https://picsum.photos/300/300?text=7',
-    content: 'Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor. Voluptate exercitation incididunt aliquip deserunt reprehenderit elit laborum.',
-    time: 2,
-    quantity: 20,
-    likeQuantity: 12,
-    isFollow: false,
-  },
-  {
-    id: '8',
-    name: 'Pizza Hut1',
-    avatar: 'https://picsum.photos/300/300?text=8',
-    content: 'Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor. Voluptate exercitation incididunt aliquip deserunt reprehenderit elit laborum.',
-    time: 2,
-    quantity: 20,
-    likeQuantity: 12,
-    isFollow: false,
-  },
-  {
-    id: '9',
-    name: 'Pizza Hut1',
-    avatar: 'https://picsum.photos/300/300?text=9',
-    content: 'Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor. Voluptate exercitation incididunt aliquip deserunt reprehenderit elit laborum.',
-    time: 2,
-    quantity: 20,
-    likeQuantity: 12,
-    isFollow: false,
-  },
-  {
-    id: '10',
-    name: 'Pizza Hut1',
-    avatar: 'https://picsum.photos/300/300?text=11',
-    content: 'Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor. Voluptate exercitation incididunt aliquip deserunt reprehenderit elit laborum.',
-    time: 2,
-    quantity: 20,
-    likeQuantity: 12,
-    isFollow: false,
-  },
+	{
+		id: '1',
+		name: 'Pizza Hut1',
+		avatar: 'https://picsum.photos/300/300?text=1',
+		content:
+			'Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor. Voluptate exercitation incididunt aliquip deserunt reprehenderit elit laborum.',
+		time: 3,
+		quantity: 20,
+		likeQuantity: 12,
+		isFollow: true,
+	},
+	{
+		id: '2',
+		name: 'Pizza Hut1',
+		avatar: 'https://picsum.photos/300/300?text=2',
+		content:
+			'Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor. Voluptate exercitation incididunt aliquip deserunt reprehenderit elit laborum.',
+		time: 1,
+		quantity: 20,
+		likeQuantity: 12,
+		isFollow: true,
+	},
+	{
+		id: '3',
+		name: 'Pizza Hut1',
+		avatar: 'https://picsum.photos/300/300?text=3',
+		content:
+			'Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor. Voluptate exercitation incididunt aliquip deserunt reprehenderit elit laborum.',
+		time: 2,
+		quantity: 20,
+		likeQuantity: 12,
+		isFollow: true,
+	},
+	{
+		id: '4',
+		name: 'Pizza Hut1',
+		avatar: 'https://picsum.photos/300/300?text=4',
+		content:
+			'Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor. Voluptate exercitation incididunt aliquip deserunt reprehenderit elit laborum.',
+		time: 2,
+		quantity: 20,
+		likeQuantity: 12,
+		isFollow: false,
+	},
+	{
+		id: '5',
+		name: 'Pizza Hut1',
+		avatar: 'https://picsum.photos/300/300?text=5',
+		content:
+			'Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor. Voluptate exercitation incididunt aliquip deserunt reprehenderit elit laborum.',
+		time: 2,
+		quantity: 20,
+		likeQuantity: 12,
+		isFollow: false,
+	},
+	{
+		id: '6',
+		name: 'Pizza Hut1',
+		avatar: 'https://picsum.photos/300/300?text=6',
+		content:
+			'Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor. Voluptate exercitation incididunt aliquip deserunt reprehenderit elit laborum.',
+		time: 2,
+		quantity: 20,
+		likeQuantity: 12,
+		isFollow: false,
+	},
+	{
+		id: '7',
+		name: 'Pizza Hut1',
+		avatar: 'https://picsum.photos/300/300?text=7',
+		content:
+			'Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor. Voluptate exercitation incididunt aliquip deserunt reprehenderit elit laborum.',
+		time: 2,
+		quantity: 20,
+		likeQuantity: 12,
+		isFollow: false,
+	},
+	{
+		id: '8',
+		name: 'Pizza Hut1',
+		avatar: 'https://picsum.photos/300/300?text=8',
+		content:
+			'Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor. Voluptate exercitation incididunt aliquip deserunt reprehenderit elit laborum.',
+		time: 2,
+		quantity: 20,
+		likeQuantity: 12,
+		isFollow: false,
+	},
+	{
+		id: '9',
+		name: 'Pizza Hut1',
+		avatar: 'https://picsum.photos/300/300?text=9',
+		content:
+			'Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor. Voluptate exercitation incididunt aliquip deserunt reprehenderit elit laborum.',
+		time: 2,
+		quantity: 20,
+		likeQuantity: 12,
+		isFollow: false,
+	},
+	{
+		id: '10',
+		name: 'Pizza Hut1',
+		avatar: 'https://picsum.photos/300/300?text=11',
+		content:
+			'Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor. Voluptate exercitation incididunt aliquip deserunt reprehenderit elit laborum.',
+		time: 2,
+		quantity: 20,
+		likeQuantity: 12,
+		isFollow: false,
+	},
 ]
 
-
 export default function UserFollower() {
-  return (
-    <div className={`${style.userFollowerContainer}`}>
-      <div className={`${style.userInfoHeaderContainer}`}>
-        <UserInfoHeader
-          name={data[0].name}
-          tweet={data[0].tweet}
-          page='/user/self'
-        />
-      </div>
-      <div className={`${style.userInfoContainer}`}>
-        <UserInfo />
-      </div>
-      <FollowTab />
-      <section className={`${style.userFollowerContent}`}>
-        {dummyData.map((data) => (
-          <UserFollowerContent key={data.id} {...data} />
-        ))}
-      </section>
-    </div>
-  )
+	return (
+		<div className={`${style.userFollowerContainer}`}>
+			<div className={`${style.userInfoHeaderContainer}`}>
+				<UserInfoHeader
+					name={data[0].name}
+					tweet={data[0].tweet}
+					page='/user/self'
+				/>
+			</div>
+			<div className={`${style.userInfoContainer}`}>
+				<UserInfo />
+			</div>
+			<FollowTab />
+			<section className={`${style.userFollowerContent}`}>
+				{dummyData.map((data) => (
+					<UserFollowerContent key={data.id} {...data} />
+				))}
+			</section>
+		</div>
+	)
 }

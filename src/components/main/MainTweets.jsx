@@ -8,7 +8,6 @@ import Layout from 'UIcomponents/layouts/Layout'
 import MainContent from './MainContent'
 import { getTweets } from '../../api/allAPI'
 import MainHeader from './MainHeader'
-import { useNavigate } from 'react-router-dom'
 import { checkPermission } from 'api/auth'
 import followingAPI from 'api/followingAPI'
 import {
@@ -29,32 +28,32 @@ export default function MainTweets({ onTweetClick }) {
 	const { pathname } = useLocation()
 	const handleChangeStep = useContext(ChangeStepContext)
 
-  useEffect(() => {
-    (async () => {
-      try {
-        const responce = await getTweets.get('/')
-        const tweetData = responce.data
-        setTweets(tweetData)
-      } catch (error) {
-        console.log('Failed to tweets:', error)
-      }
-    })();
-  }, [])
+	useEffect(() => {
+		;(async () => {
+			try {
+				const response = await getTweets.get('/')
+				const tweetData = response.data
+				setTweets(tweetData)
+			} catch (error) {
+				console.log('Failed to tweets:', error)
+			}
+		})()
+	}, [])
 
-  useEffect(() => {
-    const checkTokenIsValid = async () => {
-      const authToken = localStorage.getItem('authToken');
-      if (!authToken) {
-        navigate('/login');
-      }
-      const result = await checkPermission(authToken);
-      if (!result) {
-        navigate('/login');
-      }
-    };
+	useEffect(() => {
+		const checkTokenIsValid = async () => {
+			const authToken = localStorage.getItem('authToken')
+			if (!authToken) {
+				navigate('/login')
+			}
+			const result = await checkPermission(authToken)
+			if (!result) {
+				navigate('/login')
+			}
+		}
 
-    checkTokenIsValid();
-  }, [navigate]);
+		checkTokenIsValid()
+	}, [navigate])
 
 	useEffect(() => {
 		console.log(handleChangeStep)
@@ -88,18 +87,6 @@ export default function MainTweets({ onTweetClick }) {
 		setIsDisable(isPostText.length === 0)
 	}, [isPostText])
 
-	useEffect(() => {
-		;(async () => {
-			try {
-				const response = await Tweets.get('/')
-				const tweetData = response.data
-				setTweets(tweetData)
-			} catch (error) {
-				console.log('fail')
-			}
-		})()
-	}, [])
-
 	return (
 		<div className={`${style.tweetsContainer}`}>
 			<header className={`${style.tweetsHeader}`}>
@@ -125,7 +112,7 @@ export default function MainTweets({ onTweetClick }) {
 						content={data.description}
 						time={data.relativeTimeFromNow}
 						quantity={data.repliesCount}
-						likeQuantity={data.likesCount}
+						isLikeQuantity={data.likesCount}
 						onReplyClick={useModalClick}
 						onTweetsClick={handleTweetsClick}
 					/>

@@ -21,18 +21,21 @@ export const login = async ({ account, password }) => {
 }
 
 export const adminLogin = async ({ account, password }) => {
-  try {
-    const { data } = await axios.post(`${authURL}/adminSignin `, { account, password })
-    const { token } = data.data
+	try {
+		const { data } = await axios.post(`${authURL}/adminSignin `, {
+			account,
+			password,
+		})
+		const { token } = data.data
 
-    if (token) {
-      return { success: true, ...data.data }
-    }
-    return data.data
-  } catch (error) {
-    console.error('[Login Failed]', error)
-    return { success: false, error: error.message }
-  }
+		if (token) {
+			return { success: true, ...data.data }
+		}
+		return data.data
+	} catch (error) {
+		console.error('[Login Failed]', error)
+		return { success: false, error: error.message }
+	}
 }
 
 export const register = async ({
@@ -51,9 +54,9 @@ export const register = async ({
 			checkPassword,
 		})
 		const success = data.status === 'success'
-    if (success) {
-      return { success: true, ...data.data }
-    }
+		if (success) {
+			return { success: true, ...data.data }
+		}
 		return data
 	} catch (error) {
 		console.error('[Register Failed]', error)
@@ -62,15 +65,15 @@ export const register = async ({
 }
 
 export const checkPermission = async (token) => {
-  try {
-    const response = await axios.get(`${authURL}/tokenCheck`, {
-      headers: {
-        Authorization: 'Bearer ' + token,
-      }
-    })
+	try {
+		const response = await axios.get(`${authURL}/tokenCheck`, {
+			headers: {
+				Authorization: 'Bearer ' + token,
+			},
+		})
 
-    return response.data
-  } catch (error) {
-    console.error('[Check Permission Failed]:', error);
-  }
+		return response.data
+	} catch (error) {
+		console.error('[Check Permission Failed]:', error)
+	}
 }
