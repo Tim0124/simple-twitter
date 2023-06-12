@@ -4,6 +4,7 @@ import { ReactComponent as Like } from '../../assets/redlike.svg'
 import { ReactComponent as Message } from '../../assets/message.svg'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import likeAPI from 'api/likeAPI'
 
 export default function MainTweetsContent({
 	tweetId,
@@ -57,9 +58,17 @@ export default function MainTweetsContent({
 						</div>
 						<div className={`${style.mainTweetsLikeQuantity}`}>
 							{like === true ? (
-								<Like width='16px' height='16px' onClick={handleLikeClick} />
+								<Like
+									width='16px'
+									height='16px'
+									onClick={() => handleLikeClick(tweetId)}
+								/>
 							) : (
-								<Dislike width='16px' height='16px' onClick={handleLikeClick} />
+								<Dislike
+									width='16px'
+									height='16px'
+									onClick={() => handleLikeClick(tweetId)}
+								/>
 							)}
 							<p>{likeQuantity}</p>
 						</div>

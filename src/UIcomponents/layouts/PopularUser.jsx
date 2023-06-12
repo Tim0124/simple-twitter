@@ -4,21 +4,38 @@ import Button from '../../UIcomponents/buttons/Button'
 import { useState } from 'react'
 import followingAPI from 'api/followingAPI'
 
-export default function PopularUser({ id, name, avatar, account, isFollow }) {
-	const [follow, setFollow] = useState(isFollow)
+export default function PopularUser({
+	id,
+	name,
+	avatar,
+	account,
+	isUserFollowed,
+}) {
+	const [follow, setFollow] = useState(isUserFollowed)
 
 	const handleFollowClick = (id) => {
-		console.log(id)
-		followingAPI.getFollower(id).then((response) => {
-			console.log(response)
-		})
 		setFollow(!follow)
+		followingAPI
+			.getFollow(id)
+			.then((response) => {
+				console.log(response)
+			})
+			.catch((error) => {
+				console.error('Error:', error)
+			})
 	}
 
-	const handleFollowingClick = (id) => {
-		followingAPI.getUnFollowing(id).then((response) => {
-			console.log(response)
-		})
+	const handleUnFollowClick = (id) => {
+		setFollow(!follow)
+		followingAPI
+			.getUnFollow(id)
+			.then((response) => {
+				console.log(response)
+			})
+			.catch((error) => {
+				console.error('Error:', error)
+			})
+
 	}
 
 	return (
@@ -34,20 +51,20 @@ export default function PopularUser({ id, name, avatar, account, isFollow }) {
 					</div>
 				</div>
 				<div className={`${style.popularUserButton}`}>
-					{follow === true ? (
+					{follow ? (
 						<Button
 							size='middle'
 							text='正在跟隨'
-							onClick={handleFollowingClick}
 							id={id}
+							onClick={handleUnFollowClick}
 						/>
 					) : (
 						<div className={`${style.popularUserFollower}`}>
 							<Button
 								size='white-exsmall'
 								text='跟隨'
-								onClick={handleFollowClick}
 								id={id}
+								onClick={handleFollowClick}
 							/>
 						</div>
 					)}
