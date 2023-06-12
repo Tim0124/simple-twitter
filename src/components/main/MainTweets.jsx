@@ -96,18 +96,6 @@ export default function MainTweets({ onTweetClick }) {
 		setIsDisable(isPostText.length === 0)
 	}, [isPostText])
 
-	useEffect(() => {
-		;(async () => {
-			try {
-				const response = await tweets.get('/')
-				const tweetData = response.data
-				setTweets(tweetData)
-			} catch (error) {
-				console.log('fail')
-			}
-		})()
-	}, [])
-
 	return (
 		<div className={`${style.tweetsContainer}`}>
 			<header className={`${style.tweetsHeader}`}>

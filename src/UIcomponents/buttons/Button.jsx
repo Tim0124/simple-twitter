@@ -1,6 +1,6 @@
 import style from './Button.module.scss'
 
-export default function Button({ text, size, onClick, onDisabled, id }) {
+export default function Button({ id, text, size, onClick, onDisabled }) {
 	return (
 		<>
 			<button

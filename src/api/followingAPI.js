@@ -24,12 +24,10 @@ export default {
 			},
 		})
 	},
-	getFollower(id) {
+	getFollow(id) {
 		return apiHelper.post(
 			`/followships`,
-			{
-				id,
-			},
+			{ id },
 			{
 				headers: {
 					Authorization: `Bearer ${getToken()}`,
@@ -37,7 +35,7 @@ export default {
 			}
 		)
 	},
-	getUnFollowing(id) {
+	getUnFollow(id) {
 		return apiHelper.delete(`/followships/${id}`, {
 			headers: {
 				Authorization: `Bearer ${getToken()}`,
