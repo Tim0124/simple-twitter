@@ -5,7 +5,15 @@ import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import followingAPI from 'api/followingAPI'
 
-export default function UserInfo({name, account, avatar, backgroundImage, introduction, follower, following}) {
+export default function UserInfo({
+	name,
+	account,
+	avatar,
+	backgroundImage,
+	introduction,
+	follower,
+	following,
+}) {
 	return (
 		<div className={`${style.userInfoContainer}`}>
 			<div className={`${style.userInfoWrapper}`}>
@@ -48,17 +56,13 @@ export default function UserInfo({name, account, avatar, backgroundImage, introd
 						<div className={`${style.adminTweetsCardFollowGroup}`}>
 							<Link to='/user/self/following'>
 								<div className={`${style.adminTweetsCardFollowing}`}>
-									<p className={`${style.following}`}>
-										{following}&nbsp;個
-									</p>
+									<p className={`${style.following}`}>{following}&nbsp;個</p>
 									<p>跟隨中</p>
 								</div>
 							</Link>
 							<Link to='/user/self/follower'>
 								<div className={`${style.adminTweetsCardFollower}`}>
-									<p className={`${style.follower}`}>
-										{follower}&nbsp;位
-									</p>
+									<p className={`${style.follower}`}>{follower}&nbsp;位</p>
 									<p>跟隨者</p>
 								</div>
 							</Link>

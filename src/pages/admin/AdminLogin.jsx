@@ -68,7 +68,7 @@ export default function AdminLogin() {
 			navigate('/tweets')
 		}
 	}, [navigate])
-  
+
 	return (
 		<>
 			<AdminForm

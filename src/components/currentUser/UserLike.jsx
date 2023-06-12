@@ -139,7 +139,7 @@ const dummyData = [
 ]
 
 export default function UserLike() {
-	const {pathname} = useLocation()
+	const { pathname } = useLocation()
 	const handleChangeTab = useContext(ChangeTabContext)
 	const [likesTweet, setLikesTweet] = useState([])
 	console.log(likesTweet)
@@ -147,16 +147,16 @@ export default function UserLike() {
 	useEffect(() => {
 		const currentUserId = localStorage.getItem('userId')
 		tweetAPI.getCurrentUserLikes(currentUserId).then((response) => {
-			const {data} = response
+			const { data } = response
 			setLikesTweet(data)
 		})
-	},[])
+	}, [])
 
 	useEffect(() => {
-		if(pathname === '/user/self/like') {
+		if (pathname === '/user/self/like') {
 			handleChangeTab(3)
 		}
-	},[])
+	}, [])
 
 	return (
 		<div className={`${style.userTweetsContainer}`}>
@@ -171,7 +171,7 @@ export default function UserLike() {
 			{/* <UserTab /> */}
 			<section className={`${style.UserTweetsContent}`}>
 				{likesTweet.map((like) => (
-					<UserLikeContent 
+					<UserLikeContent
 						key={like.id}
 						name={like.User.name}
 						account={like.User.account}

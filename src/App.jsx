@@ -3,7 +3,7 @@ import './App.scss'
 import Router from 'Router'
 import { ModalContextProvider } from 'context/ModalContext'
 import { SideBarContextProvider } from 'context/SideBarContext'
-import {UserTabContextProvider} from 'context/UserTabContext'
+import { UserTabContextProvider } from 'context/UserTabContext'
 
 function App() {
 	return (
@@ -14,9 +14,8 @@ function App() {
 						<Router />
 					</div>
 				</ModalContextProvider>
-		</SideBarContextProvider>
+			</SideBarContextProvider>
 		</UserTabContextProvider>
-		
 	)
 }
 

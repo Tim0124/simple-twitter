@@ -20,16 +20,15 @@ import UserTab from 'UIcomponents/tabs/UserTab'
 export default function Layout() {
 	const useTweetModal = useContext(TweetModalContext)
 	const useReplyModal = useContext(ReplyTweetModalContext)
-  const [userInfo, setUserInfo] = useState([])
+	const [userInfo, setUserInfo] = useState([])
 
-  useEffect(() => {
+	useEffect(() => {
 		const currentUserId = localStorage.getItem('userId')
 		tweetAPI.getCurrentUserTweet(currentUserId).then((response) => {
-			const {data} = response
+			const { data } = response
 			setUserInfo(data)
 		})
-
-	},[])
+	}, [])
 
 	return (
 		<div className={`${style.userTweetsContainer}`}>
@@ -40,7 +39,7 @@ export default function Layout() {
 					page='/home'
 				/>
 			</div>
-      <UserInfo 
+			<UserInfo
 				key={userInfo.id}
 				name={userInfo.name}
 				account={userInfo.account}
@@ -50,7 +49,7 @@ export default function Layout() {
 				follower={userInfo.followersCount}
 				following={userInfo.followingsCount}
 			/>
-      <UserTab />
+			<UserTab />
 			<div className={`${style.UserLayoutMainContainer}`}>
 				<Outlet />
 			</div>

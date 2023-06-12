@@ -6,11 +6,7 @@ export default function MainHeader({ title, arrow, avatar }) {
 		<header className={`${style.tweetsHeaderContainer}`}>
 			<nav className={`${style.tweetsNavbar}`}>
 				<div className={`${style.navAvatarItem}`}>
-					<img
-						className={`${style.navAvatar}`}
-						src={avatar}
-						alt=''
-					/>
+					<img className={`${style.navAvatar}`} src={avatar} alt='' />
 				</div>
 				<div className={`${style.navTitle}`}>
 					<h1 className={`${style.titleText}`}>首頁</h1>

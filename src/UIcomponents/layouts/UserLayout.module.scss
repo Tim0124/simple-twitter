@@ -1,21 +1,19 @@
 @use '../../styles/variable.module' as var;
 
 .userTweetsContainer {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  padding-bottom: var.$sidebar-height;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	padding-bottom: var.$sidebar-height;
 }
 
 .UserLayoutMainContainer {
-  flex: 1;
-  overflow-y: scroll;
+	flex: 1;
+	overflow-y: scroll;
 }
-
 
 @media screen and (min-width: 992px) {
 	.userTweetsContainer {
-    padding-bottom:0;
-  }
+		padding-bottom: 0;
+	}
 }
-

@@ -6,7 +6,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 export default function MainTweetsContent({
-  tweetId,
+	tweetId,
 	userId,
 	name,
 	avatar,
@@ -14,21 +14,22 @@ export default function MainTweetsContent({
 	content,
 	time,
 	quantity,
-  isLike, 
-  isLikeQuantity,
+	isLike,
+	isLikeQuantity,
 	onReplyClick,
-	onTweetsClick,}){
-  const [like, setLike] = useState(isLike);
-  const [likeQuantity, setLikeQuantity] = useState(isLikeQuantity);
+	onTweetsClick,
+}) {
+	const [like, setLike] = useState(isLike)
+	const [likeQuantity, setLikeQuantity] = useState(isLikeQuantity)
 
-  const handleLikeClick = () => {
-    setLike(!like);
-    if (!like) {
-      setLikeQuantity(prevQuantity => prevQuantity + 1);
-    } else {
-      setLikeQuantity(prevQuantity => prevQuantity - 1);
-    }
-  };
+	const handleLikeClick = () => {
+		setLike(!like)
+		if (!like) {
+			setLikeQuantity((prevQuantity) => prevQuantity + 1)
+		} else {
+			setLikeQuantity((prevQuantity) => prevQuantity - 1)
+		}
+	}
 	return (
 		<div className={`${style.mainTweetsContainer}`}>
 			<div className={`${style.mainTweetsList}`}>
@@ -55,10 +56,12 @@ export default function MainTweetsContent({
 							<p>{quantity}</p>
 						</div>
 						<div className={`${style.mainTweetsLikeQuantity}`}>
-							{like === true ? 
-                <Like width='16px' height='16px' onClick={handleLikeClick} /> :
-                <Dislike width='16px' height='16px' onClick={handleLikeClick}/> }
-              <p>{likeQuantity}</p>
+							{like === true ? (
+								<Like width='16px' height='16px' onClick={handleLikeClick} />
+							) : (
+								<Dislike width='16px' height='16px' onClick={handleLikeClick} />
+							)}
+							<p>{likeQuantity}</p>
 						</div>
 					</div>
 				</div>

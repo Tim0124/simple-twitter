@@ -146,13 +146,13 @@ export default function UserReplyList() {
 	useEffect(() => {
 		const currentUserId = localStorage.getItem('userId')
 		tweetAPI.getCurrentUserReplies(currentUserId).then((response) => {
-			const {data} = response
+			const { data } = response
 			setReplies(data)
 		})
-	},[])
+	}, [])
 
 	useEffect(() => {
-		if(pathname === '/user/self/reply') {
+		if (pathname === '/user/self/reply') {
 			handleChangeTab(2)
 		}
 	}, [])
@@ -170,15 +170,15 @@ export default function UserReplyList() {
 			{/* <UserTab /> */}
 			<section className={`${style.userReplyContent}`}>
 				{replies.map((reply) => (
-					<UserReplyContent 
-						key={reply.id} 
+					<UserReplyContent
+						key={reply.id}
 						comment={reply.comment}
 						replyAccount={reply.tweetUser.account}
 						time={reply.relativeTimeFromNow}
 						name={reply.User.name}
 						avatar={reply.User.avatar}
 						account={reply.User.account}
-					 />
+					/>
 				))}
 			</section>
 		</div>

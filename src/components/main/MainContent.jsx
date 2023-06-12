@@ -6,18 +6,14 @@ export default function PostContent({
 	onDisabled,
 	onButtonChange,
 	isPostText,
-	avatar
+	avatar,
 }) {
 	return (
 		<main className={`${style.postTweetContent}`}>
 			<div className={`${style.postTweetForm}`}>
 				<div className={`${style.contentGroup}`}>
 					<div className={`${style.avatarItem}`}>
-						<img
-							src={avatar}
-							alt=''
-							className={`${style.avatar}`}
-						/>
+						<img src={avatar} alt='' className={`${style.avatar}`} />
 					</div>
 					<div className={`${style.postTweetInputGroup}`}>
 						<div className={`${style.postTweetInput}`}>

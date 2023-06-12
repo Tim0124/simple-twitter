@@ -147,21 +147,18 @@ export default function UserTweets() {
 	const [allTweets, setAllTweets] = useState([])
 	const handleChangeTab = useContext(ChangeTabContext)
 
-
-
 	useEffect(() => {
 		const currentUserId = localStorage.getItem('userId')
 		tweetAPI.getCurrentUserTweet(currentUserId).then((response) => {
-			const {data} = response
+			const { data } = response
 			setUserInfo(data)
 		})
 
 		tweetAPI.getCurrentUserAllTweet(currentUserId).then((response) => {
-			const {data} = response
+			const { data } = response
 			setAllTweets(data)
 		})
-
-	},[])
+	}, [])
 
 	useEffect(() => {
 		if (pathname === '/user/self') {
@@ -191,7 +188,7 @@ export default function UserTweets() {
 			{/* <UserTab /> */}
 			<section className={`${style.UserTweetsContent}`}>
 				{allTweets.map((tweet) => (
-					<UserTweetsContent 
+					<UserTweetsContent
 						key={tweet.id}
 						description={tweet.description}
 						relativeTime={tweet.relativeTimeFromNow}

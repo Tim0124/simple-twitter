@@ -29,41 +29,40 @@ export default function MainTweets({ onTweetClick }) {
 	const { pathname } = useLocation()
 	const handleChangeStep = useContext(ChangeStepContext)
 
-
 	useEffect(() => {
 		const id = localStorage.getItem('userId')
 		tweetAPI.getCurrentUserTweet(id).then((response) => {
-			const {data} = response
+			const { data } = response
 			setCurrentUser(data)
 		})
-	},[])
+	}, [])
 
-  useEffect(() => {
-    (async () => {
-      try {
-        const response = await getTweets.get('/')
-        const tweetData = response.data
-        setTweets(tweetData)
-      } catch (error) {
-        console.log('Failed to tweets:', error)
-      }
-    })();
-  }, [])
+	useEffect(() => {
+		;(async () => {
+			try {
+				const response = await getTweets.get('/')
+				const tweetData = response.data
+				setTweets(tweetData)
+			} catch (error) {
+				console.log('Failed to tweets:', error)
+			}
+		})()
+	}, [])
 
-  useEffect(() => {
-    const checkTokenIsValid = async () => {
-      const authToken = localStorage.getItem('authToken');
-      if (!authToken) {
-        navigate('/login');
-      }
-      const result = await checkPermission(authToken);
-      if (!result) {
-        navigate('/login');
-      }
-    };
+	useEffect(() => {
+		const checkTokenIsValid = async () => {
+			const authToken = localStorage.getItem('authToken')
+			if (!authToken) {
+				navigate('/login')
+			}
+			const result = await checkPermission(authToken)
+			if (!result) {
+				navigate('/login')
+			}
+		}
 
-    checkTokenIsValid();
-  }, [navigate]);
+		checkTokenIsValid()
+	}, [navigate])
 
 	useEffect(() => {
 		console.log(handleChangeStep)
@@ -112,7 +111,7 @@ export default function MainTweets({ onTweetClick }) {
 	return (
 		<div className={`${style.tweetsContainer}`}>
 			<header className={`${style.tweetsHeader}`}>
-				<MainHeader avatar={currentUser.avatar}/>
+				<MainHeader avatar={currentUser.avatar} />
 			</header>
 			<div className={`${style.tweetPostArea}`}>
 				<MainContent

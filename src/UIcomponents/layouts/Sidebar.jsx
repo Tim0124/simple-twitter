@@ -20,7 +20,6 @@ export default function Sidebar() {
 	const useChangeStep = useContext(ChangeStepContext)
 	const step = useContext(StepContext)
 
-
 	const handleClick = () => {
 		localStorage.removeItem('authToken')
 		navigate('/login')

@@ -42,10 +42,10 @@ export default function Router() {
 					<Route element={<Layout />}>
 						<Route path='/home' element={<MainTweets />} />
 						<Route path='/reply/:tweet_id' element={<ReplyList />} />
-						<Route element={<UserLayout/>}>
+						<Route element={<UserLayout />}>
 							<Route path='user/:user_id' element={<UserTweets />} />
-						<Route path='user/self/reply' element={<UserReplyList />} />
-						<Route path='user/self/like' element={<UserLike />} />
+							<Route path='user/self/reply' element={<UserReplyList />} />
+							<Route path='user/self/like' element={<UserLike />} />
 						</Route>
 						<Route path='user/self/follower' element={<UserFollower />} />
 						<Route path='user/self/following' element={<UserFollowing />} />
