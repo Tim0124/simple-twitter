@@ -21,13 +21,13 @@ function LoginForm() {
 				return
 			}
 
-			const { success, token , user} = await login({
+			const { success, token, user } = await login({
 				account,
 				password,
 			})
 			if (success) {
 				localStorage.setItem('authToken', token)
-        localStorage.setItem('userId', user.id)
+				localStorage.setItem('userId', user.id)
 				Toast.fire({
 					title: '登入成功！',
 					timer: 2000,
@@ -56,62 +56,60 @@ function LoginForm() {
 		setPassword(e.target.value)
 	}
 
-  useEffect(() => {
-    const checkTokenIsVaild = async () => {
-      const authToken = localStorage.getItem('authToken');
+	useEffect(() => {
+		const checkTokenIsVaild = async () => {
+			const authToken = localStorage.getItem('authToken')
 
-      if (!authToken) {
-        return
-      }
+			if (!authToken) {
+				return
+			}
 
-      const result = await checkPermission(authToken)
+			const result = await checkPermission(authToken)
 
-      if (result) {
-        navigate('/home')
-      }
-    }
-    checkTokenIsVaild()
-  }, [navigate])
+			if (result) {
+				navigate('/home')
+			}
+		}
+		checkTokenIsVaild()
+	}, [navigate])
 
-  return (
-    <div className={`${style.loginContainer}`}>
-      <div className={`${style.loginLogo}`}><Logo /></div>
-      <h1 className={`${style.loginTitle}`}>登入Alphitter</h1>
-      <div className={`${style.loginInputGroup}`}>
-        <Input
-          label='帳號'
-          placeholder='請輸入帳號'
-          value={account}
-          onChange={handleAccountChange}
-        />
-        <Input
-          type='password'
-          label='密碼'
-          placeholder='請輸入密碼'
-          value={password}
-          onChange={handlePasswordChange}
-        />
-      </div>
-      <div className={`${style.loginButton}`}>
-        <Button
-          text='登入'
-          size='large'
-          onClick={handleLoginClick}
-        />
-      </div>
-      <div className={`${style.loginButtonGroup}`}>
-        <div className={`${style.loginButtonSecGroup}`}>
-          <Link to='/register'>
-            <u className={`${style.loginRegisterButton}`}>註冊</u>
-          </Link>
-          <p>・</p>
-          <Link to='/admin'>
-            <u className={`${style.loginAdminButton}`} >後台登入</u>
-          </Link>
-        </div>
-      </div>
-    </div>
-  )
+	return (
+		<div className={`${style.loginContainer}`}>
+			<div className={`${style.loginLogo}`}>
+				<Logo />
+			</div>
+			<h1 className={`${style.loginTitle}`}>登入Alphitter</h1>
+			<div className={`${style.loginInputGroup}`}>
+				<Input
+					label='帳號'
+					placeholder='請輸入帳號'
+					value={account}
+					onChange={handleAccountChange}
+				/>
+				<Input
+					type='password'
+					label='密碼'
+					placeholder='請輸入密碼'
+					value={password}
+					onChange={handlePasswordChange}
+				/>
+			</div>
+			<div className={`${style.loginButton}`}>
+				<Button text='登入' size='large' onClick={handleLoginClick} />
+			</div>
+			<div className={`${style.loginButtonGroup}`}>
+				<div className={`${style.loginButtonSecGroup}`}>
+					<Link to='/register'>
+						<u className={`${style.loginRegisterButton}`}>註冊</u>
+					</Link>
+					<p>・</p>
+					<Link to='/admin'>
+						<u className={`${style.loginAdminButton}`}>後台登入</u>
+					</Link>
+				</div>
+			</div>
+		</div>
+	)
 }
 
 export default LoginForm

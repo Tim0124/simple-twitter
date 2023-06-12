@@ -28,32 +28,32 @@ export default function MainTweets({ onTweetClick }) {
 	const { pathname } = useLocation()
 	const handleChangeStep = useContext(ChangeStepContext)
 
-  useEffect(() => {
-    (async () => {
-      try {
-        const response = await getTweets.get('/')
+	useEffect(() => {
+		;(async () => {
+			try {
+				const response = await getTweets.get('/')
 				const tweetData = response.data
-        setTweets(tweetData)
-      } catch (error) {
-        console.log('Failed to tweets:', error)
-      }
-    })();
-  }, [])
+				setTweets(tweetData)
+			} catch (error) {
+				console.log('Failed to tweets:', error)
+			}
+		})()
+	}, [])
 
-  useEffect(() => {
-    const checkTokenIsValid = async () => {
-      const authToken = localStorage.getItem('authToken');
-      if (!authToken) {
-        navigate('/login');
-      }
-      const result = await checkPermission(authToken);
-      if (!result) {
-        navigate('/login');
-      }
-    };
+	useEffect(() => {
+		const checkTokenIsValid = async () => {
+			const authToken = localStorage.getItem('authToken')
+			if (!authToken) {
+				navigate('/login')
+			}
+			const result = await checkPermission(authToken)
+			if (!result) {
+				navigate('/login')
+			}
+		}
 
-    checkTokenIsValid();
-  }, [navigate]);
+		checkTokenIsValid()
+	}, [navigate])
 
 	useEffect(() => {
 		console.log(handleChangeStep)

@@ -5,7 +5,7 @@ export default function Button({ id, text, size, onClick, onDisabled }) {
 		<>
 			<button
 				className={`${style.button} ${style[size]}`}
-				onClick={()=>onClick(id)}
+				onClick={() => onClick(id)}
 				disabled={onDisabled}
 			>
 				{text}

@@ -5,7 +5,7 @@ import style from './AdminTweets.module.scss'
 import tweetAPI from 'api/tweetAPI'
 import { ToastAlert, Toast } from 'heplers/helpers'
 import Swal from 'sweetalert2'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'
 import { checkPermission } from '../../api/auth'
 
 export default function AdminTweets() {
