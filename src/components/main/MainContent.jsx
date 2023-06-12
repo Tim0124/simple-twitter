@@ -6,6 +6,7 @@ export default function PostContent({
 	onDisabled,
 	onButtonChange,
 	isPostText,
+	avatar
 }) {
 	return (
 		<main className={`${style.postTweetContent}`}>
@@ -13,7 +14,7 @@ export default function PostContent({
 				<div className={`${style.contentGroup}`}>
 					<div className={`${style.avatarItem}`}>
 						<img
-							src='https://picsum.photos/300/300?text=8'
+							src={avatar}
 							alt=''
 							className={`${style.avatar}`}
 						/>

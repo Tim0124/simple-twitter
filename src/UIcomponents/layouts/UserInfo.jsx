@@ -5,38 +5,23 @@ import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import followingAPI from 'api/followingAPI'
 
-const data = [
-	{
-		id: 1,
-		avatar: 'https://picsum.photos/300/300?text=2',
-		background: 'https://i.imgur.com/5ZDLPuU.jpeg',
-		name: 'John Doe',
-		account: '@heyjone',
-		tweet: 25,
-		following: 34,
-		follower: 59,
-		content:
-			'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.',
-	},
-]
-
-export default function UserInfo() {
+export default function UserInfo({name, account, avatar, backgroundImage, introduction, follower, following}) {
 	return (
 		<div className={`${style.userInfoContainer}`}>
 			<div className={`${style.userInfoWrapper}`}>
 				<div className={`${style.userInfoImgGroup}`}>
 					<div className={`${style.userInfoBackground}`}>
 						<img
-							src={data[0].background}
+							src={backgroundImage}
 							className={`${style.userInfoCardImg}`}
 							alt=''
 						/>
 					</div>
 					<div className={`${style.userInfoCardAvatar}`}>
 						<img
-							src={data[0].avatar}
+							src={avatar}
 							className={`${style.userInfoImgAvatar}`}
-							alt=''
+							alt={account}
 						/>
 					</div>
 				</div>
@@ -50,21 +35,21 @@ export default function UserInfo() {
 						<div className={`${style.userInfoContentArea}`}>
 							<div className={`${style.userInfoNameGroup}`}>
 								<div className={`${style.userInfoName}`}>
-									<p>{data[0].name}</p>
+									<p>{name}</p>
 								</div>
 								<div className={`${style.userInfoAccount}`}>
-									<p>{data[0].account}</p>
+									<p>@{account}</p>
 								</div>
 							</div>
 						</div>
 						<div className={`${style.userInfoContent}`}>
-							<p>{data[0].content}</p>
+							<p>{introduction}</p>
 						</div>
 						<div className={`${style.adminTweetsCardFollowGroup}`}>
 							<Link to='/user/self/following'>
 								<div className={`${style.adminTweetsCardFollowing}`}>
 									<p className={`${style.following}`}>
-										{data[0].following}&nbsp;個
+										{following}&nbsp;個
 									</p>
 									<p>跟隨中</p>
 								</div>
@@ -72,7 +57,7 @@ export default function UserInfo() {
 							<Link to='/user/self/follower'>
 								<div className={`${style.adminTweetsCardFollower}`}>
 									<p className={`${style.follower}`}>
-										{data[0].follower}&nbsp;位
+										{follower}&nbsp;位
 									</p>
 									<p>跟隨者</p>
 								</div>

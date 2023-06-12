@@ -23,6 +23,7 @@ import SettingFrom from 'components/setting/SettingForm'
 import AdminLogin from 'pages/admin/AdminLogin'
 import AdminTweets from 'pages/admin/AdminTweets'
 import AdminUsers from 'pages/admin/AdminUsers'
+import UserLayout from 'UIcomponents/layouts/UserLayout'
 
 const basename = process.env.PUBLIC_URL
 
@@ -41,9 +42,11 @@ export default function Router() {
 					<Route element={<Layout />}>
 						<Route path='/home' element={<MainTweets />} />
 						<Route path='/reply/:tweet_id' element={<ReplyList />} />
-						<Route path='user/self' element={<UserTweets />} />
+						<Route element={<UserLayout/>}>
+							<Route path='user/:user_id' element={<UserTweets />} />
 						<Route path='user/self/reply' element={<UserReplyList />} />
 						<Route path='user/self/like' element={<UserLike />} />
+						</Route>
 						<Route path='user/self/follower' element={<UserFollower />} />
 						<Route path='user/self/following' element={<UserFollowing />} />
 						<Route path='setting' element={<SettingFrom />} />

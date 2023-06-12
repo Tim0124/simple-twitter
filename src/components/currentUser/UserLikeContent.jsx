@@ -4,9 +4,9 @@ import { ReactComponent as Dislike } from '../../assets/unlike.svg'
 import { ReactComponent as Message } from '../../assets/message.svg'
 import { useState } from 'react';
 
-export default function UserLikeContent({ name, account, avatar, content, quantity, isLike, likeQuantity, time}) {
-  const [like, setLike] = useState(isLike || true);
-  const [isLikeQuantity, setIsLikeQuantity] = useState(likeQuantity)
+export default function UserLikeContent({ name, account, avatar, content, repliesCount, likesCount, time}) {
+  const [like, setLike] = useState(true);
+  const [isLikeQuantity, setIsLikeQuantity] = useState(likesCount)
 
   const handleLikeClick = () => {
     setLike(!like);
@@ -21,18 +21,17 @@ export default function UserLikeContent({ name, account, avatar, content, quanti
     <div className={`${style.mainTweetsContainer}`}>
       <div className={`${style.mainTweetsList}`}>
         <div className={`${style.mainTweetsLogo}`}>
-          <img src={avatar} className={`${style.mainTweetsImg}`} alt="" width='50px' heigh='50px' />
+          <img src={avatar} className={`${style.mainTweetsImg}`} alt={account}/>
         </div>
         <div className={`${style.mainTweetsInfo}`}>
           <div className={`${style.mainTweetsSecInfo}`}>
             <div className={`${style.mainTweetsNameGroup}`}>
               <div className={`${style.mainTweetsName}`}>{name}</div>
               <div className={`${style.mainTweetsSmallAccount}`}>
-                <div className={`${style.mainTweetsAccount}`}>{account}</div>
+                <div className={`${style.mainTweetsAccount}`}>@{account}</div>
                 <div className={`${style.mainTweetsdot}`}>・</div>
                 <div className={`${style.mainTweetsTime}`}>
                   <p>{time}</p> 
-                  <p>小時</p>
                   </div>
               </div>
             </div>
@@ -41,7 +40,7 @@ export default function UserLikeContent({ name, account, avatar, content, quanti
           <div className={`${style.mainTweetsQuantityGroup}`}>
             <div className={`${style.mainTweetsQuantity}`}>
               <Message width='16px' height='16px'/>
-              <p>{quantity}</p>
+              <p>{repliesCount}</p>
               </div>
             <div className={`${style.mainTweetsLikeQuantity}`}>
               {like ?

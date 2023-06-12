@@ -3,6 +3,7 @@ import { ReactComponent as Dislike } from '../../assets/unlike.svg'
 import { ReactComponent as Like } from '../../assets/redlike.svg'
 import { ReactComponent as Message } from '../../assets/message.svg'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 export default function MainTweetsContent({
   tweetId,
@@ -13,11 +14,10 @@ export default function MainTweetsContent({
 	content,
 	time,
 	quantity,
-	likeQuantity,
   isLike, 
   isLikeQuantity,
 	onReplyClick,
-	onTweetsClick,) {
+	onTweetsClick,}){
   const [like, setLike] = useState(isLike);
   const [likeQuantity, setLikeQuantity] = useState(isLikeQuantity);
 

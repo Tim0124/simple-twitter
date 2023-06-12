@@ -8,7 +8,6 @@ import Layout from 'UIcomponents/layouts/Layout'
 import MainContent from './MainContent'
 import { getTweets } from '../../api/allAPI'
 import MainHeader from './MainHeader'
-import { useNavigate } from 'react-router-dom'
 import { checkPermission } from 'api/auth'
 import followingAPI from 'api/followingAPI'
 import {
@@ -22,6 +21,7 @@ import { ChangeStepContext } from 'context/SideBarContext'
 
 export default function MainTweets({ onTweetClick }) {
 	const navigate = useNavigate()
+	const [currentUser, setCurrentUser] = useState([])
 	const [tweets, setTweets] = useState([])
 	const useModalClick = useContext(ShowReplyModalContext)
 	const [isPostText, setIsPostText] = useState('')
@@ -29,11 +29,20 @@ export default function MainTweets({ onTweetClick }) {
 	const { pathname } = useLocation()
 	const handleChangeStep = useContext(ChangeStepContext)
 
+
+	useEffect(() => {
+		const id = localStorage.getItem('userId')
+		tweetAPI.getCurrentUserTweet(id).then((response) => {
+			const {data} = response
+			setCurrentUser(data)
+		})
+	},[])
+
   useEffect(() => {
     (async () => {
       try {
-        const responce = await getTweets.get('/')
-        const tweetData = responce.data
+        const response = await getTweets.get('/')
+        const tweetData = response.data
         setTweets(tweetData)
       } catch (error) {
         console.log('Failed to tweets:', error)
@@ -91,7 +100,7 @@ export default function MainTweets({ onTweetClick }) {
 	useEffect(() => {
 		;(async () => {
 			try {
-				const response = await Tweets.get('/')
+				const response = await tweets.get('/')
 				const tweetData = response.data
 				setTweets(tweetData)
 			} catch (error) {
@@ -103,7 +112,7 @@ export default function MainTweets({ onTweetClick }) {
 	return (
 		<div className={`${style.tweetsContainer}`}>
 			<header className={`${style.tweetsHeader}`}>
-				<MainHeader />
+				<MainHeader avatar={currentUser.avatar}/>
 			</header>
 			<div className={`${style.tweetPostArea}`}>
 				<MainContent
@@ -111,6 +120,7 @@ export default function MainTweets({ onTweetClick }) {
 					onDisabled={isDisabled}
 					onButtonChange={handleButtonChange}
 					onPostText={isPostText}
+					avatar={currentUser.avatar}
 				/>
 			</div>
 			<main className={`${style.mainTweets}`}>
@@ -125,7 +135,7 @@ export default function MainTweets({ onTweetClick }) {
 						content={data.description}
 						time={data.relativeTimeFromNow}
 						quantity={data.repliesCount}
-						likeQuantity={data.likesCount}
+						isLikeQuantity={data.likesCount}
 						onReplyClick={useModalClick}
 						onTweetsClick={handleTweetsClick}
 					/>

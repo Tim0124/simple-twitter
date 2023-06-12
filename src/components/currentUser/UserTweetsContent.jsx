@@ -4,9 +4,20 @@ import { ReactComponent as Message } from '../../assets/message.svg'
 import { ReactComponent as Dislike } from '../../assets/unlike.svg'
 import { useState } from 'react';
 
-export default function UserTweetsContent({ name, account, avatar, content, isLike, quantity, likeQuantity, time}) {
+export default function UserTweetsContent({ 
+  name, 
+  account, 
+  avatar, 
+  description, 
+  isLike, 
+  quantity, 
+  likeQuantity, 
+  relativeTime,
+  repliesCount,
+	likeCount
+}) {
   const [like, setLike] = useState(isLike);
-  const [isLikeQuantity, setIsLikeQuantity] = useState(likeQuantity)
+  const [isLikeQuantity, setIsLikeQuantity] = useState(likeCount)
 
   const handleLikeClick = () => {
     setLike(!like);
@@ -31,17 +42,16 @@ export default function UserTweetsContent({ name, account, avatar, content, isLi
                 <div className={`${style.mainTweetsAccount}`}>{account}</div>
                 <div className={`${style.mainTweetsdot}`}>・</div>
                 <div className={`${style.mainTweetsTime}`}>
-                  <p>{time}</p>
-                  <p>小時</p> 
+                  <p>{relativeTime}</p>
                 </div>
               </div>
             </div>
           </div>
-          <div className={`${style.mainTweetsContent}`}>{content}</div>
+          <div className={`${style.mainTweetsContent}`}>{description}</div>
           <div className={`${style.mainTweetsQuantityGroup}`}>
             <div className={`${style.mainTweetsQuantity}`}>
               <Message width='16px' height='16px'/>
-              <p>{quantity}</p>
+              <p>{repliesCount}</p>
               </div>
             <div className={`${style.mainTweetsLikeQuantity}`}>
               {like === true ?
