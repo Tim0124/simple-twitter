@@ -23,6 +23,21 @@ export default {
         Authorization: `Bearer ${getToken()}`
       }
     })
+  },
+  getFollow(id) {
+    return apiHelper.post(`/followships`, {id}, {
+      headers: {
+        Authorization: `Bearer ${getToken()}`
+      }
+    });
+  },
+  getUnFollow(id) {
+    return apiHelper.delete(`/followships/${id}`, {
+      headers: {
+        Authorization: `Bearer ${getToken()}`
+      }
+    });
   }
 }
+
 

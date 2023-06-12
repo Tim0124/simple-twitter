@@ -1,7 +1,9 @@
 import style from './ReplyListTweet.module.scss'
-import { ReactComponent as Like } from '../../assets/unlike.svg'
+import { ReactComponent as Dislike } from '../../assets/unlike.svg'
+import { ReactComponent as Like } from '../../assets/redlike.svg'
 import { ReactComponent as Message } from '../../assets/message.svg'
 import Button from 'UIcomponents/buttons/Button'
+import { useState } from 'react'
 
 export default function ReplyListTweet({
 	avatar,
@@ -14,6 +16,17 @@ export default function ReplyListTweet({
 	date,
 	onShowReplyModal,
 }) {
+	const [like, setLike] = useState();
+	const [isLikeQuantity, setIsLikeQuantity] = useState(likeQuantity);
+
+	const handleLikeClick = () => {
+		setLike(!like);
+		if (!like) {
+			setIsLikeQuantity(isLikeQuantity + 1);
+		} else {
+			setIsLikeQuantity(isLikeQuantity - 1);
+		}
+	};
 	// const dateObj = new Date(date)
 	// const year = dateObj.getFullYear()
 	// const month = dateObj.getMonth() + 1
@@ -54,7 +67,7 @@ export default function ReplyListTweet({
 							<p className={`${style.replyQuantityText}`}>回覆</p>
 						</div>
 						<div className={`${style.replyTweetsLikeQuantity}`}>
-							<p className={`${style.replyLikeQuantity}`}>{likeQuantity}</p>
+							<p className={`${style.replyLikeQuantity}`}>{isLikeQuantity}</p>
 							<p className={`${style.replyQuantityText}`}>喜歡次數</p>
 						</div>
 					</div>
@@ -63,10 +76,12 @@ export default function ReplyListTweet({
 							className={`${style.replyTweetsIcon}`}
 							onClick={onShowReplyModal}
 						>
-							<Message width='19px' height='19px' />
+							<Message width='24px' height='24px' />
 						</div>
 						<div className={`${style.replyTweetsLikeIcon}`}>
-							<Like width='19px' height='19px' />
+							{like ?
+								<Like width='25px' height='23px' onClick={handleLikeClick}/> :
+								<Dislike width='25px' height='23px' onClick={handleLikeClick} />}
 						</div>
 					</div>
 				</div>

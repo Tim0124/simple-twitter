@@ -21,12 +21,13 @@ function LoginForm() {
 				return
 			}
 
-			const { success, token } = await login({
+			const { success, token , user} = await login({
 				account,
 				password,
 			})
 			if (success) {
 				localStorage.setItem('authToken', token)
+        localStorage.setItem('userId', user.id)
 				Toast.fire({
 					title: '登入成功！',
 					timer: 2000,

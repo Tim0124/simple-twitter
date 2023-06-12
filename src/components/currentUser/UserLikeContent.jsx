@@ -4,8 +4,8 @@ import { ReactComponent as Dislike } from '../../assets/unlike.svg'
 import { ReactComponent as Message } from '../../assets/message.svg'
 import { useState } from 'react';
 
-export default function UserLikeContent({ name, account, avatar, content, quantity, isLike, likeQuantity, time}) {
-  const [like, setLike] = useState(isLike || true);
+export default function UserLikeContent({ name, account, avatar, content, quantity, likeQuantity, time}) {
+  const [like, setLike] = useState(true);
   const [isLikeQuantity, setIsLikeQuantity] = useState(likeQuantity)
 
   const handleLikeClick = () => {
