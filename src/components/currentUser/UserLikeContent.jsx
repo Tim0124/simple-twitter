@@ -9,12 +9,12 @@ export default function UserLikeContent({
 	account,
 	avatar,
 	content,
-	quantity,
-	likeQuantity,
+	repliesCount,
+	likesCount,
 	time,
 }) {
 	const [like, setLike] = useState(true)
-	const [isLikeQuantity, setIsLikeQuantity] = useState(likeQuantity)
+	const [isLikeQuantity, setIsLikeQuantity] = useState(likesCount)
 
 	const handleLikeClick = () => {
 		setLike(!like)
@@ -32,9 +32,7 @@ export default function UserLikeContent({
 					<img
 						src={avatar}
 						className={`${style.mainTweetsImg}`}
-						alt=''
-						width='50px'
-						heigh='50px'
+						alt={account}
 					/>
 				</div>
 				<div className={`${style.mainTweetsInfo}`}>
@@ -42,11 +40,10 @@ export default function UserLikeContent({
 						<div className={`${style.mainTweetsNameGroup}`}>
 							<div className={`${style.mainTweetsName}`}>{name}</div>
 							<div className={`${style.mainTweetsSmallAccount}`}>
-								<div className={`${style.mainTweetsAccount}`}>{account}</div>
+								<div className={`${style.mainTweetsAccount}`}>@{account}</div>
 								<div className={`${style.mainTweetsdot}`}>・</div>
 								<div className={`${style.mainTweetsTime}`}>
 									<p>{time}</p>
-									<p>小時</p>
 								</div>
 							</div>
 						</div>
@@ -55,7 +52,7 @@ export default function UserLikeContent({
 					<div className={`${style.mainTweetsQuantityGroup}`}>
 						<div className={`${style.mainTweetsQuantity}`}>
 							<Message width='16px' height='16px' />
-							<p>{quantity}</p>
+							<p>{repliesCount}</p>
 						</div>
 						<div className={`${style.mainTweetsLikeQuantity}`}>
 							{like ? (

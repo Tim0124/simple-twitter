@@ -25,6 +25,7 @@ function LoginForm() {
 				account,
 				password,
 			})
+
 			if (success) {
 				localStorage.setItem('authToken', token)
 				localStorage.setItem('userId', user.id)

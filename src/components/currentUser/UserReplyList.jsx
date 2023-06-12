@@ -4,6 +4,10 @@ import UserReplyContent from './UserReplyContent'
 import UserTab from 'UIcomponents/tabs/UserTab'
 import UserInfo from 'UIcomponents/layouts/UserInfo'
 import UserInfoHeader from 'UIcomponents/layouts/UserInfoHeader'
+import { useLocation } from 'react-router-dom'
+import { useContext, useEffect, useState } from 'react'
+import { ChangeTabContext } from 'context/UserTabContext'
+import tweetAPI from 'api/tweetAPI'
 
 const data = [
 	{
@@ -134,20 +138,47 @@ const dummyData = [
 ]
 
 export default function UserReplyList() {
+	const { pathname } = useLocation()
+	const handleChangeTab = useContext(ChangeTabContext)
+	const [replies, setReplies] = useState([])
+	console.log(replies)
+
+	useEffect(() => {
+		const currentUserId = localStorage.getItem('userId')
+		tweetAPI.getCurrentUserReplies(currentUserId).then((response) => {
+			const { data } = response
+			setReplies(data)
+		})
+	}, [])
+
+	useEffect(() => {
+		if (pathname === '/user/self/reply') {
+			handleChangeTab(2)
+		}
+	}, [])
+
 	return (
 		<div className={`${style.userReplyContainer}`}>
-			<div className={`${style.userInfoHeaderContainer}`}>
+			{/* <div className={`${style.userInfoHeaderContainer}`}>
 				<UserInfoHeader
 					name={data[0].name}
 					tweet={data[0].tweet}
 					page='/home'
 				/>
 			</div>
-			<UserInfo />
-			<UserTab />
+			<UserInfo /> */}
+			{/* <UserTab /> */}
 			<section className={`${style.userReplyContent}`}>
-				{dummyData.map((data) => (
-					<UserReplyContent key={data.id} {...data} />
+				{replies.map((reply) => (
+					<UserReplyContent
+						key={reply.id}
+						comment={reply.comment}
+						replyAccount={reply.tweetUser.account}
+						time={reply.relativeTimeFromNow}
+						name={reply.User.name}
+						avatar={reply.User.avatar}
+						account={reply.User.account}
+					/>
 				))}
 			</section>
 		</div>

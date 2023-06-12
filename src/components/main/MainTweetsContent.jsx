@@ -15,26 +15,22 @@ export default function MainTweetsContent({
 	content,
 	time,
 	quantity,
+	isLike,
 	isLikeQuantity,
 	onReplyClick,
 	onTweetsClick,
 }) {
-	const [like, setLike] = useState()
+	const [like, setLike] = useState(isLike)
 	const [likeQuantity, setLikeQuantity] = useState(isLikeQuantity)
 
-	const handleLikeClick = (tweetId) => {
+	const handleLikeClick = () => {
 		setLike(!like)
 		if (!like) {
 			setLikeQuantity((prevQuantity) => prevQuantity + 1)
-
-			// likeAPI.getlike(tweetId).then((response) => {
-			// 	console.log(response)
-			// })
 		} else {
 			setLikeQuantity((prevQuantity) => prevQuantity - 1)
 		}
 	}
-
 	return (
 		<div className={`${style.mainTweetsContainer}`}>
 			<div className={`${style.mainTweetsList}`}>

@@ -144,6 +144,7 @@ export default function ReplyList() {
 	const useReplyModal = useContext(ReplyTweetModalContext)
 	const tweetId = useParams().tweet_id
 	console.log(currentTweet)
+	console.log(tweetId)
 	useEffect(() => {
 		tweetAPI.getTweet(tweetId).then((response) => {
 			const { data } = response
@@ -174,7 +175,7 @@ export default function ReplyList() {
 					<ReplyListItem
 						key={data.id}
 						id={data.id}
-						account={data.tweet.User.account}
+						account={data.User.account}
 						comment={data.comment}
 						time={data.relativeTimeFromNow}
 						avatar={data.User.avatar}

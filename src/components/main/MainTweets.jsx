@@ -21,12 +21,21 @@ import { ChangeStepContext } from 'context/SideBarContext'
 
 export default function MainTweets({ onTweetClick }) {
 	const navigate = useNavigate()
+	const [currentUser, setCurrentUser] = useState([])
 	const [tweets, setTweets] = useState([])
 	const useModalClick = useContext(ShowReplyModalContext)
 	const [isPostText, setIsPostText] = useState('')
 	const [isDisabled, setIsDisable] = useState(true)
 	const { pathname } = useLocation()
 	const handleChangeStep = useContext(ChangeStepContext)
+
+	useEffect(() => {
+		const id = localStorage.getItem('userId')
+		tweetAPI.getCurrentUserTweet(id).then((response) => {
+			const { data } = response
+			setCurrentUser(data)
+		})
+	}, [])
 
 	useEffect(() => {
 		;(async () => {
@@ -90,7 +99,7 @@ export default function MainTweets({ onTweetClick }) {
 	return (
 		<div className={`${style.tweetsContainer}`}>
 			<header className={`${style.tweetsHeader}`}>
-				<MainHeader />
+				<MainHeader avatar={currentUser.avatar} />
 			</header>
 			<div className={`${style.tweetPostArea}`}>
 				<MainContent
@@ -98,6 +107,7 @@ export default function MainTweets({ onTweetClick }) {
 					onDisabled={isDisabled}
 					onButtonChange={handleButtonChange}
 					onPostText={isPostText}
+					avatar={currentUser.avatar}
 				/>
 			</div>
 			<main className={`${style.mainTweets}`}>

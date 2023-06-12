@@ -31,4 +31,32 @@ export default {
 			},
 		})
 	},
+	getCurrentUserTweet(tweetId) {
+		return apiHelper.get(`/users/${tweetId}`, {
+			headers: {
+				Authorization: `Bearer ${getToken()}`,
+			},
+		})
+	},
+	getCurrentUserAllTweet(tweetId) {
+		return apiHelper.get(`/users/${tweetId}/tweets`, {
+			headers: {
+				Authorization: `Bearer ${getToken()}`,
+			},
+		})
+	},
+	getCurrentUserReplies(userId) {
+		return apiHelper.get(`/users/${userId}/replied_tweets`, {
+			headers: {
+				Authorization: `Bearer ${getToken()}`,
+			},
+		})
+	},
+	getCurrentUserLikes(userId) {
+		return apiHelper.get(`/users/${userId}/likes`, {
+			headers: {
+				Authorization: `Bearer ${getToken()}`,
+			},
+		})
+	},
 }
