@@ -61,6 +61,7 @@ export default function UserTweets() {
 			<section className={`${style.UserTweetsContent}`}>
 				{allTweets.map((tweet) => (
 					<UserTweetsContent
+						id={tweet.id}
 						key={tweet.id}
 						description={tweet.description}
 						relativeTime={tweet.relativeTimeFromNow}
@@ -69,6 +70,7 @@ export default function UserTweets() {
 						name={tweet.User.name}
 						account={tweet.User.account}
 						avatar={tweet.User.avatar}
+						isSelfUserLike={tweet.isSelfUserLike}
 					/>
 				))}
 			</section>
