@@ -63,7 +63,11 @@
 		overflow: scroll;
 		margin-top: 5px;
 	}
+}
 
+.footerButtonItem {
+	margin-bottom: 40px;
+	margin-right: 24px;
 	.footerText {
 		text-align: right;
 		color: #fc5a5a;
@@ -155,7 +159,11 @@
 	.footerButtonItem {
 		display: flex;
 		justify-content: flex-end;
+		align-items: center;
+		margin-bottom: 0;
+		margin-right: 0;
 	}
+
 	.footerButton {
 		width: 64px;
 		height: 40px;

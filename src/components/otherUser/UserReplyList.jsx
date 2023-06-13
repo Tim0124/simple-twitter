@@ -4,7 +4,7 @@ import UserReplyContent from './UserReplyContent'
 import UserTab from 'UIcomponents/tabs/UserTab'
 import UserInfo from 'UIcomponents/layouts/UserInfo'
 import UserInfoHeader from 'UIcomponents/layouts/UserInfoHeader'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import { useContext, useEffect, useState } from 'react'
 import { ChangeTabContext } from 'context/UserTabContext'
 import tweetAPI from 'api/tweetAPI'
@@ -13,8 +13,6 @@ export default function UserReplyList() {
 	const { pathname } = useLocation()
 	const handleChangeTab = useContext(ChangeTabContext)
 	const [replies, setReplies] = useState([])
-	const navigate = useNavigate()
-
 
 	useEffect(() => {
 		const currentUserId = localStorage.getItem('userId')
@@ -22,13 +20,13 @@ export default function UserReplyList() {
 			const { data } = response
 			setReplies(data)
 		})
-	}, [pathname])
+	}, [])
 
 	useEffect(() => {
 		if (pathname === '/user/self/reply') {
 			handleChangeTab(2)
 		}
-	}, [pathname])
+	}, [])
 
 	return (
 		<div className={`${style.userReplyContainer}`}>

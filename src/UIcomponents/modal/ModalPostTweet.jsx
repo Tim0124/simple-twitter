@@ -36,6 +36,9 @@ export default function ModalPostTweet({ onClick, onHiddenClick }) {
 					</header>
 					<ModalContent />
 					<div className={`${style.footerButtonItem}`}>
+						<footer className={`${style.footerText}`}>
+							<p>字數不可超過140字</p>
+						</footer>
 						<div className={`${style.footerButton}`}>
 							<Button size='middle' text='推文' />
 						</div>

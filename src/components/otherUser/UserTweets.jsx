@@ -4,7 +4,7 @@ import UserTweetsContent from './UserTweetsContent'
 import UserTab from 'UIcomponents/tabs/UserTab'
 import UserInfo from 'UIcomponents/layouts/UserInfo'
 import UserInfoHeader from 'UIcomponents/layouts/UserInfoHeader'
-import { useLocation, useNavigate, useParams } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import { useContext, useEffect, useState } from 'react'
 import { ChangeStepContext } from 'context/SideBarContext'
 import tweetAPI from 'api/tweetAPI'
@@ -17,7 +17,6 @@ export default function UserTweets() {
 	const [userInfo, setUserInfo] = useState([])
 	const [allTweets, setAllTweets] = useState([])
 	const handleChangeTab = useContext(ChangeTabContext)
-	const navigate = useNavigate()
 
 	useEffect(() => {
 		const currentUserId = localStorage.getItem('userId')
@@ -30,14 +29,14 @@ export default function UserTweets() {
 			const { data } = response
 			setAllTweets(data)
 		})
-	}, [pathname])
+	}, [])
 
 	useEffect(() => {
 		if (pathname === '/user/self') {
 			handleChangeStep(2)
 			handleChangeTab(1)
 		}
-	}, [pathname])
+	}, [])
 	return (
 		<div className={`${style.userTweetsContainer}`}>
 			{/* <div className={`${style.userInfoHeaderContainer}`}>
@@ -61,7 +60,6 @@ export default function UserTweets() {
 			<section className={`${style.UserTweetsContent}`}>
 				{allTweets.map((tweet) => (
 					<UserTweetsContent
-						id={tweet.id}
 						key={tweet.id}
 						description={tweet.description}
 						relativeTime={tweet.relativeTimeFromNow}
@@ -70,7 +68,6 @@ export default function UserTweets() {
 						name={tweet.User.name}
 						account={tweet.User.account}
 						avatar={tweet.User.avatar}
-						isSelfUserLike={tweet.isSelfUserLike}
 					/>
 				))}
 			</section>

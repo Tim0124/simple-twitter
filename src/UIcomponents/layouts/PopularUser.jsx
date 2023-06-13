@@ -13,29 +13,29 @@ export default function PopularUser({
 }) {
 	const [follow, setFollow] = useState(isUserFollowed)
 
-	const handleFollowClick = (id) => {
-		setFollow(!follow)
-		followingAPI
-			.getFollow(id)
-			.then((response) => {
-				console.log(response)
-			})
-			.catch((error) => {
-				console.error('Error:', error)
-			})
-	}
+	// const handleFollowClick = (id) => {
+	// 	setFollow(!follow)
+	// 	followingAPI
+	// 		.getFollow(id)
+	// 		.then((response) => {
+	// 			console.log(response)
+	// 		})
+	// 		.catch((error) => {
+	// 			console.error('Error:', error)
+	// 		})
+	// }
 
-	const handleUnFollowClick = (id) => {
-		setFollow(!follow)
-		followingAPI
-			.getUnFollow(id)
-			.then((response) => {
-				console.log(response)
-			})
-			.catch((error) => {
-				console.error('Error:', error)
-			})
-	}
+	// const handleUnFollowClick = (id) => {
+	// 	setFollow(!follow)
+	// 	followingAPI
+	// 		.getUnFollow(id)
+	// 		.then((response) => {
+	// 			console.log(response)
+	// 		})
+	// 		.catch((error) => {
+	// 			console.error('Error:', error)
+	// 		})
+	// }
 
 	return (
 		<div className={`${style.popularUserContainer}`}>
@@ -51,20 +51,10 @@ export default function PopularUser({
 				</div>
 				<div className={`${style.popularUserButton}`}>
 					{follow ? (
-						<Button
-							size='middle'
-							text='正在跟隨'
-							id={id}
-							onClick={handleUnFollowClick}
-						/>
+						<Button size='middle' text='正在跟隨' id={id} />
 					) : (
 						<div className={`${style.popularUserFollower}`}>
-							<Button
-								size='white-exsmall'
-								text='跟隨'
-								id={id}
-								onClick={handleFollowClick}
-							/>
+							<Button size='white-exsmall' text='跟隨' id={id} />
 						</div>
 					)}
 				</div>

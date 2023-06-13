@@ -20,7 +20,7 @@ export default function PopularUserList() {
 	}, [])
 
 	return (
-		<div className={`${style.popularUserListContainer}`}>
+		<div className={`${style.popularListContainer}`}>
 			<h4 className={`${style.popularUserListHeader}`}>推薦跟隨</h4>
 			<div className={`${style.popularUserList}`}>
 				{followers.map((follower) => (

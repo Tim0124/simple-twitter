@@ -18,9 +18,6 @@ export default function PostContent() {
 							type='text'
 							placeholder='有什麼新鮮事？'
 						/>
-						<footer className={`${style.footerText}`}>
-							<p>字數不可超過140字</p>
-						</footer>
 					</div>
 				</div>
 			</form>

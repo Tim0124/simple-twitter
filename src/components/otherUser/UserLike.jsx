@@ -14,6 +14,7 @@ export default function UserLike() {
 	const { pathname } = useLocation()
 	const handleChangeTab = useContext(ChangeTabContext)
 	const [likesTweet, setLikesTweet] = useState([])
+	const navigate = useNavigate()
 
 	useEffect(() => {
 		const currentUserId = localStorage.getItem('userId')
@@ -21,7 +22,7 @@ export default function UserLike() {
 			const { data } = response
 			setLikesTweet(data)
 		})
-	}, [pathname])
+	}, [])
 
 	useEffect(() => {
 		if (pathname === '/user/self/like') {
@@ -43,16 +44,14 @@ export default function UserLike() {
 			<section className={`${style.UserTweetsContent}`}>
 				{likesTweet.map((like) => (
 					<UserLikeContent
-						id={like.id}
 						key={like.id}
 						name={like.User.name}
 						account={like.User.account}
 						avatar={like.User.avatar}
 						content={like.Tweet.description}
 						time={like.Tweet.relativeTimeFromNow}
-						likesCount={like.Tweet.likesCount}
-						repliesCount={like.Tweet.repliesCount}
-						isSelfUserLike={like.isSelfUserLike}
+						likesCount={like.likesCount}
+						repliesCount={like.repliesCount}
 					/>
 				))}
 			</section>

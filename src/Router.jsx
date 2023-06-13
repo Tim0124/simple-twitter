@@ -46,9 +46,9 @@ export default function Router() {
 							<Route path='user/:user_id' element={<UserTweets />} />
 							<Route path='user/self/reply' element={<UserReplyList />} />
 							<Route path='user/self/like' element={<UserLike />} />
+							<Route path='user/self/follower' element={<UserFollower />} />
+							<Route path='user/self/following' element={<UserFollowing />} />
 						</Route>
-						<Route path='user/self/follower' element={<UserFollower />} />
-						<Route path='user/self/following' element={<UserFollowing />} />
 						<Route path='setting' element={<SettingFrom />} />
 					</Route>
 					<Route path='/' element={<LoginForm />} />

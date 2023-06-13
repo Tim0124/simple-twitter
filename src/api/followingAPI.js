@@ -10,6 +10,13 @@ export default {
 			},
 		})
 	},
+	getFollowers(id) {
+		return apiHelper.get(`/users/${id}/followers`, {
+			headers: {
+				Authorization: `Bearer ${getToken()}`,
+			},
+		})
+	},
 	getCurrentUser(id) {
 		return apiHelper.get(`/users/${id}`, {
 			headers: {
