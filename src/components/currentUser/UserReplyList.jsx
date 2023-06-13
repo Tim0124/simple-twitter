@@ -15,7 +15,6 @@ export default function UserReplyList() {
 	const [replies, setReplies] = useState([])
 	const navigate = useNavigate()
 
-
 	useEffect(() => {
 		const currentUserId = localStorage.getItem('userId')
 		tweetAPI.getCurrentUserReplies(currentUserId).then((response) => {

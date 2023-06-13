@@ -49,7 +49,7 @@ export default function ReplyListTweet({
 								<p>{name}</p>
 							</div>
 							<div className={`${style.replyTweetsSmallAccount}`}>
-								<p className={`${style.replyTweetsAccount}`}>@{account}</p>
+								<p className={`${style.replyTweetsAccount}`}>{account}</p>
 							</div>
 						</div>
 					</div>

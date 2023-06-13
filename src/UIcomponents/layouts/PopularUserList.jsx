@@ -24,7 +24,14 @@ export default function PopularUserList() {
 			<h4 className={`${style.popularUserListHeader}`}>推薦跟隨</h4>
 			<div className={`${style.popularUserList}`}>
 				{followers.map((follower) => (
-					<PopularUser key={follower.id} {...follower} />
+					<PopularUser
+						id={follower.id}
+						key={follower.id}
+						name={follower.account}
+						account={follower.account}
+						avatar={follower.avatar}
+						isUserFollowed={follower.isUserFollowed}
+					/>
 				))}
 			</div>
 		</div>
