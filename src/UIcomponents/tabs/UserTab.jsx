@@ -5,7 +5,6 @@ import { TabChangeContext } from 'context/UserTabContext'
 
 export default function UserTab() {
 	const tab = useContext(TabChangeContext)
-	console.log(tab)
 
 	return (
 		<section className={`${style.userTweetsWrapper}`}>
