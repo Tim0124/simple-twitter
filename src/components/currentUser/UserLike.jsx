@@ -5,7 +5,7 @@ import FollowTab from 'UIcomponents/tabs/FollowTab'
 import UserTab from 'UIcomponents/tabs/UserTab'
 import UserInfo from 'UIcomponents/layouts/UserInfo'
 import UserInfoHeader from 'UIcomponents/layouts/UserInfoHeader'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useContext, useEffect, useState } from 'react'
 import { ChangeTabContext } from 'context/UserTabContext'
 import tweetAPI from 'api/tweetAPI'
@@ -15,20 +15,19 @@ export default function UserLike() {
 	const handleChangeTab = useContext(ChangeTabContext)
 	const [likesTweet, setLikesTweet] = useState([])
 
-
 	useEffect(() => {
 		const currentUserId = localStorage.getItem('userId')
 		tweetAPI.getCurrentUserLikes(currentUserId).then((response) => {
 			const { data } = response
 			setLikesTweet(data)
 		})
-	}, [])
+	}, [pathname])
 
 	useEffect(() => {
 		if (pathname === '/user/self/like') {
 			handleChangeTab(3)
 		}
-	}, [])
+	}, [pathname])
 
 	return (
 		<div className={`${style.userTweetsContainer}`}>

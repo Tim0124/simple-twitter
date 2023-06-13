@@ -68,7 +68,7 @@ export default function MainTweets({ onTweetClick }) {
 		if (pathname === '/home') {
 			handleChangeStep(1)
 		}
-	}, [])
+	}, [pathname])
 
 	const handleButtonChange = (e) => {
 		const text = e.target.value

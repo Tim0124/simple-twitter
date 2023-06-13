@@ -6,26 +6,28 @@ import UserInfoHeader from 'UIcomponents/layouts/UserInfoHeader'
 import { useContext, useEffect, useState } from 'react'
 import tweetAPI from 'api/tweetAPI'
 import followingAPI from 'api/followingAPI'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { ChangeTabContext } from 'context/UserTabContext'
 
 export default function UserFollowing() {
 	const [following, setFollowing] = useState([])
 	const { pathname } = useLocation()
 	const handleChangeTab = useContext(ChangeTabContext)
+
 	useEffect(() => {
 		const id = localStorage.getItem('userId')
 		followingAPI.getFollowings(id).then((response) => {
 			const {data} = response
 			setFollowing(data)
 		})
-	},[])
+
+	},[pathname])
 
 	useEffect(() => {
 		if(pathname === '/user/self/following') {
 			handleChangeTab(5)
 		}
-	},[])
+	},[pathname])
 	return (
 		<div className={`${style.userFollowingContainer}`}>
 			{/* <div className={`${style.userInfoHeaderContainer}`}>

@@ -5,26 +5,27 @@ import UserInfo from 'UIcomponents/layouts/UserInfo'
 import UserInfoHeader from 'UIcomponents/layouts/UserInfoHeader'
 import { useContext, useEffect, useState } from 'react'
 import followingAPI from 'api/followingAPI'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { ChangeTabContext } from 'context/UserTabContext'
 
 export default function UserFollower() {
 	const [followers, setFollowers] = useState([])
 	const { pathname } = useLocation()
 	const handleChangeTab = useContext(ChangeTabContext)
+
 	useEffect(() => {
 		const id = localStorage.getItem('userId')
 		followingAPI.getFollowers(id).then((response) => {
 			const {data} = response
 			setFollowers(data)
 		})
-	},[])
+	},[pathname])
 
 	useEffect(() => {
 		if(pathname === '/user/self/follower') {
 			handleChangeTab(4)
 		}
-	},[])
+	},[pathname])
 
 	return (
 		<div className={`${style.userFollowerContainer}`}>
