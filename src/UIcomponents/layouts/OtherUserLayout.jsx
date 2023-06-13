@@ -26,8 +26,10 @@ export default function Layout() {
 	const useReplyModal = useContext(ReplyTweetModalContext)
 	const [userInfo, setUserInfo] = useState([])
 	const { pathname } = useLocation()
-  const OtherUserId = useContext(OtherUserContext)
-	const isFollowPage = pathname.includes(`/user/other/following/${OtherUserId}`) || pathname.includes(`/user/other/follower/${OtherUserId}`)
+	const OtherUserId = useContext(OtherUserContext)
+	const isFollowPage =
+		pathname.includes(`/user/other/following/${OtherUserId}`) ||
+		pathname.includes(`/user/other/follower/${OtherUserId}`)
 	const userId = OtherUserId
 
 	useEffect(() => {
@@ -55,14 +57,14 @@ export default function Layout() {
 				introduction={userInfo.introduction}
 				follower={userInfo.followersCount}
 				following={userInfo.followingsCount}
-        onHideUserInfo={isFollowPage ? "hideUserInfo" : ''}
+				onHideUserInfo={isFollowPage ? 'hideUserInfo' : ''}
 				userId={userInfo.id}
 			/>
 			{pathname.includes(`/user/other/following/${userId}`) ||
 			pathname.includes(`/user/other/follower/${userId}`) ? (
-				<OtherFollowTab id={userId}/>
+				<OtherFollowTab id={userId} />
 			) : (
-				<OtherUserTab id={userId}/>
+				<OtherUserTab id={userId} />
 			)}
 
 			<div className={`${style.UserLayoutMainContainer}`}>

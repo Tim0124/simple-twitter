@@ -8,15 +8,18 @@ export default function ReplyListItem({
 	time,
 	comment,
 	avatar,
-	onOtherUserId
+	onOtherUserId,
 }) {
 	return (
 		<div className={`${style.replyListItemContainer}`}>
 			<div className={`${style.replyListItemList}`}>
 				<Link to={`/user/other/${id}`}>
-					<div className={`${style.replyListItemLogo}`} onClick={() =>onOtherUserId(id)}>
-					<img src={avatar} className={`${style.replyListItemImg}`} alt='' />
-				</div>
+					<div
+						className={`${style.replyListItemLogo}`}
+						onClick={() => onOtherUserId(id)}
+					>
+						<img src={avatar} className={`${style.replyListItemImg}`} alt='' />
+					</div>
 				</Link>
 				<div className={`${style.replyListItemInfo}`}>
 					<div className={`${style.replyListItemSecInfo}`}>

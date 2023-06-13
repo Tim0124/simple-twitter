@@ -50,17 +50,38 @@ export default function Router() {
 						<Route path='/reply/:tweet_id' element={<ReplyList />} />
 						<Route element={<UserLayout />}>
 							<Route path='/user/:user_id' element={<UserTweets />} />
-							<Route path='/user/self/reply/:user_id' element={<UserReplyList />} />
+							<Route
+								path='/user/self/reply/:user_id'
+								element={<UserReplyList />}
+							/>
 							<Route path='/user/self/like/:user_id' element={<UserLike />} />
-							<Route path='/user/self/follower/:user_id' element={<UserFollower />} />
-							<Route path='/user/self/following/:user_id' element={<UserFollowing />} />
+							<Route
+								path='/user/self/follower/:user_id'
+								element={<UserFollower />}
+							/>
+							<Route
+								path='/user/self/following/:user_id'
+								element={<UserFollowing />}
+							/>
 						</Route>
-						<Route element={<OtherUserLayout/>}>
+						<Route element={<OtherUserLayout />}>
 							<Route path='/user/other/:user_id' element={<OtherUserTweet />} />
-							<Route path='/user/other/reply/:user_id' element={<OtherUserReply />} />
-							<Route path='/user/other/like/:user_id' element={<OtherUserLike />} />
-							<Route path='/user/other/follower/:user_id' element={<OtherUserFollower />} />
-							<Route path='/user/other/following/:user_id' element={<OtherUserFollowing />} />
+							<Route
+								path='/user/other/reply/:user_id'
+								element={<OtherUserReply />}
+							/>
+							<Route
+								path='/user/other/like/:user_id'
+								element={<OtherUserLike />}
+							/>
+							<Route
+								path='/user/other/follower/:user_id'
+								element={<OtherUserFollower />}
+							/>
+							<Route
+								path='/user/other/following/:user_id'
+								element={<OtherUserFollowing />}
+							/>
 						</Route>
 						<Route path='/setting' element={<SettingFrom />} />
 					</Route>

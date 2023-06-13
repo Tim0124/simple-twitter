@@ -18,7 +18,6 @@ export default function UserLike() {
 	const navigate = useNavigate()
 	const OtherUserData = useContext(OtherUserContext)
 	const userId = OtherUserData
-	
 
 	useEffect(() => {
 		tweetAPI.getCurrentUserLikes(userId).then((response) => {

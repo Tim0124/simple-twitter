@@ -11,6 +11,7 @@ import {
 } from 'context/ModalContext'
 import ModalPostTweet from 'UIcomponents/modal/ModalPostTweet'
 import { ChangeStepContext, StepContext } from 'context/SideBarContext'
+import { Toast } from 'heplers/helpers'
 
 export default function Sidebar() {
 	const navigate = useNavigate()
@@ -22,6 +23,10 @@ export default function Sidebar() {
 
 	const handleClick = () => {
 		localStorage.removeItem('authToken')
+		Toast.fire({
+			title: '已登出',
+			icon: 'info',
+		})
 		navigate('/login')
 	}
 

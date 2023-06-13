@@ -23,15 +23,12 @@ export default function UserTweets() {
 	const OtherUserData = useContext(OtherUserContext)
 	const userId = OtherUserData
 
-
 	useEffect(() => {
 		tweetAPI.getCurrentUserAllTweet(userId).then((response) => {
-			const {data} = response
+			const { data } = response
 			setOtherUser(data)
 		})
-
-	},[pathname])
-
+	}, [pathname])
 
 	useEffect(() => {
 		if (pathname === `/user/other/${userId}`) {
@@ -41,7 +38,6 @@ export default function UserTweets() {
 	}, [pathname])
 	return (
 		<div className={`${style.userTweetsContainer}`}>
-
 			<section className={`${style.UserTweetsContent}`}>
 				{otherUser.map((user) => (
 					<UserTweetsContent

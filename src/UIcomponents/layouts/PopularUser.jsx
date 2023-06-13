@@ -11,19 +11,22 @@ export default function PopularUser({
 	avatar,
 	account,
 	isUserFollowed,
-  onOtherUserId
+	onOtherUserId,
 }) {
 	const [follow, setFollow] = useState(isUserFollowed)
-  
+
 	return (
 		<div className={`${style.popularUserContainer}`}>
 			<div className={`${style.popularUserItems}`}>
 				<div className={`${style.popularUserList}`}>
-          <Link to={`/user/other/${id}`}>
-            <div className={`${style.popularUserLogo}`} onClick={() =>onOtherUserId(id)}>
-						<img src={avatar} className={`${style.popularUserImg}`} alt='' />
-					</div>
-          </Link>
+					<Link to={`/user/other/${id}`}>
+						<div
+							className={`${style.popularUserLogo}`}
+							onClick={() => onOtherUserId(id)}
+						>
+							<img src={avatar} className={`${style.popularUserImg}`} alt='' />
+						</div>
+					</Link>
 					<div className={`${style.popularUserNameGroup}`}>
 						<div className={`${style.popularUserName}`}>{name}</div>
 						<div className={`${style.popularUserAccount}`}>@{account}</div>

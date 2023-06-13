@@ -3,7 +3,7 @@ import style from './FollowTab.module.scss'
 import { useContext } from 'react'
 import { TabChangeContext } from 'context/UserTabContext'
 
-export default function FollowTab({id}) {
+export default function FollowTab({ id }) {
 	const tab = useContext(TabChangeContext)
 
 	return (
@@ -18,7 +18,10 @@ export default function FollowTab({id}) {
 						<p style={{ color: tab === 4 ? '#ff6600' : '#000' }}>追隨者</p>
 					</div>
 				</Link>
-				<Link to={`/user/self/following/${id}`} className={`${style.linkStyle}`}>
+				<Link
+					to={`/user/self/following/${id}`}
+					className={`${style.linkStyle}`}
+				>
 					<div
 						className={`${style.userReplyItem} ${
 							tab === 5 ? style.userActive : ''

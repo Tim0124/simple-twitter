@@ -24,8 +24,10 @@ export default function Layout() {
 	const useReplyModal = useContext(ReplyTweetModalContext)
 	const [userInfo, setUserInfo] = useState([])
 	const { pathname } = useLocation()
-  const currentUserId = Number(localStorage.getItem('userId'))
-  const isFollowPage = pathname.includes(`/user/self/following/${currentUserId}`) || pathname.includes(`/user/self/follower/${currentUserId}`)
+	const currentUserId = Number(localStorage.getItem('userId'))
+	const isFollowPage =
+		pathname.includes(`/user/self/following/${currentUserId}`) ||
+		pathname.includes(`/user/self/follower/${currentUserId}`)
 
 	useEffect(() => {
 		tweetAPI.getCurrentUserTweet(currentUserId).then((response) => {
@@ -52,14 +54,14 @@ export default function Layout() {
 				introduction={userInfo.introduction}
 				follower={userInfo.followersCount}
 				following={userInfo.followingsCount}
-        onHideUserInfo={isFollowPage ? "hideUserInfo" : ''}
-        userId={currentUserId}
+				onHideUserInfo={isFollowPage ? 'hideUserInfo' : ''}
+				userId={currentUserId}
 			/>
 			{pathname.includes(`/user/self/following/${currentUserId}`) ||
 			pathname.includes(`/user/self/follower/${currentUserId}`) ? (
-				<FollowTab id={currentUserId}/>
+				<FollowTab id={currentUserId} />
 			) : (
-				<UserTab id={currentUserId}/>
+				<UserTab id={currentUserId} />
 			)}
 
 			<div className={`${style.UserLayoutMainContainer}`}>

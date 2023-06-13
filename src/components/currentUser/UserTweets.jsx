@@ -19,7 +19,7 @@ export default function UserTweets() {
 	const handleChangeTab = useContext(ChangeTabContext)
 	const navigate = useNavigate()
 	const currentUserId = localStorage.getItem('userId')
-	
+
 	useEffect(() => {
 		tweetAPI.getCurrentUserTweet(currentUserId).then((response) => {
 			const { data } = response

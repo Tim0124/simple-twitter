@@ -39,13 +39,13 @@ export default function ReplyListTweet({
 				<div className={`${style.replyTweetsInfo}`}>
 					<div className={`${style.replyTweetsSecInfo}`}>
 						<Link>
-						<div className={`${style.replyTweetsLogo}`}>
-							<img
-								src={avatar}
-								className={`${style.replyTweetsImg}`}
-								alt={account}
-							/>
-						</div>
+							<div className={`${style.replyTweetsLogo}`}>
+								<img
+									src={avatar}
+									className={`${style.replyTweetsImg}`}
+									alt={account}
+								/>
+							</div>
 						</Link>
 						<div className={`${style.replyTweetsNameGroup}`}>
 							<div className={`${style.replyTweetsName}`}>

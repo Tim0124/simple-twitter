@@ -57,7 +57,6 @@ export default function ReplyList() {
 						avatar={tweet.replyUser.avatar}
 						user={tweet.replyUser.name}
 						onOtherUserId={handleOtherUser}
-						
 					/>
 				))}
 			</div>

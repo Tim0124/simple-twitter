@@ -14,9 +14,8 @@ export default function UserInfo({
 	follower,
 	following,
 	onHideUserInfo,
-	userId
+	userId,
 }) {
-
 	return (
 		<div className={`${style.userInfoContainer} ${style[onHideUserInfo]}`}>
 			<div className={`${style.userInfoWrapper}`}>

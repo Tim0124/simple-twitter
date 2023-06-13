@@ -32,11 +32,7 @@ export default function UserTweetsContent({
 		<div className={`${style.mainTweetsContainer}`}>
 			<div className={`${style.mainTweetsList}`}>
 				<div className={`${style.mainTweetsLogo}`}>
-					<img
-						src={avatar}
-						className={`${style.mainTweetsImg}`}
-						alt=''
-					/>
+					<img src={avatar} className={`${style.mainTweetsImg}`} alt='' />
 				</div>
 				<div className={`${style.mainTweetsInfo}`}>
 					<div className={`${style.mainTweetsSecInfo}`}>

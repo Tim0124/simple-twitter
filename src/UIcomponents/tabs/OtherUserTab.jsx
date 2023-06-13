@@ -3,7 +3,7 @@ import style from './OtherUserTab.module.scss'
 import { useContext } from 'react'
 import { TabChangeContext } from 'context/UserTabContext'
 
-export default function UserTab({id}) {
+export default function UserTab({ id }) {
 	const tab = useContext(TabChangeContext)
 
 	return (
