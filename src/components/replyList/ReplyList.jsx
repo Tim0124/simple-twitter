@@ -11,11 +11,13 @@ import {
 import ModalReplyTweet from 'UIcomponents/modal/ModalReplyTweet'
 import { useNavigate, useParams } from 'react-router-dom'
 import tweetAPI from 'api/tweetAPI'
+import { GetOtherUserIdContext } from 'context/OtherUserContext'
 
 export default function ReplyList() {
 	const [currentTweet, setCurrentTweet] = useState([])
 	const [tweetReply, setTweetReply] = useState([])
 	const useReplyModal = useContext(ReplyTweetModalContext)
+	const handleOtherUser = useContext(GetOtherUserIdContext)
 	const tweetId = useParams().tweet_id
 	const navigate = useNavigate()
 
@@ -45,15 +47,17 @@ export default function ReplyList() {
 				date={currentTweet?.switchTime}
 			/>
 			<div className={`${style.replyListContent}`}>
-				{tweetReply.map((data) => (
+				{tweetReply.map((tweet) => (
 					<ReplyListItem
-						key={data.id}
-						id={data.id}
-						account={data.account}
-						comment={data.comment}
-						time={data.relativeTimeFromNow}
-						avatar={data.avatar}
-						user={data.name}
+						key={tweet.id}
+						id={tweet.replyUser.id}
+						account={tweet.replyUser.account}
+						comment={tweet.comment}
+						time={tweet.relativeTimeFromNow}
+						avatar={tweet.replyUser.avatar}
+						user={tweet.replyUser.name}
+						onOtherUserId={handleOtherUser}
+						
 					/>
 				))}
 			</div>

@@ -1,4 +1,4 @@
-import style from './UserTweetsContent.module.scss'
+import style from './OtherUserTweetsContent.module.scss'
 import { ReactComponent as Like } from '../../assets/redlike.svg'
 import { ReactComponent as Message } from '../../assets/message.svg'
 import { ReactComponent as Dislike } from '../../assets/unlike.svg'
@@ -12,7 +12,7 @@ export default function UserTweetsContent({
 	isLike,
 	quantity,
 	likeQuantity,
-	relativeTime,
+	time,
 	repliesCount,
 	likeCount,
 }) {
@@ -36,8 +36,6 @@ export default function UserTweetsContent({
 						src={avatar}
 						className={`${style.mainTweetsImg}`}
 						alt=''
-						width='50px'
-						heigh='50px'
 					/>
 				</div>
 				<div className={`${style.mainTweetsInfo}`}>
@@ -48,7 +46,7 @@ export default function UserTweetsContent({
 								<div className={`${style.mainTweetsAccount}`}>{account}</div>
 								<div className={`${style.mainTweetsdot}`}>・</div>
 								<div className={`${style.mainTweetsTime}`}>
-									<p>{relativeTime}</p>
+									<p>{time}</p>
 								</div>
 							</div>
 						</div>

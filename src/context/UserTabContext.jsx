@@ -8,7 +8,7 @@ export function UserTabContextProvider({ children }) {
 	const handleChangeTab = (pathname) => {
 		setTab(pathname)
 	}
-
+ 
 	return (
 		<TabChangeContext.Provider value={tab}>
 			<ChangeTabContext.Provider value={handleChangeTab}>

@@ -1,4 +1,4 @@
-import style from './UserLikeContent.module.scss'
+import style from './OtherUserLikeContent.module.scss'
 import { ReactComponent as Like } from '../../assets/redlike.svg'
 import { ReactComponent as Dislike } from '../../assets/unlike.svg'
 import { ReactComponent as Message } from '../../assets/message.svg'

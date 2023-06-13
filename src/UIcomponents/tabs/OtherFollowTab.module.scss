@@ -24,14 +24,15 @@
 			margin: 0 5px;
 			cursor: pointer;
 		}
-		.linkStyle {
-			color: #000;
-		}
-		.userActive {
+		.userAction {
 			color: #ff6600;
 			border-bottom: 2px solid #ff6600;
 		}
 	}
+}
+
+.linkStyle {
+	color: #000;
 }
 
 .UserTweetsContent {
@@ -39,7 +40,16 @@
 	overflow-y: scroll;
 }
 
-@media screen and (min-width: 1200px) {
+.userActive {
+	color: #ff6600;
+	border-bottom: 2px solid #ff6600;
+}
+
+@media screen and (min-width: 992px) {
+	.userTweetsWrapper {
+		border-top: 1px solid #e6ecf0;
+	}
+
 	.userTweetsItem,
 	.userReplyItem,
 	.userLikeItem {

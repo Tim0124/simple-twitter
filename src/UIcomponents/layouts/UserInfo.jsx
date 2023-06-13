@@ -1,7 +1,7 @@
 import style from './UserInfo.module.scss'
 import Button from 'UIcomponents/buttons/Button'
 import UserInfoHeader from './UserInfoHeader'
-import { Link } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import followingAPI from 'api/followingAPI'
 
@@ -13,9 +13,12 @@ export default function UserInfo({
 	introduction,
 	follower,
 	following,
+	onHideUserInfo,
+	userId
 }) {
+
 	return (
-		<div className={`${style.userInfoContainer}`}>
+		<div className={`${style.userInfoContainer} ${style[onHideUserInfo]}`}>
 			<div className={`${style.userInfoWrapper}`}>
 				<div className={`${style.userInfoImgGroup}`}>
 					<div className={`${style.userInfoBackground}`}>
@@ -54,13 +57,13 @@ export default function UserInfo({
 							<p>{introduction}</p>
 						</div>
 						<div className={`${style.adminTweetsCardFollowGroup}`}>
-							<Link to='/user/self/following'>
+							<Link to={`/user/self/following/${userId}`}>
 								<div className={`${style.adminTweetsCardFollowing}`}>
 									<p className={`${style.following}`}>{following}&nbsp;個</p>
 									<p>跟隨中</p>
 								</div>
 							</Link>
-							<Link to='/user/self/follower'>
+							<Link to={`/user/self/follower/${userId}`}>
 								<div className={`${style.adminTweetsCardFollower}`}>
 									<p className={`${style.follower}`}>{follower}&nbsp;位</p>
 									<p>跟隨者</p>

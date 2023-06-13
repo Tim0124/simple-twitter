@@ -4,6 +4,7 @@ import { ReactComponent as Like } from '../../assets/redlike.svg'
 import { ReactComponent as Message } from '../../assets/message.svg'
 import Button from 'UIcomponents/buttons/Button'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 export default function ReplyListTweet({
 	avatar,
@@ -31,12 +32,13 @@ export default function ReplyListTweet({
 	// const year = dateObj.getFullYear()
 	// const month = dateObj.getMonth() + 1
 	// const day = dateObj.getDay()
-	// const formatteDate = `${year}年${month}月${day}日`
+	// const formateDate = `${year}年${month}月${day}日`
 	return (
 		<div className={`${style.replyTweetsContainer}`}>
 			<div className={`${style.replyTweetsList}`}>
 				<div className={`${style.replyTweetsInfo}`}>
 					<div className={`${style.replyTweetsSecInfo}`}>
+						<Link>
 						<div className={`${style.replyTweetsLogo}`}>
 							<img
 								src={avatar}
@@ -44,6 +46,7 @@ export default function ReplyListTweet({
 								alt={account}
 							/>
 						</div>
+						</Link>
 						<div className={`${style.replyTweetsNameGroup}`}>
 							<div className={`${style.replyTweetsName}`}>
 								<p>{name}</p>

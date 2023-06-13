@@ -24,6 +24,12 @@ import AdminLogin from 'pages/admin/AdminLogin'
 import AdminTweets from 'pages/admin/AdminTweets'
 import AdminUsers from 'pages/admin/AdminUsers'
 import UserLayout from 'UIcomponents/layouts/UserLayout'
+import OtherUserTweet from 'components/otherUser/OtherUserTweets'
+import OtherUserLike from 'components/otherUser/OtherUserLike'
+import OtherUserReply from 'components/otherUser/OtherUserReplyList'
+import OtherUserLayout from 'UIcomponents/layouts/OtherUserLayout'
+import OtherUserFollower from 'components/otherUser/otherFollow/OtherUserFollower'
+import OtherUserFollowing from 'components/otherUser/otherFollow/OtherUserFollowing'
 
 const basename = process.env.PUBLIC_URL
 
@@ -36,20 +42,27 @@ export default function Router() {
 					<Route path='/register' element={<Register />} />
 					<Route path='/admin' element={<AdminLogin />} />
 					<Route element={<AdminLayout />}>
-						<Route path='admin/tweets' element={<AdminTweets />} />
-						<Route path='admin/users' element={<AdminUsers />} />
+						<Route path='/admin/tweets' element={<AdminTweets />} />
+						<Route path='/admin/users' element={<AdminUsers />} />
 					</Route>
 					<Route element={<Layout />}>
 						<Route path='/home' element={<MainTweets />} />
 						<Route path='/reply/:tweet_id' element={<ReplyList />} />
 						<Route element={<UserLayout />}>
-							<Route path='user/:user_id' element={<UserTweets />} />
-							<Route path='user/self/reply' element={<UserReplyList />} />
-							<Route path='user/self/like' element={<UserLike />} />
-							<Route path='user/self/follower' element={<UserFollower />} />
-							<Route path='user/self/following' element={<UserFollowing />} />
+							<Route path='/user/:user_id' element={<UserTweets />} />
+							<Route path='/user/self/reply/:user_id' element={<UserReplyList />} />
+							<Route path='/user/self/like/:user_id' element={<UserLike />} />
+							<Route path='/user/self/follower/:user_id' element={<UserFollower />} />
+							<Route path='/user/self/following/:user_id' element={<UserFollowing />} />
 						</Route>
-						<Route path='setting' element={<SettingFrom />} />
+						<Route element={<OtherUserLayout/>}>
+							<Route path='/user/other/:user_id' element={<OtherUserTweet />} />
+							<Route path='/user/other/reply/:user_id' element={<OtherUserReply />} />
+							<Route path='/user/other/like/:user_id' element={<OtherUserLike />} />
+							<Route path='/user/other/follower/:user_id' element={<OtherUserFollower />} />
+							<Route path='/user/other/following/:user_id' element={<OtherUserFollowing />} />
+						</Route>
+						<Route path='/setting' element={<SettingFrom />} />
 					</Route>
 					<Route path='/' element={<LoginForm />} />
 				</Routes>

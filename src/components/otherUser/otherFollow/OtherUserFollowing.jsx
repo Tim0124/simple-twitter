@@ -1,6 +1,6 @@
-import style from './UserFollowing.module.scss'
+import style from './OtherUserFollowing.module.scss'
 import FollowTab from 'UIcomponents/tabs/FollowTab'
-import UserFollowerContent from './UserFollowContent'
+import UserFollowerContent from './OtherUserFollowContent'
 import UserInfo from 'UIcomponents/layouts/UserInfo'
 import UserInfoHeader from 'UIcomponents/layouts/UserInfoHeader'
 import { useContext, useEffect, useState } from 'react'
@@ -8,12 +8,14 @@ import tweetAPI from 'api/tweetAPI'
 import followingAPI from 'api/followingAPI'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { ChangeTabContext } from 'context/UserTabContext'
+import { OtherUserContext } from 'context/OtherUserContext'
 
 export default function UserFollowing() {
 	const [following, setFollowing] = useState([])
 	const { pathname } = useLocation()
 	const handleChangeTab = useContext(ChangeTabContext)
-	const id = localStorage.getItem('userId')
+	const OtherUserId = useContext(OtherUserContext)
+	const id = OtherUserId
 
 	useEffect(() => {
 		followingAPI.getFollowings(id).then((response) => {
@@ -23,7 +25,7 @@ export default function UserFollowing() {
 	}, [pathname])
 
 	useEffect(() => {
-		if (pathname === `/user/self/following/${id}`) {
+		if (pathname === `/user/other/following/${id}`) {
 			handleChangeTab(5)
 		}
 	}, [pathname])

@@ -14,10 +14,9 @@ export default function UserReplyList() {
 	const handleChangeTab = useContext(ChangeTabContext)
 	const [replies, setReplies] = useState([])
 	const navigate = useNavigate()
-
+	const currentUserId = localStorage.getItem('userId')
 
 	useEffect(() => {
-		const currentUserId = localStorage.getItem('userId')
 		tweetAPI.getCurrentUserReplies(currentUserId).then((response) => {
 			const { data } = response
 			setReplies(data)
@@ -25,7 +24,7 @@ export default function UserReplyList() {
 	}, [pathname])
 
 	useEffect(() => {
-		if (pathname === '/user/self/reply') {
+		if (pathname === `/user/self/reply/${currentUserId}`) {
 			handleChangeTab(2)
 		}
 	}, [pathname])
