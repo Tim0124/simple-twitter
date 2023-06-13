@@ -5,7 +5,6 @@ export const ChangeStepContext = createContext()
 
 export function SideBarContextProvider({ children }) {
 	const [step, setStep] = useState()
-	console.log(step)
 	const handleChangeStep = (pathname) => {
 		setStep(pathname)
 	}

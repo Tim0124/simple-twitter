@@ -9,7 +9,6 @@ import MainContent from './MainContent'
 import { getTweets } from '../../api/allAPI'
 import MainHeader from './MainHeader'
 import { checkPermission } from 'api/auth'
-import followingAPI from 'api/followingAPI'
 import {
 	ReplyTweetModalContext,
 	ShowReplyModalContext,
@@ -111,20 +110,21 @@ export default function MainTweets({ onTweetClick }) {
 				/>
 			</div>
 			<main className={`${style.mainTweets}`}>
-				{tweets.map((data) => (
+				{tweets.map((tweet) => (
 					<MainTweetsContent
-						key={data.id}
-						tweetId={data.id}
-						userId={data.UserId}
-						name={data.User.name}
-						avatar={data.User.avatar}
-						account={data.User.account}
-						content={data.description}
-						time={data.relativeTimeFromNow}
-						quantity={data.repliesCount}
-						isLikeQuantity={data.likesCount}
+						key={tweet.id}
+						id={tweet.id}
+						userId={tweet.UserId}
+						name={tweet.User.name}
+						avatar={tweet.User.avatar}
+						account={tweet.User.account}
+						content={tweet.description}
+						time={tweet.relativeTimeFromNow}
+						quantity={tweet.repliesCount}
+						isLikeQuantity={tweet.likesCount}
 						onReplyClick={useModalClick}
 						onTweetsClick={handleTweetsClick}
+						isSelfUserLike={tweet.isSelfUserLike}
 					/>
 				))}
 			</main>
