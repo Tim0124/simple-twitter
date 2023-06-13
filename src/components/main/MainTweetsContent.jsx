@@ -5,7 +5,7 @@ import { ReactComponent as Message } from '../../assets/message.svg'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import likeAPI from 'api/likeAPI'
-import tweetAPI from 'api/tweetAPI';
+import tweetAPI from 'api/tweetAPI'
 import { getTweets } from '../../api/allAPI'
 
 export default function MainTweetsContent({
@@ -24,14 +24,14 @@ export default function MainTweetsContent({
 }) {
 	const [like, setLike] = useState(isSelfUserLike)
 	const [likeQuantity, setLikeQuantity] = useState(isLikeQuantity)
-	
+
 	const handleLikeClick = () => {
 		setLike(!like)
 		if (!like) {
 			setLikeQuantity(likeQuantity + 1)
 			likeAPI.like(id).then((response) => {
 				console.log(response)
-			});
+			})
 		} else {
 			setLikeQuantity(likeQuantity - 1)
 			likeAPI.unlike(id).then((response) => {

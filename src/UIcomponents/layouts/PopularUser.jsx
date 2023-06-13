@@ -11,7 +11,7 @@ export default function PopularUser({
 	account,
 	isUserFollowed,
 }) {
-  const [follow, setFollow] = useState(isUserFollowed)
+	const [follow, setFollow] = useState(isUserFollowed)
 
 	const handleFollowClick = () => {
 		setFollow(true)
@@ -51,12 +51,20 @@ export default function PopularUser({
 				</div>
 				<div className={`${style.popularUserButton}`}>
 					{follow ? (
-            <div >
-              <Button size='middle' text='正在跟隨' onClick={handleUnFollowClick} />
-            </div>
+						<div>
+							<Button
+								size='middle'
+								text='正在跟隨'
+								onClick={handleUnFollowClick}
+							/>
+						</div>
 					) : (
-              <div className={`${style.popularUserFollower}`} >
-                <Button size='white-exsmall' text='跟隨' onClick={handleFollowClick} />
+						<div className={`${style.popularUserFollower}`}>
+							<Button
+								size='white-exsmall'
+								text='跟隨'
+								onClick={handleFollowClick}
+							/>
 						</div>
 					)}
 				</div>

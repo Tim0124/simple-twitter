@@ -8,7 +8,7 @@ export default function PopularUserList() {
 	const [followers, setFollowers] = useState([])
 
 	useEffect(() => {
-		(async () => {
+		;(async () => {
 			try {
 				const responce = await followingAPI.getTopFollower()
 				const followerData = responce.data

@@ -16,24 +16,23 @@ export default function UserLikeContent({
 	time,
 	isSelfUserLike,
 }) {
-  const [like, setLike] = useState(isSelfUserLike)
-  const [likeQuantity, setLikeQuantity] = useState(likesCount)
+	const [like, setLike] = useState(isSelfUserLike)
+	const [likeQuantity, setLikeQuantity] = useState(likesCount)
 
-  const handleLikeClick = () => {
-    setLike(!like)
-    if (!like) {
-      setLikeQuantity(likeQuantity + 1)
-      likeAPI.like(id).then((response) => {
-        console.log(response)
-      });
-    } else {
-      setLikeQuantity(likeQuantity - 1)
-      likeAPI.unlike(id).then((response) => {
-        console.log(response)
-      })
-    }
-  }
-
+	const handleLikeClick = () => {
+		setLike(!like)
+		if (!like) {
+			setLikeQuantity(likeQuantity + 1)
+			likeAPI.like(id).then((response) => {
+				console.log(response)
+			})
+		} else {
+			setLikeQuantity(likeQuantity - 1)
+			likeAPI.unlike(id).then((response) => {
+				console.log(response)
+			})
+		}
+	}
 
 	return (
 		<div className={`${style.mainTweetsContainer}`}>
@@ -65,21 +64,21 @@ export default function UserLikeContent({
 							<p>{repliesCount}</p>
 						</div>
 						<div className={`${style.mainTweetsLikeQuantity}`}>
-              {like === true ? (
-                <Like
-                  width='16px'
-                  height='16px'
-                  id={id}
-                  onClick={handleLikeClick}
-                />
-              ) : (
-                  <Dislike
-                    width='16px'
-                    height='16px'
-                    id={id}
-                    onClick={handleLikeClick}
-                  />
-              )}
+							{like === true ? (
+								<Like
+									width='16px'
+									height='16px'
+									id={id}
+									onClick={handleLikeClick}
+								/>
+							) : (
+								<Dislike
+									width='16px'
+									height='16px'
+									id={id}
+									onClick={handleLikeClick}
+								/>
+							)}
 							<p>{likeQuantity}</p>
 						</div>
 					</div>
