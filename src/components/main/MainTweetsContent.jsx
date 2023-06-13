@@ -18,7 +18,7 @@ export default function MainTweetsContent({
 	isLikeQuantity,
 	onReplyClick,
 	onTweetsClick,
-	isSelfUserLike
+	isSelfUserLike,
 }) {
 	const [like, setLike] = useState(isSelfUserLike)
 	const [likeQuantity, setLikeQuantity] = useState(isLikeQuantity)
@@ -31,7 +31,6 @@ export default function MainTweetsContent({
 			likeAPI.like(id, isLikeQuantity).then((response) => {
 				console.log(response)
 			})
-			
 		} else {
 			setLikeQuantity(likeQuantity + 1)
 			isLikeQuantity = likeQuantity
@@ -75,7 +74,7 @@ export default function MainTweetsContent({
 									onClick={() => handleLikeClick(id)}
 								/>
 							) : (
-									<Like
+								<Like
 									width='16px'
 									height='16px'
 									id={id}

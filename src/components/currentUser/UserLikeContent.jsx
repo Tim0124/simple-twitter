@@ -6,33 +6,33 @@ import { useState } from 'react'
 import likeAPI from 'api/likeAPI'
 
 export default function UserLikeContent({
-  id,
+	id,
 	name,
 	account,
 	avatar,
 	content,
 	repliesCount,
-  likesCount,
+	likesCount,
 	time,
-  isSelfUserLike
+	isSelfUserLike,
 }) {
-  const [like, setLike] = useState(isSelfUserLike)
-  const [likeQuantity, setLikeQuantity] = useState(likesCount)
+	const [like, setLike] = useState(isSelfUserLike)
+	const [likeQuantity, setLikeQuantity] = useState(likesCount)
 
-  const handleLikeClick = (id) => {
-    setLike(!like)
-    if (!like) {
-      likeAPI.like(id).then((response) => {
-        console.log(response)
-      })
-      setLikeQuantity(likeQuantity + 1)
-    } else {
-      likeAPI.unlike(id).then((response) => {
-        console.log(response)
-      })
-      setLikeQuantity(likeQuantity - 1)
-    }
-  }
+	const handleLikeClick = (id) => {
+		setLike(!like)
+		if (!like) {
+			likeAPI.like(id).then((response) => {
+				console.log(response)
+			})
+			setLikeQuantity(likeQuantity + 1)
+		} else {
+			likeAPI.unlike(id).then((response) => {
+				console.log(response)
+			})
+			setLikeQuantity(likeQuantity - 1)
+		}
+	}
 
 	return (
 		<div className={`${style.mainTweetsContainer}`}>
@@ -64,22 +64,22 @@ export default function UserLikeContent({
 							<p>{repliesCount}</p>
 						</div>
 						<div className={`${style.mainTweetsLikeQuantity}`}>
-              {like ? (
-                <Like
-                  width='16px'
-                  height='16px'
-                  id={id}
-                  onClick={() => handleLikeClick(id)}
-                />
-              ) : (
-                  <Dislike
-                  width='16px'
-                  height='16px'
-                  id={id}
-                  onClick={() => handleLikeClick(id)}
-                />
-              )}
-              <p>{likeQuantity}</p>
+							{like ? (
+								<Like
+									width='16px'
+									height='16px'
+									id={id}
+									onClick={() => handleLikeClick(id)}
+								/>
+							) : (
+								<Dislike
+									width='16px'
+									height='16px'
+									id={id}
+									onClick={() => handleLikeClick(id)}
+								/>
+							)}
+							<p>{likeQuantity}</p>
 						</div>
 					</div>
 				</div>
