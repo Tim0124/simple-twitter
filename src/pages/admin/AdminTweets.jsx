@@ -28,7 +28,6 @@ export default function AdminTweets() {
 					Swal.fire('刪除成功!', '推文已刪除', 'success')
 					tweetAPI.deleteTweet(id).then((response) => {
 						const { data } = response.data
-						console.log(data.deletedTweet.id)
 						const deleteId = data.deletedTweet.id
 						if (response.status !== 200) {
 							throw new Error(data.message)
@@ -36,7 +35,6 @@ export default function AdminTweets() {
 						setTweets((prevTweet) => {
 							return prevTweet.filter((tweet) => {
 								if (tweet.id === deleteId) {
-									console.log(deleteId)
 									return tweet.id !== deleteId
 								}
 							})

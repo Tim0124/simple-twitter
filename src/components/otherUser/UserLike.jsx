@@ -10,11 +10,11 @@ import { useContext, useEffect, useState } from 'react'
 import { ChangeTabContext } from 'context/UserTabContext'
 import tweetAPI from 'api/tweetAPI'
 
+
 export default function UserLike() {
 	const { pathname } = useLocation()
 	const handleChangeTab = useContext(ChangeTabContext)
 	const [likesTweet, setLikesTweet] = useState([])
-
 
 	useEffect(() => {
 		const currentUserId = localStorage.getItem('userId')

@@ -24,25 +24,16 @@
 			margin: 0 5px;
 			cursor: pointer;
 		}
-		.userAction {
+		.userActive {
 			color: #ff6600;
 			border-bottom: 2px solid #ff6600;
 		}
 	}
 }
 
-.linkStyle {
-	color: #000;
-}
-
 .UserTweetsContent {
 	height: 100vh;
 	overflow-y: scroll;
-}
-
-.userActive {
-	color: #ff6600;
-	border-bottom: 2px solid #ff6600;
 }
 
 @media screen and (min-width: 1200px) {

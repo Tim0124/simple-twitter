@@ -143,8 +143,6 @@ export default function ReplyList() {
 	const [tweetReply, setTweetReply] = useState([])
 	const useReplyModal = useContext(ReplyTweetModalContext)
 	const tweetId = useParams().tweet_id
-	console.log(currentTweet)
-	console.log(tweetId)
 	useEffect(() => {
 		tweetAPI.getTweet(tweetId).then((response) => {
 			const { data } = response
@@ -152,7 +150,6 @@ export default function ReplyList() {
 		})
 		tweetAPI.getReplyTweet(tweetId).then((response) => {
 			const { data } = response
-			console.log(data)
 			setTweetReply(data)
 		})
 	}, [])

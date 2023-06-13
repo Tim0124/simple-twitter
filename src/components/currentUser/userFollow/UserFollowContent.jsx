@@ -17,9 +17,7 @@ export default function UserFollowerContent({
 					<img
 						src={avatar}
 						className={`${style.userFollowImg}`}
-						alt=''
-						width='50px'
-						heigh='50px'
+						alt={account}
 					/>
 				</div>
 				<div className={`${style.userFollowInfo}`}>
@@ -27,7 +25,7 @@ export default function UserFollowerContent({
 						<div className={`${style.userFollowNameGroup}`}>
 							<div className={`${style.userFollowName}`}>{name}</div>
 							<div className={`${style.userFollowSmallAccount}`}>
-								<div className={`${style.userFollowAccount}`}>{account}</div>
+								<div className={`${style.userFollowAccount}`}>@{account}</div>
 							</div>
 						</div>
 						{isFollow === true ? (

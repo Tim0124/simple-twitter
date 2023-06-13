@@ -32,7 +32,6 @@ export default function AdminLogin() {
 				})
 				.then((response) => {
 					const { data } = response.data
-					console.log(response.data)
 					setIsProcessing(true)
 					if (response.data.status !== 'success') {
 						throw new Error(response.data.message)
@@ -46,7 +45,6 @@ export default function AdminLogin() {
 				})
 		} catch (error) {
 			setIsProcessing(false)
-			console.log(error)
 			Toast.fire({
 				icon: 'error',
 				title: '輸入帳號密碼有誤！',

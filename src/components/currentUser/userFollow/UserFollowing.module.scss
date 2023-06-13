@@ -1,25 +1,4 @@
 @use '../../../styles/variable.module' as var;
 
-.userFollowingContainer {
-	height: calc(100% - var.$sidebar-height);
-	display: flex;
-	flex-direction: column;
-}
 
-.userFollowingContent {
-	flex: 1;
-	height: 100vh;
-	overflow-y: scroll;
-}
 
-@media screen and (min-width: 992px) {
-	.userFollowingContainer {
-		height: 100%;
-	}
-	.userInfoHeaderContainer {
-		border-bottom: 1px solid #e6ecf0;
-	}
-	.userInfoContainer {
-		display: none;
-	}
-}

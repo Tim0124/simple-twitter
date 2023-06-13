@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom'
+import { Outlet, useLocation } from 'react-router-dom'
 import PopularUserList from './PopularUserList'
 import SideItem from './SideItem'
 import Sidebar from './Sidebar'
@@ -16,11 +16,14 @@ import UserInfoHeader from './UserInfoHeader'
 import tweetAPI from 'api/tweetAPI'
 import UserInfo from './UserInfo'
 import UserTab from 'UIcomponents/tabs/UserTab'
+import FollowTab from 'UIcomponents/tabs/FollowTab'
 
 export default function Layout() {
 	const useTweetModal = useContext(TweetModalContext)
 	const useReplyModal = useContext(ReplyTweetModalContext)
 	const [userInfo, setUserInfo] = useState([])
+  const {pathname} = useLocation()
+
 
 	useEffect(() => {
 		const currentUserId = localStorage.getItem('userId')
@@ -49,7 +52,9 @@ export default function Layout() {
 				follower={userInfo.followersCount}
 				following={userInfo.followingsCount}
 			/>
-			<UserTab />
+      {pathname.includes('/user/self/following') || pathname.includes('/user/self/follower') ? <FollowTab /> : <UserTab />}
+			
+      
 			<div className={`${style.UserLayoutMainContainer}`}>
 				<Outlet />
 			</div>

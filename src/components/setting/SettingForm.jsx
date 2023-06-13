@@ -15,7 +15,6 @@ export default function Register() {
 	const [check, setCheck] = useState('')
 	const { pathname } = useLocation()
 	const navigate = useNavigate()
-	console.log(pathname)
 	const handleChangeStep = useContext(ChangeStepContext)
 
 	useEffect(() => {
@@ -50,7 +49,6 @@ export default function Register() {
 			title: '已登出',
 			icon: 'info',
 		})
-		console.log(localStorage.getItem('authToken'))
 		navigate('/login')
 	}
 

@@ -65,7 +65,6 @@ export default function MainTweets({ onTweetClick }) {
 	}, [navigate])
 
 	useEffect(() => {
-		console.log(handleChangeStep)
 		if (pathname === '/home') {
 			handleChangeStep(1)
 		}
@@ -74,12 +73,9 @@ export default function MainTweets({ onTweetClick }) {
 	const handleButtonChange = (e) => {
 		const text = e.target.value
 		setIsPostText(text)
-		console.log(text.length)
 	}
 
 	const handleTweetsClick = ({ id, userId }) => {
-		console.log(id)
-		console.log(userId)
 		// tweetAPI.getCurrentTweetUser(userId).then((response) => {
 		// 	const {data} = response
 		// 	console.log(data)

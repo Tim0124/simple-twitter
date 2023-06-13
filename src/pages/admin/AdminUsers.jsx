@@ -5,7 +5,6 @@ import style from './AdminUsers.module.scss'
 
 export default function AdminUsers() {
 	const [users, setUsers] = useState([])
-	console.log(users)
 
 	useEffect(() => {
 		userAPI.getAdminUsers().then((response) => {
