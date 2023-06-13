@@ -14,9 +14,9 @@ export default function UserLike() {
 	const { pathname } = useLocation()
 	const handleChangeTab = useContext(ChangeTabContext)
 	const [likesTweet, setLikesTweet] = useState([])
+	const currentUserId = localStorage.getItem('userId')
 
 	useEffect(() => {
-		const currentUserId = localStorage.getItem('userId')
 		tweetAPI.getCurrentUserLikes(currentUserId).then((response) => {
 			const { data } = response
 			setLikesTweet(data)
@@ -24,7 +24,7 @@ export default function UserLike() {
 	}, [pathname])
 
 	useEffect(() => {
-		if (pathname === '/user/self/like') {
+		if (pathname === `/user/self/like/${currentUserId}`) {
 			handleChangeTab(3)
 		}
 	}, [pathname])

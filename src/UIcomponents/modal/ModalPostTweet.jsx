@@ -9,8 +9,8 @@ import { ShowTweetModalContext, TweetModalContext } from 'context/ModalContext'
 
 export default function ModalPostTweet({ onClick, onHiddenClick }) {
 	const useShowModal = useContext(TweetModalContext)
-
 	const useModalClick = useContext(ShowTweetModalContext)
+
 	return (
 		<div
 			className={`${style.layoutModalContainer}`}

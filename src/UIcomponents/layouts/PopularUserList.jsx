@@ -2,10 +2,12 @@ import PopularUser from './PopularUser'
 import style from './PopularUserList.module.scss'
 import { ReactComponent as Logo } from '../../assets/logo.svg'
 import followingAPI from 'api/followingAPI'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
+import { GetOtherUserIdContext } from 'context/OtherUserContext'
 
 export default function PopularUserList() {
 	const [followers, setFollowers] = useState([])
+	const handleOtherUser = useContext(GetOtherUserIdContext)
 
 	useEffect(() => {
 		;(async () => {
@@ -25,6 +27,7 @@ export default function PopularUserList() {
 			<div className={`${style.popularUserList}`}>
 				{followers.map((follower) => (
 					<PopularUser
+						onOtherUserId={handleOtherUser}
 						id={follower.id}
 						key={follower.id}
 						name={follower.account}

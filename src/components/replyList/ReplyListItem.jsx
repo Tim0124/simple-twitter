@@ -1,18 +1,26 @@
+import { Link } from 'react-router-dom'
 import style from './ReplyListItem.module.scss'
 
 export default function ReplyListItem({
+	id,
 	user,
 	account,
 	time,
 	comment,
 	avatar,
+	onOtherUserId,
 }) {
 	return (
 		<div className={`${style.replyListItemContainer}`}>
 			<div className={`${style.replyListItemList}`}>
-				<div className={`${style.replyListItemLogo}`}>
-					<img src={avatar} className={`${style.replyListItemImg}`} alt='' />
-				</div>
+				<Link to={`/user/other/${id}`}>
+					<div
+						className={`${style.replyListItemLogo}`}
+						onClick={() => onOtherUserId(id)}
+					>
+						<img src={avatar} className={`${style.replyListItemImg}`} alt='' />
+					</div>
+				</Link>
 				<div className={`${style.replyListItemInfo}`}>
 					<div className={`${style.replyListItemSecInfo}`}>
 						<div className={`${style.replyListItemNameGroup}`}>

@@ -2,7 +2,7 @@ import { Outlet, useLocation } from 'react-router-dom'
 import PopularUserList from './PopularUserList'
 import SideItem from './SideItem'
 import Sidebar from './Sidebar'
-import style from './UserLayout.module.scss'
+import style from './OtherUserLayout.module.scss'
 import ModalPostTweet from '../modal/ModalPostTweet'
 import ModalUserInfo from '../../components/modal/ModalUserInfo'
 import { useContext, useEffect, useState } from 'react'
@@ -14,9 +14,11 @@ import {
 } from 'context/ModalContext'
 import UserInfoHeader from './UserInfoHeader'
 import tweetAPI from 'api/tweetAPI'
-import UserInfo from './UserInfo'
+import OtherUserInfo from './OtherUserInfo'
 import UserTab from 'UIcomponents/tabs/UserTab'
 import FollowTab from 'UIcomponents/tabs/FollowTab'
+import OtherUserTab from 'UIcomponents/tabs/OtherUserTab'
+import OtherFollowTab from 'UIcomponents/tabs/OtherFollowTab'
 import { OtherUserContext } from 'context/OtherUserContext'
 
 export default function Layout() {
@@ -24,13 +26,14 @@ export default function Layout() {
 	const useReplyModal = useContext(ReplyTweetModalContext)
 	const [userInfo, setUserInfo] = useState([])
 	const { pathname } = useLocation()
-	const currentUserId = Number(localStorage.getItem('userId'))
+	const OtherUserId = useContext(OtherUserContext)
 	const isFollowPage =
-		pathname.includes(`/user/self/following/${currentUserId}`) ||
-		pathname.includes(`/user/self/follower/${currentUserId}`)
+		pathname.includes(`/user/other/following/${OtherUserId}`) ||
+		pathname.includes(`/user/other/follower/${OtherUserId}`)
+	const userId = OtherUserId
 
 	useEffect(() => {
-		tweetAPI.getCurrentUserTweet(currentUserId).then((response) => {
+		tweetAPI.getCurrentUserTweet(userId).then((response) => {
 			const { data } = response
 			setUserInfo(data)
 		})
@@ -45,7 +48,7 @@ export default function Layout() {
 					page='/home'
 				/>
 			</div>
-			<UserInfo
+			<OtherUserInfo
 				key={userInfo.id}
 				name={userInfo.name}
 				account={userInfo.account}
@@ -55,13 +58,13 @@ export default function Layout() {
 				follower={userInfo.followersCount}
 				following={userInfo.followingsCount}
 				onHideUserInfo={isFollowPage ? 'hideUserInfo' : ''}
-				userId={currentUserId}
+				userId={userInfo.id}
 			/>
-			{pathname.includes(`/user/self/following/${currentUserId}`) ||
-			pathname.includes(`/user/self/follower/${currentUserId}`) ? (
-				<FollowTab id={currentUserId} />
+			{pathname.includes(`/user/other/following/${userId}`) ||
+			pathname.includes(`/user/other/follower/${userId}`) ? (
+				<OtherFollowTab id={userId} />
 			) : (
-				<UserTab id={currentUserId} />
+				<OtherUserTab id={userId} />
 			)}
 
 			<div className={`${style.UserLayoutMainContainer}`}>

@@ -1,26 +1,29 @@
-import style from './UserLikeContent.module.scss'
+import style from './OtherUserTweetsContent.module.scss'
 import { ReactComponent as Like } from '../../assets/redlike.svg'
-import { ReactComponent as Dislike } from '../../assets/unlike.svg'
 import { ReactComponent as Message } from '../../assets/message.svg'
+import { ReactComponent as Dislike } from '../../assets/unlike.svg'
 import { useState } from 'react'
 
-export default function UserLikeContent({
+export default function UserTweetsContent({
 	name,
 	account,
 	avatar,
-	content,
-	repliesCount,
-	likesCount,
+	description,
+	isLike,
+	quantity,
+	likeQuantity,
 	time,
+	repliesCount,
+	likeCount,
 }) {
-	const [like, setLike] = useState(true)
-	const [isLikeQuantity, setIsLikeQuantity] = useState(likesCount)
+	const [like, setLike] = useState(isLike)
+	const [isLikeQuantity, setIsLikeQuantity] = useState(likeCount)
 
 	const handleLikeClick = () => {
 		setLike(!like)
 		if (!like) {
 			setIsLikeQuantity(isLikeQuantity + 1)
-		} else if (like && isLikeQuantity >= 0) {
+		} else {
 			setIsLikeQuantity(isLikeQuantity - 1)
 		}
 	}
@@ -29,18 +32,14 @@ export default function UserLikeContent({
 		<div className={`${style.mainTweetsContainer}`}>
 			<div className={`${style.mainTweetsList}`}>
 				<div className={`${style.mainTweetsLogo}`}>
-					<img
-						src={avatar}
-						className={`${style.mainTweetsImg}`}
-						alt={account}
-					/>
+					<img src={avatar} className={`${style.mainTweetsImg}`} alt='' />
 				</div>
 				<div className={`${style.mainTweetsInfo}`}>
 					<div className={`${style.mainTweetsSecInfo}`}>
 						<div className={`${style.mainTweetsNameGroup}`}>
 							<div className={`${style.mainTweetsName}`}>{name}</div>
 							<div className={`${style.mainTweetsSmallAccount}`}>
-								<div className={`${style.mainTweetsAccount}`}>@{account}</div>
+								<div className={`${style.mainTweetsAccount}`}>{account}</div>
 								<div className={`${style.mainTweetsdot}`}>・</div>
 								<div className={`${style.mainTweetsTime}`}>
 									<p>{time}</p>
@@ -48,14 +47,14 @@ export default function UserLikeContent({
 							</div>
 						</div>
 					</div>
-					<div className={`${style.mainTweetsContent}`}>{content}</div>
+					<div className={`${style.mainTweetsContent}`}>{description}</div>
 					<div className={`${style.mainTweetsQuantityGroup}`}>
 						<div className={`${style.mainTweetsQuantity}`}>
 							<Message width='16px' height='16px' />
 							<p>{repliesCount}</p>
 						</div>
 						<div className={`${style.mainTweetsLikeQuantity}`}>
-							{like ? (
+							{like === true ? (
 								<Like width='16px' height='16px' onClick={handleLikeClick} />
 							) : (
 								<Dislike width='16px' height='16px' onClick={handleLikeClick} />

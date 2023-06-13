@@ -18,9 +18,9 @@ export default function UserTweets() {
 	const [allTweets, setAllTweets] = useState([])
 	const handleChangeTab = useContext(ChangeTabContext)
 	const navigate = useNavigate()
+	const currentUserId = localStorage.getItem('userId')
 
 	useEffect(() => {
-		const currentUserId = localStorage.getItem('userId')
 		tweetAPI.getCurrentUserTweet(currentUserId).then((response) => {
 			const { data } = response
 			setUserInfo(data)
@@ -32,7 +32,7 @@ export default function UserTweets() {
 	}, [pathname])
 
 	useEffect(() => {
-		if (pathname === '/user/self') {
+		if (pathname === '/user/self' || `/user/${currentUserId}`) {
 			handleChangeStep(2)
 			handleChangeTab(1)
 		}

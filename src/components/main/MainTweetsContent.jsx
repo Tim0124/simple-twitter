@@ -21,6 +21,7 @@ export default function MainTweetsContent({
 	onReplyClick,
 	onTweetsClick,
 	isSelfUserLike,
+	onOtherUserId,
 }) {
 	const [like, setLike] = useState(isSelfUserLike)
 	const [likeQuantity, setLikeQuantity] = useState(isLikeQuantity)
@@ -43,9 +44,14 @@ export default function MainTweetsContent({
 	return (
 		<div className={`${style.mainTweetsContainer}`}>
 			<div className={`${style.mainTweetsList}`}>
-				<div className={`${style.mainTweetsLogo}`}>
-					<img src={avatar} className={`${style.mainTweetsImg}`} alt='' />
-				</div>
+				<Link to={`/user/other/${userId}`}>
+					<div
+						className={`${style.mainTweetsLogo}`}
+						onClick={() => onOtherUserId(userId)}
+					>
+						<img src={avatar} className={`${style.mainTweetsImg}`} alt='' />
+					</div>
+				</Link>
 				<div className={`${style.mainTweetsInfo}`}>
 					<div className={`${style.mainTweetsSecInfo}`}>
 						<div className={`${style.mainTweetsNameGroup}`}>

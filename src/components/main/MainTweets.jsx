@@ -17,6 +17,7 @@ import ModalReplyTweet from 'UIcomponents/modal/ModalReplyTweet'
 import tweetAPI from 'api/tweetAPI'
 import ReplyList from 'components/replyList/ReplyList'
 import { ChangeStepContext } from 'context/SideBarContext'
+import { GetOtherUserIdContext } from 'context/OtherUserContext'
 
 export default function MainTweets({ onTweetClick }) {
 	const navigate = useNavigate()
@@ -27,6 +28,7 @@ export default function MainTweets({ onTweetClick }) {
 	const [isDisabled, setIsDisable] = useState(true)
 	const { pathname } = useLocation()
 	const handleChangeStep = useContext(ChangeStepContext)
+	const handleOtherUserId = useContext(GetOtherUserIdContext)
 
 	useEffect(() => {
 		const id = localStorage.getItem('userId')
@@ -125,6 +127,7 @@ export default function MainTweets({ onTweetClick }) {
 						onReplyClick={useModalClick}
 						onTweetsClick={handleTweetsClick}
 						isSelfUserLike={tweet.isSelfUserLike}
+						onOtherUserId={handleOtherUserId}
 					/>
 				))}
 			</main>
