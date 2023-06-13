@@ -16,17 +16,17 @@ export default function ReplyListTweet({
 	date,
 	onShowReplyModal,
 }) {
-	const [like, setLike] = useState()
-	const [isLikeQuantity, setIsLikeQuantity] = useState(likeQuantity)
+	const [like, setLike] = useState();
+	const [isLikeQuantity, setIsLikeQuantity] = useState(likeQuantity);
 
 	const handleLikeClick = () => {
-		setLike(!like)
+		setLike(!like);
 		if (!like) {
-			setIsLikeQuantity(isLikeQuantity + 1)
+			setIsLikeQuantity(isLikeQuantity + 1);
 		} else {
-			setIsLikeQuantity(isLikeQuantity - 1)
+			setIsLikeQuantity(isLikeQuantity - 1);
 		}
-	}
+	};
 	// const dateObj = new Date(date)
 	// const year = dateObj.getFullYear()
 	// const month = dateObj.getMonth() + 1
@@ -49,7 +49,7 @@ export default function ReplyListTweet({
 								<p>{name}</p>
 							</div>
 							<div className={`${style.replyTweetsSmallAccount}`}>
-								<p className={`${style.replyTweetsAccount}`}>@{account}</p>
+								<p className={`${style.replyTweetsAccount}`}>{account}</p>
 							</div>
 						</div>
 					</div>
@@ -79,11 +79,9 @@ export default function ReplyListTweet({
 							<Message width='24px' height='24px' />
 						</div>
 						<div className={`${style.replyTweetsLikeIcon}`}>
-							{like ? (
-								<Like width='25px' height='23px' onClick={handleLikeClick} />
-							) : (
-								<Dislike width='25px' height='23px' onClick={handleLikeClick} />
-							)}
+							{like ?
+								<Like width='25px' height='23px' onClick={handleLikeClick}/> :
+								<Dislike width='25px' height='23px' onClick={handleLikeClick} />}
 						</div>
 					</div>
 				</div>

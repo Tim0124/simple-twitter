@@ -37,7 +37,7 @@ export default function MainTweets({ onTweetClick }) {
 	}, [])
 
 	useEffect(() => {
-		;(async () => {
+		(async () => {
 			try {
 				const response = await getTweets.get('/')
 				const tweetData = response.data
@@ -64,21 +64,26 @@ export default function MainTweets({ onTweetClick }) {
 	}, [navigate])
 
 	useEffect(() => {
+		console.log(handleChangeStep)
 		if (pathname === '/home') {
 			handleChangeStep(1)
 		}
-	}, [pathname])
+	}, [])
 
 	const handleButtonChange = (e) => {
 		const text = e.target.value
 		setIsPostText(text)
+		console.log(text.length)
 	}
 
 	const handleTweetsClick = ({ id, userId }) => {
+		console.log(id)
+		console.log(userId)
 		// tweetAPI.getCurrentTweetUser(userId).then((response) => {
 		// 	const {data} = response
 		// 	console.log(data)
 		// })
+
 		// tweetAPI.getTweet(id).then((response) => {
 		// 	const {data} = response
 		// 	console.log(data)
@@ -109,7 +114,7 @@ export default function MainTweets({ onTweetClick }) {
 					<MainTweetsContent
 						key={tweet.id}
 						id={tweet.id}
-						userId={tweet.UserId}
+						userId={tweet.User.id}
 						name={tweet.User.name}
 						avatar={tweet.User.avatar}
 						account={tweet.User.account}

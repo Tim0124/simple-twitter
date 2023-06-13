@@ -16,23 +16,24 @@ export default function UserLikeContent({
 	time,
 	isSelfUserLike,
 }) {
-	const [like, setLike] = useState(isSelfUserLike)
-	const [likeQuantity, setLikeQuantity] = useState(likesCount)
+  const [like, setLike] = useState(isSelfUserLike)
+  const [likeQuantity, setLikeQuantity] = useState(likesCount)
 
-	const handleLikeClick = (id) => {
-		setLike(!like)
-		if (!like) {
-			likeAPI.like(id).then((response) => {
-				console.log(response)
-			})
-			setLikeQuantity(likeQuantity + 1)
-		} else {
-			likeAPI.unlike(id).then((response) => {
-				console.log(response)
-			})
-			setLikeQuantity(likeQuantity - 1)
-		}
-	}
+  const handleLikeClick = () => {
+    setLike(!like)
+    if (!like) {
+      setLikeQuantity(likeQuantity + 1)
+      likeAPI.like(id).then((response) => {
+        console.log(response)
+      });
+    } else {
+      setLikeQuantity(likeQuantity - 1)
+      likeAPI.unlike(id).then((response) => {
+        console.log(response)
+      })
+    }
+  }
+
 
 	return (
 		<div className={`${style.mainTweetsContainer}`}>
@@ -64,21 +65,21 @@ export default function UserLikeContent({
 							<p>{repliesCount}</p>
 						</div>
 						<div className={`${style.mainTweetsLikeQuantity}`}>
-							{like ? (
-								<Like
-									width='16px'
-									height='16px'
-									id={id}
-									onClick={() => handleLikeClick(id)}
-								/>
-							) : (
-								<Dislike
-									width='16px'
-									height='16px'
-									id={id}
-									onClick={() => handleLikeClick(id)}
-								/>
-							)}
+              {like === true ? (
+                <Like
+                  width='16px'
+                  height='16px'
+                  id={id}
+                  onClick={handleLikeClick}
+                />
+              ) : (
+                  <Dislike
+                    width='16px'
+                    height='16px'
+                    id={id}
+                    onClick={handleLikeClick}
+                  />
+              )}
 							<p>{likeQuantity}</p>
 						</div>
 					</div>
