@@ -17,7 +17,7 @@ export default function PostContent() {
 							className={`${style.postTweetInput}`}
 							type='text'
 							placeholder='有什麼新鮮事？'
-						/>	
+						/>
 					</div>
 				</div>
 			</form>

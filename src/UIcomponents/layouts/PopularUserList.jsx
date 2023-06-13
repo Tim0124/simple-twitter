@@ -20,13 +20,13 @@ export default function PopularUserList() {
 	}, [])
 
 	return (
-    <div className={`${style.popularListContainer}`}>
+		<div className={`${style.popularListContainer}`}>
 			<h4 className={`${style.popularUserListHeader}`}>推薦跟隨</h4>
 			<div className={`${style.popularUserList}`}>
 				{followers.map((follower) => (
 					<PopularUser key={follower.id} {...follower} />
 				))}
 			</div>
-    </div>  
+		</div>
 	)
 }

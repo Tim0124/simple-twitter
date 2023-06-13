@@ -9,8 +9,6 @@ import { useContext, useEffect, useState } from 'react'
 import { ChangeTabContext } from 'context/UserTabContext'
 import tweetAPI from 'api/tweetAPI'
 
-
-
 export default function UserReplyList() {
 	const { pathname } = useLocation()
 	const handleChangeTab = useContext(ChangeTabContext)

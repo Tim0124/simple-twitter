@@ -47,7 +47,7 @@ export default function Router() {
 							<Route path='user/self/reply' element={<UserReplyList />} />
 							<Route path='user/self/like' element={<UserLike />} />
 							<Route path='user/self/follower' element={<UserFollower />} />
-						<Route path='user/self/following' element={<UserFollowing />} />
+							<Route path='user/self/following' element={<UserFollowing />} />
 						</Route>
 						<Route path='setting' element={<SettingFrom />} />
 					</Route>

@@ -10,7 +10,6 @@ import { ChangeStepContext } from 'context/SideBarContext'
 import tweetAPI from 'api/tweetAPI'
 import { ChangeTabContext } from 'context/UserTabContext'
 
-
 export default function UserTweets() {
 	const { pathname } = useLocation()
 	const tweetId = useParams().tweet_id

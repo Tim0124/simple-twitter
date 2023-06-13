@@ -22,8 +22,7 @@ export default function Layout() {
 	const useTweetModal = useContext(TweetModalContext)
 	const useReplyModal = useContext(ReplyTweetModalContext)
 	const [userInfo, setUserInfo] = useState([])
-  const {pathname} = useLocation()
-
+	const { pathname } = useLocation()
 
 	useEffect(() => {
 		const currentUserId = localStorage.getItem('userId')
@@ -52,9 +51,13 @@ export default function Layout() {
 				follower={userInfo.followersCount}
 				following={userInfo.followingsCount}
 			/>
-      {pathname.includes('/user/self/following') || pathname.includes('/user/self/follower') ? <FollowTab /> : <UserTab />}
-			
-      
+			{pathname.includes('/user/self/following') ||
+			pathname.includes('/user/self/follower') ? (
+				<FollowTab />
+			) : (
+				<UserTab />
+			)}
+
 			<div className={`${style.UserLayoutMainContainer}`}>
 				<Outlet />
 			</div>

@@ -97,7 +97,7 @@ export default function Register() {
 					</div>
 					<div className={`${style.settingButtonGroup}`}>
 						<div className={`${style.settingButton}`}>
-							<Button text='儲存' size='middle'/>
+							<Button text='儲存' size='middle' />
 						</div>
 						<div className={`${style.settingLoginout}`}>
 							<div className={`${style.loginout}`} onClick={handleClick}>

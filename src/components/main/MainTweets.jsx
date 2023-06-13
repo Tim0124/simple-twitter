@@ -80,7 +80,6 @@ export default function MainTweets({ onTweetClick }) {
 		// 	const {data} = response
 		// 	console.log(data)
 		// })
-
 		// tweetAPI.getTweet(id).then((response) => {
 		// 	const {data} = response
 		// 	console.log(data)

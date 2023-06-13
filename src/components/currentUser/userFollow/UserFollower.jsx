@@ -16,16 +16,16 @@ export default function UserFollower() {
 	useEffect(() => {
 		const id = localStorage.getItem('userId')
 		followingAPI.getFollowers(id).then((response) => {
-			const {data} = response
+			const { data } = response
 			setFollowers(data)
 		})
-	},[pathname])
+	}, [pathname])
 
 	useEffect(() => {
-		if(pathname === '/user/self/follower') {
+		if (pathname === '/user/self/follower') {
 			handleChangeTab(4)
 		}
-	},[pathname])
+	}, [pathname])
 
 	return (
 		<div className={`${style.userFollowerContainer}`}>
@@ -41,15 +41,15 @@ export default function UserFollower() {
 			</div> */}
 			<section className={`${style.userFollowerContent}`}>
 				{followers.map((follower) => (
-					<UserFollowerContent 
-					key={follower.id}
-					followerId={follower.followerId}
-					followingId={follower.followingId}
-					name={follower.User.name}
-					avatar={follower.User.avatar}
-					account={follower.User.account} 
-					isFollow={follower.isSelfUserFollow}
-					content={follower.User.introduction}
+					<UserFollowerContent
+						key={follower.id}
+						followerId={follower.followerId}
+						followingId={follower.followingId}
+						name={follower.User.name}
+						avatar={follower.User.avatar}
+						account={follower.User.account}
+						isFollow={follower.isSelfUserFollow}
+						content={follower.User.introduction}
 					/>
 				))}
 			</section>
