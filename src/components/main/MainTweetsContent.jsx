@@ -5,6 +5,8 @@ import { ReactComponent as Message } from '../../assets/message.svg'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import likeAPI from 'api/likeAPI'
+import tweetAPI from 'api/tweetAPI'
+import { getTweets } from '../../api/allAPI'
 
 export default function MainTweetsContent({
 	id,
@@ -24,18 +26,16 @@ export default function MainTweetsContent({
 	const [like, setLike] = useState(isSelfUserLike)
 	const [likeQuantity, setLikeQuantity] = useState(isLikeQuantity)
 
-	const handleLikeClick = (id) => {
+	const handleLikeClick = () => {
 		setLike(!like)
 		if (!like) {
-			setLikeQuantity(likeQuantity - 1)
-			isLikeQuantity = likeQuantity
-			likeAPI.like(id, isLikeQuantity).then((response) => {
+			setLikeQuantity(likeQuantity + 1)
+			likeAPI.like(id).then((response) => {
 				console.log(response)
 			})
 		} else {
-			setLikeQuantity(likeQuantity + 1)
-			isLikeQuantity = likeQuantity
-			likeAPI.unlike(id, likeQuantity).then((response) => {
+			setLikeQuantity(likeQuantity - 1)
+			likeAPI.unlike(id).then((response) => {
 				console.log(response)
 			})
 		}
@@ -72,19 +72,19 @@ export default function MainTweetsContent({
 							<p>{quantity}</p>
 						</div>
 						<div className={`${style.mainTweetsLikeQuantity}`}>
-							{like ? (
+							{like === false ? (
 								<Dislike
 									width='16px'
 									height='16px'
 									id={id}
-									onClick={() => handleLikeClick(id)}
+									onClick={handleLikeClick}
 								/>
 							) : (
 								<Like
 									width='16px'
 									height='16px'
 									id={id}
-									onClick={() => handleLikeClick(id)}
+									onClick={handleLikeClick}
 								/>
 							)}
 							<p>{likeQuantity}</p>

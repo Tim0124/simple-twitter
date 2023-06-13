@@ -19,18 +19,18 @@ export default function UserLikeContent({
 	const [like, setLike] = useState(isSelfUserLike)
 	const [likeQuantity, setLikeQuantity] = useState(likesCount)
 
-	const handleLikeClick = (id) => {
+	const handleLikeClick = () => {
 		setLike(!like)
 		if (!like) {
+			setLikeQuantity(likeQuantity + 1)
 			likeAPI.like(id).then((response) => {
 				console.log(response)
 			})
-			setLikeQuantity(likeQuantity + 1)
 		} else {
+			setLikeQuantity(likeQuantity - 1)
 			likeAPI.unlike(id).then((response) => {
 				console.log(response)
 			})
-			setLikeQuantity(likeQuantity - 1)
 		}
 	}
 
@@ -64,19 +64,19 @@ export default function UserLikeContent({
 							<p>{repliesCount}</p>
 						</div>
 						<div className={`${style.mainTweetsLikeQuantity}`}>
-							{like ? (
+							{like === true ? (
 								<Like
 									width='16px'
 									height='16px'
 									id={id}
-									onClick={() => handleLikeClick(id)}
+									onClick={handleLikeClick}
 								/>
 							) : (
 								<Dislike
 									width='16px'
 									height='16px'
 									id={id}
-									onClick={() => handleLikeClick(id)}
+									onClick={handleLikeClick}
 								/>
 							)}
 							<p>{likeQuantity}</p>

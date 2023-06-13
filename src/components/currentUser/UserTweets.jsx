@@ -25,7 +25,6 @@ export default function UserTweets() {
 			const { data } = response
 			setUserInfo(data)
 		})
-
 		tweetAPI.getCurrentUserAllTweet(currentUserId).then((response) => {
 			const { data } = response
 			setAllTweets(data)
