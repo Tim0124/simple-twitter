@@ -27,9 +27,13 @@ export default function PopularUserList() {
 			<div className={`${style.popularUserList}`}>
 				{followers.map((follower) => (
 					<PopularUser
-						key={follower.id}
-						{...follower}
 						onOtherUserId={handleOtherUser}
+						id={follower.id}
+						key={follower.id}
+						name={follower.account}
+						account={follower.account}
+						avatar={follower.avatar}
+						isUserFollowed={follower.isUserFollowed}
 					/>
 				))}
 			</div>

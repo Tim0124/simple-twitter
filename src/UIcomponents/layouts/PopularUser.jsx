@@ -14,7 +14,29 @@ export default function PopularUser({
 	onOtherUserId,
 }) {
 	const [follow, setFollow] = useState(isUserFollowed)
+	const handleFollowClick = () => {
+		setFollow(true)
+		followingAPI
+			.getFollow(id)
+			.then((response) => {
+				console.log(response)
+			})
+			.catch((error) => {
+				console.error('Error:', error)
+			})
+	}
 
+	const handleUnFollowClick = () => {
+		setFollow(false)
+		followingAPI
+			.getUnFollow(id)
+			.then((response) => {
+				console.log(response)
+			})
+			.catch((error) => {
+				console.error('Error:', error)
+			})
+	}
 	return (
 		<div className={`${style.popularUserContainer}`}>
 			<div className={`${style.popularUserItems}`}>
@@ -34,10 +56,20 @@ export default function PopularUser({
 				</div>
 				<div className={`${style.popularUserButton}`}>
 					{follow ? (
-						<Button size='middle' text='正在跟隨' id={id} />
+						<div>
+							<Button
+								size='middle'
+								text='正在跟隨'
+								onClick={handleUnFollowClick}
+							/>
+						</div>
 					) : (
 						<div className={`${style.popularUserFollower}`}>
-							<Button size='white-exsmall' text='跟隨' id={id} />
+							<Button
+								size='white-exsmall'
+								text='跟隨'
+								onClick={handleFollowClick}
+							/>
 						</div>
 					)}
 				</div>
