@@ -43,14 +43,16 @@ export default function UserLike() {
 			<section className={`${style.UserTweetsContent}`}>
 				{likesTweet.map((like) => (
 					<UserLikeContent
+						id={like.id}
 						key={like.id}
 						name={like.User.name}
 						account={like.User.account}
 						avatar={like.User.avatar}
 						content={like.Tweet.description}
 						time={like.Tweet.relativeTimeFromNow}
-						likesCount={like.likesCount}
-						repliesCount={like.repliesCount}
+						likesCount={like.Tweet.likesCount}
+						repliesCount={like.Tweet.repliesCount}
+						isSelfUserLike={like.isSelfUserLike}
 					/>
 				))}
 			</section>

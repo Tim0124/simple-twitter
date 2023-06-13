@@ -3,28 +3,34 @@ import { ReactComponent as Like } from '../../assets/redlike.svg'
 import { ReactComponent as Message } from '../../assets/message.svg'
 import { ReactComponent as Dislike } from '../../assets/unlike.svg'
 import { useState } from 'react'
+import likeAPI from 'api/likeAPI'
 
 export default function UserTweetsContent({
+	id,
 	name,
 	account,
 	avatar,
 	description,
-	isLike,
-	quantity,
-	likeQuantity,
+	likeCount,
 	relativeTime,
 	repliesCount,
-	likeCount,
+	isSelfUserLike,
 }) {
-	const [like, setLike] = useState(isLike)
-	const [isLikeQuantity, setIsLikeQuantity] = useState(likeCount)
+	const [like, setLike] = useState(isSelfUserLike)
+	const [likeQuantity, setLikeQuantity] = useState(likeCount)
 
-	const handleLikeClick = () => {
+	const handleLikeClick = (id) => {
 		setLike(!like)
 		if (!like) {
-			setIsLikeQuantity(isLikeQuantity + 1)
+			likeAPI.like(id).then((response) => {
+				console.log(response)
+			})
+			setLikeQuantity(likeQuantity - 1)
 		} else {
-			setIsLikeQuantity(isLikeQuantity - 1)
+			likeAPI.unlike(id).then((response) => {
+				console.log(response)
+			})
+			setLikeQuantity(likeQuantity + 1)
 		}
 	}
 
@@ -60,12 +66,22 @@ export default function UserTweetsContent({
 							<p>{repliesCount}</p>
 						</div>
 						<div className={`${style.mainTweetsLikeQuantity}`}>
-							{like === true ? (
-								<Like width='16px' height='16px' onClick={handleLikeClick} />
+							{like ? (
+								<Dislike
+									width='16px'
+									height='16px'
+									id={id}
+									onClick={() => handleLikeClick(id)}
+								/>
 							) : (
-								<Dislike width='16px' height='16px' onClick={handleLikeClick} />
+								<Like
+									width='16px'
+									height='16px'
+									id={id}
+									onClick={() => handleLikeClick(id)}
+								/>
 							)}
-							<p>{isLikeQuantity}</p>
+							<p>{likeQuantity}</p>
 						</div>
 					</div>
 				</div>

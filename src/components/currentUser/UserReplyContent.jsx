@@ -9,9 +9,6 @@ export default function UserReplyContent({
 	account,
 	avatar,
 	comment,
-	isLike,
-	quantity,
-	likeQuantity,
 	time,
 	replyAccount,
 }) {
