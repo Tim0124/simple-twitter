@@ -73,10 +73,16 @@
 	gap: 40px;
 	color: #6c757d;
 
-	.mainTweetsQuantity,
+	
 	.mainTweetsLikeQuantity {
 		display: flex;
 		align-items: center;
 		gap: 8px;
+	}
+	.mainTweetsQuantity{
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		cursor: pointer;
 	}
 }

@@ -59,4 +59,16 @@ export default {
 			},
 		})
 	},
+	postTweet(userId,tweet) {
+		return apiHelper.post(`/tweets`,
+			{
+				description:tweet,
+				userId,
+			},
+			{
+			headers: {
+				Authorization: `Bearer ${getToken()}`,
+			},
+		})
+	},
 }

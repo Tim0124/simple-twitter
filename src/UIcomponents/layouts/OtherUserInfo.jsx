@@ -1,9 +1,15 @@
-import style from './UserInfo.module.scss'
+import style from './OtherUserInfo.module.scss'
 import Button from 'UIcomponents/buttons/Button'
 import UserInfoHeader from './UserInfoHeader'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import followingAPI from 'api/followingAPI'
+import { ReactComponent as Message } from '../../assets/orangemsg.svg'
+import { ReactComponent as Noti } from '../../assets/orangenoti.svg'
+import { ReactComponent as CheckNoti } from '../../assets/chekcnoti.svg'
+import { ReactComponent as WhiteNoti } from '../../assets/white_btn_notfi.svg'
+import { ReactComponent as OragneNoti } from '../../assets/btn_notfi.svg'
+import { GetRenderContext } from 'context/FollowContext'
 
 export default function UserInfo({
 	name,
@@ -16,6 +22,12 @@ export default function UserInfo({
 	onHideUserInfo,
 	userId,
 }) {
+	const render = useContext(GetRenderContext)
+	const [isNoti, setIsNoti] = useState(false)
+
+	const handleNotiClick = () => {
+		setIsNoti(!isNoti)
+	}
 	return (
 		<div className={`${style.userInfoContainer} ${style[onHideUserInfo]}`}>
 			<div className={`${style.userInfoWrapper}`}>
@@ -37,9 +49,17 @@ export default function UserInfo({
 				</div>
 				<div className={`${style.userInfoAllContent}`}>
 					<div className={`${style.userInfoBottonArea}`}>
+						<div className={`${style.userInfoMsg}`}>
+						<Message />
+					</div>
+					<div className={`${style.userInfoNoti}`} onClick={handleNotiClick}>
+						{isNoti ? <OragneNoti/> : <WhiteNoti />}
+					</div>
+					<div className={style.buttonGroup}>
 						<div className={`${style.userInfoButton}`}>
-							<Button size='white-exsmall' text='編輯個人資料' />
+							{render ? <Button size='middle' text='正在追隨' /> : <Button size='white-exsmall' text='正在追隨' />}
 						</div>
+					</div>
 					</div>
 					<div className={`${style.userInfoBottomArea}`}>
 						<div className={`${style.userInfoContentArea}`}>

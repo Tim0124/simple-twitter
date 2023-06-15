@@ -8,7 +8,7 @@ export function SideBarContextProvider({ children }) {
 	const handleChangeStep = (pathname) => {
 		setStep(pathname)
 	}
-
+	
 	return (
 		<StepContext.Provider value={step}>
 			<ChangeStepContext.Provider value={handleChangeStep}>

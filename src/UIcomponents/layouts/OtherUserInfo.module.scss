@@ -48,10 +48,16 @@
 	transform: translateX(-50%);
 }
 
+.buttonGroup {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+}
+
 .userInfoButton {
-	width: 112px;
+	width: 80px;
 	height: 32px;
-	margin-top: 16px;
 }
 
 .userInfoAllContent {
@@ -64,6 +70,9 @@
 .userInfoBottonArea {
 	display: flex;
 	justify-content: end;
+	align-items: center;
+	gap: 8px;
+	padding: 16px 0;
 }
 
 .userInfoBottomArea {
@@ -107,6 +116,26 @@
 	color: black;
 }
 
+.userInfoMsg {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+	border: 1px solid #ff6600;
+	cursor: pointer;
+}
+.userInfoNoti {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+	cursor: pointer;
+}
+
 @media screen and (min-width: 991px) {
 	.userInfoBackground {
 		height: 200px;
@@ -126,7 +155,10 @@
 	}
 
 	.userInfoButton {
-		width: 128px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 96px;
 		height: 40px;
 	}
 

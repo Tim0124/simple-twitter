@@ -4,9 +4,13 @@ import { ReactComponent as Logo } from '../../assets/logo.svg'
 import Button from 'UIcomponents/buttons/Button'
 import { Link, useNavigate } from 'react-router-dom'
 import { Toast } from 'heplers/helpers'
+import { useContext } from 'react'
+import { StepContext } from 'context/SideBarContext'
 
 export default function AdminSidebar() {
 	const navigate = useNavigate()
+	const step = useContext(StepContext)
+
 	const handleClick = () => {
 		localStorage.removeItem('authToken')
 		Toast.fire({
@@ -29,14 +33,16 @@ export default function AdminSidebar() {
 						</div>
 						<div className={`${style.iconGroup}`}>
 							<SideItem
-								styleName='iconHome'
+								styleName={step === 1 ? 'actionHome' : 'iconHome'}
 								itemName='推文清單'
 								page='admin/tweets'
+								iconName={step === 1 ? 'onName' : 'itemName'}
 							/>
 							<SideItem
-								styleName='iconPerson'
+								styleName={step === 2 ? 'actionUser' : 'iconPerson'}
 								itemName='使用者列表'
 								page='admin/users'
+								iconName={step === 2 ? 'onName' : 'itemName'}
 							/>
 						</div>
 					</div>

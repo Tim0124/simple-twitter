@@ -5,12 +5,16 @@ export default function PostContent({
 	onTweetClick,
 	onDisabled,
 	onButtonChange,
-	isPostText,
+	onPostText,
 	avatar,
+	onSubmit,
+	showError
 }) {
+
+
 	return (
 		<main className={`${style.postTweetContent}`}>
-			<div className={`${style.postTweetForm}`}>
+			<form onSubmit={onSubmit} className={`${style.postTweetForm}`}>
 				<div className={`${style.contentGroup}`}>
 					<div className={`${style.avatarItem}`}>
 						<img src={avatar} alt='' className={`${style.avatar}`} />
@@ -22,17 +26,20 @@ export default function PostContent({
 								type='text'
 								placeholder='有什麼新鮮事？'
 								onChange={onButtonChange}
-								value={isPostText}
+								value={onPostText}
 							></textarea>
 						</div>
 						<footer className={`${style.footerArea}`}>
+							<div className={`${style.footerText}`} style={{display:showError ? 'block' : 'none'}}>
+								<p>字數不可超過140字</p>
+							</div>
 							<div className={`${style.footerButton}`}>
-								<Button text='推文' size='middle' onDisabled={onDisabled} />
+								<Button text='推文' size='middle' onDisabled={onDisabled} onClick={onSubmit}/>
 							</div>
 						</footer>
 					</div>
 				</div>
-			</div>
+			</form>
 		</main>
 	)
 }

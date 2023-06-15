@@ -43,11 +43,11 @@ export default function AdminTweetsCard({
 						<div className={`${style.adminTweetsCardIconGroup}`}>
 							<div className={`${style.adminTweetsCardTweet}`}>
 								<Tweet />
-								<p>{tweet}k</p>
+								<p>{tweet}</p>
 							</div>
 							<div className={`${style.adminTweetsCardLike}`}>
 								<Like />
-								<p>{like}k</p>
+								<p>{like}</p>
 							</div>
 						</div>
 						<div className={`${style.adminTweetsCardFollowGroup}`}>

@@ -1,17 +1,20 @@
 import userAPI from 'api/userAPI'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import AdminTweetsItem from 'components/admin/AdminTweetsItem'
 import style from './AdminTweets.module.scss'
 import tweetAPI from 'api/tweetAPI'
 import { ToastAlert, Toast } from 'heplers/helpers'
 import Swal from 'sweetalert2'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { checkPermission } from '../../api/auth'
+import { ChangeStepContext } from 'context/SideBarContext'
 
 export default function AdminTweets() {
 	const [tweets, setTweets] = useState([])
 	const [isDelete, setIsDelete] = useState(false)
 	const navigate = useNavigate()
+	const {pathname} = useLocation()
+	const handleChangeStep = useContext(ChangeStepContext)
 
 	const handleDeleteClick = async (id) => {
 		try {
@@ -32,13 +35,6 @@ export default function AdminTweets() {
 						if (response.status !== 200) {
 							throw new Error(data.message)
 						}
-						setTweets((prevTweet) => {
-							return prevTweet.filter((tweet) => {
-								if (tweet.id === deleteId) {
-									return tweet.id !== deleteId
-								}
-							})
-						})
 						setIsDelete(true)
 					})
 				}
@@ -71,6 +67,12 @@ export default function AdminTweets() {
 			}
 		})
 	}, [isDelete])
+
+	useEffect(() => {
+		if(pathname === '/admin/tweets') {
+			handleChangeStep(1)
+		}
+	},[])
 
 	return (
 		<div className={`${style.adminTweetsWrapper}`}>

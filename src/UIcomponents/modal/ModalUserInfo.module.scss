@@ -1,11 +1,21 @@
 @use '../../styles/variable.module' as var;
 
+.modal {
+	display: none;
+	position: absolute;
+	height: 100vh;
+	width: 100vw;
+	z-index: 3;
+}
+
 .userInfoMdContainer {
+	position: absolute;
 	display: flex;
 	flex-direction: column;
 	height: 100%;
 	width: 100%;
 	background-color: white;
+	z-index: 3;
 }
 
 .userInfoMdNavbar {
@@ -52,14 +62,15 @@
 }
 
 .userInfoMdBackground {
-	height: 200px;
+	position: relative;
+	height: 124px;
+	overflow: hidden;
 }
 
 .userInfoMdAvatar {
 	position: absolute;
-	top: 158px;
-	left: 25px;
 	height: 80px;
+	transform: translate(24px, -50%);
 }
 
 .userInfoInputArea {
@@ -75,6 +86,10 @@
 
 .userInfoMdCardImg {
 	opacity: 0.5;
+	width: 100%;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
 }
 
 .userInfoMdAvatar {
@@ -104,9 +119,9 @@
 
 	.userInfoSecIcon {
 		position: absolute;
-		z-index: 98;
-		top: 190px;
-		left: 55px;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
 	}
 }
 
@@ -119,6 +134,10 @@
 }
 
 .userInfoLabel {
+	display: none;
+}
+
+.inputPhoto {
 	display: none;
 }
 
@@ -135,6 +154,9 @@
 		width: 634px;
 		height: 610px;
 		border-radius: 14px;
+		top: 56px;
+		left: 50%;
+		transform: translateX(-50%);
 	}
 
 	.userInfoInputArea {
@@ -154,17 +176,9 @@
 		text-align: end;
 	}
 
-	.userInfoInputContentGroup {
-		height: 147px;
-		width: 100%;
-
-		.inputTextarea {
-			height: 100%;
-			width: 100%;
-		}
-	}
 
 	.userInfoLabel {
+		position: relative;
 		display: block;
 		background-color: #f5f8fa;
 		height: 145px;

@@ -1,10 +1,14 @@
 import userAPI from 'api/userAPI'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import AdminTweetsCard from 'components/admin/AdminTweetsCards'
 import style from './AdminUsers.module.scss'
+import { useLocation } from 'react-router-dom'
+import { ChangeStepContext } from 'context/SideBarContext'
 
 export default function AdminUsers() {
 	const [users, setUsers] = useState([])
+	const {pathname} = useLocation()
+	const handleChangeStep = useContext(ChangeStepContext)
 
 	useEffect(() => {
 		userAPI.getAdminUsers().then((response) => {
@@ -15,6 +19,12 @@ export default function AdminUsers() {
 			}
 		})
 	}, [])
+
+	useEffect(() => {
+		if(pathname === '/admin/users') {
+			handleChangeStep(2)
+		}
+	},[])
 
 	return (
 		<div className={`${style.adminTweetsCardListWrapper}`}>

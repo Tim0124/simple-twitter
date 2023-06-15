@@ -1,10 +1,10 @@
-import { Outlet } from 'react-router-dom'
+import { Outlet, useLocation, useParams } from 'react-router-dom'
 import PopularUserList from './PopularUserList'
 import SideItem from './SideItem'
 import Sidebar from './Sidebar'
 import style from './Layout.module.scss'
 import ModalPostTweet from '../modal/ModalPostTweet'
-import ModalUserInfo from '../../components/modal/ModalUserInfo'
+import ModalUserInfo from '../modal/ModalUserInfo'
 import { useContext, useState } from 'react'
 import ModalReplyTweet from 'UIcomponents/modal/ModalReplyTweet'
 import {
@@ -14,8 +14,9 @@ import {
 } from 'context/ModalContext'
 
 export default function Layout() {
-	const useTweetModal = useContext(TweetModalContext)
-	const useReplyModal = useContext(ReplyTweetModalContext)
+	const ShowTweetModal = useContext(TweetModalContext)
+	const ShowReplyModal = useContext(ReplyTweetModalContext)
+
 
 	return (
 		<div className={`${style.layoutContainer}`}>
@@ -25,10 +26,11 @@ export default function Layout() {
 			<div className={`${style.layoutMainContainer}`}>
 				<Outlet />
 			</div>
-			<div className={`${style.layoutPopularContainer}`}>
+			<div className={`${style.layoutPopularContainer}`} >
 				<PopularUserList />
 			</div>
-			{useTweetModal && <ModalPostTweet />}
+			{ShowTweetModal && <ModalPostTweet />}
+			{ShowReplyModal && <ModalReplyTweet/>}
 		</div>
 	)
 }

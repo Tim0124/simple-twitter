@@ -5,7 +5,12 @@ import { ReactComponent as Close } from '../../assets/Vector.svg'
 import Input from 'UIcomponents/input/Input'
 import { ReactComponent as WhiteX } from '../../assets/whiteX.svg'
 import { ReactComponent as WhiteCamera } from '../../assets/whitecamera.svg'
-import { useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
+import ModalBlackDrop from './ModalBlackDrop'
+import ReactDOM from 'react-dom'
+import userAPI from 'api/userAPI'
+import { Link } from 'react-router-dom'
+import { EditModalContext, ShowEditModalContext } from 'context/ModalContext'
 
 const data = [
 	{
@@ -26,6 +31,15 @@ export default function UserInfo() {
 	const [text, setText] = useState(
 		'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.'
 	)
+	const portalElement = document.getElementById('modal-root')
+	const ShowEditModal = useContext(EditModalContext)
+	const handleEditModal = useContext(ShowEditModalContext)
+
+	useEffect(() => {
+		// userAPI.getUser().then((res) => {
+
+		// })
+	},[])
 
 	const handleNameChange = (e) => {
 		setName(e.target.value)
@@ -37,17 +51,25 @@ export default function UserInfo() {
 		setText(e.target.value)
 	}
 
-	return (
-		<div className={`${style.userInfoMdContainer}`}>
-			<header className={`${style.userInfoMdHeader}`}>
+	return ( 
+		<>
+			{ReactDOM.createPortal(
+				<div className={style.modal} style={{display: ShowEditModal ? 'block' : 'none'}}>
+					<ModalBlackDrop onClick={handleEditModal}/>
+		<form className={`${style.userInfoMdContainer}`}>
+				<header className={`${style.userInfoMdHeader}`}>
 				<nav className={`${style.userInfoMdNavbar}`}>
 					<div className={`${style.userInfoMdTitle}`}>
-						<h1 className={`${style.userInfoMdArrow}`}>
+						<Link to='/user/self'>
+							<h1 className={`${style.userInfoMdArrow}`} onClick={handleEditModal}>
 							<Arrow />
-						</h1>
-						<h1 className={`${style.userInfoClose}`}>
+							</h1>
+						</Link>
+						<Link to='/user/self'>
+							<h1 className={`${style.userInfoClose}`} onClick={handleEditModal}>
 							<Close style={{ color: '#ff6600' }} />
 						</h1>
+						</Link>
 						<h1>編輯個人資料</h1>
 					</div>
 					<div className={`${style.userInfoMdButtonGroup}`}>
@@ -59,12 +81,12 @@ export default function UserInfo() {
 			</header>
 			<div className={`${style.userInfoMdImgGroup}`}>
 				<div className={`${style.userInfoIcon}`}>
-					<p className={`${style.userInfoMdWhite}`}>
+					<label for='backgroundPhoto' className={`${style.userInfoMdWhite}`}>
 						<WhiteCamera />
-					</p>
-					<p className={`${style.userInfoMdWhite}`}>
+					</label>
+					<div className={`${style.userInfoMdWhite}`}>
 						<WhiteX />
-					</p>
+					</div>
 				</div>
 				<div className={`${style.userInfoMdBackground}`}>
 					<img
@@ -73,17 +95,18 @@ export default function UserInfo() {
 						alt=''
 					/>
 				</div>
-				<div className={`${style.userInfoSecIcon}`}>
-					<p className={`${style.userInfoMdWhite}`}>
-						<WhiteCamera />
-					</p>
-				</div>
+				
 				<div className={`${style.userInfoMdAvatar}`}>
 					<img
 						src={data[0].avatar}
 						className={`${style.userInfoMdImgAvatar}`}
 						alt=''
 					/>
+					<div className={`${style.userInfoSecIcon}`}>
+					<label for='avatarPhoto' className={`${style.userInfoMdWhite}`}>
+						<WhiteCamera />
+					</label>
+				</div>
 				</div>
 			</div>
 			<div className={`${style.userInfoInputArea}`}>
@@ -99,7 +122,7 @@ export default function UserInfo() {
 							onChange={handleIntroChange}
 						/>
 					</div>
-					<div className={`${style.userInfoLabelGroup}`}>
+					<div>
 						<label className={`${style.userInfoLabel}`}>
 							<p className={`${style.userInfoLabelTitle}`}>自我介紹</p>
 							<textarea
@@ -112,6 +135,11 @@ export default function UserInfo() {
 					<p className={`${style.userInfoInputText}`}>0/160</p>
 				</div>
 			</div>
-		</div>
+			<input type='file' id='backgroundPhoto' className={style.inputPhoto}></input>
+			<input type='file' id='avatarPhoto' className={style.inputPhoto}></input>
+		</form>
+				</div>
+			,portalElement)}
+		</>
 	)
 }

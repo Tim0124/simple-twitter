@@ -18,21 +18,50 @@ import tweetAPI from 'api/tweetAPI'
 import ReplyList from 'components/replyList/ReplyList'
 import { ChangeStepContext } from 'context/SideBarContext'
 import { GetOtherUserIdContext } from 'context/OtherUserContext'
+import { Toast } from 'heplers/helpers'
 
 export default function MainTweets({ onTweetClick }) {
 	const navigate = useNavigate()
 	const [currentUser, setCurrentUser] = useState([])
 	const [tweets, setTweets] = useState([])
-	const useModalClick = useContext(ShowReplyModalContext)
 	const [isPostText, setIsPostText] = useState('')
 	const [isDisabled, setIsDisable] = useState(true)
+	const [showError, setShowError] = useState(false)
 	const { pathname } = useLocation()
 	const handleChangeStep = useContext(ChangeStepContext)
 	const handleOtherUserId = useContext(GetOtherUserIdContext)
+	const handleShowReplyModal = useContext(ShowReplyModalContext)
+	const userId = localStorage.getItem('userId')
+	const handleButtonChange = (e) => {
+		setIsPostText(e.target.value)
+	}
+
+	const handleTweetSubmit = (e) => {
+		e.preventDefault()
+		if(isPostText.trim().length > 140) {
+			Toast.fire({
+				icon:'error',
+				title:'字數不可超過140字'
+			})
+			setShowError(true)
+			setTimeout(()=>{
+				setShowError(false)
+			},2000)
+			return
+		}
+		tweetAPI.postTweet(userId,isPostText).then((res) => {
+			console.log(res)
+			Toast.fire({
+				icon:'success',
+				title:'推文成功'
+			})
+			setIsPostText('')
+		})
+	}
+
 
 	useEffect(() => {
-		const id = localStorage.getItem('userId')
-		tweetAPI.getCurrentUserTweet(id).then((response) => {
+		tweetAPI.getCurrentUserTweet(userId).then((response) => {
 			const { data } = response
 			setCurrentUser(data)
 		})
@@ -48,7 +77,7 @@ export default function MainTweets({ onTweetClick }) {
 				console.log('Failed to tweets:', error)
 			}
 		})()
-	}, [])
+	}, [tweets])
 
 	useEffect(() => {
 		const checkTokenIsValid = async () => {
@@ -66,32 +95,10 @@ export default function MainTweets({ onTweetClick }) {
 	}, [navigate])
 
 	useEffect(() => {
-		console.log(handleChangeStep)
 		if (pathname === '/home') {
 			handleChangeStep(1)
 		}
 	}, [])
-
-	const handleButtonChange = (e) => {
-		const text = e.target.value
-		setIsPostText(text)
-		console.log(text.length)
-	}
-
-	const handleTweetsClick = ({ id, userId }) => {
-		console.log(id)
-		console.log(userId)
-		// tweetAPI.getCurrentTweetUser(userId).then((response) => {
-		// 	const {data} = response
-		// 	console.log(data)
-		// })
-
-		// tweetAPI.getTweet(id).then((response) => {
-		// 	const {data} = response
-		// 	console.log(data)
-		// })
-		// navigate('/reply')
-	}
 
 	useEffect(() => {
 		setIsDisable(isPostText.length === 0)
@@ -109,6 +116,8 @@ export default function MainTweets({ onTweetClick }) {
 					onButtonChange={handleButtonChange}
 					onPostText={isPostText}
 					avatar={currentUser.avatar}
+					onSubmit={handleTweetSubmit}
+					showError={showError}
 				/>
 			</div>
 			<main className={`${style.mainTweets}`}>
@@ -124,10 +133,9 @@ export default function MainTweets({ onTweetClick }) {
 						time={tweet.relativeTimeFromNow}
 						quantity={tweet.repliesCount}
 						isLikeQuantity={tweet.likesCount}
-						onReplyClick={useModalClick}
-						onTweetsClick={handleTweetsClick}
 						isSelfUserLike={tweet.isSelfUserLike}
 						onOtherUserId={handleOtherUserId}
+						onShowReplyModal={handleShowReplyModal}
 					/>
 				))}
 			</main>

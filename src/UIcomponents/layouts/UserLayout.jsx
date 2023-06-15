@@ -4,10 +4,11 @@ import SideItem from './SideItem'
 import Sidebar from './Sidebar'
 import style from './UserLayout.module.scss'
 import ModalPostTweet from '../modal/ModalPostTweet'
-import ModalUserInfo from '../../components/modal/ModalUserInfo'
+import ModalUserInfo from '../modal/ModalUserInfo'
 import { useContext, useEffect, useState } from 'react'
 import ModalReplyTweet from 'UIcomponents/modal/ModalReplyTweet'
 import {
+  EditModalContext,
 	ModalHiddenContext,
 	ReplyTweetModalContext,
 	TweetModalContext,
@@ -28,13 +29,15 @@ export default function Layout() {
 	const isFollowPage =
 		pathname.includes(`/user/self/following/${currentUserId}`) ||
 		pathname.includes(`/user/self/follower/${currentUserId}`)
+  const ShowEditModal = useContext(EditModalContext)
+
 
 	useEffect(() => {
 		tweetAPI.getCurrentUserTweet(currentUserId).then((response) => {
 			const { data } = response
 			setUserInfo(data)
 		})
-	}, [pathname])
+	}, [])
 
 	return (
 		<div className={`${style.userTweetsContainer}`}>
@@ -68,6 +71,7 @@ export default function Layout() {
 				<Outlet />
 			</div>
 			{useTweetModal && <ModalPostTweet />}
+      {ShowEditModal && <ModalUserInfo />}
 		</div>
 	)
 }

@@ -4,7 +4,7 @@ import UserReplyContent from './OtherUserReplyContent'
 import UserTab from 'UIcomponents/tabs/UserTab'
 import UserInfo from 'UIcomponents/layouts/UserInfo'
 import UserInfoHeader from 'UIcomponents/layouts/UserInfoHeader'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import { useContext, useEffect, useState } from 'react'
 import { ChangeTabContext } from 'context/UserTabContext'
 import tweetAPI from 'api/tweetAPI'
@@ -14,8 +14,7 @@ export default function UserReplyList() {
 	const { pathname } = useLocation()
 	const handleChangeTab = useContext(ChangeTabContext)
 	const [replies, setReplies] = useState([])
-	const OtherUserData = useContext(OtherUserContext)
-	const userId = OtherUserData
+	const userId = useParams().user_id
 
 	useEffect(() => {
 		tweetAPI.getCurrentUserReplies(userId).then((response) => {
@@ -44,13 +43,13 @@ export default function UserReplyList() {
 			<section className={`${style.userReplyContent}`}>
 				{replies.map((reply) => (
 					<UserReplyContent
-						key={reply.id}
-						comment={reply.comment}
-						replyAccount={reply.tweetUser.account}
-						time={reply.relativeTimeFromNow}
-						name={reply.User.name}
-						avatar={reply.User.avatar}
-						account={reply.User.account}
+						key={reply?.id}
+						comment={reply?.comment}
+						replyAccount={reply?.tweetUser.account}
+						time={reply?.relativeTimeFromNow}
+						name={reply?.User?.name}
+						avatar={reply?.User?.avatar}
+						account={reply?.User?.account}
 					/>
 				))}
 			</section>
