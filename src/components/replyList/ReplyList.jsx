@@ -22,7 +22,6 @@ export default function ReplyList() {
 	const tweetId = useParams().tweet_id
 	const navigate = useNavigate()
 	const [comment, setComment] = useState([])
-	console.log(comment)
 
 	useEffect(() => {
 		tweetAPI.getTweet(tweetId).then((response) => {

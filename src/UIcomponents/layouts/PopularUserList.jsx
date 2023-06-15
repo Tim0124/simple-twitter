@@ -13,7 +13,6 @@ export default function PopularUserList() {
 	const render = useContext(GetRenderContext)
 	const setRender = useContext(SetRenderContext)
 	const { pathname } = useLocation()
-	console.log(render)
 
 	useEffect(() => {
 		;(async () => {

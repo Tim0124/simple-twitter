@@ -11,6 +11,7 @@ import {
 	EditModalContext,
 	ModalHiddenContext,
 	ReplyTweetModalContext,
+	ShowEditModalContext,
 	TweetModalContext,
 } from 'context/ModalContext'
 import UserInfoHeader from './UserInfoHeader'
@@ -27,9 +28,9 @@ export default function Layout() {
 	const { pathname } = useLocation()
 	const currentUserId = Number(localStorage.getItem('userId'))
 	const isFollowPage =
-		pathname.includes(`/user/self/following/${currentUserId}`) ||
-		pathname.includes(`/user/self/follower/${currentUserId}`)
-	const ShowEditModal = useContext(EditModalContext)
+	pathname.includes(`/user/self/following/${currentUserId}`) ||
+	pathname.includes(`/user/self/follower/${currentUserId}`)
+	const ShowEditModal = useContext(ShowEditModalContext)
 
 	useEffect(() => {
 		tweetAPI.getCurrentUserTweet(currentUserId).then((response) => {
