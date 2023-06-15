@@ -9,7 +9,7 @@ export default {
 		})
 	},
 	getOtherUserTweets(user_id) {
-		return apiHelper.get(`/users/${user_id}.tweets`, {
+		return apiHelper.get(`/users/${user_id}/tweets`, {
 			headers: { Authorization: `Bearer ${getToken()}` },
 		})
 	},

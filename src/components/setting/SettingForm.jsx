@@ -39,7 +39,7 @@ export default function Setting() {
 		if (pathname === '/setting') {
 			handleChangeStep(3)
 		}
-	}, [])
+	}, [pathname])
 
 	const handleAccountChange = (e) => {
 		setAccount(e.target.value)

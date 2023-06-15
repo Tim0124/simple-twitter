@@ -30,10 +30,10 @@ export default function ReplyList() {
 		}, [])
 
 		navigate(`/reply/${tweetId}`)
-	}, [navigate])
+	}, [])
 
 	useEffect(() => {
-		tweetAPI.getReplyTweet(tweetId).then((response) => {
+		tweetAPI.postReplyTweet(tweetId).then((response) => {
 			const { data } = response
 			setTweetReply(data)
 		})

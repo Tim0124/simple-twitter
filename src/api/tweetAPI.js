@@ -3,8 +3,8 @@ import { apiHelper } from 'heplers/helpers'
 const getToken = () => localStorage.getItem('authToken')
 
 export default {
-	deleteTweet(userId) {
-		return apiHelper.delete(`/admin/tweets/${userId}`, {
+	deleteTweet(tweetId) {
+		return apiHelper.delete(`/admin/tweets/${tweetId}`, {
 			headers: {
 				Authorization: `Bearer ${getToken()}`,
 			},
@@ -24,35 +24,22 @@ export default {
 			},
 		})
 	},
-	getCurrentTweetUser(tweetId) {
-		return apiHelper.get(`/tweets/${tweetId}`, {
-			headers: {
-				Authorization: `Bearer ${getToken()}`,
-			},
-		})
-	},
-	getCurrentUserTweet(tweetId) {
-		return apiHelper.get(`/users/${tweetId}`, {
-			headers: {
-				Authorization: `Bearer ${getToken()}`,
-			},
-		})
-	},
-	getCurrentUserAllTweet(tweetId) {
+	getUserAllTweet(tweetId) {
+		console.log('id', tweetId)
 		return apiHelper.get(`/users/${tweetId}/tweets`, {
 			headers: {
 				Authorization: `Bearer ${getToken()}`,
 			},
 		})
 	},
-	getCurrentUserReplies(userId) {
+	getUserReplies(userId) {
 		return apiHelper.get(`/users/${userId}/replied_tweets`, {
 			headers: {
 				Authorization: `Bearer ${getToken()}`,
 			},
 		})
 	},
-	getCurrentUserLikes(userId) {
+	getUserLikes(userId) {
 		return apiHelper.get(`/users/${userId}/likes`, {
 			headers: {
 				Authorization: `Bearer ${getToken()}`,
@@ -64,7 +51,7 @@ export default {
 			`/tweets`,
 			{
 				description: tweet,
-				userId,
+				// userId:24,
 			},
 			{
 				headers: {

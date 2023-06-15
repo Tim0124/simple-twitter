@@ -23,7 +23,7 @@ const data = [
 	},
 ]
 
-export default function UserInfo() {
+export default function ModalUserInfo() {
 	const [name, setName] = useState('John Doe')
 	const [intro, setIntro] = useState(
 		'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.'
@@ -34,10 +34,13 @@ export default function UserInfo() {
 	const portalElement = document.getElementById('modal-root')
 	const ShowEditModal = useContext(EditModalContext)
 	const handleEditModal = useContext(ShowEditModalContext)
+	const [userData, setUserDate] = useState([])
 
 	useEffect(() => {
-		// userAPI.getUser().then((res) => {
-		// })
+		userAPI.getCurrentUser().then((res) => {
+			const { data } = res
+			setUserDate(data)
+		})
 	}, [])
 
 	const handleNameChange = (e) => {
@@ -101,7 +104,7 @@ export default function UserInfo() {
 							</div>
 							<div className={`${style.userInfoMdBackground}`}>
 								<img
-									src={data[0].background}
+									src={userData?.backgroundImage}
 									className={`${style.userInfoMdCardImg}`}
 									alt=''
 								/>
@@ -109,7 +112,7 @@ export default function UserInfo() {
 
 							<div className={`${style.userInfoMdAvatar}`}>
 								<img
-									src={data[0].avatar}
+									src={userData?.avatar}
 									className={`${style.userInfoMdImgAvatar}`}
 									alt=''
 								/>
@@ -125,14 +128,18 @@ export default function UserInfo() {
 						</div>
 						<div className={`${style.userInfoInputArea}`}>
 							<div className={`${style.userInfoInputName}`}>
-								<Input label='名稱' value={name} onChange={handleNameChange} />
+								<Input
+									label='名稱'
+									value={userData?.name}
+									onChange={handleNameChange}
+								/>
 								<p className={`${style.userInfoInputText}`}>8/50</p>
 							</div>
 							<div className={`${style.userInfoInputContent}`}>
 								<div className={`${style.userInfoInput}`}>
 									<Input
 										label='自我介紹'
-										value={intro}
+										value={userData?.introduction}
 										onChange={handleIntroChange}
 									/>
 								</div>
@@ -141,7 +148,7 @@ export default function UserInfo() {
 										<p className={`${style.userInfoLabelTitle}`}>自我介紹</p>
 										<textarea
 											className={`${style.userInfoTextArea}`}
-											value={text}
+											value={userData?.introduction}
 											onChange={handleTextChange}
 										></textarea>
 									</label>

@@ -19,7 +19,7 @@ export default function UserLike() {
 	const userId = useParams().user_id
 
 	useEffect(() => {
-		tweetAPI.getCurrentUserLikes(userId).then((response) => {
+		tweetAPI.getUserLikes(userId).then((response) => {
 			const { data } = response
 			console.log(data)
 			setLikesTweet(data)

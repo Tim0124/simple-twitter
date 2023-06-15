@@ -30,14 +30,10 @@ export default function ReplyListTweet({
 		setLike(!like)
 		if (!like) {
 			setLikeQuantity(likeQuantity + 1)
-			likeAPI.like(id).then((response) => {
-				console.log(response)
-			})
+			likeAPI.like(id).then((response) => {})
 		} else {
 			setLikeQuantity(likeQuantity - 1)
-			likeAPI.unlike(id).then((response) => {
-				console.log(response)
-			})
+			likeAPI.unlike(id).then((response) => {})
 		}
 	}
 

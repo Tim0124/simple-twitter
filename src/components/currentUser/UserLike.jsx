@@ -17,11 +17,11 @@ export default function UserLike() {
 	const currentUserId = localStorage.getItem('userId')
 
 	useEffect(() => {
-		tweetAPI.getCurrentUserLikes(currentUserId).then((response) => {
+		tweetAPI.getUserLikes(currentUserId).then((response) => {
 			const { data } = response
 			setLikesTweet(data)
 		})
-	}, [pathname])
+	}, [])
 
 	useEffect(() => {
 		if (pathname === `/user/self/like/${currentUserId}`) {

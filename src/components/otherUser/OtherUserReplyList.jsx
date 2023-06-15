@@ -17,7 +17,7 @@ export default function UserReplyList() {
 	const userId = useParams().user_id
 
 	useEffect(() => {
-		tweetAPI.getCurrentUserReplies(userId).then((response) => {
+		tweetAPI.getUserReplies(userId).then((response) => {
 			const { data } = response
 			setReplies(data)
 		})
@@ -27,7 +27,7 @@ export default function UserReplyList() {
 		if (pathname === `/user/other/reply/${userId}`) {
 			handleChangeTab(2)
 		}
-	}, [])
+	}, [pathname])
 
 	return (
 		<div className={`${style.userReplyContainer}`}>

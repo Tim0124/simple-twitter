@@ -18,8 +18,10 @@ export default function UserFollowerContent({
 
 	const handleFollowClick = () => {
 		followingAPI
-			.getFollow(id)
-			.then()
+			.postFollow(id)
+			.then((res) => {
+				setRender('true')
+			})
 			.catch((error) => {
 				console.error(error)
 				setRender('false')
@@ -28,8 +30,10 @@ export default function UserFollowerContent({
 
 	const handleUnFollowClick = () => {
 		followingAPI
-			.getUnFollow(id)
-			.then(setRender('false'))
+			.deleteFollow(id)
+			.then((res) => {
+				setRender('false')
+			})
 			.catch((error) => {
 				console.error(error)
 				setRender('false')

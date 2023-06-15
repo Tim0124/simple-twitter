@@ -17,7 +17,6 @@ export default function UserFollowing() {
 	const id = localStorage.getItem('userId')
 	const setRender = useContext(SetRenderContext)
 	const render = useContext(GetRenderContext)
-	console.log(render)
 
 	useEffect(() => {
 		if (render === 'true' || render === 'init') {
@@ -34,6 +33,10 @@ export default function UserFollowing() {
 				})
 		}
 	}, [render])
+
+	useEffect(() => {
+		setRender('init')
+	}, [])
 
 	useEffect(() => {
 		if (pathname === `/user/self/following/${id}`) {

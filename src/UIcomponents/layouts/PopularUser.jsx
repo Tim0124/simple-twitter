@@ -13,6 +13,7 @@ export default function PopularUser({
 	account,
 	isUserFollowed,
 	onOtherUserId,
+	// followingId
 }) {
 	const [follow, setFollow] = useState(isUserFollowed)
 	const setRender = useContext(SetRenderContext)
@@ -21,9 +22,8 @@ export default function PopularUser({
 	const handleFollowClick = () => {
 		setFollow(true)
 		followingAPI
-			.getFollow(id)
+			.postFollow(id)
 			.then((response) => {
-				console.log(response)
 				setRender('true')
 			})
 			.catch((error) => {
@@ -35,9 +35,8 @@ export default function PopularUser({
 	const handleUnFollowClick = () => {
 		setFollow(false)
 		followingAPI
-			.getUnFollow(id)
+			.deleteFollow(id)
 			.then((response) => {
-				console.log(response)
 				setRender('false')
 			})
 			.catch((error) => {

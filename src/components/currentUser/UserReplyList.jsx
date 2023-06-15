@@ -17,11 +17,11 @@ export default function UserReplyList() {
 	const currentUserId = localStorage.getItem('userId')
 
 	useEffect(() => {
-		tweetAPI.getCurrentUserReplies(currentUserId).then((response) => {
+		tweetAPI.getUserReplies(currentUserId).then((response) => {
 			const { data } = response
 			setReplies(data)
 		})
-	}, [pathname])
+	}, [])
 
 	useEffect(() => {
 		if (pathname === `/user/self/reply/${currentUserId}`) {

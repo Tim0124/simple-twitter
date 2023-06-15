@@ -17,13 +17,6 @@ export default {
 			},
 		})
 	},
-	getCurrentUser(id) {
-		return apiHelper.get(`/users/${id}`, {
-			headers: {
-				Authorization: `Bearer ${getToken()}`,
-			},
-		})
-	},
 	getTopFollower() {
 		return apiHelper.get(`/users`, {
 			headers: {
@@ -31,10 +24,10 @@ export default {
 			},
 		})
 	},
-	getFollow(id) {
+	postFollow(userId, followingId) {
 		return apiHelper.post(
 			`/followships`,
-			{ id },
+			{ userId, followingId },
 			{
 				headers: {
 					Authorization: `Bearer ${getToken()}`,
@@ -42,7 +35,7 @@ export default {
 			}
 		)
 	},
-	getUnFollow(id) {
+	deleteFollow(id) {
 		return apiHelper.delete(`/followships/${id}`, {
 			headers: {
 				Authorization: `Bearer ${getToken()}`,

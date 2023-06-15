@@ -44,7 +44,6 @@ export default function ModalPostTweet({ onClick, onHiddenClick }) {
 			return
 		}
 		tweetAPI.postTweet(userId, tweet).then((res) => {
-			console.log(res)
 			Toast.fire({
 				icon: 'success',
 				title: '推文成功',

@@ -2,7 +2,7 @@ import style from './AdminTweetsItem.module.scss'
 import { ReactComponent as X } from '../../assets/X.svg'
 
 export default function AdminTweetsItem({
-	id,
+	tweetId,
 	name,
 	avatar,
 	account,
@@ -18,8 +18,6 @@ export default function AdminTweetsItem({
 						src={avatar}
 						className={`${style.adminTweetsImg}`}
 						alt={avatar}
-						width='50px'
-						heigh='50px'
 					/>
 				</div>
 				<div className={`${style.adminTweetsInfo}`}>
@@ -34,7 +32,7 @@ export default function AdminTweetsItem({
 						</div>
 						<div
 							className={`${style.adminTweetsX}`}
-							onClick={() => onClick?.(id)}
+							onClick={() => onClick(tweetId)}
 						>
 							<X />
 						</div>

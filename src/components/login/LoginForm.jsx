@@ -75,7 +75,7 @@ function LoginForm() {
 			}
 		}
 		checkTokenIsVaild()
-	}, [navigate])
+	}, [])
 
 	return (
 		<div className={`${style.loginContainer}`}>

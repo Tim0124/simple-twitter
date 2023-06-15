@@ -23,8 +23,7 @@ export default function UserTweets() {
 	const OtherUserData = useContext(OtherUserContext)
 
 	useEffect(() => {
-		console.log(userId)
-		tweetAPI.getCurrentUserAllTweet(userId).then((response) => {
+		tweetAPI.getUserAllTweet(userId).then((response) => {
 			const { data } = response
 			setOtherUser(data)
 		})
