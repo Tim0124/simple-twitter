@@ -27,6 +27,7 @@ export default function MainTweetsContent({
 	const [likeQuantity, setLikeQuantity] = useState(isLikeQuantity)
 
 	const handleLikeClick = () => {
+		console.log(id)
 		setLike(!like)
 		if (!like) {
 			setLikeQuantity(likeQuantity + 1)
@@ -72,20 +73,18 @@ export default function MainTweetsContent({
 							<p>{quantity}</p>
 						</div>
 						<div className={`${style.mainTweetsLikeQuantity}`}>
-							{like === false ? (
-								<Dislike
-									width='16px'
-									height='16px'
-									id={id}
-									onClick={handleLikeClick}
-								/>
-							) : (
+							{like ? (
 								<Like
 									width='16px'
 									height='16px'
-									id={id}
 									onClick={handleLikeClick}
 								/>
+							) : (
+									<Dislike
+										width='16px'
+										height='16px'
+										onClick={handleLikeClick}
+									/>								
 							)}
 							<p>{likeQuantity}</p>
 						</div>
