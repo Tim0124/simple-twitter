@@ -26,17 +26,17 @@ export default function ReplyListTweet({
 	const [likeQuantity, setLikeQuantity] = useState(likesCount)
 
 	const handleLikeClick = () => {
-		console.log(id)
+
 		setLike(!like)
 		if (!like) {
 			setLikeQuantity(likeQuantity + 1)
 			likeAPI.like(id).then((response) => {
-				console.log(response)
+	
 			})
 		} else {
 			setLikeQuantity(likeQuantity - 1)
 			likeAPI.unlike(id).then((response) => {
-				console.log(response)
+	
 			})
 		}
 	}

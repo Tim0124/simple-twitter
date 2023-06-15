@@ -56,10 +56,8 @@
 	height: 100%;
 }
 
-.userInfoMdImgAvatar {
-	height: 100%;
-	border-radius: 50%;
-}
+
+
 
 .userInfoMdBackground {
 	position: relative;
@@ -70,7 +68,19 @@
 .userInfoMdAvatar {
 	position: absolute;
 	height: 80px;
+	width: 80px;
 	transform: translate(24px, -50%);
+	border-radius: 50%;
+	background-color: #171725;
+	overflow: hidden;
+}
+
+.userInfoMdImgAvatar {
+	position: relative;
+	height: 100%;
+	left: 50%;
+	transform: translateX(-50%);
+	opacity: 0.5;
 }
 
 .userInfoInputArea {
@@ -92,14 +102,6 @@
 	transform: translateX(-50%);
 }
 
-.userInfoMdAvatar {
-	border-radius: 50%;
-	background-color: #171725;
-}
-
-.userInfoMdImgAvatar {
-	opacity: 0.5;
-}
 
 .userInfoMdImgGroup {
 	position: relative;

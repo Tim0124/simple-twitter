@@ -13,10 +13,10 @@ export default function PopularUserList() {
 	const render = useContext(GetRenderContext)
 	const setRender = useContext(SetRenderContext)
 	const { pathname } = useLocation()
-
+	console.log(followers)
 	useEffect(() => {
 		;(async () => {
-			if (render === 'true' || render === 'init') {
+			if (render === 'true') {
 				try {
 					const response = await followingAPI.getTopFollower()
 					const followerData = response.data
@@ -29,6 +29,10 @@ export default function PopularUserList() {
 			}
 		})()
 	}, [render])
+
+	useEffect(() => {
+		setRender('true')
+	},[])
 
 	return (
 		<div
@@ -46,6 +50,7 @@ export default function PopularUserList() {
 						account={follower.account}
 						avatar={follower.avatar}
 						isUserFollowed={follower.isUserFollowed}
+						// followingId={follower.followingId}
 					/>
 				))}
 			</div>

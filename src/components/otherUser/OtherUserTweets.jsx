@@ -22,11 +22,8 @@ export default function UserTweets() {
 	const handleChangeTab = useContext(ChangeTabContext)
 	const OtherUserData = useContext(OtherUserContext)
 
-	console.log(otherUser)
-
 	useEffect(() => {
-		console.log(userId)
-		tweetAPI.getCurrentUserAllTweet(userId).then((response) => {
+		tweetAPI.getUserAllTweet(userId).then((response) => {
 			const { data } = response
 			setOtherUser(data)
 		})

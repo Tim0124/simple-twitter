@@ -3,7 +3,7 @@ import { apiHelper } from 'heplers/helpers'
 const getToken = () => localStorage.getItem('authToken')
 
 export default {
-	getReplyTweet(tweetId, comment) {
+	postReplyTweet(tweetId, comment) {
 		return apiHelper.post(
 			`/tweets/${tweetId}/replies`,
 			{ comment },

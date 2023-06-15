@@ -9,25 +9,32 @@ import { useContext, useEffect, useState } from 'react'
 import { ChangeStepContext } from 'context/SideBarContext'
 import tweetAPI from 'api/tweetAPI'
 import { ChangeTabContext } from 'context/UserTabContext'
+import userAPI from 'api/userAPI'
 
 export default function UserTweets() {
 	const { pathname } = useLocation()
-	const tweetId = useParams().tweet_id
+	// const tweetId = useParams().tweet_id
 	const handleChangeStep = useContext(ChangeStepContext)
-	const [userInfo, setUserInfo] = useState([])
+	// const [userInfo, setUserInfo] = useState([])
 	const [allTweets, setAllTweets] = useState([])
 	const handleChangeTab = useContext(ChangeTabContext)
 	const navigate = useNavigate()
-	const currentUserId = localStorage.getItem('userId')
+	const currentUserId = 14
 
 	useEffect(() => {
-		tweetAPI.getCurrentUserTweet(currentUserId).then((response) => {
-			const { data } = response
-			setUserInfo(data)
-		})
-		tweetAPI.getCurrentUserAllTweet(currentUserId).then((response) => {
+		
+		console.log('asd',currentUserId)
+		// tweetAPI.getCurrentUserTweet(currentUserId).then((response) => {
+		// 	const { data } = response
+		// 	setUserInfo(data)
+		// }).catch(() => {
+		// 	console.log('get123')
+		// })
+		tweetAPI.getUserAllTweet(currentUserId).then((response) => {
 			const { data } = response
 			setAllTweets(data)
+		}).catch(() => {
+			console.log('get456')
 		})
 	}, [])
 

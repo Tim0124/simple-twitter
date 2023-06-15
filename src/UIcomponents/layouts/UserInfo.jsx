@@ -18,6 +18,8 @@ export default function UserInfo({
 	userId,
 }) {
 	const handleEditModal = useContext(ShowEditModalContext)
+	
+
 	return (
 		<div className={`${style.userInfoContainer} ${style[onHideUserInfo]}`}>
 			<div className={`${style.userInfoWrapper}`}>

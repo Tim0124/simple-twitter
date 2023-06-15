@@ -14,7 +14,13 @@ export default {
 		})
 	},
 	getUser(userId) {
+		console.log(userId)
 		return apiHelper.get(`/users/${userId}`, {
+			headers: { Authorization: `Bearer ${getToken()}` },
+		})
+	},
+	getCurrentUser() {
+		return apiHelper.get(`/isSelfUser`, {
 			headers: { Authorization: `Bearer ${getToken()}` },
 		})
 	},

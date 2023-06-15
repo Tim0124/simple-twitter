@@ -41,7 +41,7 @@ export default function ModalReplyTweet() {
 		}
 		const tweetId = ReplyTweetId
 		replyAPI
-			.getReplyTweet(tweetId, comment)
+			.postReplyTweet(tweetId, comment)
 			.then((response) => {
 				Toast.fire({
 					icon: 'success',
@@ -60,19 +60,16 @@ export default function ModalReplyTweet() {
 		const fetchData = async () => {
 			try {
 				setIsLoading(true)
-				await tweetAPI.getCurrentTweetUser(tweetId).then((response) => {
+				await tweetAPI.getTweet(tweetId).then((response) => {
 					const { data } = response
 					setReplyTweet(data)
-					setIsLoading(false)
 				})
 				await userAPI.getUser(userId).then((response) => {
 					const { data } = response
 					setCurrentUser(data)
-					setIsLoading(false)
 				})
 			} catch (error) {
 				console.error(error)
-				setIsLoading(false)
 			}
 		}
 		fetchData()

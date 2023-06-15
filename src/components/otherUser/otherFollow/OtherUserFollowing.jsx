@@ -22,7 +22,7 @@ export default function UserFollowing() {
 			const { data } = response
 			setFollowing(data)
 		})
-	}, [pathname])
+	}, [])
 
 	useEffect(() => {
 		if (pathname === `/user/other/following/${id}`) {

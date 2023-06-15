@@ -17,7 +17,6 @@ export default function AdminSidebar() {
 			title: '已登出',
 			icon: 'info',
 		})
-		console.log(localStorage.getItem('authToken'))
 		navigate('/admin')
 	}
 

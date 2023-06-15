@@ -21,7 +21,7 @@ export default function UserFollower() {
 			const { data } = response
 			setFollowers(data)
 		})
-	}, [pathname])
+	}, [])
 
 	useEffect(() => {
 		if (pathname === `/user/other/follower/${id}`) {

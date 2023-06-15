@@ -24,7 +24,7 @@ export default function AdminUsers() {
 		if (pathname === '/admin/users') {
 			handleChangeStep(2)
 		}
-	}, [])
+	}, [pathname])
 
 	return (
 		<div className={`${style.adminTweetsCardListWrapper}`}>

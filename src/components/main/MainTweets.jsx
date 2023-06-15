@@ -1,24 +1,19 @@
 import { useState, useEffect, useContext } from 'react'
 import style from './MainTweets.module.scss'
 import MainTweetsContent from './MainTweetsContent'
-import AdminTweetsItem from 'components/admin/AdminTweetsItem'
-import Sidebar from 'UIcomponents/layouts/Sidebar'
-import { Outlet, useLocation, useNavigate } from 'react-router-dom'
-import Layout from 'UIcomponents/layouts/Layout'
+import {  useLocation, useNavigate } from 'react-router-dom'
 import MainContent from './MainContent'
 import { getTweets } from '../../api/allAPI'
 import MainHeader from './MainHeader'
 import { checkPermission } from 'api/auth'
 import {
-	ReplyTweetModalContext,
 	ShowReplyModalContext,
 } from 'context/ModalContext'
-import ModalReplyTweet from 'UIcomponents/modal/ModalReplyTweet'
 import tweetAPI from 'api/tweetAPI'
-import ReplyList from 'components/replyList/ReplyList'
 import { ChangeStepContext } from 'context/SideBarContext'
 import { GetOtherUserIdContext } from 'context/OtherUserContext'
 import { Toast } from 'heplers/helpers'
+import userAPI from 'api/userAPI'
 
 export default function MainTweets({ onTweetClick }) {
 	const navigate = useNavigate()
@@ -50,7 +45,7 @@ export default function MainTweets({ onTweetClick }) {
 			return
 		}
 		tweetAPI.postTweet(userId, isPostText).then((res) => {
-			console.log(res)
+	
 			Toast.fire({
 				icon: 'success',
 				title: '推文成功',
@@ -60,7 +55,7 @@ export default function MainTweets({ onTweetClick }) {
 	}
 
 	useEffect(() => {
-		tweetAPI.getCurrentUserTweet(userId).then((response) => {
+		userAPI.getCurrentUser().then((response) => {
 			const { data } = response
 			setCurrentUser(data)
 		})
@@ -91,17 +86,22 @@ export default function MainTweets({ onTweetClick }) {
 		}
 
 		checkTokenIsValid()
-	}, [navigate])
+	}, [])
 
 	useEffect(() => {
 		if (pathname === '/home') {
 			handleChangeStep(1)
 		}
-	}, [])
+	}, [pathname])
 
 	useEffect(() => {
-		setIsDisable(isPostText.length === 0)
-	}, [isPostText])
+		if(isPostText.trim().length === 0) {
+			setIsDisable(true)
+		}else {
+			setIsDisable(false)
+		}
+		
+	}, [(isPostText.trim().length === 0)])
 
 	return (
 		<div className={`${style.tweetsContainer}`}>

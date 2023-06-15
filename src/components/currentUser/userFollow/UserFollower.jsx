@@ -7,19 +7,30 @@ import { useContext, useEffect, useState } from 'react'
 import followingAPI from 'api/followingAPI'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { ChangeTabContext } from 'context/UserTabContext'
+import { GetRenderContext, SetRenderContext } from 'context/FollowContext'
 
 export default function UserFollower() {
 	const [followers, setFollowers] = useState([])
 	const { pathname } = useLocation()
 	const handleChangeTab = useContext(ChangeTabContext)
 	const id = localStorage.getItem('userId')
+	const setRender = useContext(SetRenderContext)
+	const render = useContext(GetRenderContext)
 
 	useEffect(() => {
+		if(render === 'true' || render === 'init')
 		followingAPI.getFollowers(id).then((response) => {
 			const { data } = response
 			setFollowers(data)
+			setRender('false')
+		}).catch(() => {
+			setRender('false')
 		})
-	}, [pathname])
+	}, [render])
+
+	useEffect(() => {
+		setRender('init')
+	},[])
 
 	useEffect(() => {
 		if (pathname === `/user/self/follower/${id}`) {
@@ -29,16 +40,6 @@ export default function UserFollower() {
 
 	return (
 		<div className={`${style.userFollowerContainer}`}>
-			{/* <div className={`${style.userInfoHeaderContainer}`}>
-				<UserInfoHeader
-					name={data[0].name}
-					tweet={data[0].tweet}
-					page='/user/self'
-				/>
-			</div>
-			<div className={`${style.userInfoContainer}`}>
-				<UserInfo />
-			</div> */}
 			<section className={`${style.userFollowerContent}`}>
 				{followers.map((follower) => (
 					<UserFollowerContent

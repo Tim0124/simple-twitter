@@ -3,10 +3,11 @@ import { apiHelper } from 'heplers/helpers'
 const getToken = () => localStorage.getItem('authToken')
 
 export default {
-	like(id) {
+	like(tweetId) {
+		console.log('token',getToken())
 		return apiHelper.post(
-			`/tweets/${id}/like`,
-			{ id },
+			`/tweets/${tweetId}/like`,
+			// {UserId:34},
 			{
 				headers: {
 					Authorization: `Bearer ${getToken()}`,
@@ -14,10 +15,10 @@ export default {
 			}
 		)
 	},
-	unlike(id) {
+	unlike(tweetId) {
 		return apiHelper.post(
-			`/tweets/${id}/unlike`,
-			{ id },
+			`/tweets/${tweetId}/unlike`,
+			// { userId },
 			{
 				headers: {
 					Authorization: `Bearer ${getToken()}`,

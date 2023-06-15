@@ -11,12 +11,12 @@ import { ChangeStepContext } from 'context/SideBarContext'
 
 export default function AdminTweets() {
 	const [tweets, setTweets] = useState([])
-	const [isDelete, setIsDelete] = useState(false)
+	const [isDelete, setIsDelete] = useState('init')
 	const navigate = useNavigate()
 	const { pathname } = useLocation()
 	const handleChangeStep = useContext(ChangeStepContext)
 
-	const handleDeleteClick = async (id) => {
+	const handleDeleteClick = async (tweetId) => {
 		try {
 			await ToastAlert.fire({
 				title: '你確定要刪除推文？',
@@ -29,9 +29,8 @@ export default function AdminTweets() {
 			}).then((result) => {
 				if (result.isConfirmed) {
 					Swal.fire('刪除成功!', '推文已刪除', 'success')
-					tweetAPI.deleteTweet(id).then((response) => {
+					tweetAPI.deleteTweet(tweetId).then((response) => {
 						const { data } = response.data
-						const deleteId = data.deletedTweet.id
 						if (response.status !== 200) {
 							throw new Error(data.message)
 						}
@@ -50,22 +49,23 @@ export default function AdminTweets() {
 
 	//
 	useEffect(() => {
-		userAPI.getAdminTweets().then((response) => {
-			const { data } = response.data
-			setTweets(data.tweetsData)
-			if (isDelete) {
+			if (isDelete || isDelete === 'init') {
+				userAPI.getAdminTweets().then((response) => {
+				const { data } = response.data
+				if (response.status !== 200) {
+				throw new Error(data.message)
+			 }
+				setTweets(data.tweetsData)
 				setIsDelete(false)
 				navigate('/admin/tweets')
-			}
-			if (response.status !== 200) {
-				throw new Error(data.message)
-				Toast.fire({
-					icon: 'error',
-					title: '重新登入！',
+				}).catch(() => {
+						Toast.fire({
+						icon: 'error',
+						title: '重新登入！',
+					})
 				})
-				navigate('/admin')
 			}
-		})
+
 	}, [isDelete])
 
 	useEffect(() => {
@@ -82,7 +82,7 @@ export default function AdminTweets() {
 					{tweets.map((tweet) => (
 						<AdminTweetsItem
 							key={tweet.id}
-							id={tweet.id}
+							tweetId={tweet.id}
 							avatar={tweet.User.avatar}
 							name={tweet.User.name}
 							description={tweet.description}

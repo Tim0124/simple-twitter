@@ -1,70 +1,66 @@
 import { Outlet, useLocation } from 'react-router-dom'
-import PopularUserList from './PopularUserList'
-import SideItem from './SideItem'
-import Sidebar from './Sidebar'
 import style from './UserLayout.module.scss'
 import ModalPostTweet from '../modal/ModalPostTweet'
 import ModalUserInfo from '../modal/ModalUserInfo'
 import { useContext, useEffect, useState } from 'react'
-import ModalReplyTweet from 'UIcomponents/modal/ModalReplyTweet'
 import {
-	EditModalContext,
-	ModalHiddenContext,
-	ReplyTweetModalContext,
 	ShowEditModalContext,
 	TweetModalContext,
 } from 'context/ModalContext'
 import UserInfoHeader from './UserInfoHeader'
-import tweetAPI from 'api/tweetAPI'
 import UserInfo from './UserInfo'
 import UserTab from 'UIcomponents/tabs/UserTab'
 import FollowTab from 'UIcomponents/tabs/FollowTab'
-import { OtherUserContext } from 'context/OtherUserContext'
+import userAPI from 'api/userAPI'
 
 export default function Layout() {
 	const useTweetModal = useContext(TweetModalContext)
-	const useReplyModal = useContext(ReplyTweetModalContext)
 	const [userInfo, setUserInfo] = useState([])
 	const { pathname } = useLocation()
-	const currentUserId = Number(localStorage.getItem('userId'))
-	const isFollowPage =
-	pathname.includes(`/user/self/following/${currentUserId}`) ||
-	pathname.includes(`/user/self/follower/${currentUserId}`)
 	const ShowEditModal = useContext(ShowEditModalContext)
+	const [userId , setUserId] = useState('') 
+	const isFollowPage =
+	pathname.includes(`/user/self/following/${userId}`) ||
+	pathname.includes(`/user/self/follower/${userId}`)
+
 
 	useEffect(() => {
-		tweetAPI.getCurrentUserTweet(currentUserId).then((response) => {
-			const { data } = response
+		userAPI.getCurrentUser().then((res) => {
+			const {data} = res
+			setUserId(data.id)
 			setUserInfo(data)
+			console.log(data)
+		}).catch((error) => {
+			console.error(error)
 		})
-	}, [])
+	},[])
 
 	return (
 		<div className={`${style.userTweetsContainer}`}>
 			<div className={`${style.userInfoHeaderContainer}`}>
 				<UserInfoHeader
-					name={userInfo.name}
-					tweet={userInfo.tweetsCount}
+					name={userInfo?.name}
+					tweet={userInfo?.tweetsCount}
 					page='/home'
 				/>
 			</div>
 			<UserInfo
-				key={userInfo.id}
-				name={userInfo.name}
-				account={userInfo.account}
-				avatar={userInfo.avatar}
-				backgroundImage={userInfo.backgroundImage}
-				introduction={userInfo.introduction}
-				follower={userInfo.followersCount}
-				following={userInfo.followingsCount}
+				key={userInfo?.id}
+				name={userInfo?.name}
+				account={userInfo?.account}
+				avatar={userInfo?.avatar}
+				backgroundImage={userInfo?.backgroundImage}
+				introduction={userInfo?.introduction}
+				follower={userInfo?.followersCount}
+				following={userInfo?.followingsCount}
 				onHideUserInfo={isFollowPage ? 'hideUserInfo' : ''}
-				userId={currentUserId}
+				userId={userId}
 			/>
-			{pathname.includes(`/user/self/following/${currentUserId}`) ||
-			pathname.includes(`/user/self/follower/${currentUserId}`) ? (
-				<FollowTab id={currentUserId} />
+			{pathname.includes(`/user/self/following/${userId}`) ||
+			pathname.includes(`/user/self/follower/${userId}`) ? (
+				<FollowTab id={userId} />
 			) : (
-				<UserTab id={currentUserId} />
+				<UserTab id={userId} />
 			)}
 
 			<div className={`${style.UserLayoutMainContainer}`}>
