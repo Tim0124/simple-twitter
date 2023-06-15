@@ -28,8 +28,8 @@ export default function Layout() {
 	const { pathname } = useLocation()
 	const currentUserId = Number(localStorage.getItem('userId'))
 	const isFollowPage =
-	pathname.includes(`/user/self/following/${currentUserId}`) ||
-	pathname.includes(`/user/self/follower/${currentUserId}`)
+		pathname.includes(`/user/self/following/${currentUserId}`) ||
+		pathname.includes(`/user/self/follower/${currentUserId}`)
 	const ShowEditModal = useContext(ShowEditModalContext)
 
 	useEffect(() => {
