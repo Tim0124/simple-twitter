@@ -3,8 +3,10 @@ import { ReactComponent as Like } from '../../assets/redlike.svg'
 import { ReactComponent as Dislike } from '../../assets/unlike.svg'
 import { ReactComponent as Message } from '../../assets/message.svg'
 import { useState } from 'react'
+import likeAPI from 'api/likeAPI'
 
 export default function UserLikeContent({
+	id,
 	name,
 	account,
 	avatar,
@@ -12,16 +14,23 @@ export default function UserLikeContent({
 	repliesCount,
 	likesCount,
 	time,
+	isSelfUserLike,
 }) {
-	const [like, setLike] = useState(true)
-	const [isLikeQuantity, setIsLikeQuantity] = useState(likesCount)
+	const [like, setLike] = useState(isSelfUserLike)
+	const [likeQuantity, setLikeQuantity] = useState(likesCount)
 
 	const handleLikeClick = () => {
 		setLike(!like)
-		if (!like) {
-			setIsLikeQuantity(isLikeQuantity + 1)
-		} else if (like && isLikeQuantity >= 0) {
-			setIsLikeQuantity(isLikeQuantity - 1)
+		if (like) {
+			setLikeQuantity(likeQuantity - 1)
+			likeAPI.unlike(id).then((response) => {
+				console.log(response)
+			})
+		} else {
+			setLikeQuantity(likeQuantity + 1)
+			likeAPI.like(id).then((response) => {
+				console.log(response)
+			})
 		}
 	}
 
@@ -60,7 +69,7 @@ export default function UserLikeContent({
 							) : (
 								<Dislike width='16px' height='16px' onClick={handleLikeClick} />
 							)}
-							<p>{isLikeQuantity}</p>
+							<p>{likeQuantity}</p>
 						</div>
 					</div>
 				</div>

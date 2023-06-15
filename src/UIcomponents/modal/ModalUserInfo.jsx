@@ -90,7 +90,7 @@ export default function UserInfo() {
 						<div className={`${style.userInfoMdImgGroup}`}>
 							<div className={`${style.userInfoIcon}`}>
 								<label
-									for='backgroundPhoto'
+									htmlFor='backgroundPhoto'
 									className={`${style.userInfoMdWhite}`}
 								>
 									<WhiteCamera />
@@ -115,7 +115,7 @@ export default function UserInfo() {
 								/>
 								<div className={`${style.userInfoSecIcon}`}>
 									<label
-										for='avatarPhoto'
+										htmlFor='avatarPhoto'
 										className={`${style.userInfoMdWhite}`}
 									>
 										<WhiteCamera />

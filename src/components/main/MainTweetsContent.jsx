@@ -28,7 +28,6 @@ export default function MainTweetsContent({
 	const [likeQuantity, setLikeQuantity] = useState(isLikeQuantity)
 
 	const handleLikeClick = () => {
-		console.log(id)
 		setLike(!like)
 		if (!like) {
 			setLikeQuantity(likeQuantity + 1)

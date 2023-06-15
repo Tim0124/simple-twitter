@@ -21,6 +21,7 @@ export default function UserLike() {
 	useEffect(() => {
 		tweetAPI.getCurrentUserLikes(userId).then((response) => {
 			const { data } = response
+			console.log(data)
 			setLikesTweet(data)
 		})
 	}, [])
@@ -36,14 +37,16 @@ export default function UserLike() {
 			<section className={`${style.UserTweetsContent}`}>
 				{likesTweet.map((like) => (
 					<OtherUserLikeContent
+						id={like?.TweetId}
 						key={like?.id}
 						name={like?.User?.name}
 						account={like?.User?.account}
 						avatar={like?.User?.avatar}
 						content={like?.Tweet?.description}
 						time={like?.Tweet?.relativeTimeFromNow}
-						likesCount={like?.likesCount}
+						likesCount={like?.Tweet?.likesCount}
 						repliesCount={like?.repliesCount}
+						isSelfUserLike={like?.isSelfUserLike}
 					/>
 				))}
 			</section>

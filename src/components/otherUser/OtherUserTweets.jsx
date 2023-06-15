@@ -22,8 +22,6 @@ export default function UserTweets() {
 	const handleChangeTab = useContext(ChangeTabContext)
 	const OtherUserData = useContext(OtherUserContext)
 
-	console.log(otherUser)
-
 	useEffect(() => {
 		console.log(userId)
 		tweetAPI.getCurrentUserAllTweet(userId).then((response) => {
@@ -51,8 +49,8 @@ export default function UserTweets() {
 						time={user.relativeTimeFromNow}
 						description={user.description}
 						repliesCount={user.repliesCount}
-						likeCount={user.likeCount}
-						isLike={user.isSelfUserLike}
+						likeCount={user.likesCount}
+						isSelfUserLike={user.isSelfUserLike}
 					/>
 				))}
 			</section>
