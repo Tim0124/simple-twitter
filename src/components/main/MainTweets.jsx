@@ -1,14 +1,12 @@
 import { useState, useEffect, useContext } from 'react'
 import style from './MainTweets.module.scss'
 import MainTweetsContent from './MainTweetsContent'
-import {  useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import MainContent from './MainContent'
 import { getTweets } from '../../api/allAPI'
 import MainHeader from './MainHeader'
 import { checkPermission } from 'api/auth'
-import {
-	ShowReplyModalContext,
-} from 'context/ModalContext'
+import { ShowReplyModalContext } from 'context/ModalContext'
 import tweetAPI from 'api/tweetAPI'
 import { ChangeStepContext } from 'context/SideBarContext'
 import { GetOtherUserIdContext } from 'context/OtherUserContext'
@@ -45,7 +43,6 @@ export default function MainTweets({ onTweetClick }) {
 			return
 		}
 		tweetAPI.postTweet(userId, isPostText).then((res) => {
-	
 			Toast.fire({
 				icon: 'success',
 				title: '推文成功',
@@ -95,13 +92,12 @@ export default function MainTweets({ onTweetClick }) {
 	}, [pathname])
 
 	useEffect(() => {
-		if(isPostText.trim().length === 0) {
+		if (isPostText.trim().length === 0) {
 			setIsDisable(true)
-		}else {
+		} else {
 			setIsDisable(false)
 		}
-		
-	}, [(isPostText.trim().length === 0)])
+	}, [isPostText.trim().length === 0])
 
 	return (
 		<div className={`${style.tweetsContainer}`}>

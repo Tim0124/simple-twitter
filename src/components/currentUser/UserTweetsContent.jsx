@@ -23,14 +23,10 @@ export default function UserTweetsContent({
 		setLike(!like)
 		if (!like) {
 			setLikeQuantity(likeQuantity + 1)
-			likeAPI.like(id).then((response) => {
-
-			})
+			likeAPI.like(id).then((response) => {})
 		} else {
 			setLikeQuantity(likeQuantity - 1)
-			likeAPI.unlike(id).then((response) => {
-
-			})
+			likeAPI.unlike(id).then((response) => {})
 		}
 	}
 

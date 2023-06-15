@@ -32,7 +32,6 @@ export default function UserFollowerContent({
 		followingAPI
 			.deleteFollow(id)
 			.then((res) => {
-	
 				setRender('false')
 			})
 			.catch((error) => {

@@ -18,7 +18,6 @@ export default function UserFollowing() {
 	const setRender = useContext(SetRenderContext)
 	const render = useContext(GetRenderContext)
 
-
 	useEffect(() => {
 		if (render === 'true' || render === 'init') {
 			followingAPI
@@ -37,7 +36,7 @@ export default function UserFollowing() {
 
 	useEffect(() => {
 		setRender('init')
-	},[])
+	}, [])
 
 	useEffect(() => {
 		if (pathname === `/user/self/following/${id}`) {

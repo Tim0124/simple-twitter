@@ -24,10 +24,10 @@ export default {
 			},
 		})
 	},
-	postFollow(userId,followingId) {
+	postFollow(userId, followingId) {
 		return apiHelper.post(
 			`/followships`,
-			{ userId,followingId },
+			{ userId, followingId },
 			{
 				headers: {
 					Authorization: `Bearer ${getToken()}`,

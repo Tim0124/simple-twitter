@@ -32,7 +32,7 @@ export default function PopularUserList() {
 
 	useEffect(() => {
 		setRender('true')
-	},[])
+	}, [])
 
 	return (
 		<div

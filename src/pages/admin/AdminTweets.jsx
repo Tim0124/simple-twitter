@@ -49,23 +49,25 @@ export default function AdminTweets() {
 
 	//
 	useEffect(() => {
-			if (isDelete || isDelete === 'init') {
-				userAPI.getAdminTweets().then((response) => {
-				const { data } = response.data
-				if (response.status !== 200) {
-				throw new Error(data.message)
-			 }
-				setTweets(data.tweetsData)
-				setIsDelete(false)
-				navigate('/admin/tweets')
-				}).catch(() => {
-						Toast.fire({
+		if (isDelete || isDelete === 'init') {
+			userAPI
+				.getAdminTweets()
+				.then((response) => {
+					const { data } = response.data
+					if (response.status !== 200) {
+						throw new Error(data.message)
+					}
+					setTweets(data.tweetsData)
+					setIsDelete(false)
+					navigate('/admin/tweets')
+				})
+				.catch(() => {
+					Toast.fire({
 						icon: 'error',
 						title: '重新登入！',
 					})
 				})
-			}
-
+		}
 	}, [isDelete])
 
 	useEffect(() => {

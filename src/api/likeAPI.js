@@ -4,7 +4,7 @@ const getToken = () => localStorage.getItem('authToken')
 
 export default {
 	like(tweetId) {
-		console.log('token',getToken())
+		console.log('token', getToken())
 		return apiHelper.post(
 			`/tweets/${tweetId}/like`,
 			// {UserId:34},

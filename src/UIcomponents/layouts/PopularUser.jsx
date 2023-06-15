@@ -18,7 +18,7 @@ export default function PopularUser({
 	const [follow, setFollow] = useState(isUserFollowed)
 	const setRender = useContext(SetRenderContext)
 	const render = useContext(GetRenderContext)
-	
+
 	const handleFollowClick = () => {
 		setFollow(true)
 		followingAPI
@@ -37,7 +37,6 @@ export default function PopularUser({
 		followingAPI
 			.deleteFollow(id)
 			.then((response) => {
-
 				setRender('false')
 			})
 			.catch((error) => {

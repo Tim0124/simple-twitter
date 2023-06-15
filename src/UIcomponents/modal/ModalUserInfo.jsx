@@ -38,12 +38,10 @@ export default function ModalUserInfo() {
 
 	useEffect(() => {
 		userAPI.getCurrentUser().then((res) => {
-			const {data} = res
+			const { data } = res
 			setUserDate(data)
 		})
-
-	},[])
-	
+	}, [])
 
 	const handleNameChange = (e) => {
 		setName(e.target.value)
@@ -130,7 +128,11 @@ export default function ModalUserInfo() {
 						</div>
 						<div className={`${style.userInfoInputArea}`}>
 							<div className={`${style.userInfoInputName}`}>
-								<Input label='名稱' value={userData?.name} onChange={handleNameChange} />
+								<Input
+									label='名稱'
+									value={userData?.name}
+									onChange={handleNameChange}
+								/>
 								<p className={`${style.userInfoInputText}`}>8/50</p>
 							</div>
 							<div className={`${style.userInfoInputContent}`}>

@@ -3,10 +3,7 @@ import style from './UserLayout.module.scss'
 import ModalPostTweet from '../modal/ModalPostTweet'
 import ModalUserInfo from '../modal/ModalUserInfo'
 import { useContext, useEffect, useState } from 'react'
-import {
-	ShowEditModalContext,
-	TweetModalContext,
-} from 'context/ModalContext'
+import { ShowEditModalContext, TweetModalContext } from 'context/ModalContext'
 import UserInfoHeader from './UserInfoHeader'
 import UserInfo from './UserInfo'
 import UserTab from 'UIcomponents/tabs/UserTab'
@@ -18,22 +15,24 @@ export default function Layout() {
 	const [userInfo, setUserInfo] = useState([])
 	const { pathname } = useLocation()
 	const ShowEditModal = useContext(ShowEditModalContext)
-	const [userId , setUserId] = useState('') 
+	const [userId, setUserId] = useState('')
 	const isFollowPage =
-	pathname.includes(`/user/self/following/${userId}`) ||
-	pathname.includes(`/user/self/follower/${userId}`)
-
+		pathname.includes(`/user/self/following/${userId}`) ||
+		pathname.includes(`/user/self/follower/${userId}`)
 
 	useEffect(() => {
-		userAPI.getCurrentUser().then((res) => {
-			const {data} = res
-			setUserId(data.id)
-			setUserInfo(data)
-			console.log(data)
-		}).catch((error) => {
-			console.error(error)
-		})
-	},[])
+		userAPI
+			.getCurrentUser()
+			.then((res) => {
+				const { data } = res
+				setUserId(data.id)
+				setUserInfo(data)
+				console.log(data)
+			})
+			.catch((error) => {
+				console.error(error)
+			})
+	}, [])
 
 	return (
 		<div className={`${style.userTweetsContainer}`}>

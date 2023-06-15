@@ -22,20 +22,22 @@ export default function UserTweets() {
 	const currentUserId = 14
 
 	useEffect(() => {
-		
-		console.log('asd',currentUserId)
+		console.log('asd', currentUserId)
 		// tweetAPI.getCurrentUserTweet(currentUserId).then((response) => {
 		// 	const { data } = response
 		// 	setUserInfo(data)
 		// }).catch(() => {
 		// 	console.log('get123')
 		// })
-		tweetAPI.getUserAllTweet(currentUserId).then((response) => {
-			const { data } = response
-			setAllTweets(data)
-		}).catch(() => {
-			console.log('get456')
-		})
+		tweetAPI
+			.getUserAllTweet(currentUserId)
+			.then((response) => {
+				const { data } = response
+				setAllTweets(data)
+			})
+			.catch(() => {
+				console.log('get456')
+			})
 	}, [])
 
 	useEffect(() => {

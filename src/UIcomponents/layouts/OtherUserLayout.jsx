@@ -2,10 +2,7 @@ import { Outlet, useLocation, useNavigate, useParams } from 'react-router-dom'
 import style from './OtherUserLayout.module.scss'
 import ModalPostTweet from '../modal/ModalPostTweet'
 import { useContext, useEffect, useState } from 'react'
-import {
-	ReplyTweetModalContext,
-	TweetModalContext,
-} from 'context/ModalContext'
+import { ReplyTweetModalContext, TweetModalContext } from 'context/ModalContext'
 import UserInfoHeader from './UserInfoHeader'
 import tweetAPI from 'api/tweetAPI'
 import OtherUserInfo from './OtherUserInfo'
