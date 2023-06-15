@@ -43,7 +43,7 @@ export default function UserLike() {
 			<section className={`${style.UserTweetsContent}`}>
 				{likesTweet.map((like) => (
 					<UserLikeContent
-						id={like.id}
+						id={like.TweetId}
 						key={like.id}
 						name={like.User.name}
 						account={like.User.account}

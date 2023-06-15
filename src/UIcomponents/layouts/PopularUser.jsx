@@ -64,7 +64,7 @@ export default function PopularUser({
 				</div>
 				<div className={`${style.popularUserButton}`}>
 					{follow ? (
-						<div>
+						<div className={`${style.popularUserfollowing}`}>
 							<Button
 								size='middle'
 								text='正在跟隨'
