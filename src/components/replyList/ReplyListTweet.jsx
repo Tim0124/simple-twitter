@@ -20,7 +20,6 @@ export default function ReplyListTweet({
 	time,
 	date,
 	onShowReplyModal,
-	id,
 }) {
 	const handleShowReplyModal = useContext(ShowReplyModalContext)
 	const [like, setLike] = useState(isSelfUserLike)

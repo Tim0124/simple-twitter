@@ -71,13 +71,12 @@ export default function MainTweets({ onTweetClick }) {
 			try {
 				const response = await getTweets.get('/')
 				const tweetData = response.data
-				console.log(tweetData)
 				setTweets(tweetData)
 			} catch (error) {
 				console.log('Failed to tweets:', error)
 			}
 		})()
-	}, [tweets])
+	}, [])
 
 	useEffect(() => {
 		const checkTokenIsValid = async () => {
