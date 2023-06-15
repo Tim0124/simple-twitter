@@ -47,6 +47,7 @@ export default function Router() {
 					</Route>
 					<Route element={<Layout />}>
 						<Route path='/home' element={<MainTweets />} />
+						<Route path='/setting' element={<SettingFrom />} />
 						<Route path='/reply/:tweet_id' element={<ReplyList />} />
 						<Route element={<UserLayout />}>
 							<Route path='/user/:user_id' element={<UserTweets />} />
@@ -83,7 +84,6 @@ export default function Router() {
 								element={<OtherUserFollowing />}
 							/>
 						</Route>
-						<Route path='/setting' element={<SettingFrom />} />
 					</Route>
 					<Route path='/' element={<LoginForm />} />
 				</Routes>
