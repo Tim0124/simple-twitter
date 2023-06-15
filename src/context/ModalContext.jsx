@@ -44,6 +44,5 @@ export function ModalContextProvider({ children }) {
 				</TweetModalContext.Provider>
 			</ShowEditModalContext.Provider>
 		</EditModalContext.Provider>
-		
 	)
 }

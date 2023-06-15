@@ -31,24 +31,26 @@ export default function ModalReplyTweet() {
 
 	const handleReplySubmit = (e) => {
 		e.preventDefault()
-		if(comment.trim().length === 0) {
+		if (comment.trim().length === 0) {
 			Toast.fire({
-				icon:'error',
-				title:'內容不可空白'
+				icon: 'error',
+				title: '內容不可空白',
 			})
 			setShowError(true)
 			return
 		}
 		const tweetId = ReplyTweetId
-		replyAPI.getReplyTweet(tweetId,comment).then((response) => {
-			Toast.fire({
-				icon:'success',
-				title:'回覆成功'
+		replyAPI
+			.getReplyTweet(tweetId, comment)
+			.then((response) => {
+				Toast.fire({
+					icon: 'success',
+					title: '回覆成功',
+				})
 			})
-
-		}).catch((error) => {
-			console.error(error)
-		})
+			.catch((error) => {
+				console.error(error)
+			})
 		handleReplyModal()
 	}
 
@@ -59,12 +61,12 @@ export default function ModalReplyTweet() {
 			try {
 				setIsLoading(true)
 				await tweetAPI.getCurrentTweetUser(tweetId).then((response) => {
-				const {data} = response
-				setReplyTweet(data)
-				setIsLoading(false)
+					const { data } = response
+					setReplyTweet(data)
+					setIsLoading(false)
 				})
 				await userAPI.getUser(userId).then((response) => {
-					const {data} = response
+					const { data } = response
 					setCurrentUser(data)
 					setIsLoading(false)
 				})
@@ -74,24 +76,30 @@ export default function ModalReplyTweet() {
 			}
 		}
 		fetchData()
-	},[])
+	}, [])
 
 	return (
 		<div
 			className={`${style.replyTweetContainer}`}
 			style={{ display: ShowModal ? 'block' : 'none' }}
 		>
-			<ModalBlackDrop  onClick={handleReplyModal}/>
+			<ModalBlackDrop onClick={handleReplyModal} />
 			<div className={`${style.modalPostTweet}`}>
 				<div className={`${style.postTweetContainer}`}>
 					<header className={`${style.tweetsHeader}`}>
 						<nav className={`${style.tweetsNavbar}`}>
 							<div className={`${style.navTitle}`}>
-								<h1 className={`${style.titleArrow}`} onClick={handleReplyModal}>
+								<h1
+									className={`${style.titleArrow}`}
+									onClick={handleReplyModal}
+								>
 									<Arrow />
 								</h1>
-								<h1 className={`${style.titleClose}`} >
-									<Close style={{ color: '#ff6600' }} onClick={handleReplyModal}/>
+								<h1 className={`${style.titleClose}`}>
+									<Close
+										style={{ color: '#ff6600' }}
+										onClick={handleReplyModal}
+									/>
 								</h1>
 							</div>
 							<div className={`${style.navButton}`} onClick={handleReplySubmit}>
@@ -99,26 +107,32 @@ export default function ModalReplyTweet() {
 							</div>
 						</nav>
 					</header>
-            {replyTweet && (
-              <ModalReplyContent
-                key={replyTweet?.id}
-                description={replyTweet?.description}
-                time={replyTweet?.relativeTimeFromNow}
-                avatar={replyTweet?.User?.avatar}
-                name={replyTweet?.User?.name}
-                account={replyTweet?.User?.account}
-								currentUserAvatar={currentUser?.avatar}
-								comment={comment}
-								onInputChange={handleInputChange}
-								onSubmit={handleReplySubmit}
-								onShowError={showError}
-              />
-            )}
+					{replyTweet && (
+						<ModalReplyContent
+							key={replyTweet?.id}
+							description={replyTweet?.description}
+							time={replyTweet?.relativeTimeFromNow}
+							avatar={replyTweet?.User?.avatar}
+							name={replyTweet?.User?.name}
+							account={replyTweet?.User?.account}
+							currentUserAvatar={currentUser?.avatar}
+							comment={comment}
+							onInputChange={handleInputChange}
+							onSubmit={handleReplySubmit}
+							onShowError={showError}
+						/>
+					)}
 					<div className={`${style.footerButtonItem}`}>
-						<footer className={`${style.footerText}`} style={{display: showError ? 'block' : 'none'}}>
+						<footer
+							className={`${style.footerText}`}
+							style={{ display: showError ? 'block' : 'none' }}
+						>
 							<p>內容不可空白</p>
 						</footer>
-						<div className={`${style.footerButton}`} onClick={handleReplySubmit}>
+						<div
+							className={`${style.footerButton}`}
+							onClick={handleReplySubmit}
+						>
 							<Button size='middle' text='回覆' />
 						</div>
 					</div>

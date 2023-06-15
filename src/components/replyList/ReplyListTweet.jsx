@@ -22,7 +22,6 @@ export default function ReplyListTweet({
 	const [like, setLike] = useState()
 	const [isLikeQuantity, setIsLikeQuantity] = useState(likeQuantity)
 	const handleShowReplyModal = useContext(ShowReplyModalContext)
-	
 
 	const handleLikeClick = () => {
 		setLike(!like)
@@ -81,7 +80,7 @@ export default function ReplyListTweet({
 					<div className={`${style.replyTweetsIconGroup}`}>
 						<div
 							className={`${style.replyTweetsIcon}`}
-							onClick={() =>handleShowReplyModal(id)}
+							onClick={() => handleShowReplyModal(id)}
 						>
 							<Message width='24px' height='24px' />
 						</div>

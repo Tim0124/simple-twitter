@@ -16,7 +16,7 @@ export default function PopularUser({
 }) {
 	const [follow, setFollow] = useState(isUserFollowed)
 	const setRender = useContext(SetRenderContext)
-  const render = useContext(GetRenderContext)
+	const render = useContext(GetRenderContext)
 
 	const handleFollowClick = () => {
 		setFollow(true)
@@ -24,11 +24,11 @@ export default function PopularUser({
 			.getFollow(id)
 			.then((response) => {
 				console.log(response)
-        setRender("true")
+				setRender('true')
 			})
 			.catch((error) => {
 				console.error('Error:', error)
-        setRender("false")
+				setRender('false')
 			})
 	}
 
@@ -38,11 +38,11 @@ export default function PopularUser({
 			.getUnFollow(id)
 			.then((response) => {
 				console.log(response)
-        setRender("false")
+				setRender('false')
 			})
 			.catch((error) => {
 				console.error('Error:', error)
-        setRender("false")
+				setRender('false')
 			})
 	}
 	return (

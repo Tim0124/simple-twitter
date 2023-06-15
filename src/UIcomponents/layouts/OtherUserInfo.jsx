@@ -50,16 +50,20 @@ export default function UserInfo({
 				<div className={`${style.userInfoAllContent}`}>
 					<div className={`${style.userInfoBottonArea}`}>
 						<div className={`${style.userInfoMsg}`}>
-						<Message />
-					</div>
-					<div className={`${style.userInfoNoti}`} onClick={handleNotiClick}>
-						{isNoti ? <OragneNoti/> : <WhiteNoti />}
-					</div>
-					<div className={style.buttonGroup}>
-						<div className={`${style.userInfoButton}`}>
-							{render ? <Button size='middle' text='正在追隨' /> : <Button size='white-exsmall' text='正在追隨' />}
+							<Message />
 						</div>
-					</div>
+						<div className={`${style.userInfoNoti}`} onClick={handleNotiClick}>
+							{isNoti ? <OragneNoti /> : <WhiteNoti />}
+						</div>
+						<div className={style.buttonGroup}>
+							<div className={`${style.userInfoButton}`}>
+								{render ? (
+									<Button size='middle' text='正在追隨' />
+								) : (
+									<Button size='white-exsmall' text='正在追隨' />
+								)}
+							</div>
+						</div>
 					</div>
 					<div className={`${style.userInfoBottomArea}`}>
 						<div className={`${style.userInfoContentArea}`}>

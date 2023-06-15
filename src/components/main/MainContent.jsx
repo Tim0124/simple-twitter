@@ -8,10 +8,8 @@ export default function PostContent({
 	onPostText,
 	avatar,
 	onSubmit,
-	showError
+	showError,
 }) {
-
-
 	return (
 		<main className={`${style.postTweetContent}`}>
 			<form onSubmit={onSubmit} className={`${style.postTweetForm}`}>
@@ -30,11 +28,19 @@ export default function PostContent({
 							></textarea>
 						</div>
 						<footer className={`${style.footerArea}`}>
-							<div className={`${style.footerText}`} style={{display:showError ? 'block' : 'none'}}>
+							<div
+								className={`${style.footerText}`}
+								style={{ display: showError ? 'block' : 'none' }}
+							>
 								<p>字數不可超過140字</p>
 							</div>
 							<div className={`${style.footerButton}`}>
-								<Button text='推文' size='middle' onDisabled={onDisabled} onClick={onSubmit}/>
+								<Button
+									text='推文'
+									size='middle'
+									onDisabled={onDisabled}
+									onClick={onSubmit}
+								/>
 							</div>
 						</footer>
 					</div>

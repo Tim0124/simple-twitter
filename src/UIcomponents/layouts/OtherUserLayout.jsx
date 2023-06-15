@@ -34,13 +34,13 @@ export default function Layout() {
 	const navigate = useNavigate()
 
 	useEffect(() => {
-		if(userId === localId) {
+		if (userId === localId) {
 			navigate('/user/self')
-		}else {
+		} else {
 			tweetAPI.getCurrentUserTweet(userId).then((response) => {
-			const { data } = response
-			setUserInfo(data)
-		})
+				const { data } = response
+				setUserInfo(data)
+			})
 		}
 	}, [])
 

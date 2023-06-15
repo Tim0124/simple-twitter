@@ -12,27 +12,30 @@ export default function PopularUserList() {
 	const handleOtherUser = useContext(GetOtherUserIdContext)
 	const render = useContext(GetRenderContext)
 	const setRender = useContext(SetRenderContext)
-	const {pathname} = useLocation()
+	const { pathname } = useLocation()
 	console.log(render)
 
 	useEffect(() => {
 		;(async () => {
-			if(render === 'true' || render === 'init' ) {
+			if (render === 'true' || render === 'init') {
 				try {
 					const response = await followingAPI.getTopFollower()
 					const followerData = response.data
 					setFollowers(followerData)
-					setRender("false")
+					setRender('false')
 				} catch (error) {
 					console.log('Failed to follower:', error)
-					setRender("false")
+					setRender('false')
 				}
 			}
 		})()
 	}, [render])
 
 	return (
-		<div className={`${style.popularListContainer}`} style={{display: pathname === '/setting' ? 'none' : 'flex'}}>
+		<div
+			className={`${style.popularListContainer}`}
+			style={{ display: pathname === '/setting' ? 'none' : 'flex' }}
+		>
 			<h4 className={`${style.popularUserListHeader}`}>推薦跟隨</h4>
 			<div className={`${style.popularUserList}`}>
 				{followers.map((follower) => (

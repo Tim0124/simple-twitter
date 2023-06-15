@@ -37,9 +37,8 @@ export default function UserInfo() {
 
 	useEffect(() => {
 		// userAPI.getUser().then((res) => {
-
 		// })
-	},[])
+	}, [])
 
 	const handleNameChange = (e) => {
 		setName(e.target.value)
@@ -51,95 +50,119 @@ export default function UserInfo() {
 		setText(e.target.value)
 	}
 
-	return ( 
+	return (
 		<>
 			{ReactDOM.createPortal(
-				<div className={style.modal} style={{display: ShowEditModal ? 'block' : 'none'}}>
-					<ModalBlackDrop onClick={handleEditModal}/>
-		<form className={`${style.userInfoMdContainer}`}>
-				<header className={`${style.userInfoMdHeader}`}>
-				<nav className={`${style.userInfoMdNavbar}`}>
-					<div className={`${style.userInfoMdTitle}`}>
-						<Link to='/user/self'>
-							<h1 className={`${style.userInfoMdArrow}`} onClick={handleEditModal}>
-							<Arrow />
-							</h1>
-						</Link>
-						<Link to='/user/self'>
-							<h1 className={`${style.userInfoClose}`} onClick={handleEditModal}>
-							<Close style={{ color: '#ff6600' }} />
-						</h1>
-						</Link>
-						<h1>編輯個人資料</h1>
-					</div>
-					<div className={`${style.userInfoMdButtonGroup}`}>
-						<div className={`${style.userInfoMdButton}`}>
-							<Button size='middle' text='儲存' />
+				<div
+					className={style.modal}
+					style={{ display: ShowEditModal ? 'block' : 'none' }}
+				>
+					<ModalBlackDrop onClick={handleEditModal} />
+					<form className={`${style.userInfoMdContainer}`}>
+						<header className={`${style.userInfoMdHeader}`}>
+							<nav className={`${style.userInfoMdNavbar}`}>
+								<div className={`${style.userInfoMdTitle}`}>
+									<Link to='/user/self'>
+										<h1
+											className={`${style.userInfoMdArrow}`}
+											onClick={handleEditModal}
+										>
+											<Arrow />
+										</h1>
+									</Link>
+									<Link to='/user/self'>
+										<h1
+											className={`${style.userInfoClose}`}
+											onClick={handleEditModal}
+										>
+											<Close style={{ color: '#ff6600' }} />
+										</h1>
+									</Link>
+									<h1>編輯個人資料</h1>
+								</div>
+								<div className={`${style.userInfoMdButtonGroup}`}>
+									<div className={`${style.userInfoMdButton}`}>
+										<Button size='middle' text='儲存' />
+									</div>
+								</div>
+							</nav>
+						</header>
+						<div className={`${style.userInfoMdImgGroup}`}>
+							<div className={`${style.userInfoIcon}`}>
+								<label
+									for='backgroundPhoto'
+									className={`${style.userInfoMdWhite}`}
+								>
+									<WhiteCamera />
+								</label>
+								<div className={`${style.userInfoMdWhite}`}>
+									<WhiteX />
+								</div>
+							</div>
+							<div className={`${style.userInfoMdBackground}`}>
+								<img
+									src={data[0].background}
+									className={`${style.userInfoMdCardImg}`}
+									alt=''
+								/>
+							</div>
+
+							<div className={`${style.userInfoMdAvatar}`}>
+								<img
+									src={data[0].avatar}
+									className={`${style.userInfoMdImgAvatar}`}
+									alt=''
+								/>
+								<div className={`${style.userInfoSecIcon}`}>
+									<label
+										for='avatarPhoto'
+										className={`${style.userInfoMdWhite}`}
+									>
+										<WhiteCamera />
+									</label>
+								</div>
+							</div>
 						</div>
-					</div>
-				</nav>
-			</header>
-			<div className={`${style.userInfoMdImgGroup}`}>
-				<div className={`${style.userInfoIcon}`}>
-					<label for='backgroundPhoto' className={`${style.userInfoMdWhite}`}>
-						<WhiteCamera />
-					</label>
-					<div className={`${style.userInfoMdWhite}`}>
-						<WhiteX />
-					</div>
-				</div>
-				<div className={`${style.userInfoMdBackground}`}>
-					<img
-						src={data[0].background}
-						className={`${style.userInfoMdCardImg}`}
-						alt=''
-					/>
-				</div>
-				
-				<div className={`${style.userInfoMdAvatar}`}>
-					<img
-						src={data[0].avatar}
-						className={`${style.userInfoMdImgAvatar}`}
-						alt=''
-					/>
-					<div className={`${style.userInfoSecIcon}`}>
-					<label for='avatarPhoto' className={`${style.userInfoMdWhite}`}>
-						<WhiteCamera />
-					</label>
-				</div>
-				</div>
-			</div>
-			<div className={`${style.userInfoInputArea}`}>
-				<div className={`${style.userInfoInputName}`}>
-					<Input label='名稱' value={name} onChange={handleNameChange} />
-					<p className={`${style.userInfoInputText}`}>8/50</p>
-				</div>
-				<div className={`${style.userInfoInputContent}`}>
-					<div className={`${style.userInfoInput}`}>
-						<Input
-							label='自我介紹'
-							value={intro}
-							onChange={handleIntroChange}
-						/>
-					</div>
-					<div>
-						<label className={`${style.userInfoLabel}`}>
-							<p className={`${style.userInfoLabelTitle}`}>自我介紹</p>
-							<textarea
-								className={`${style.userInfoTextArea}`}
-								value={text}
-								onChange={handleTextChange}
-							></textarea>
-						</label>
-					</div>
-					<p className={`${style.userInfoInputText}`}>0/160</p>
-				</div>
-			</div>
-			<input type='file' id='backgroundPhoto' className={style.inputPhoto}></input>
-			<input type='file' id='avatarPhoto' className={style.inputPhoto}></input>
-		</form>
-				</div>
-			,portalElement)}
+						<div className={`${style.userInfoInputArea}`}>
+							<div className={`${style.userInfoInputName}`}>
+								<Input label='名稱' value={name} onChange={handleNameChange} />
+								<p className={`${style.userInfoInputText}`}>8/50</p>
+							</div>
+							<div className={`${style.userInfoInputContent}`}>
+								<div className={`${style.userInfoInput}`}>
+									<Input
+										label='自我介紹'
+										value={intro}
+										onChange={handleIntroChange}
+									/>
+								</div>
+								<div>
+									<label className={`${style.userInfoLabel}`}>
+										<p className={`${style.userInfoLabelTitle}`}>自我介紹</p>
+										<textarea
+											className={`${style.userInfoTextArea}`}
+											value={text}
+											onChange={handleTextChange}
+										></textarea>
+									</label>
+								</div>
+								<p className={`${style.userInfoInputText}`}>0/160</p>
+							</div>
+						</div>
+						<input
+							type='file'
+							id='backgroundPhoto'
+							className={style.inputPhoto}
+						></input>
+						<input
+							type='file'
+							id='avatarPhoto'
+							className={style.inputPhoto}
+						></input>
+					</form>
+				</div>,
+				portalElement
+			)}
 		</>
 	)
 }

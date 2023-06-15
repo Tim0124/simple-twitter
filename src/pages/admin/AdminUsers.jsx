@@ -7,7 +7,7 @@ import { ChangeStepContext } from 'context/SideBarContext'
 
 export default function AdminUsers() {
 	const [users, setUsers] = useState([])
-	const {pathname} = useLocation()
+	const { pathname } = useLocation()
 	const handleChangeStep = useContext(ChangeStepContext)
 
 	useEffect(() => {
@@ -21,10 +21,10 @@ export default function AdminUsers() {
 	}, [])
 
 	useEffect(() => {
-		if(pathname === '/admin/users') {
+		if (pathname === '/admin/users') {
 			handleChangeStep(2)
 		}
-	},[])
+	}, [])
 
 	return (
 		<div className={`${style.adminTweetsCardListWrapper}`}>

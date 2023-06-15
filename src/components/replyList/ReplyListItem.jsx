@@ -9,7 +9,7 @@ export default function ReplyListItem({
 	comment,
 	avatar,
 	onOtherUserId,
-	tweetAccount
+	tweetAccount,
 }) {
 	return (
 		<div className={`${style.replyListItemContainer}`}>

@@ -8,7 +8,7 @@ import ModalUserInfo from '../modal/ModalUserInfo'
 import { useContext, useEffect, useState } from 'react'
 import ModalReplyTweet from 'UIcomponents/modal/ModalReplyTweet'
 import {
-  EditModalContext,
+	EditModalContext,
 	ModalHiddenContext,
 	ReplyTweetModalContext,
 	TweetModalContext,
@@ -29,8 +29,7 @@ export default function Layout() {
 	const isFollowPage =
 		pathname.includes(`/user/self/following/${currentUserId}`) ||
 		pathname.includes(`/user/self/follower/${currentUserId}`)
-  const ShowEditModal = useContext(EditModalContext)
-
+	const ShowEditModal = useContext(EditModalContext)
 
 	useEffect(() => {
 		tweetAPI.getCurrentUserTweet(currentUserId).then((response) => {
@@ -71,7 +70,7 @@ export default function Layout() {
 				<Outlet />
 			</div>
 			{useTweetModal && <ModalPostTweet />}
-      {ShowEditModal && <ModalUserInfo />}
+			{ShowEditModal && <ModalUserInfo />}
 		</div>
 	)
 }

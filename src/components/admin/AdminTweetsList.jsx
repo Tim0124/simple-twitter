@@ -2,7 +2,6 @@ import style from './AdminTweetsList.module.scss'
 import AdminTweetsItem from './AdminTweetsItem'
 import Sidebar from 'UIcomponents/layouts/Sidebar'
 
-
 export default function AdminTweetsList() {
 	return (
 		<div className={`${style.adminTweetsWrapper}`}>

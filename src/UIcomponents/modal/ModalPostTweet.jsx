@@ -18,37 +18,36 @@ export default function ModalPostTweet({ onClick, onHiddenClick }) {
 	const ModalClick = useContext(ShowTweetModalContext)
 	const userId = localStorage.getItem('userId')
 
-
 	const handleInputChange = (e) => {
-		setTweet(e.target.value)	
+		setTweet(e.target.value)
 	}
 
 	const handleTweetSubmit = (e) => {
 		e.preventDefault()
-		if(tweet.trim().length === 0) {
+		if (tweet.trim().length === 0) {
 			Toast.fire({
-				icon:'error',
-				title:'內容不可空白'
+				icon: 'error',
+				title: '內容不可空白',
 			})
 			return
 		}
-		if(tweet.trim().length > 140) {
+		if (tweet.trim().length > 140) {
 			Toast.fire({
-				icon:'error',
-				title:'字數不可超過140字'
+				icon: 'error',
+				title: '字數不可超過140字',
 			})
 			setShowError(true)
 
 			setTimeout(() => {
 				setShowError(false)
-			},2000)
+			}, 2000)
 			return
 		}
 		tweetAPI.postTweet(userId, tweet).then((res) => {
 			console.log(res)
 			Toast.fire({
-				icon:'success',
-				title:'推文成功'
+				icon: 'success',
+				title: '推文成功',
 			})
 			ModalClick()
 		})
@@ -56,11 +55,10 @@ export default function ModalPostTweet({ onClick, onHiddenClick }) {
 
 	useEffect(() => {
 		userAPI.getUser(userId).then((res) => {
-			const {data} = res
+			const { data } = res
 			setCurrentUser(data)
 		})
-	},[])
-
+	}, [])
 
 	return (
 		<div
@@ -85,17 +83,23 @@ export default function ModalPostTweet({ onClick, onHiddenClick }) {
 							</div>
 						</nav>
 					</header>
-					<ModalContent 
+					<ModalContent
 						avatar={currentUser?.avatar}
 						onInputChange={handleInputChange}
 						onInput={tweet}
 						onSubmit={handleTweetSubmit}
 					/>
 					<div className={`${style.footerButtonItem}`}>
-						<footer className={`${style.footerText}`} style={{display: showError ? 'block' : 'none'}}>
+						<footer
+							className={`${style.footerText}`}
+							style={{ display: showError ? 'block' : 'none' }}
+						>
 							<p>字數不可超過140字</p>
 						</footer>
-						<div className={`${style.footerButton}`} onClick={handleTweetSubmit}>
+						<div
+							className={`${style.footerButton}`}
+							onClick={handleTweetSubmit}
+						>
 							<Button size='middle' text='推文' />
 						</div>
 					</div>

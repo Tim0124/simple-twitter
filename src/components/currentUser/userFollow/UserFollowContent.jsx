@@ -15,25 +15,31 @@ export default function UserFollowerContent({
 	isFollow,
 }) {
 	const setRender = useContext(SetRenderContext)
-	
+
 	const handleFollowClick = () => {
-		followingAPI.getFollow(id).then((res) => {
-			console.log(res)
-			setRender("true")
-		}). catch((error) => {
-			console.error(error)
-			setRender('false')
-		})
+		followingAPI
+			.getFollow(id)
+			.then((res) => {
+				console.log(res)
+				setRender('true')
+			})
+			.catch((error) => {
+				console.error(error)
+				setRender('false')
+			})
 	}
 
 	const handleUnFollowClick = () => {
-		followingAPI.getUnFollow(id).then((res) => {
-			console.log(res)
-			setRender('false')
-		}).catch((error) => {
-			console.error(error)
-			setRender('false')
-		})
+		followingAPI
+			.getUnFollow(id)
+			.then((res) => {
+				console.log(res)
+				setRender('false')
+			})
+			.catch((error) => {
+				console.error(error)
+				setRender('false')
+			})
 	}
 
 	return (
@@ -56,11 +62,19 @@ export default function UserFollowerContent({
 						</div>
 						{isFollow === true ? (
 							<div className={`${style.userFollowingButton}`}>
-								<Button size='middle' text='正在跟隨' onClick={handleFollowClick}/>
+								<Button
+									size='middle'
+									text='正在跟隨'
+									onClick={handleFollowClick}
+								/>
 							</div>
 						) : (
 							<div className={`${style.userFollowButton}`}>
-								<Button size='white-exsmall' text='跟隨' onClick={handleUnFollowClick}/>
+								<Button
+									size='white-exsmall'
+									text='跟隨'
+									onClick={handleUnFollowClick}
+								/>
 							</div>
 						)}
 					</div>

@@ -38,27 +38,26 @@ export default function MainTweets({ onTweetClick }) {
 
 	const handleTweetSubmit = (e) => {
 		e.preventDefault()
-		if(isPostText.trim().length > 140) {
+		if (isPostText.trim().length > 140) {
 			Toast.fire({
-				icon:'error',
-				title:'字數不可超過140字'
+				icon: 'error',
+				title: '字數不可超過140字',
 			})
 			setShowError(true)
-			setTimeout(()=>{
+			setTimeout(() => {
 				setShowError(false)
-			},2000)
+			}, 2000)
 			return
 		}
-		tweetAPI.postTweet(userId,isPostText).then((res) => {
+		tweetAPI.postTweet(userId, isPostText).then((res) => {
 			console.log(res)
 			Toast.fire({
-				icon:'success',
-				title:'推文成功'
+				icon: 'success',
+				title: '推文成功',
 			})
 			setIsPostText('')
 		})
 	}
-
 
 	useEffect(() => {
 		tweetAPI.getCurrentUserTweet(userId).then((response) => {

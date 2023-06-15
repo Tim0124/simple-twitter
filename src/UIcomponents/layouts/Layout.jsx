@@ -17,7 +17,6 @@ export default function Layout() {
 	const ShowTweetModal = useContext(TweetModalContext)
 	const ShowReplyModal = useContext(ReplyTweetModalContext)
 
-
 	return (
 		<div className={`${style.layoutContainer}`}>
 			<div className={`${style.layoutSidebarContainer}`}>
@@ -26,11 +25,11 @@ export default function Layout() {
 			<div className={`${style.layoutMainContainer}`}>
 				<Outlet />
 			</div>
-			<div className={`${style.layoutPopularContainer}`} >
+			<div className={`${style.layoutPopularContainer}`}>
 				<PopularUserList />
 			</div>
 			{ShowTweetModal && <ModalPostTweet />}
-			{ShowReplyModal && <ModalReplyTweet/>}
+			{ShowReplyModal && <ModalReplyTweet />}
 		</div>
 	)
 }

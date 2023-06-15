@@ -39,7 +39,10 @@ export default function UserInfo({
 				</div>
 				<div className={`${style.userInfoAllContent}`}>
 					<div className={`${style.userInfoBottonArea}`}>
-						<div className={`${style.userInfoButton}`} onClick={handleEditModal}>
+						<div
+							className={`${style.userInfoButton}`}
+							onClick={handleEditModal}
+						>
 							<Button size='white-exsmall' text='編輯個人資料' />
 						</div>
 					</div>

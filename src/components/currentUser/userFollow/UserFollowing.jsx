@@ -18,18 +18,20 @@ export default function UserFollowing() {
 	const setRender = useContext(SetRenderContext)
 	const render = useContext(GetRenderContext)
 	console.log(render)
-	
 
 	useEffect(() => {
-		if(render === 'true' || render === 'init') {
-			followingAPI.getFollowings(id).then((response) => {
-			const { data } = response
-			setFollowing(data)
-			setRender("false")
-			}).catch((error) => {
-				console.error(error)
-				setRender("false")
-			})
+		if (render === 'true' || render === 'init') {
+			followingAPI
+				.getFollowings(id)
+				.then((response) => {
+					const { data } = response
+					setFollowing(data)
+					setRender('false')
+				})
+				.catch((error) => {
+					console.error(error)
+					setRender('false')
+				})
 		}
 	}, [render])
 

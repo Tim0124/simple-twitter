@@ -16,13 +16,11 @@ export default function UserFollowing() {
 	const handleChangeTab = useContext(ChangeTabContext)
 	const OtherUserId = useContext(OtherUserContext)
 	const id = OtherUserId
-	
 
 	useEffect(() => {
 		followingAPI.getFollowings(id).then((response) => {
 			const { data } = response
 			setFollowing(data)
-
 		})
 	}, [pathname])
 

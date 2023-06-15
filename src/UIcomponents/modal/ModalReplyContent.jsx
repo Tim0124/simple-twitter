@@ -1,6 +1,5 @@
 import style from './ModalReplyContent.module.scss'
 
-
 export default function ModalReplyContent({
 	description,
 	time,
@@ -11,11 +10,11 @@ export default function ModalReplyContent({
 	comment,
 	onInputChange,
 	onSubmit,
-	onShowError
+	onShowError,
 }) {
 	return (
 		<main className={`${style.replyTweetContent}`}>
-			<form onSubmit={onSubmit}className={`${style.replyTweetForm}`}>
+			<form onSubmit={onSubmit} className={`${style.replyTweetForm}`}>
 				<div className={`${style.contentGroup}`}>
 					<div className={`${style.avatarItem}`}>
 						<img src={avatar} alt={account} className={`${style.avatar}`} />
@@ -43,15 +42,11 @@ export default function ModalReplyContent({
 								<p className={`${style.replyTweetText}`}>回覆</p>
 							</div>
 							<div className={`${style.replyTweetReplyAccountItem}`}>
-								<p className={`${style.replyTweetAccountText}`}>
-									@{account}
-								</p>
+								<p className={`${style.replyTweetAccountText}`}>@{account}</p>
 							</div>
 						</div>
 						<div className={`${style.replyTweetTextItem}`}>
-							<p className={`${style.replyTweetContentText}`}>
-								{description}
-							</p>
+							<p className={`${style.replyTweetContentText}`}>{description}</p>
 						</div>
 					</div>
 				</div>

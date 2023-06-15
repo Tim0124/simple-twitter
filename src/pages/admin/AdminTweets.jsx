@@ -13,7 +13,7 @@ export default function AdminTweets() {
 	const [tweets, setTweets] = useState([])
 	const [isDelete, setIsDelete] = useState(false)
 	const navigate = useNavigate()
-	const {pathname} = useLocation()
+	const { pathname } = useLocation()
 	const handleChangeStep = useContext(ChangeStepContext)
 
 	const handleDeleteClick = async (id) => {
@@ -69,10 +69,10 @@ export default function AdminTweets() {
 	}, [isDelete])
 
 	useEffect(() => {
-		if(pathname === '/admin/tweets') {
+		if (pathname === '/admin/tweets') {
 			handleChangeStep(1)
 		}
-	},[])
+	}, [])
 
 	return (
 		<div className={`${style.adminTweetsWrapper}`}>

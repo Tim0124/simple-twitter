@@ -23,13 +23,13 @@ export default function ReplyList() {
 	const navigate = useNavigate()
 	const [comment, setComment] = useState([])
 	console.log(comment)
-	
+
 	useEffect(() => {
 		tweetAPI.getTweet(tweetId).then((response) => {
 			const { data } = response
 			setCurrentTweet(data)
 		})
-		
+
 		navigate(`/reply/${tweetId}`)
 	}, [navigate])
 
@@ -38,7 +38,7 @@ export default function ReplyList() {
 			const { data } = response
 			setTweetReply(data)
 		})
-	},[tweetReply])
+	}, [tweetReply])
 
 	return (
 		<div className={`${style.replyContainer}`}>
