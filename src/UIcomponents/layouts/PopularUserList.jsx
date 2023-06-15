@@ -10,7 +10,7 @@ export default function PopularUserList() {
 	const handleOtherUser = useContext(GetOtherUserIdContext)
 
 	useEffect(() => {
-		(async () => {
+		;(async () => {
 			try {
 				const responce = await followingAPI.getTopFollower()
 				const followerData = responce.data

@@ -74,17 +74,9 @@ export default function MainTweetsContent({
 						</div>
 						<div className={`${style.mainTweetsLikeQuantity}`}>
 							{like ? (
-								<Like
-									width='16px'
-									height='16px'
-									onClick={handleLikeClick}
-								/>
+								<Like width='16px' height='16px' onClick={handleLikeClick} />
 							) : (
-									<Dislike
-										width='16px'
-										height='16px'
-										onClick={handleLikeClick}
-									/>								
+								<Dislike width='16px' height='16px' onClick={handleLikeClick} />
 							)}
 							<p>{likeQuantity}</p>
 						</div>

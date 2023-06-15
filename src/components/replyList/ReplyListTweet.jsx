@@ -95,17 +95,9 @@ export default function ReplyListTweet({
 						</div>
 						<div className={`${style.replyTweetsLikeIcon}`}>
 							{like ? (
-								<Like
-									width='24px'
-									height='24px'
-									onClick={handleLikeClick}
-								/>
+								<Like width='24px' height='24px' onClick={handleLikeClick} />
 							) : (
-								<Dislike
-									width='24px'
-									height='24px'
-									onClick={handleLikeClick}
-								/>
+								<Dislike width='24px' height='24px' onClick={handleLikeClick} />
 							)}
 						</div>
 					</div>

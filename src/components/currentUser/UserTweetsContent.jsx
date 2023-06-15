@@ -16,23 +16,23 @@ export default function UserTweetsContent({
 	repliesCount,
 	isSelfUserLike,
 }) {
-  const [like, setLike] = useState(isSelfUserLike)
-  const [likeQuantity, setLikeQuantity] = useState(likeCount)
+	const [like, setLike] = useState(isSelfUserLike)
+	const [likeQuantity, setLikeQuantity] = useState(likeCount)
 
-  const handleLikeClick = () => {
-    setLike(!like)
-    if (!like) {
-      setLikeQuantity(likeQuantity + 1)
-      likeAPI.like(id).then((response) => {
-        console.log(response)
-      })
-    } else {
-      setLikeQuantity(likeQuantity - 1)
-      likeAPI.unlike(id).then((response) => {
-        console.log(response)
-      })
-    }
-  }
+	const handleLikeClick = () => {
+		setLike(!like)
+		if (!like) {
+			setLikeQuantity(likeQuantity + 1)
+			likeAPI.like(id).then((response) => {
+				console.log(response)
+			})
+		} else {
+			setLikeQuantity(likeQuantity - 1)
+			likeAPI.unlike(id).then((response) => {
+				console.log(response)
+			})
+		}
+	}
 
 	return (
 		<div className={`${style.mainTweetsContainer}`}>
@@ -66,19 +66,11 @@ export default function UserTweetsContent({
 							<p>{repliesCount}</p>
 						</div>
 						<div className={`${style.mainTweetsLikeQuantity}`}>
-              {like ? (
-                <Like
-                  width='16px'
-                  height='16px'
-                  onClick={handleLikeClick}
-                />
-              ) : (
-                <Dislike
-                  width='16px'
-                  height='16px'
-                  onClick={handleLikeClick}
-                />
-              )}
+							{like ? (
+								<Like width='16px' height='16px' onClick={handleLikeClick} />
+							) : (
+								<Dislike width='16px' height='16px' onClick={handleLikeClick} />
+							)}
 							<p>{likeQuantity}</p>
 						</div>
 					</div>

@@ -12,7 +12,7 @@ import tweetAPI from 'api/tweetAPI'
 
 export default function Setting() {
 	const [account, setAccount] = useState('')
-	const [accountError, setAccountError] = useState('');
+	const [accountError, setAccountError] = useState('')
 	const [name, setName] = useState('')
 	const [nameError, setNameError] = useState('')
 	const [password, setPassword] = useState('')
@@ -25,16 +25,15 @@ export default function Setting() {
 	const [accountAPI, setAccountAPI] = useState([])
 	const navigate = useNavigate()
 	const handleChangeStep = useContext(ChangeStepContext)
-	const token = localStorage.getItem('authToken');
-	const id = localStorage.getItem('userId');
-	
+	const token = localStorage.getItem('authToken')
+	const id = localStorage.getItem('userId')
+
 	useEffect(() => {
 		tweetAPI.getCurrentUserTweet(id).then((response) => {
 			const { data } = response
 			setAccountAPI(data)
 		})
 	}, [])
-
 
 	useEffect(() => {
 		if (pathname === '/setting') {
@@ -72,11 +71,11 @@ export default function Setting() {
 	}
 
 	const handleSaveClick = async (e) => {
-		e.preventDefault();
+		e.preventDefault()
 		if (account.trim().length === 0) {
 			setAccountError('帳號欄位不能為空白')
 		} else if (account.length > 50) {
-			setAccountError('帳號字數超過上限');
+			setAccountError('帳號字數超過上限')
 		} else if (name.length === 0) {
 			setNameError('名稱欄位不能為空白')
 		} else if (name.length > 50) {
@@ -99,20 +98,19 @@ export default function Setting() {
 			name,
 			password,
 			checkPassword,
-		});
+		})
 
 		if (result) {
 			Toast.fire({
 				title: '修改成功！',
 				icon: 'success',
-			});
+			})
 		}
 		Toast.fire({
 			title: '修改失敗！',
 			icon: 'error',
-		});
-	};
-
+		})
+	}
 
 	return (
 		<>
@@ -130,7 +128,12 @@ export default function Setting() {
 									value={accountAPI.account}
 									onChange={handleAccountChange}
 								/>
-								{accountError && <div className={style.accountErrorMessage}>{accountError}</div>}</div>
+								{accountError && (
+									<div className={style.accountErrorMessage}>
+										{accountError}
+									</div>
+								)}
+							</div>
 							<div className={`${style.errorMessage}`}>
 								<Input
 									label='名稱'
@@ -138,7 +141,9 @@ export default function Setting() {
 									value={accountAPI.name}
 									onChange={handleUsernameChange}
 								/>
-								{nameError && <div className={style.nameErrorMessage}>{nameError}</div>}
+								{nameError && (
+									<div className={style.nameErrorMessage}>{nameError}</div>
+								)}
 							</div>
 							<div className={`${style.errorMessage}`}>
 								<Input
@@ -147,7 +152,9 @@ export default function Setting() {
 									value={accountAPI.email}
 									onChange={handleEmailChange}
 								/>
-								{emailError && <div className={style.emailErrorMessage}>{emailError}</div>}
+								{emailError && (
+									<div className={style.emailErrorMessage}>{emailError}</div>
+								)}
 							</div>
 							<div className={`${style.errorMessage}`}>
 								<Input
@@ -157,7 +164,11 @@ export default function Setting() {
 									value={password}
 									onChange={handlePasswordChange}
 								/>
-								{passwordError && <div className={style.passwordErrorMessage}>{passwordError}</div>}
+								{passwordError && (
+									<div className={style.passwordErrorMessage}>
+										{passwordError}
+									</div>
+								)}
 							</div>
 							<div className={`${style.errorMessage}`}>
 								<Input
@@ -167,7 +178,11 @@ export default function Setting() {
 									value={checkPassword}
 									onChange={handleCheckPasswordChange}
 								/>
-								{checkError && <div className={style.checkPasswordErrorMessage}>{checkError}</div>}
+								{checkError && (
+									<div className={style.checkPasswordErrorMessage}>
+										{checkError}
+									</div>
+								)}
 							</div>
 						</form>
 					</div>

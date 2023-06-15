@@ -10,7 +10,7 @@ export default {
 			password,
 		})
 	},
-		setting(id) {
+	setting(id) {
 		return apiHelper.put(`/users/${id}`, {
 			headers: {
 				Authorization: `Bearer ${getToken()}`,
