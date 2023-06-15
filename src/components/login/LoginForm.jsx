@@ -92,9 +92,7 @@ function LoginForm() {
 						onChange={handleAccountChange}
 					/>
 					{accountError && (
-						<div className={style.accountErrorMessage}>
-							{accountError}
-						</div>
+						<div className={style.accountErrorMessage}>{accountError}</div>
 					)}
 				</div>
 				<div className={`${style.errorMessage}`}>
@@ -106,9 +104,7 @@ function LoginForm() {
 						onChange={handlePasswordChange}
 					/>
 					{passwordError && (
-						<div className={style.passwordErrorMessage}>
-							{passwordError}
-						</div>
+						<div className={style.passwordErrorMessage}>{passwordError}</div>
 					)}
 				</div>
 			</div>
