@@ -9,16 +9,19 @@ import { Toast } from 'heplers/helpers'
 
 function LoginForm() {
 	const [account, setAccount] = useState('')
+	const [accountError, setAccountError] = useState('')
 	const [password, setPassword] = useState('')
+	const [passwordError, setPasswordError] = useState('')
 	const navigate = useNavigate()
 
 	const handleLoginClick = async () => {
 		try {
-			if (account.length === 0) {
-				return
-			}
-			if (password.length === 0) {
-				return
+			if (account.trim().length === 0) {
+				setAccountError('帳號欄位不能為空白')
+			} else if (account.length > 50) {
+				setAccountError('帳號字數超過上限')
+			} else if (password.length === 0) {
+				setPasswordError('密碼欄位不能為空白')
 			}
 
 			const { success, token, user } = await login({
@@ -81,19 +84,29 @@ function LoginForm() {
 			</div>
 			<h1 className={`${style.loginTitle}`}>登入Alphitter</h1>
 			<div className={`${style.loginInputGroup}`}>
-				<Input
-					label='帳號'
-					placeholder='請輸入帳號'
-					value={account}
-					onChange={handleAccountChange}
-				/>
-				<Input
-					type='password'
-					label='密碼'
-					placeholder='請輸入密碼'
-					value={password}
-					onChange={handlePasswordChange}
-				/>
+				<div className={`${style.errorMessage}`}>
+					<Input
+						label='帳號'
+						placeholder='請輸入帳號'
+						value={account}
+						onChange={handleAccountChange}
+					/>
+					{accountError && (
+						<div className={style.accountErrorMessage}>{accountError}</div>
+					)}
+				</div>
+				<div className={`${style.errorMessage}`}>
+					<Input
+						type='password'
+						label='密碼'
+						placeholder='請輸入密碼'
+						value={password}
+						onChange={handlePasswordChange}
+					/>
+					{passwordError && (
+						<div className={style.passwordErrorMessage}>{passwordError}</div>
+					)}
+				</div>
 			</div>
 			<div className={`${style.loginButton}`}>
 				<Button text='登入' size='large' onClick={handleLoginClick} />

@@ -24,6 +24,7 @@ export default function ReplyListTweet({
 	const handleShowReplyModal = useContext(ShowReplyModalContext)
 	const [like, setLike] = useState(isSelfUserLike)
 	const [likeQuantity, setLikeQuantity] = useState(likesCount)
+	console.log(likeQuantity)
 
 	const handleLikeClick = () => {
 		setLike(!like)
@@ -36,11 +37,6 @@ export default function ReplyListTweet({
 		}
 	}
 
-	// const dateObj = new Date(date)
-	// const year = dateObj.getFullYear()
-	// const month = dateObj.getMonth() + 1
-	// const day = dateObj.getDay()
-	// const formateDate = `${year}年${month}月${day}日`
 	return (
 		<div className={`${style.replyTweetsContainer}`}>
 			<div className={`${style.replyTweetsList}`}>
@@ -78,7 +74,7 @@ export default function ReplyListTweet({
 							<p className={`${style.replyQuantityText}`}>回覆</p>
 						</div>
 						<div className={`${style.replyTweetsLikeQuantity}`}>
-							<p className={`${style.replyLikeQuantity}`}>{likesCount}</p>
+							<p className={`${style.replyLikeQuantity}`}>{likeQuantity}</p>
 							<p className={`${style.replyQuantityText}`}>喜歡次數</p>
 						</div>
 					</div>
