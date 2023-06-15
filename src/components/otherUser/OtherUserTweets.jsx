@@ -48,8 +48,8 @@ export default function UserTweets() {
 						time={user.relativeTimeFromNow}
 						description={user.description}
 						repliesCount={user.repliesCount}
-						likeCount={user.likeCount}
-						isLike={user.isSelfUserLike}
+						likeCount={user.likesCount}
+						isSelfUserLike={user.isSelfUserLike}
 					/>
 				))}
 			</section>

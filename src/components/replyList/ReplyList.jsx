@@ -27,7 +27,7 @@ export default function ReplyList() {
 		tweetAPI.getTweet(tweetId).then((response) => {
 			const { data } = response
 			setCurrentTweet(data)
-		})
+		}, [])
 
 		navigate(`/reply/${tweetId}`)
 	}, [])

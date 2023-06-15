@@ -11,18 +11,18 @@ import authorization from 'api/authorization'
 import tweetAPI from 'api/tweetAPI'
 
 export default function Setting() {
-	const [account, setAccount] = useState('')
+	const [accountAPI, setAccountAPI] = useState([])
+	const [account, setAccount] = useState(accountAPI.account)
+	const [name, setName] = useState(accountAPI.name)
+	const [email, setEmail] = useState(accountAPI.email)
 	const [accountError, setAccountError] = useState('')
-	const [name, setName] = useState('')
 	const [nameError, setNameError] = useState('')
 	const [password, setPassword] = useState('')
 	const [passwordError, setPasswordError] = useState('')
-	const [email, setEmail] = useState('')
 	const [emailError, setEmailError] = useState('')
 	const [checkPassword, setCheckPassword] = useState('')
 	const [checkError, setCheckError] = useState('')
 	const { pathname } = useLocation()
-	const [accountAPI, setAccountAPI] = useState([])
 	const navigate = useNavigate()
 	const handleChangeStep = useContext(ChangeStepContext)
 	const token = localStorage.getItem('authToken')
@@ -124,8 +124,8 @@ export default function Setting() {
 							<div className={`${style.errorMessage}`}>
 								<Input
 									label='帳號'
-									type='text'
-									value={accountAPI.account}
+									placeholder='請輸入帳號'
+									value={account}
 									onChange={handleAccountChange}
 								/>
 								{accountError && (
@@ -138,7 +138,7 @@ export default function Setting() {
 								<Input
 									label='名稱'
 									placeholder='請輸入使用者名稱'
-									value={accountAPI.name}
+									value={name}
 									onChange={handleUsernameChange}
 								/>
 								{nameError && (
@@ -149,7 +149,7 @@ export default function Setting() {
 								<Input
 									label='Email'
 									placeholder='請輸入Email'
-									value={accountAPI.email}
+									value={email}
 									onChange={handleEmailChange}
 								/>
 								{emailError && (
