@@ -1,9 +1,10 @@
 import style from './PopularUser.module.scss'
 import { ReactComponent as Logo } from '../../assets/logo.svg'
 import Button from '../../UIcomponents/buttons/Button'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import followingAPI from 'api/followingAPI'
 import { Link } from 'react-router-dom'
+import { GetRenderContext, SetRenderContext } from 'context/FollowContext'
 
 export default function PopularUser({
 	id,
@@ -14,15 +15,20 @@ export default function PopularUser({
 	onOtherUserId,
 }) {
 	const [follow, setFollow] = useState(isUserFollowed)
+	const setRender = useContext(SetRenderContext)
+	const render = useContext(GetRenderContext)
+
 	const handleFollowClick = () => {
 		setFollow(true)
 		followingAPI
 			.getFollow(id)
 			.then((response) => {
 				console.log(response)
+				setRender('true')
 			})
 			.catch((error) => {
 				console.error('Error:', error)
+				setRender('false')
 			})
 	}
 
@@ -32,9 +38,11 @@ export default function PopularUser({
 			.getUnFollow(id)
 			.then((response) => {
 				console.log(response)
+				setRender('false')
 			})
 			.catch((error) => {
 				console.error('Error:', error)
+				setRender('false')
 			})
 	}
 	return (

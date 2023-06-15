@@ -29,7 +29,7 @@ export default function UserTweets() {
 			const { data } = response
 			setAllTweets(data)
 		})
-	}, [pathname])
+	}, [])
 
 	useEffect(() => {
 		if (pathname === '/user/self' || `/user/${currentUserId}`) {
@@ -39,24 +39,6 @@ export default function UserTweets() {
 	}, [pathname])
 	return (
 		<div className={`${style.userTweetsContainer}`}>
-			{/* <div className={`${style.userInfoHeaderContainer}`}>
-				<UserInfoHeader
-					name={userInfo.name}
-					tweet={userInfo.tweetsCount}
-					page='/home'
-				/>
-			</div>
-			<UserInfo 
-				key={userInfo.id}
-				name={userInfo.name}
-				account={userInfo.account}
-				avatar={userInfo.avatar}
-				backgroundImage={userInfo.backgroundImage}
-				introduction={userInfo.introduction}
-				follower={userInfo.followersCount}
-				following={userInfo.followingsCount}
-			/> */}
-			{/* <UserTab /> */}
 			<section className={`${style.UserTweetsContent}`}>
 				{allTweets.map((tweet) => (
 					<UserTweetsContent

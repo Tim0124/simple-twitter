@@ -71,11 +71,14 @@
 		overflow: scroll;
 		margin-top: 5px;
 	}
+}
 
-	.footerText {
-		text-align: right;
-		color: #fc5a5a;
-	}
+.footerText {
+	display: none;
+	text-align: right;
+	color: #fc5a5a;
+	margin-bottom: 40px;
+	margin-right: 24px;
 }
 
 .footerButton {
@@ -123,10 +126,6 @@
 .titleClose {
 	display: none;
 	cursor: pointer;
-}
-
-.footerText {
-	display: none;
 }
 
 @media screen and (min-width: 992px) {
@@ -179,5 +178,7 @@
 	.footerText {
 		display: block;
 		color: #fc5a5a;
+		margin-bottom: 0;
+		margin-right: 0;
 	}
 }

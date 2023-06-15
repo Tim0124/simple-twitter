@@ -17,7 +17,6 @@ export default function Sidebar() {
 	const navigate = useNavigate()
 	const useModalClick = useContext(ShowTweetModalContext)
 	const useTweetModal = useContext(TweetModalContext)
-	const useStep = useContext(StepContext)
 	const useChangeStep = useContext(ChangeStepContext)
 	const step = useContext(StepContext)
 

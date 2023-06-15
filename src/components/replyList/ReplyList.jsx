@@ -18,8 +18,11 @@ export default function ReplyList() {
 	const [tweetReply, setTweetReply] = useState([])
 	const useReplyModal = useContext(ReplyTweetModalContext)
 	const handleOtherUser = useContext(GetOtherUserIdContext)
+	const handleShowReplyModal = useContext(ShowReplyModalContext)
 	const tweetId = useParams().tweet_id
 	const navigate = useNavigate()
+	const [comment, setComment] = useState([])
+	console.log(comment)
 
 	useEffect(() => {
 		tweetAPI.getTweet(tweetId).then((response) => {
@@ -27,18 +30,22 @@ export default function ReplyList() {
 			console.log(data)
 			setCurrentTweet(data)
 		})
+
+		navigate(`/reply/${tweetId}`)
+	}, [navigate])
+
+	useEffect(() => {
 		tweetAPI.getReplyTweet(tweetId).then((response) => {
 			const { data } = response
 			setTweetReply(data)
 		})
-		navigate(`/reply/${tweetId}`)
-	}, [navigate])
+	}, [tweetReply])
 
 	return (
 		<div className={`${style.replyContainer}`}>
 			<ReplyListHeader />
 			<ReplyListTweet
-				id={currentTweet.User?.id}
+				id={currentTweet?.id}
 				avatar={currentTweet.User?.avatar}
 				name={currentTweet.User?.name}
 				account={currentTweet.User?.account}
@@ -52,18 +59,19 @@ export default function ReplyList() {
 			<div className={`${style.replyListContent}`}>
 				{tweetReply.map((tweet) => (
 					<ReplyListItem
-						key={tweet.id}
-						id={tweet.replyUser.id}
-						account={tweet.replyUser.account}
-						comment={tweet.comment}
-						time={tweet.relativeTimeFromNow}
-						avatar={tweet.replyUser.avatar}
-						user={tweet.replyUser.name}
+						key={tweet?.id}
+						id={tweet.replyUser?.id}
+						account={tweet?.replyUser?.account}
+						comment={tweet?.comment}
+						time={tweet?.relativeTimeFromNow}
+						avatar={tweet?.replyUser?.avatar}
+						user={tweet?.replyUser?.name}
 						onOtherUserId={handleOtherUser}
+						tweetAccount={tweet?.tweetUser?.account}
 					/>
 				))}
 			</div>
-			{useReplyModal && <ModalReplyTweet />}
+			{handleShowReplyModal && <ModalReplyTweet />}
 		</div>
 	)
 }

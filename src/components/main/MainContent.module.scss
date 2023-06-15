@@ -50,6 +50,11 @@
 	.footerArea {
 		display: flex;
 		justify-content: flex-end;
+		align-items: center;
+		gap: 12px;
+	}
+	.footerText {
+		color: #fc5a5a;
 	}
 	.footerButton {
 		width: 64px;

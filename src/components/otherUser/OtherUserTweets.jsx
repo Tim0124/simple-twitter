@@ -14,21 +14,23 @@ import otherUserAPI from 'api/otherUserAPI'
 
 export default function UserTweets() {
 	const { pathname } = useLocation()
-	const tweetId = useParams().tweet_id
+	const userId = useParams().user_id
 	const handleChangeStep = useContext(ChangeStepContext)
 	const [userInfo, setUserInfo] = useState([])
 	const [allTweets, setAllTweets] = useState([])
 	const [otherUser, setOtherUser] = useState([])
 	const handleChangeTab = useContext(ChangeTabContext)
 	const OtherUserData = useContext(OtherUserContext)
-	const userId = OtherUserData
+
+	console.log(otherUser)
 
 	useEffect(() => {
+		console.log(userId)
 		tweetAPI.getCurrentUserAllTweet(userId).then((response) => {
 			const { data } = response
 			setOtherUser(data)
 		})
-	}, [pathname])
+	}, [])
 
 	useEffect(() => {
 		if (pathname === `/user/other/${userId}`) {

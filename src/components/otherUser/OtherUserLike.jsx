@@ -5,7 +5,7 @@ import FollowTab from 'UIcomponents/tabs/FollowTab'
 import UserTab from 'UIcomponents/tabs/UserTab'
 import UserInfo from 'UIcomponents/layouts/UserInfo'
 import UserInfoHeader from 'UIcomponents/layouts/UserInfoHeader'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import { useContext, useEffect, useState } from 'react'
 import { ChangeTabContext } from 'context/UserTabContext'
 import tweetAPI from 'api/tweetAPI'
@@ -16,8 +16,7 @@ export default function UserLike() {
 	const handleChangeTab = useContext(ChangeTabContext)
 	const [likesTweet, setLikesTweet] = useState([])
 	const navigate = useNavigate()
-	const OtherUserData = useContext(OtherUserContext)
-	const userId = OtherUserData
+	const userId = useParams().user_id
 
 	useEffect(() => {
 		tweetAPI.getCurrentUserLikes(userId).then((response) => {
@@ -37,14 +36,14 @@ export default function UserLike() {
 			<section className={`${style.UserTweetsContent}`}>
 				{likesTweet.map((like) => (
 					<OtherUserLikeContent
-						key={like.id}
-						name={like.User.name}
-						account={like.User.account}
-						avatar={like.User.avatar}
-						content={like.Tweet.description}
-						time={like.Tweet.relativeTimeFromNow}
-						likesCount={like.likesCount}
-						repliesCount={like.repliesCount}
+						key={like?.id}
+						name={like?.User?.name}
+						account={like?.User?.account}
+						avatar={like?.User?.avatar}
+						content={like?.Tweet?.description}
+						time={like?.Tweet?.relativeTimeFromNow}
+						likesCount={like?.likesCount}
+						repliesCount={like?.repliesCount}
 					/>
 				))}
 			</section>

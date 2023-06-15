@@ -13,6 +13,11 @@ export default {
 			headers: { Authorization: `Bearer ${getToken()}` },
 		})
 	},
+	getUser(userId) {
+		return apiHelper.get(`/users/${userId}`, {
+			headers: { Authorization: `Bearer ${getToken()}` },
+		})
+	},
 }
 
 //拿到頁數跟categoryID

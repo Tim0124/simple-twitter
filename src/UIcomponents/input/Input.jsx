@@ -2,7 +2,7 @@ import style from './Input.module.scss'
 
 export default function Input({ type, label, value, placeholder, onChange }) {
 	return (
-		<label>
+		<label className={style.inputContainer}>
 			<div className={`${style.inputTitle}`}>{label}</div>
 			<input
 				className={`${style.inputUI}`}

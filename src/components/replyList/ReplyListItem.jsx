@@ -9,6 +9,7 @@ export default function ReplyListItem({
 	comment,
 	avatar,
 	onOtherUserId,
+	tweetAccount,
 }) {
 	return (
 		<div className={`${style.replyListItemContainer}`}>
@@ -42,7 +43,7 @@ export default function ReplyListItem({
 					</div>
 					<div className={`${style.replyListItemAccountGroup}`}>
 						<p className={`${style.replyListItemText}`}>回覆</p>
-						<p className={`${style.replyListItemAccount}`}>{account}</p>
+						<p className={`${style.replyListItemAccount}`}>@{tweetAccount}</p>
 					</div>
 					<div className={`${style.replyListItemContentGroup}`}>
 						<p className={`${style.replyListItemContentItem}`}>{comment}</p>

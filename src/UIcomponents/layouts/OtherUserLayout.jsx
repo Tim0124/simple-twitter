@@ -1,10 +1,10 @@
-import { Outlet, useLocation } from 'react-router-dom'
+import { Outlet, useLocation, useNavigate, useParams } from 'react-router-dom'
 import PopularUserList from './PopularUserList'
 import SideItem from './SideItem'
 import Sidebar from './Sidebar'
 import style from './OtherUserLayout.module.scss'
 import ModalPostTweet from '../modal/ModalPostTweet'
-import ModalUserInfo from '../../components/modal/ModalUserInfo'
+import ModalUserInfo from '../modal/ModalUserInfo'
 import { useContext, useEffect, useState } from 'react'
 import ModalReplyTweet from 'UIcomponents/modal/ModalReplyTweet'
 import {
@@ -26,39 +26,44 @@ export default function Layout() {
 	const useReplyModal = useContext(ReplyTweetModalContext)
 	const [userInfo, setUserInfo] = useState([])
 	const { pathname } = useLocation()
-	const OtherUserId = useContext(OtherUserContext)
+	const userId = useParams().user_id
 	const isFollowPage =
-		pathname.includes(`/user/other/following/${OtherUserId}`) ||
-		pathname.includes(`/user/other/follower/${OtherUserId}`)
-	const userId = OtherUserId
+		pathname.includes(`/user/other/following/${userId}`) ||
+		pathname.includes(`/user/other/follower/${userId}`)
+	const localId = localStorage.getItem('userId')
+	const navigate = useNavigate()
 
 	useEffect(() => {
-		tweetAPI.getCurrentUserTweet(userId).then((response) => {
-			const { data } = response
-			setUserInfo(data)
-		})
-	}, [pathname])
+		if (userId === localId) {
+			navigate('/user/self')
+		} else {
+			tweetAPI.getCurrentUserTweet(userId).then((response) => {
+				const { data } = response
+				setUserInfo(data)
+			})
+		}
+	}, [])
 
 	return (
 		<div className={`${style.userTweetsContainer}`}>
 			<div className={`${style.userInfoHeaderContainer}`}>
 				<UserInfoHeader
-					name={userInfo.name}
-					tweet={userInfo.tweetsCount}
+					name={userInfo?.name}
+					tweet={userInfo?.tweetsCount}
 					page='/home'
 				/>
 			</div>
 			<OtherUserInfo
-				key={userInfo.id}
-				name={userInfo.name}
-				account={userInfo.account}
-				avatar={userInfo.avatar}
-				backgroundImage={userInfo.backgroundImage}
-				introduction={userInfo.introduction}
-				follower={userInfo.followersCount}
-				following={userInfo.followingsCount}
+				key={userInfo?.id}
+				name={userInfo?.name}
+				account={userInfo?.account}
+				avatar={userInfo?.avatar}
+				backgroundImage={userInfo?.backgroundImage}
+				introduction={userInfo?.introduction}
+				follower={userInfo?.followersCount}
+				following={userInfo?.followingsCount}
 				onHideUserInfo={isFollowPage ? 'hideUserInfo' : ''}
-				userId={userInfo.id}
+				userId={userInfo?.id}
 			/>
 			{pathname.includes(`/user/other/following/${userId}`) ||
 			pathname.includes(`/user/other/follower/${userId}`) ? (

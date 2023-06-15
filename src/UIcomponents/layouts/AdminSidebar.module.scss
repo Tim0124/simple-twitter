@@ -50,7 +50,7 @@
 			flex-direction: column;
 			align-items: center;
 			justify-content: space-between;
-			gap: 45px;
+			gap: 32px;
 		}
 
 		.sideBarItems {
@@ -78,7 +78,7 @@
 			align-items: start;
 			justify-content: center;
 			padding: 0 15px;
-			gap: 25px;
+			gap: 32px;
 		}
 	}
 
@@ -91,6 +91,7 @@
 		display: flex;
 		align-items: start;
 		width: 100%;
+		gap: 32px;
 
 		.logo {
 			width: 100%;

@@ -3,8 +3,9 @@ import { ReactComponent as Dislike } from '../../assets/unlike.svg'
 import { ReactComponent as Like } from '../../assets/redlike.svg'
 import { ReactComponent as Message } from '../../assets/message.svg'
 import Button from 'UIcomponents/buttons/Button'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { ShowReplyModalContext } from 'context/ModalContext'
 import likeAPI from 'api/likeAPI'
 
 export default function ReplyListTweet({
@@ -19,10 +20,11 @@ export default function ReplyListTweet({
 	time,
 	date,
 	onShowReplyModal,
+	id,
 }) {
+	const handleShowReplyModal = useContext(ShowReplyModalContext)
 	const [like, setLike] = useState(isSelfUserLike)
 	const [likeQuantity, setLikeQuantity] = useState(likesCount)
-	console.log(like)
 
 	const handleLikeClick = () => {
 		console.log(id)
@@ -64,7 +66,7 @@ export default function ReplyListTweet({
 								<p>{name}</p>
 							</div>
 							<div className={`${style.replyTweetsSmallAccount}`}>
-								<p className={`${style.replyTweetsAccount}`}>{account}</p>
+								<p className={`${style.replyTweetsAccount}`}>@{account}</p>
 							</div>
 						</div>
 					</div>
@@ -89,7 +91,7 @@ export default function ReplyListTweet({
 					<div className={`${style.replyTweetsIconGroup}`}>
 						<div
 							className={`${style.replyTweetsIcon}`}
-							onClick={onShowReplyModal}
+							onClick={() => handleShowReplyModal(id)}
 						>
 							<Message width='24px' height='24px' />
 						</div>

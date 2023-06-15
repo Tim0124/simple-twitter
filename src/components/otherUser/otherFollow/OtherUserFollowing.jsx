@@ -1,6 +1,6 @@
 import style from './OtherUserFollowing.module.scss'
 import FollowTab from 'UIcomponents/tabs/FollowTab'
-import UserFollowerContent from './OtherUserFollowContent'
+import OtherUserFollowerContent from './OtherUserFollowContent'
 import UserInfo from 'UIcomponents/layouts/UserInfo'
 import UserInfoHeader from 'UIcomponents/layouts/UserInfoHeader'
 import { useContext, useEffect, useState } from 'react'
@@ -40,7 +40,7 @@ export default function UserFollowing() {
 
 			<section className={`${style.userFollowingContent}`}>
 				{following.map((follow) => (
-					<UserFollowerContent
+					<OtherUserFollowerContent
 						key={follow.followingId}
 						followerId={follow.followerId}
 						followingId={follow.followingId}

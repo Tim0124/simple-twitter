@@ -2,8 +2,9 @@ import style from './UserInfo.module.scss'
 import Button from 'UIcomponents/buttons/Button'
 import UserInfoHeader from './UserInfoHeader'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import followingAPI from 'api/followingAPI'
+import { ShowEditModalContext } from 'context/ModalContext'
 
 export default function UserInfo({
 	name,
@@ -16,6 +17,7 @@ export default function UserInfo({
 	onHideUserInfo,
 	userId,
 }) {
+	const handleEditModal = useContext(ShowEditModalContext)
 	return (
 		<div className={`${style.userInfoContainer} ${style[onHideUserInfo]}`}>
 			<div className={`${style.userInfoWrapper}`}>
@@ -37,7 +39,10 @@ export default function UserInfo({
 				</div>
 				<div className={`${style.userInfoAllContent}`}>
 					<div className={`${style.userInfoBottonArea}`}>
-						<div className={`${style.userInfoButton}`}>
+						<div
+							className={`${style.userInfoButton}`}
+							onClick={handleEditModal}
+						>
 							<Button size='white-exsmall' text='編輯個人資料' />
 						</div>
 					</div>

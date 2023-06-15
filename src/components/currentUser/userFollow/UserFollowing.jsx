@@ -8,19 +8,32 @@ import tweetAPI from 'api/tweetAPI'
 import followingAPI from 'api/followingAPI'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { ChangeTabContext } from 'context/UserTabContext'
+import { GetRenderContext, SetRenderContext } from 'context/FollowContext'
 
 export default function UserFollowing() {
 	const [following, setFollowing] = useState([])
 	const { pathname } = useLocation()
 	const handleChangeTab = useContext(ChangeTabContext)
 	const id = localStorage.getItem('userId')
+	const setRender = useContext(SetRenderContext)
+	const render = useContext(GetRenderContext)
+	console.log(render)
 
 	useEffect(() => {
-		followingAPI.getFollowings(id).then((response) => {
-			const { data } = response
-			setFollowing(data)
-		})
-	}, [pathname])
+		if (render === 'true' || render === 'init') {
+			followingAPI
+				.getFollowings(id)
+				.then((response) => {
+					const { data } = response
+					setFollowing(data)
+					setRender('false')
+				})
+				.catch((error) => {
+					console.error(error)
+					setRender('false')
+				})
+		}
+	}, [render])
 
 	useEffect(() => {
 		if (pathname === `/user/self/following/${id}`) {
@@ -29,24 +42,18 @@ export default function UserFollowing() {
 	}, [pathname])
 	return (
 		<div className={`${style.userFollowingContainer}`}>
-			{/* <div className={`${style.userInfoHeaderContainer}`}>
-				<UserInfoHeader name={data[0].name} tweet={data[0].tweet} />
-			</div>
-			<div className={`${style.userInfoContainer}`}>
-				<UserInfo />
-			</div> */}
-
 			<section className={`${style.userFollowingContent}`}>
 				{following.map((follow) => (
 					<UserFollowerContent
-						key={follow.followingId}
-						followerId={follow.followerId}
-						followingId={follow.followingId}
-						name={follow.User.name}
-						avatar={follow.User.avatar}
-						account={follow.User.account}
-						content={follow.User.introduction}
-						isFollow={follow.isSelfUserFollow}
+						id={follow?.followingId}
+						key={follow?.followingId}
+						followerId={follow?.followerId}
+						followingId={follow?.followingId}
+						name={follow?.User?.name}
+						avatar={follow?.User?.avatar}
+						account={follow?.User?.account}
+						content={follow?.User?.introduction}
+						isFollow={follow?.isSelfUserFollow}
 					/>
 				))}
 			</section>
