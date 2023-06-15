@@ -6,31 +6,42 @@ import Button from 'UIcomponents/buttons/Button'
 import { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ShowReplyModalContext } from 'context/ModalContext'
+import likeAPI from 'api/likeAPI'
 
 export default function ReplyListTweet({
+	id,
 	avatar,
 	name,
 	account,
 	content,
 	quantity,
-	likeQuantity,
+	likesCount,
+	isSelfUserLike,
 	time,
 	date,
 	onShowReplyModal,
 	id,
 }) {
-	const [like, setLike] = useState()
-	const [isLikeQuantity, setIsLikeQuantity] = useState(likeQuantity)
 	const handleShowReplyModal = useContext(ShowReplyModalContext)
+	const [like, setLike] = useState(isSelfUserLike)
+	const [likeQuantity, setLikeQuantity] = useState(likesCount)
 
 	const handleLikeClick = () => {
+		console.log(id)
 		setLike(!like)
 		if (!like) {
-			setIsLikeQuantity(isLikeQuantity + 1)
+			setLikeQuantity(likeQuantity + 1)
+			likeAPI.like(id).then((response) => {
+				console.log(response)
+			})
 		} else {
-			setIsLikeQuantity(isLikeQuantity - 1)
+			setLikeQuantity(likeQuantity - 1)
+			likeAPI.unlike(id).then((response) => {
+				console.log(response)
+			})
 		}
 	}
+
 	// const dateObj = new Date(date)
 	// const year = dateObj.getFullYear()
 	// const month = dateObj.getMonth() + 1
@@ -73,7 +84,7 @@ export default function ReplyListTweet({
 							<p className={`${style.replyQuantityText}`}>回覆</p>
 						</div>
 						<div className={`${style.replyTweetsLikeQuantity}`}>
-							<p className={`${style.replyLikeQuantity}`}>{isLikeQuantity}</p>
+							<p className={`${style.replyLikeQuantity}`}>{likesCount}</p>
 							<p className={`${style.replyQuantityText}`}>喜歡次數</p>
 						</div>
 					</div>
@@ -86,9 +97,9 @@ export default function ReplyListTweet({
 						</div>
 						<div className={`${style.replyTweetsLikeIcon}`}>
 							{like ? (
-								<Like width='25px' height='23px' onClick={handleLikeClick} />
+								<Like width='24px' height='24px' onClick={handleLikeClick} />
 							) : (
-								<Dislike width='25px' height='23px' onClick={handleLikeClick} />
+								<Dislike width='24px' height='24px' onClick={handleLikeClick} />
 							)}
 						</div>
 					</div>

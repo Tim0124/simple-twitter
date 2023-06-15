@@ -21,14 +21,14 @@ export default function UserLikeContent({
 
 	const handleLikeClick = () => {
 		setLike(!like)
-		if (!like) {
-			setLikeQuantity(likeQuantity + 1)
-			likeAPI.like(id).then((response) => {
+		if (like) {
+			setLikeQuantity(likeQuantity - 1)
+			likeAPI.unlike(id).then((response) => {
 				console.log(response)
 			})
 		} else {
-			setLikeQuantity(likeQuantity - 1)
-			likeAPI.unlike(id).then((response) => {
+			setLikeQuantity(likeQuantity + 1)
+			likeAPI.like(id).then((response) => {
 				console.log(response)
 			})
 		}
@@ -64,20 +64,10 @@ export default function UserLikeContent({
 							<p>{repliesCount}</p>
 						</div>
 						<div className={`${style.mainTweetsLikeQuantity}`}>
-							{like === true ? (
-								<Like
-									width='16px'
-									height='16px'
-									id={id}
-									onClick={handleLikeClick}
-								/>
+							{like ? (
+								<Like width='16px' height='16px' onClick={handleLikeClick} />
 							) : (
-								<Dislike
-									width='16px'
-									height='16px'
-									id={id}
-									onClick={handleLikeClick}
-								/>
+								<Dislike width='16px' height='16px' onClick={handleLikeClick} />
 							)}
 							<p>{likeQuantity}</p>
 						</div>

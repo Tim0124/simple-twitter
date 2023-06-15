@@ -27,6 +27,7 @@ export default function ReplyList() {
 	useEffect(() => {
 		tweetAPI.getTweet(tweetId).then((response) => {
 			const { data } = response
+			console.log(data)
 			setCurrentTweet(data)
 		})
 
@@ -50,9 +51,10 @@ export default function ReplyList() {
 				account={currentTweet.User?.account}
 				content={currentTweet?.description}
 				quantity={currentTweet?.repliesCount}
-				likeQuantity={currentTweet?.likesCount}
+				likesCount={currentTweet?.likesCount}
 				time={currentTweet?.relativeTimeFromNow}
 				date={currentTweet?.switchTime}
+				isSelfUserLike={currentTweet?.isSelfUserLike}
 			/>
 			<div className={`${style.replyListContent}`}>
 				{tweetReply.map((tweet) => (

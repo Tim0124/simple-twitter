@@ -43,6 +43,7 @@ export default function UserTweets() {
 			<section className={`${style.UserTweetsContent}`}>
 				{otherUser.map((user) => (
 					<UserTweetsContent
+						id={user.id}
 						key={user.id}
 						name={user.User.name}
 						avatar={user.User.avatar}
