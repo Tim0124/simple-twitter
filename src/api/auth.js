@@ -44,7 +44,6 @@ export const register = async ({
 	email,
 	password,
 	checkPassword,
-	message,
 }) => {
 	try {
 		const { data } = await axios.post(`${authURL}/users `, {
@@ -92,7 +91,7 @@ export const setting = async ({
 	checkPassword,
 }) => {
 	try {
-		const response = await axios.put(
+		const { data } = await axios.put(
 			`${authURL}/users/${id} `,
 			{
 				account,
@@ -107,23 +106,16 @@ export const setting = async ({
 				},
 			}
 		)
-		return response.data
+		const success = data.status === 'success'
+		const message = data.message
+		if (success) {
+			return { success: true, ...data.data }
+		} else if (message === 'Error: account 已重複註冊！') {
+		}
+		return data
 	} catch (error) {
 		console.error('[Setting Failed]', error)
-		if (error.response.data.message === 'Error: account 已重複註冊') {
-			alert('此帳號已存在')
-		}
-		if (error.response.data.message === 'Error: email 已重複註冊') {
-			alert('此Email已存在')
-		}
-		if (error.response.data.message === 'Error: 密碼與確認密碼不相符') {
-			alert('密碼與確認密碼不相符')
-		}
-		if (error.response.data.message === 'Error: 使用者不存在') {
-			alert('使用者不存在')
-		}
-		if (error.response.data.message === 'Error: 使用者非本帳號無權限編輯') {
-			alert('使用者非本帳號無權限編輯')
-		}
+		const errorMessage = error.response.data.message
+		return { success: false, errorMessage }
 	}
 }
