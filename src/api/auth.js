@@ -57,7 +57,7 @@ export const register = async ({
 		const success = data.status === 'success'
 		if (success) {
 			return { success: true, ...data.data }
-		} 
+		}
 		return data
 	} catch (error) {
 		console.error('[Register Failed]', error)

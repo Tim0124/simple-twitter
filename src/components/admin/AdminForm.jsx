@@ -18,13 +18,19 @@ function AdminForm() {
 		try {
 			if (account.trim().length === 0) {
 				setAccountError('帳號欄位不能為空白')
-				setTimeout(() => { setAccountError('') }, 2000)
+				setTimeout(() => {
+					setAccountError('')
+				}, 2000)
 			} else if (account.length > 50) {
 				setAccountError('帳號字數超過上限')
-				setTimeout(() => { setAccountError('') }, 2000)
+				setTimeout(() => {
+					setAccountError('')
+				}, 2000)
 			} else if (password.trim().length === 0) {
 				setPasswordError('密碼欄位不能為空白')
-				setTimeout(() => { setPasswordError('') }, 2000)
+				setTimeout(() => {
+					setPasswordError('')
+				}, 2000)
 			}
 
 			const { success, token, user } = await adminLogin({
@@ -70,27 +76,27 @@ function AdminForm() {
 			<h1 className={`${style.adminTitle}`}>後台登入</h1>
 			<div className={`${style.adminInputGroup}`}>
 				<div className={`${style.errorMessage}`}>
-				<Input
-					label='帳號'
-					placeholder='請輸入帳號'
-					value={account}
-					onChange={handleAccountChange}
-					isError={!!accountError}
-				/>
-				{accountError && (
+					<Input
+						label='帳號'
+						placeholder='請輸入帳號'
+						value={account}
+						onChange={handleAccountChange}
+						isError={!!accountError}
+					/>
+					{accountError && (
 						<div className={style.accountErrorMessage}>{accountError}</div>
 					)}
 				</div>
 				<div className={`${style.errorMessage}`}>
-				<Input
-					type='password'
-					label='密碼'
-					placeholder='請輸入密碼'
-					value={password}
-					onChange={handlePasswordChange}
-					isError={!!passwordError}
-				/>
-				{passwordError && (
+					<Input
+						type='password'
+						label='密碼'
+						placeholder='請輸入密碼'
+						value={password}
+						onChange={handlePasswordChange}
+						isError={!!passwordError}
+					/>
+					{passwordError && (
 						<div className={style.passwordErrorMessage}>{passwordError}</div>
 					)}
 				</div>

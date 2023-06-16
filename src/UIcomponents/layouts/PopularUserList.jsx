@@ -15,7 +15,7 @@ export default function PopularUserList() {
 	const { pathname } = useLocation()
 
 	useEffect(() => {
-		(async () => {
+		;(async () => {
 			if (render === 'true') {
 				try {
 					const response = await followingAPI.getTopFollower()

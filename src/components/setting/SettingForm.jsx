@@ -78,28 +78,44 @@ export default function Setting() {
 		e.preventDefault()
 		if (account.trim().length === 0) {
 			setAccountError('帳號欄位不能為空白')
-			setTimeout(() => { setAccountError('') }, 2000)
+			setTimeout(() => {
+				setAccountError('')
+			}, 2000)
 		} else if (account.length > 50) {
 			setAccountError('帳號字數超過上限')
-			setTimeout(() => { setAccountError('') }, 2000)
+			setTimeout(() => {
+				setAccountError('')
+			}, 2000)
 		} else if (name.trim().length === 0) {
 			setNameError('名稱欄位不能為空白')
-			setTimeout(() => { setNameError('') }, 2000)
+			setTimeout(() => {
+				setNameError('')
+			}, 2000)
 		} else if (name.length > 50) {
 			setNameError('名稱字數超過上限')
-			setTimeout(() => { setNameError('') }, 2000)
+			setTimeout(() => {
+				setNameError('')
+			}, 2000)
 		} else if (password.trim().length === 0) {
 			setPasswordError('密碼欄位不能為空白')
-			setTimeout(() => { setPasswordError('') }, 2000)
+			setTimeout(() => {
+				setPasswordError('')
+			}, 2000)
 		} else if (email.trim().length === 0) {
 			setEmailError('Email欄位不能為空白')
-			setTimeout(() => { setEmailError('') }, 2000)
+			setTimeout(() => {
+				setEmailError('')
+			}, 2000)
 		} else if (checkPassword.trim().length === 0) {
 			setCheckError('密碼確認欄位不能為空')
-			setTimeout(() => { setCheckError('') }, 2000)
+			setTimeout(() => {
+				setCheckError('')
+			}, 2000)
 		} else if (password !== checkPassword) {
 			setCheckError('密碼與密碼確認輸入值不同')
-			setTimeout(() => { setCheckError('') }, 2000)
+			setTimeout(() => {
+				setCheckError('')
+			}, 2000)
 		}
 
 		const result = await setting({

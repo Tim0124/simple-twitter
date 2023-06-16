@@ -18,13 +18,19 @@ function LoginForm() {
 		try {
 			if (account.trim().length === 0) {
 				setAccountError('帳號欄位不能為空白')
-				setTimeout(() => { setAccountError('') }, 2000)
+				setTimeout(() => {
+					setAccountError('')
+				}, 2000)
 			} else if (account.length > 50) {
 				setAccountError('帳號字數超過上限')
-				setTimeout(() => { setAccountError('') }, 2000)
+				setTimeout(() => {
+					setAccountError('')
+				}, 2000)
 			} else if (password.trim().length === 0) {
 				setPasswordError('密碼欄位不能為空白')
-				setTimeout(() => {setPasswordError('')},2000)
+				setTimeout(() => {
+					setPasswordError('')
+				}, 2000)
 			}
 
 			const { success, token, user } = await login({
