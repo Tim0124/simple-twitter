@@ -139,6 +139,26 @@
 	display: none;
 }
 
+.userInfoNameGroup {
+	display: flex;
+	justify-content: space-between;
+	.userInfoInputNameError {
+		opacity: 0;
+		color: #fc5a5a;
+		font-size: 12px;
+	}
+}
+
+.userInfoTextGroup {
+	display: flex;
+	justify-content: space-between;
+
+	.userInfoInputTextError {
+		opacity: 0;
+		color: #fc5a5a;
+	}
+}
+
 @media screen and (min-width: 991px) {
 	.userInfoMdArrow {
 		display: none;
