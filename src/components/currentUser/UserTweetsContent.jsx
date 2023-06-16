@@ -49,7 +49,7 @@ export default function UserTweetsContent({
 						<div className={`${style.mainTweetsNameGroup}`}>
 							<div className={`${style.mainTweetsName}`}>{name}</div>
 							<div className={`${style.mainTweetsSmallAccount}`}>
-								<div className={`${style.mainTweetsAccount}`}>{account}</div>
+								<div className={`${style.mainTweetsAccount}`}>@{account}</div>
 								<div className={`${style.mainTweetsdot}`}>・</div>
 								<div className={`${style.mainTweetsTime}`}>
 									<p>{relativeTime}</p>
