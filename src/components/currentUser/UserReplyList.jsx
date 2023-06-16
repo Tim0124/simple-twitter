@@ -18,7 +18,6 @@ export default function UserReplyList() {
 	const [userId, setUserId] = useState('')
 	const pageId = useParams().user_id
 
-
 	useEffect(() => {
 		userAPI
 			.getCurrentUser()
@@ -32,18 +31,18 @@ export default function UserReplyList() {
 	}, [])
 
 	useEffect(() => {
-		if(userId) {
+		if (userId) {
 			tweetAPI
-					.getUserReplies(userId)
-					.then((response) => {
-						const { data } = response
-						setReplies(data)
-					})
-					.catch((error) => {
-						console.error(error)
-					})
+				.getUserReplies(userId)
+				.then((response) => {
+					const { data } = response
+					setReplies(data)
+				})
+				.catch((error) => {
+					console.error(error)
+				})
 		}
-	},[userId])
+	}, [userId])
 
 	useEffect(() => {
 		if (pathname === `/user/self/reply/${pageId}`) {

@@ -58,7 +58,7 @@ export default function Layout() {
 			pathname.includes(`/user/self/follower/${userId}`) ? (
 				<FollowTab id={userId} />
 			) : (
-				<UserTab id={userId}/>
+				<UserTab id={userId} />
 			)}
 
 			<div className={`${style.UserLayoutMainContainer}`}>

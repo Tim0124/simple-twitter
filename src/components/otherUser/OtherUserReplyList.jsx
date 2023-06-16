@@ -16,7 +16,6 @@ export default function UserReplyList() {
 	const [replies, setReplies] = useState([])
 	const userId = useParams().user_id
 
-
 	useEffect(() => {
 		tweetAPI.getUserReplies(userId).then((response) => {
 			const { data } = response

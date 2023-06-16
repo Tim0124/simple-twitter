@@ -60,7 +60,11 @@ export default function UserTweetsContent({
 					<div className={`${style.mainTweetsContent}`}>{description}</div>
 					<div className={`${style.mainTweetsQuantityGroup}`}>
 						<div className={`${style.mainTweetsQuantity}`}>
-							<Message width='16px' height='16px' onClick={() => handleShowReplyModal(id)}/>
+							<Message
+								width='16px'
+								height='16px'
+								onClick={() => handleShowReplyModal(id)}
+							/>
 							<p>{repliesCount}</p>
 						</div>
 						<div className={`${style.mainTweetsLikeQuantity}`}>

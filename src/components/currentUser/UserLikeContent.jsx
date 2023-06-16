@@ -17,7 +17,7 @@ export default function UserLikeContent({
 	likesCount,
 	time,
 	isSelfUserLike,
-	tweetUserId
+	tweetUserId,
 }) {
 	const [like, setLike] = useState(isSelfUserLike)
 	const [likeQuantity, setLikeQuantity] = useState(likesCount)
@@ -39,12 +39,12 @@ export default function UserLikeContent({
 			<div className={`${style.mainTweetsList}`}>
 				<Link to={`/user/other/${tweetUserId}`}>
 					<div className={`${style.mainTweetsLogo}`}>
-					<img
-						src={avatar}
-						className={`${style.mainTweetsImg}`}
-						alt={account}
-					/>
-				</div>
+						<img
+							src={avatar}
+							className={`${style.mainTweetsImg}`}
+							alt={account}
+						/>
+					</div>
 				</Link>
 				<div className={`${style.mainTweetsInfo}`}>
 					<div className={`${style.mainTweetsSecInfo}`}>
@@ -62,7 +62,11 @@ export default function UserLikeContent({
 					<div className={`${style.mainTweetsContent}`}>{content}</div>
 					<div className={`${style.mainTweetsQuantityGroup}`}>
 						<div className={`${style.mainTweetsQuantity}`}>
-							<Message width='16px' height='16px' onClick={() => handleShowReplyModal(id)}/>
+							<Message
+								width='16px'
+								height='16px'
+								onClick={() => handleShowReplyModal(id)}
+							/>
 							<p>{repliesCount}</p>
 						</div>
 						<div className={`${style.mainTweetsLikeQuantity}`}>

@@ -15,12 +15,12 @@ export default function UserReplyContent({
 	likeQuantity,
 	time,
 	replyAccount,
-	tweetUserId
+	tweetUserId,
 }) {
 	return (
 		<div className={`${style.userReplyContainer}`}>
 			<div className={`${style.userReplyList}`}>
-					<div className={`${style.userReplyAvatar}`}>
+				<div className={`${style.userReplyAvatar}`}>
 					<img src={avatar} className={`${style.userReplyImg}`} alt={account} />
 				</div>
 				<div className={`${style.userReplyInfo}`}>

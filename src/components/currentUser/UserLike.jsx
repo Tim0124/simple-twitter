@@ -16,7 +16,6 @@ export default function UserLike() {
 	const [likesTweet, setLikesTweet] = useState([])
 	const currentUserId = localStorage.getItem('userId')
 
-
 	useEffect(() => {
 		tweetAPI.getUserLikes(currentUserId).then((response) => {
 			const { data } = response

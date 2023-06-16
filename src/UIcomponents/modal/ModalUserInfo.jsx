@@ -99,16 +99,16 @@ export default function ModalUserInfo() {
 		const form = e.target
 		console.log(form)
 		const formData = new FormData(form)
-		console.log('大頭貼',avatar)
+		console.log('大頭貼', avatar)
 		// formData.append('backgroundImage', document.getElementById('backgroundPhoto').files[0])
 		// formData.append('avatarPhoto', document.getElementById('avatarPhoto').files[0])
 		formData.append('avatar', avatar)
 		formData.append('backgroundImage', backgroundImage)
 		formData.append('introduction', introduction)
 		formData.append('name', name)
-	
+
 		userAPI
-			.putUserEdit(userId, formData )
+			.putUserEdit(userId, formData)
 			.then((res) => {
 				const { data } = res
 				console.log(res)

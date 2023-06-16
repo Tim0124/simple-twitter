@@ -12,10 +12,8 @@ export default function UserReplyContent({
 	comment,
 	time,
 	replyAccount,
-	tweetUserId
+	tweetUserId,
 }) {
-	
-
 	return (
 		<div className={`${style.userReplyContainer}`}>
 			<div className={`${style.userReplyList}`}>
