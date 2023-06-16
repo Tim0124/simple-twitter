@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { Toast } from 'heplers/helpers'
 
 const authURL = 'https://gentle-temple-56514.herokuapp.com/api'
 
@@ -54,13 +55,15 @@ export const register = async ({
 			checkPassword,
 		})
 		const success = data.status === 'success'
+		const message = data.message
 		if (success) {
 			return { success: true, ...data.data }
-		}
+		} else if (message === 'Error: account 已重複註冊！') {}
 		return data
 	} catch (error) {
 		console.error('[Register Failed]', error)
-		return { success: false, error: error.message }
+		const errorMessage = error.response.data.message;
+		return { success: false, errorMessage }
 	}
 }
 

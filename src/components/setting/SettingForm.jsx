@@ -94,15 +94,15 @@ export default function Setting() {
 			setTimeout(() => {
 				setNameError('')
 			}, 2000)
-		} else if (password.trim().length === 0) {
-			setPasswordError('密碼欄位不能為空白')
-			setTimeout(() => {
-				setPasswordError('')
-			}, 2000)
 		} else if (email.trim().length === 0) {
 			setEmailError('Email欄位不能為空白')
 			setTimeout(() => {
 				setEmailError('')
+			}, 2000)
+		} else if (password.trim().length === 0) {
+			setPasswordError('密碼欄位不能為空白')
+			setTimeout(() => {
+				setPasswordError('')
 			}, 2000)
 		} else if (checkPassword.trim().length === 0) {
 			setCheckError('密碼確認欄位不能為空')
