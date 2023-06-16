@@ -8,7 +8,7 @@ export default function Input({
 	placeholder,
 	onChange,
 	isError,
-	name
+	name,
 }) {
 	return (
 		<label className={style.inputContainer}>

@@ -25,23 +25,26 @@ export default function ModalUserInfo() {
 	const [introduction, setIntroduction] = useState('')
 	const [inputError, setInputError] = useState(false)
 	const [areaError, setAreaError] = useState(false)
-	const [overText, setOverText ] = useState(false)
+	const [overText, setOverText] = useState(false)
 
 	useEffect(() => {
-		userAPI.getCurrentUser().then((res) => {
-			const { data } = res
-			if (res.status !== 200) {
-				throw new Error(data.message)
-			}
-			setUserDate(data)
-			setUserId(data.id)
-			setName(data.name)
-			setAvatar(data.avatar)
-			setIntroduction(data.introduction ? data.introduction : '')
-			setBackground(data.backgroundImage)
-		}).catch((error) => {
-			console.error(error)
-		})
+		userAPI
+			.getCurrentUser()
+			.then((res) => {
+				const { data } = res
+				if (res.status !== 200) {
+					throw new Error(data.message)
+				}
+				setUserDate(data)
+				setUserId(data.id)
+				setName(data.name)
+				setAvatar(data.avatar)
+				setIntroduction(data.introduction ? data.introduction : '')
+				setBackground(data.backgroundImage)
+			})
+			.catch((error) => {
+				console.error(error)
+			})
 	}, [])
 
 	const handleNameChange = (e) => {
@@ -107,7 +110,7 @@ export default function ModalUserInfo() {
 			setAreaError(true)
 			setTimeout(() => {
 				setAreaError(false)
-			},2000)
+			}, 2000)
 			Toast.fire({
 				icon: 'error',
 				title: '字數超出上限！',
@@ -121,7 +124,7 @@ export default function ModalUserInfo() {
 			.putUserEdit(userId, formData)
 			.then((res) => {
 				const { data } = res
-				console.log("res",res)
+				console.log('res', res)
 				Toast.fire({
 					icon: 'success',
 					title: '儲存成功',
@@ -169,11 +172,7 @@ export default function ModalUserInfo() {
 								</div>
 								<div className={`${style.userInfoMdButtonGroup}`}>
 									<div className={`${style.userInfoMdButton}`}>
-										<Button
-											size='middle'
-											text='儲存'
-											
-										/>
+										<Button size='middle' text='儲存' />
 									</div>
 								</div>
 							</nav>
@@ -219,7 +218,12 @@ export default function ModalUserInfo() {
 						</div>
 						<div className={`${style.userInfoInputArea}`}>
 							<div className={`${style.userInfoInputName}`}>
-								<Input label='名稱' value={name} onChange={handleNameChange} name='name'/>
+								<Input
+									label='名稱'
+									value={name}
+									onChange={handleNameChange}
+									name='name'
+								/>
 								<div className={style.userInfoNameGroup}>
 									<p className={`${style.userInfoInputNameError}`}>
 										內容不可空白

@@ -131,8 +131,6 @@
 	display: none;
 }
 
-
-
 .inputPhoto {
 	display: none;
 }
@@ -178,22 +176,21 @@
 	border-bottom: 2px solid #657786;
 }
 
-	.userInfoTextArea:hover {
-		border-color: #50b5ff
-	}
+.userInfoTextArea:hover {
+	border-color: #50b5ff;
+}
 
-	.userInfoTextArea:focus {
-		outline: none;
-	}
-	.userInfoLabelTitle {
-		position: absolute;
-		font-size: 14px;
-		height: 22px;
-		color: #696974;
-		top: 5px;
-		left: 10px;
-	}
-
+.userInfoTextArea:focus {
+	outline: none;
+}
+.userInfoLabelTitle {
+	position: absolute;
+	font-size: 14px;
+	height: 22px;
+	color: #696974;
+	top: 5px;
+	left: 10px;
+}
 
 @media screen and (min-width: 991px) {
 	.userInfoMdArrow {
@@ -234,7 +231,7 @@
 		position: relative;
 		display: block;
 		background-color: #f5f8fa;
-		height: 145px;		
+		height: 145px;
 	}
 
 	.userInfoInput {
