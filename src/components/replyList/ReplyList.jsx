@@ -26,6 +26,7 @@ export default function ReplyList() {
 	useEffect(() => {
 		tweetAPI.getTweet(tweetId).then((response) => {
 			const { data } = response
+			console.log(data)
 			setCurrentTweet(data)
 		})
 		navigate(`/reply/${tweetId}`)

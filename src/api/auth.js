@@ -43,6 +43,7 @@ export const register = async ({
 	email,
 	password,
 	checkPassword,
+	message,
 }) => {
 	try {
 		const { data } = await axios.post(`${authURL}/users `, {

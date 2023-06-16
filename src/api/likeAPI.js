@@ -6,7 +6,7 @@ export default {
 	like(tweetId) {
 		return apiHelper.post(
 			`/tweets/${tweetId}/like`,
-			// {UserId:34},
+			{ tweetId },
 			{
 				headers: {
 					Authorization: `Bearer ${getToken()}`,
@@ -17,7 +17,7 @@ export default {
 	unlike(tweetId) {
 		return apiHelper.post(
 			`/tweets/${tweetId}/unlike`,
-			// { userId },
+			{ tweetId },
 			{
 				headers: {
 					Authorization: `Bearer ${getToken()}`,
