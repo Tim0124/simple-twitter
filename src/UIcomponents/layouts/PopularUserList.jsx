@@ -46,7 +46,7 @@ export default function PopularUserList() {
 						onOtherUserId={handleOtherUser}
 						id={follower.id}
 						key={follower.id}
-						name={follower.account}
+						name={follower.name}
 						account={follower.account}
 						avatar={follower.avatar}
 						isUserFollowed={follower.isUserFollowed}

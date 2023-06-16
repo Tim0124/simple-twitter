@@ -9,6 +9,7 @@ import OtherUserInfo from './OtherUserInfo'
 import OtherUserTab from 'UIcomponents/tabs/OtherUserTab'
 import OtherFollowTab from 'UIcomponents/tabs/OtherFollowTab'
 import userAPI from 'api/userAPI'
+import { GetRenderContext, SetRenderContext } from 'context/FollowContext'
 
 export default function Layout() {
 	const useTweetModal = useContext(TweetModalContext)
@@ -21,6 +22,9 @@ export default function Layout() {
 		pathname.includes(`/user/other/follower/${userId}`)
 	const localId = localStorage.getItem('userId')
 	const navigate = useNavigate()
+	const render = useContext(GetRenderContext)
+	const setRender = useContext(SetRenderContext)
+	console.log(userInfo)
 
 	useEffect(() => {
 		if (userId === localId) {
@@ -32,6 +36,10 @@ export default function Layout() {
 			})
 		}
 	}, [])
+
+	// useEffect(() => {
+	// 	setRender('true')
+	// },[])
 
 	return (
 		<div className={`${style.userTweetsContainer}`}>
@@ -53,6 +61,7 @@ export default function Layout() {
 				following={userInfo?.followingsCount}
 				onHideUserInfo={isFollowPage ? 'hideUserInfo' : ''}
 				userId={userInfo?.id}
+				isFollow={userInfo?.isSelfUserFollow}
 			/>
 			{pathname.includes(`/user/other/following/${userId}`) ||
 			pathname.includes(`/user/other/follower/${userId}`) ? (

@@ -77,7 +77,7 @@ export default function ModalPostTweet({ onClick, onHiddenClick }) {
 									<Close style={{ color: '#ff6600' }} />
 								</h1>
 							</div>
-							<div className={`${style.navButton}`}>
+							<div className={`${style.navButton}`} onClick={handleTweetSubmit}>
 								<Button size='middle' text='推文' />
 							</div>
 						</nav>

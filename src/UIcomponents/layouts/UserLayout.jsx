@@ -27,7 +27,6 @@ export default function Layout() {
 				const { data } = res
 				setUserId(data.id)
 				setUserInfo(data)
-				console.log(data)
 			})
 			.catch((error) => {
 				console.error(error)
@@ -59,11 +58,11 @@ export default function Layout() {
 			pathname.includes(`/user/self/follower/${userId}`) ? (
 				<FollowTab id={userId} />
 			) : (
-				<UserTab id={userId} />
+				<UserTab />
 			)}
 
 			<div className={`${style.UserLayoutMainContainer}`}>
-				<Outlet />
+				<Outlet userId={userId} />
 			</div>
 			{useTweetModal && <ModalPostTweet />}
 			{ShowEditModal && <ModalUserInfo />}

@@ -13,34 +13,38 @@ import userAPI from 'api/userAPI'
 
 export default function UserTweets() {
 	const { pathname } = useLocation()
-	// const tweetId = useParams().tweet_id
+	const tweetId = useParams().tweet_id
 	const handleChangeStep = useContext(ChangeStepContext)
 	// const [userInfo, setUserInfo] = useState([])
 	const [allTweets, setAllTweets] = useState([])
 	const handleChangeTab = useContext(ChangeTabContext)
-	const navigate = useNavigate()
-	const currentUserId = 14
+	const [userId, setUserId] = useState('')
+	const currentUserId = localStorage.getItem('userId')
 
 	useEffect(() => {
-		// tweetAPI.getCurrentUserTweet(currentUserId).then((response) => {
-		// 	const { data } = response
-		// 	setUserInfo(data)
-		// }).catch(() => {
-		// 	console.log('get123')
-		// })
-		tweetAPI
-			.getUserAllTweet(currentUserId)
-			.then((response) => {
-				const { data } = response
-				setAllTweets(data)
+		userAPI
+			.getCurrentUser()
+			.then((res) => {
+				const { data } = res
+				setUserId(data.id)
+
+				tweetAPI
+					.getUserAllTweet(currentUserId)
+					.then((response) => {
+						const { data } = response
+						setAllTweets(data)
+					})
+					.catch((error) => {
+						console.error(error)
+					})
 			})
-			.catch(() => {
-				console.log('get456')
+			.catch((error) => {
+				console.error(error)
 			})
 	}, [])
 
 	useEffect(() => {
-		if (pathname === '/user/self' || `/user/${currentUserId}`) {
+		if (pathname === '/user/self' || `/user/${userId}`) {
 			handleChangeStep(2)
 			handleChangeTab(1)
 		}

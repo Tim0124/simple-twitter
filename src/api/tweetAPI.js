@@ -24,14 +24,15 @@ export default {
 			},
 		})
 	},
-	getUserAllTweet(tweetId) {
-		return apiHelper.get(`/users/${tweetId}/tweets`, {
+	getUserAllTweet(userId) {
+		return apiHelper.get(`/users/${userId}/tweets`, {
 			headers: {
 				Authorization: `Bearer ${getToken()}`,
 			},
 		})
 	},
 	getUserReplies(userId) {
+		console.log(userId)
 		return apiHelper.get(`/users/${userId}/replied_tweets`, {
 			headers: {
 				Authorization: `Bearer ${getToken()}`,
