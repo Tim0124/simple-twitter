@@ -24,7 +24,6 @@ export default function ReplyListTweet({
 	const handleShowReplyModal = useContext(ShowReplyModalContext)
 	const [like, setLike] = useState(isSelfUserLike)
 	const [likeQuantity, setLikeQuantity] = useState(likesCount)
-	console.log(likeQuantity)
 
 	const handleLikeClick = () => {
 		setLike(!like)

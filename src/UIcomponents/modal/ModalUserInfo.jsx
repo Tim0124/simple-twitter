@@ -11,46 +11,107 @@ import ReactDOM from 'react-dom'
 import userAPI from 'api/userAPI'
 import { Link } from 'react-router-dom'
 import { EditModalContext, ShowEditModalContext } from 'context/ModalContext'
-
-const data = [
-	{
-		id: 1,
-		avatar: 'https://picsum.photos/300/300?text=2',
-		background: 'https://picsum.photos/300/300?text=1',
-		name: 'John Doe',
-		content:
-			'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.',
-	},
-]
+import { Toast } from 'heplers/helpers'
 
 export default function ModalUserInfo() {
-	const [name, setName] = useState('John Doe')
-	const [intro, setIntro] = useState(
-		'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.'
-	)
-	const [text, setText] = useState(
-		'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.'
-	)
 	const portalElement = document.getElementById('modal-root')
 	const ShowEditModal = useContext(EditModalContext)
 	const handleEditModal = useContext(ShowEditModalContext)
 	const [userData, setUserDate] = useState([])
+	const [userId, setUserId] = useState('')
+	const [avatar, setAvatar] = useState('')
+	const [backgroundImage, setBackground] = useState('')
+	const [name, setName] = useState('')
+	const [introduction, setIntroduction] = useState('')
+	const [inputError, setInputError] = useState(false)
 
 	useEffect(() => {
 		userAPI.getCurrentUser().then((res) => {
 			const { data } = res
+			if (res.status !== 200) {
+				throw new Error(data.message)
+			}
 			setUserDate(data)
+			setUserId(data.id)
+			setName(data.name)
+			setAvatar(data.avatar)
+			setIntroduction(data.introduction ? data.introduction : '')
+			setBackground(data.backgroundImage)
 		})
 	}, [])
 
 	const handleNameChange = (e) => {
 		setName(e.target.value)
 	}
-	const handleIntroChange = (e) => {
-		setIntro(e.target.value)
+	const handleIntroductionChange = (e) => {
+		setIntroduction(e.target.value)
 	}
-	const handleTextChange = (e) => {
-		setText(e.target.value)
+
+	const handleBackgroundChange = (e) => {
+		const { files } = e.target
+		if (files.length === 0) {
+			return
+		} else {
+			const imageURL = window.URL.createObjectURL(files[0])
+			console.log('image', imageURL)
+			setBackground(imageURL)
+		}
+	}
+
+	const handleAvatarChange = (e) => {
+		const { files } = e.target
+		if (files.length === 0) {
+			return
+		} else {
+			const imageURL = window.URL.createObjectURL(files[0])
+			setAvatar(imageURL)
+		}
+	}
+
+	const handleChanelClick = () => {
+		setBackground('')
+		setBackground(userData.backgroundImage)
+	}
+
+	const handleSubmit = (e) => {
+		e.preventDefault()
+		if (name.trim().length === 0) {
+			setInputError(true)
+			Toast.fire({
+				icon: 'error',
+				title: '內容不可空白',
+			})
+		}
+		if (introduction.trim().length === 0) {
+			setInputError(true)
+			Toast.fire({
+				icon: 'error',
+				title: '內容不可空白',
+			})
+		}
+		if (introduction.trim().length > 160) {
+			setInputError(true)
+			Toast.fire({
+				icon: 'error',
+				title: '自我介紹不可超過160字',
+			})
+		}
+		const form = e.target
+		const formData = new FormData(form)
+		formData.append('avatar', avatar)
+		formData.append('backgroundImage', backgroundImage)
+		formData.append('introduction', introduction)
+		formData.append('name', name)
+		console.log(formData)
+		userAPI
+			.putUserEdit(userId, formData, introduction)
+			.then((res) => {
+				const { data } = res
+				console.log(data)
+			})
+			.catch((error) => {
+				console.error(error)
+			})
 	}
 
 	return (
@@ -61,7 +122,10 @@ export default function ModalUserInfo() {
 					style={{ display: ShowEditModal ? 'block' : 'none' }}
 				>
 					<ModalBlackDrop onClick={handleEditModal} />
-					<form className={`${style.userInfoMdContainer}`}>
+					<form
+						onSubmit={(e) => handleSubmit(e)}
+						className={`${style.userInfoMdContainer}`}
+					>
 						<header className={`${style.userInfoMdHeader}`}>
 							<nav className={`${style.userInfoMdNavbar}`}>
 								<div className={`${style.userInfoMdTitle}`}>
@@ -98,13 +162,16 @@ export default function ModalUserInfo() {
 								>
 									<WhiteCamera />
 								</label>
-								<div className={`${style.userInfoMdWhite}`}>
+								<div
+									className={`${style.userInfoMdWhite}`}
+									onClick={handleChanelClick}
+								>
 									<WhiteX />
 								</div>
 							</div>
 							<div className={`${style.userInfoMdBackground}`}>
 								<img
-									src={userData?.backgroundImage}
+									src={backgroundImage}
 									className={`${style.userInfoMdCardImg}`}
 									alt=''
 								/>
@@ -112,7 +179,7 @@ export default function ModalUserInfo() {
 
 							<div className={`${style.userInfoMdAvatar}`}>
 								<img
-									src={userData?.avatar}
+									src={avatar}
 									className={`${style.userInfoMdImgAvatar}`}
 									alt=''
 								/>
@@ -130,17 +197,19 @@ export default function ModalUserInfo() {
 							<div className={`${style.userInfoInputName}`}>
 								<Input
 									label='名稱'
-									value={userData?.name}
+									value={name}
 									onChange={handleNameChange}
+									style={{ border: inputError ? '1px solid red' : 'none' }}
 								/>
-								<p className={`${style.userInfoInputText}`}>8/50</p>
+
+								<p className={`${style.userInfoInputText}`}>{name.length}/50</p>
 							</div>
 							<div className={`${style.userInfoInputContent}`}>
 								<div className={`${style.userInfoInput}`}>
 									<Input
 										label='自我介紹'
-										value={userData?.introduction}
-										onChange={handleIntroChange}
+										value={introduction}
+										onChange={handleIntroductionChange}
 									/>
 								</div>
 								<div>
@@ -148,23 +217,27 @@ export default function ModalUserInfo() {
 										<p className={`${style.userInfoLabelTitle}`}>自我介紹</p>
 										<textarea
 											className={`${style.userInfoTextArea}`}
-											value={userData?.introduction}
-											onChange={handleTextChange}
+											value={introduction}
+											onChange={handleIntroductionChange}
 										></textarea>
 									</label>
 								</div>
-								<p className={`${style.userInfoInputText}`}>0/160</p>
+								<p className={`${style.userInfoInputText}`}>
+									{introduction.length}/160
+								</p>
 							</div>
 						</div>
 						<input
 							type='file'
 							id='backgroundPhoto'
 							className={style.inputPhoto}
+							onChange={(e) => handleBackgroundChange(e)}
 						></input>
 						<input
 							type='file'
 							id='avatarPhoto'
 							className={style.inputPhoto}
+							onChange={(e) => handleAvatarChange(e)}
 						></input>
 					</form>
 				</div>,

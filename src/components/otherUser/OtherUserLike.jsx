@@ -21,7 +21,6 @@ export default function UserLike() {
 	useEffect(() => {
 		tweetAPI.getUserLikes(userId).then((response) => {
 			const { data } = response
-			console.log(data)
 			setLikesTweet(data)
 		})
 	}, [])

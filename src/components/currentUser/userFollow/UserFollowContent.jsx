@@ -20,11 +20,11 @@ export default function UserFollowerContent({
 		followingAPI
 			.postFollow(id)
 			.then((res) => {
-				setRender('true')
+				// setRender('true')
 			})
 			.catch((error) => {
 				console.error(error)
-				setRender('false')
+				// setRender('false')
 			})
 	}
 
@@ -32,11 +32,11 @@ export default function UserFollowerContent({
 		followingAPI
 			.deleteFollow(id)
 			.then((res) => {
-				setRender('false')
+				// setRender('false')
 			})
 			.catch((error) => {
 				console.error(error)
-				setRender('false')
+				// setRender('false')
 			})
 	}
 

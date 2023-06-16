@@ -9,34 +9,59 @@ import followingAPI from 'api/followingAPI'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { ChangeTabContext } from 'context/UserTabContext'
 import { GetRenderContext, SetRenderContext } from 'context/FollowContext'
+import userAPI from 'api/userAPI'
 
 export default function UserFollowing() {
 	const [following, setFollowing] = useState([])
 	const { pathname } = useLocation()
 	const handleChangeTab = useContext(ChangeTabContext)
-	const id = localStorage.getItem('userId')
 	const setRender = useContext(SetRenderContext)
 	const render = useContext(GetRenderContext)
+	const [userId, setUserId] = useState('')
+	const id = localStorage.getItem('userId')
 
 	useEffect(() => {
-		if (render === 'true' || render === 'init') {
-			followingAPI
-				.getFollowings(id)
-				.then((response) => {
-					const { data } = response
-					setFollowing(data)
-					setRender('false')
-				})
-				.catch((error) => {
-					console.error(error)
-					setRender('false')
-				})
-		}
-	}, [render])
-
-	useEffect(() => {
-		setRender('init')
+		userAPI
+			.getCurrentUser()
+			.then((res) => {
+				const { data } = res
+				setUserId(data.id)
+				followingAPI
+					.getFollowings(id)
+					.then((response) => {
+						const { data } = response
+						setFollowing(data)
+						// setRender('false')
+					})
+					.catch((error) => {
+						console.error(error)
+						// setRender('false')
+					})
+			})
+			.catch((error) => {
+				console.error(error)
+			})
 	}, [])
+
+	// useEffect(() => {
+	// 	// if (render === 'true' || render === 'init') {
+	// 		followingAPI
+	// 			.getFollowings(userId)
+	// 			.then((response) => {
+	// 				const { data } = response
+	// 				setFollowing(data)
+	// 				// setRender('false')
+	// 			})
+	// 			.catch((error) => {
+	// 				console.error(error)
+	// 				// setRender('false')
+	// 			})
+	// 	// }
+	// }, [])
+
+	// useEffect(() => {
+	// 	setRender('init')
+	// }, [])
 
 	useEffect(() => {
 		if (pathname === `/user/self/following/${id}`) {

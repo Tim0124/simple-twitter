@@ -1,14 +1,13 @@
 import Button from 'UIcomponents/buttons/Button'
 import Input from '../../UIcomponents/input/Input'
 import style from './SettingForm.module.scss'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
-import Sidebar from 'UIcomponents/layouts/Sidebar'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useContext, useEffect, useState } from 'react'
 import { ChangeStepContext } from 'context/SideBarContext'
 import { Toast } from 'heplers/helpers'
 import { setting } from 'api/auth'
-import authorization from 'api/authorization'
 import tweetAPI from 'api/tweetAPI'
+import userAPI from 'api/userAPI'
 
 export default function Setting() {
 	const [accountAPI, setAccountAPI] = useState([])
@@ -29,7 +28,7 @@ export default function Setting() {
 	const id = localStorage.getItem('userId')
 
 	useEffect(() => {
-		tweetAPI.getCurrentUserTweet(id).then((response) => {
+		userAPI.getCurrentUser().then((response) => {
 			const { data } = response
 			setAccountAPI(data)
 		})
