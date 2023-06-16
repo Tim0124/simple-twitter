@@ -21,6 +21,7 @@ export default function UserInfo({
 	following,
 	onHideUserInfo,
 	userId,
+	isFollow
 }) {
 	const render = useContext(GetRenderContext)
 	const [isNoti, setIsNoti] = useState(false)
@@ -57,7 +58,7 @@ export default function UserInfo({
 						</div>
 						<div className={style.buttonGroup}>
 							<div className={`${style.userInfoButton}`}>
-								{render ? (
+								{isFollow ? (
 									<Button size='middle' text='正在追隨' />
 								) : (
 									<Button size='white-exsmall' text='正在追隨' />

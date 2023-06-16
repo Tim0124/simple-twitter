@@ -24,12 +24,12 @@ export default function UserLikeContent({
 		if (like) {
 			setLikeQuantity(likeQuantity - 1)
 			likeAPI.unlike(id).then((response) => {
-				console.log(response)
+
 			})
 		} else {
 			setLikeQuantity(likeQuantity + 1)
 			likeAPI.like(id).then((response) => {
-				console.log(response)
+
 			})
 		}
 	}

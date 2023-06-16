@@ -6,7 +6,7 @@ export default {
 	postReplyTweet(tweetId, comment) {
 		return apiHelper.post(
 			`/tweets/${tweetId}/replies`,
-			{ comment },
+			{ comment},
 			{
 				headers: { Authorization: `Bearer ${getToken()}` },
 			}
