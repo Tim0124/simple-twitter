@@ -39,7 +39,6 @@ export default function ModalUserInfo() {
 			setBackground(data.backgroundImage)
 		})
 	}, [])
-	
 
 	const handleNameChange = (e) => {
 		setName(e.target.value)
