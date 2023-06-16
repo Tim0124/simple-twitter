@@ -2,8 +2,9 @@ import style from './OtherUserTweetsContent.module.scss'
 import { ReactComponent as Like } from '../../assets/redlike.svg'
 import { ReactComponent as Message } from '../../assets/message.svg'
 import { ReactComponent as Dislike } from '../../assets/unlike.svg'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import likeAPI from 'api/likeAPI'
+import { ShowReplyModalContext } from 'context/ModalContext'
 
 export default function UserTweetsContent({
 	id,
@@ -18,6 +19,7 @@ export default function UserTweetsContent({
 }) {
 	const [like, setLike] = useState(isSelfUserLike)
 	const [likeQuantity, setLikeQuantity] = useState(likeCount)
+	const handleShowReplyModal = useContext(ShowReplyModalContext)
 
 	const handleLikeClick = () => {
 		setLike(!like)
@@ -51,7 +53,11 @@ export default function UserTweetsContent({
 					<div className={`${style.mainTweetsContent}`}>{description}</div>
 					<div className={`${style.mainTweetsQuantityGroup}`}>
 						<div className={`${style.mainTweetsQuantity}`}>
-							<Message width='16px' height='16px' />
+							<Message
+								width='16px'
+								height='16px'
+								onClick={() => handleShowReplyModal(id)}
+							/>
 							<p>{repliesCount}</p>
 						</div>
 						<div className={`${style.mainTweetsLikeQuantity}`}>

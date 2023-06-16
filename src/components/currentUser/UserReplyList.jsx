@@ -16,7 +16,7 @@ export default function UserReplyList() {
 	const [replies, setReplies] = useState([])
 	const currentUserId = localStorage.getItem('userId')
 	const [userId, setUserId] = useState('')
-	const tweetId = useParams().tweet_id
+	const pageId = useParams().user_id
 
 	useEffect(() => {
 		userAPI
@@ -24,17 +24,6 @@ export default function UserReplyList() {
 			.then((res) => {
 				const { data } = res
 				setUserId(data.id)
-				console.log(data.id)
-
-				tweetAPI
-					.getUserReplies(currentUserId)
-					.then((response) => {
-						const { data } = response
-						setReplies(data)
-					})
-					.catch((error) => {
-						console.error(error)
-					})
 			})
 			.catch((error) => {
 				console.error(error)
@@ -42,7 +31,21 @@ export default function UserReplyList() {
 	}, [])
 
 	useEffect(() => {
-		if (pathname === `/user/self/reply/${userId}`) {
+		if (userId) {
+			tweetAPI
+				.getUserReplies(userId)
+				.then((response) => {
+					const { data } = response
+					setReplies(data)
+				})
+				.catch((error) => {
+					console.error(error)
+				})
+		}
+	}, [userId])
+
+	useEffect(() => {
+		if (pathname === `/user/self/reply/${pageId}`) {
 			handleChangeTab(2)
 		}
 	}, [pathname])
@@ -61,13 +64,14 @@ export default function UserReplyList() {
 			<section className={`${style.userReplyContent}`}>
 				{replies.map((reply) => (
 					<UserReplyContent
-						key={reply.id}
-						comment={reply.comment}
-						replyAccount={reply.tweetUser.account}
-						time={reply.relativeTimeFromNow}
-						name={reply.User.name}
-						avatar={reply.User.avatar}
-						account={reply.User.account}
+						key={reply?.id}
+						comment={reply?.comment}
+						replyAccount={reply?.tweetUser.account}
+						time={reply?.relativeTimeFromNow}
+						name={reply?.User.name}
+						avatar={reply?.User.avatar}
+						account={reply?.User.account}
+						tweetUserId={reply?.tweetUser.id}
 					/>
 				))}
 			</section>

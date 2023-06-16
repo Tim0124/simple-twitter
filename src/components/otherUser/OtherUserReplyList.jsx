@@ -50,6 +50,7 @@ export default function UserReplyList() {
 						name={reply?.User?.name}
 						avatar={reply?.User?.avatar}
 						account={reply?.User?.account}
+						tweetUserId={reply?.tweetUser?.id}
 					/>
 				))}
 			</section>

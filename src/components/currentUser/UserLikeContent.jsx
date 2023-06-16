@@ -2,8 +2,10 @@ import style from './UserLikeContent.module.scss'
 import { ReactComponent as Like } from '../../assets/redlike.svg'
 import { ReactComponent as Dislike } from '../../assets/unlike.svg'
 import { ReactComponent as Message } from '../../assets/message.svg'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import likeAPI from 'api/likeAPI'
+import { Link } from 'react-router-dom'
+import { ShowReplyModalContext } from 'context/ModalContext'
 
 export default function UserLikeContent({
 	id,
@@ -15,9 +17,11 @@ export default function UserLikeContent({
 	likesCount,
 	time,
 	isSelfUserLike,
+	tweetUserId,
 }) {
 	const [like, setLike] = useState(isSelfUserLike)
 	const [likeQuantity, setLikeQuantity] = useState(likesCount)
+	const handleShowReplyModal = useContext(ShowReplyModalContext)
 
 	const handleLikeClick = () => {
 		setLike(!like)
@@ -33,13 +37,15 @@ export default function UserLikeContent({
 	return (
 		<div className={`${style.mainTweetsContainer}`}>
 			<div className={`${style.mainTweetsList}`}>
-				<div className={`${style.mainTweetsLogo}`}>
-					<img
-						src={avatar}
-						className={`${style.mainTweetsImg}`}
-						alt={account}
-					/>
-				</div>
+				<Link to={`/user/other/${tweetUserId}`}>
+					<div className={`${style.mainTweetsLogo}`}>
+						<img
+							src={avatar}
+							className={`${style.mainTweetsImg}`}
+							alt={account}
+						/>
+					</div>
+				</Link>
 				<div className={`${style.mainTweetsInfo}`}>
 					<div className={`${style.mainTweetsSecInfo}`}>
 						<div className={`${style.mainTweetsNameGroup}`}>
@@ -56,7 +62,11 @@ export default function UserLikeContent({
 					<div className={`${style.mainTweetsContent}`}>{content}</div>
 					<div className={`${style.mainTweetsQuantityGroup}`}>
 						<div className={`${style.mainTweetsQuantity}`}>
-							<Message width='16px' height='16px' />
+							<Message
+								width='16px'
+								height='16px'
+								onClick={() => handleShowReplyModal(id)}
+							/>
 							<p>{repliesCount}</p>
 						</div>
 						<div className={`${style.mainTweetsLikeQuantity}`}>

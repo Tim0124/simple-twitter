@@ -3,6 +3,7 @@ import { ReactComponent as Like } from '../../assets/redlike.svg'
 import { ReactComponent as Message } from '../../assets/message.svg'
 import { ReactComponent as Dislike } from '../../assets/unlike.svg'
 import { useState } from 'react'
+import { Link, useParams } from 'react-router-dom'
 
 export default function UserReplyContent({
 	name,
@@ -11,6 +12,7 @@ export default function UserReplyContent({
 	comment,
 	time,
 	replyAccount,
+	tweetUserId,
 }) {
 	return (
 		<div className={`${style.userReplyContainer}`}>
@@ -37,7 +39,9 @@ export default function UserReplyContent({
 					</div>
 					<div className={`${style.replyListItemAccountGroup}`}>
 						<p className={`${style.replyListItemText}`}>回覆</p>
-						<p className={`${style.replyListItemAccount}`}>@{replyAccount}</p>
+						<Link to={`/user/other/${tweetUserId}`}>
+							<p className={`${style.replyListItemAccount}`}>@{replyAccount}</p>
+						</Link>
 					</div>
 					<div className={`${style.replyListItemContentGroup}`}>
 						<p className={`${style.replyListItemContentItem}`}>{comment}</p>

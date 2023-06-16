@@ -25,6 +25,7 @@ export default {
 		})
 	},
 	putUserEdit(id, formData) {
+		console.log(formData)
 		const headers = {
 			Authorization: `Bearer ${getToken()}`,
 			'Content-Type': 'multipart/form-data',

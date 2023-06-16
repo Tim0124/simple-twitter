@@ -17,6 +17,7 @@ export default function UserLike() {
 	const [likesTweet, setLikesTweet] = useState([])
 	const navigate = useNavigate()
 	const userId = useParams().user_id
+	console.log(likesTweet)
 
 	useEffect(() => {
 		tweetAPI.getUserLikes(userId).then((response) => {
@@ -44,8 +45,9 @@ export default function UserLike() {
 						content={like?.Tweet?.description}
 						time={like?.Tweet?.relativeTimeFromNow}
 						likesCount={like?.Tweet?.likesCount}
-						repliesCount={like?.repliesCount}
+						repliesCount={like?.Tweet?.repliesCount}
 						isSelfUserLike={like?.isSelfUserLike}
+						tweetUserId={like?.User?.id}
 					/>
 				))}
 			</section>

@@ -27,7 +27,7 @@ export default function UserTweets() {
 			const { data } = response
 			setOtherUser(data)
 		})
-	}, [])
+	}, [userId])
 
 	useEffect(() => {
 		if (pathname === `/user/other/${userId}`) {
