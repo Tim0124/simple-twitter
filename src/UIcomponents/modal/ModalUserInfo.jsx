@@ -103,8 +103,9 @@ export default function ModalUserInfo() {
 		formData.append('introduction', introduction)
 		formData.append('name', name)
 		console.log(formData)
+
 		userAPI
-			.putUserEdit(userId, formData, introduction)
+			.putUserEdit(userId, formData)
 			.then((res) => {
 				const { data } = res
 				console.log(data)
