@@ -102,7 +102,7 @@ export default function Register() {
 			}, 2000)
 		} else {
 			Toast.fire({
-				title: '註冊失敗！',
+				title: '修改失敗！',
 				timer: 1000,
 				icon: 'error',
 				showConfirmButton: false,
