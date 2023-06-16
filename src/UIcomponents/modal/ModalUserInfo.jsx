@@ -24,6 +24,7 @@ export default function ModalUserInfo() {
 	const [name, setName] = useState('')
 	const [introduction, setIntroduction] = useState('')
 	const [inputError, setInputError] = useState(false)
+	const [areaError, setAreaError] = useState(false)
 
 	useEffect(() => {
 		userAPI.getCurrentUser().then((res) => {
@@ -81,22 +82,25 @@ export default function ModalUserInfo() {
 				icon: 'error',
 				title: '內容不可空白',
 			})
+			return
 		}
 		if (introduction.trim().length === 0) {
-			setInputError(true)
+			setAreaError(true)
 			Toast.fire({
 				icon: 'error',
 				title: '內容不可空白',
 			})
+			return
 		}
 		if (introduction.trim().length > 160) {
-			setInputError(true)
+			setAreaError(true)
 			Toast.fire({
 				icon: 'error',
 				title: '自我介紹不可超過160字',
 			})
+			return
 		}
-		const form = e.target
+		const form = document.querySelector('form')
 		console.log(form)
 		const formData = new FormData(form)
 		console.log('大頭貼', avatar)
@@ -112,9 +116,18 @@ export default function ModalUserInfo() {
 			.then((res) => {
 				const { data } = res
 				console.log(res)
+				Toast.fire({
+					icon: 'success',
+					title: '儲存成功',
+				})
+			handleEditModal()
 			})
 			.catch((error) => {
 				console.error(error)
+				Toast.fire({
+				icon: 'error',
+				title: '儲存失敗，請聯絡管理員',
+			})
 			})
 	}
 
@@ -133,11 +146,8 @@ export default function ModalUserInfo() {
 						<header className={`${style.userInfoMdHeader}`}>
 							<nav className={`${style.userInfoMdNavbar}`}>
 								<div className={`${style.userInfoMdTitle}`}>
-									<Link to='/user/self'>
-										<h1
-											className={`${style.userInfoMdArrow}`}
-											onClick={handleEditModal}
-										>
+									<Link to='/user/self' className={`${style.userInfoMdArrow}`}>
+										<h1 onClick={handleEditModal}>
 											<Arrow />
 										</h1>
 									</Link>
@@ -152,8 +162,8 @@ export default function ModalUserInfo() {
 									<h1>編輯個人資料</h1>
 								</div>
 								<div className={`${style.userInfoMdButtonGroup}`}>
-									<div className={`${style.userInfoMdButton}`}>
-										<Button size='middle' text='儲存' />
+									<div className={`${style.userInfoMdButton}`} >
+										<Button size='middle' text='儲存' onClick={(e) =>handleSubmit(e)}/>
 									</div>
 								</div>
 							</nav>
@@ -203,10 +213,13 @@ export default function ModalUserInfo() {
 									label='名稱'
 									value={name}
 									onChange={handleNameChange}
-									style={{ border: inputError ? '1px solid red' : 'none' }}
 								/>
-
-								<p className={`${style.userInfoInputText}`}>{name.length}/50</p>
+								<div className={style.userInfoNameGroup}>
+									<p className={`${style.userInfoInputNameError}`}>
+										內容不可空白</p>
+									<p className={`${style.userInfoInputText}`}>{name.length}/50</p>
+								</div>
+								
 							</div>
 							<div className={`${style.userInfoInputContent}`}>
 								<div className={`${style.userInfoInput}`}>
@@ -214,6 +227,7 @@ export default function ModalUserInfo() {
 										label='自我介紹'
 										value={introduction}
 										onChange={handleIntroductionChange}
+										
 									/>
 								</div>
 								<div>
@@ -223,12 +237,19 @@ export default function ModalUserInfo() {
 											className={`${style.userInfoTextArea}`}
 											value={introduction}
 											onChange={handleIntroductionChange}
+											style={{borderBottom : areaError ? "2px solid #FC5A5A" : '2px solid #657786'}}
 										></textarea>
 									</label>
 								</div>
+								<div className={style.userInfoTextGroup}>
+									<p className={`${style.userInfoInputTextError}`}>
+									內容不可空白
+									</p>
 								<p className={`${style.userInfoInputText}`}>
 									{introduction.length}/160
 								</p>
+								</div>
+								
 							</div>
 						</div>
 						<input
