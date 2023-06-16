@@ -50,6 +50,7 @@ export default function Layout() {
 				/>
 			</div>
 			<OtherUserInfo
+				id={userInfo?.id}
 				key={userInfo?.id}
 				name={userInfo?.name}
 				account={userInfo?.account}
@@ -60,7 +61,7 @@ export default function Layout() {
 				following={userInfo?.followingsCount}
 				onHideUserInfo={isFollowPage ? 'hideUserInfo' : ''}
 				userId={userInfo?.id}
-				isFollow={userInfo?.isSelfUserFollow}
+				isUserFollowed={userInfo?.isSelfUserFollow}
 			/>
 			{pathname.includes(`/user/other/following/${userId}`) ||
 			pathname.includes(`/user/other/follower/${userId}`) ? (

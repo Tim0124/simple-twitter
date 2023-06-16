@@ -9,9 +9,10 @@ import { ReactComponent as Noti } from '../../assets/orangenoti.svg'
 import { ReactComponent as CheckNoti } from '../../assets/chekcnoti.svg'
 import { ReactComponent as WhiteNoti } from '../../assets/white_btn_notfi.svg'
 import { ReactComponent as OragneNoti } from '../../assets/btn_notfi.svg'
-import { GetRenderContext } from 'context/FollowContext'
+import { GetRenderContext, SetRenderContext } from 'context/FollowContext'
 
 export default function UserInfo({
+	id,
 	name,
 	account,
 	avatar,
@@ -21,10 +22,38 @@ export default function UserInfo({
 	following,
 	onHideUserInfo,
 	userId,
-	isFollow,
+	isUserFollowed,
 }) {
 	const render = useContext(GetRenderContext)
+	const [follow, setFollow] = useState(isUserFollowed)
+	const setRender = useContext(SetRenderContext)
 	const [isNoti, setIsNoti] = useState(false)
+
+	const handleFollowClick = () => {
+		setFollow(true)
+		followingAPI
+			.postFollow(id)
+			.then((response) => {
+				setRender('true')
+			})
+			.catch((error) => {
+				console.error('Error:', error)
+				setRender('false')
+			})
+	}
+
+	const handleUnFollowClick = () => {
+		setFollow(false)
+		followingAPI
+			.deleteFollow(id)
+			.then((response) => {
+				setRender('false')
+			})
+			.catch((error) => {
+				console.error('Error:', error)
+				setRender('false')
+			})
+	}
 
 	const handleNotiClick = () => {
 		setIsNoti(!isNoti)
@@ -58,10 +87,22 @@ export default function UserInfo({
 						</div>
 						<div className={style.buttonGroup}>
 							<div className={`${style.userInfoButton}`}>
-								{isFollow ? (
-									<Button size='middle' text='正在追隨' />
+								{follow ? (
+									<div className={`${style.popularUserfollowing}`}>
+										<Button
+											size='middle'
+											text='正在跟隨'
+											onClick={handleUnFollowClick}
+										/>
+									</div>
 								) : (
-									<Button size='white-exsmall' text='跟隨' />
+									<div className={`${style.popularUserFollower}`}>
+										<Button
+											size='white-exsmall'
+											text='跟隨'
+											onClick={handleFollowClick}
+										/>
+									</div>
 								)}
 							</div>
 						</div>

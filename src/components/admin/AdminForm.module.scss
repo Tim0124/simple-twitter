@@ -48,9 +48,13 @@
 }
 
 .errorMessage {
-	color: red;
+	color: #fc5a5a;
 	display: flex;
 	flex-direction: column;
+}
+
+.adminFirstButton {
+	height: 46px;
 }
 
 @media screen and (min-width: 991px) {

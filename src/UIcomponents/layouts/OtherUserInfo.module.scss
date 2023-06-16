@@ -136,6 +136,16 @@
 	cursor: pointer;
 }
 
+.popularUserfollowing {
+	height: 40px;
+	width: 96px;
+}
+
+.popularUserFollower {
+	height: 40px;
+	width: 64px;
+}
+
 @media screen and (min-width: 991px) {
 	.userInfoBackground {
 		height: 200px;

@@ -101,7 +101,9 @@ function AdminForm() {
 					)}
 				</div>
 			</div>
-			<Button text='登入' size='large' onClick={handleLoginClick} />
+			<div className={`${style.adminFirstButton}`}>
+				<Button text='登入' size='large' onClick={handleLoginClick} />
+			</div>
 			<div className={`${style.adminButtonGroup}`}>
 				<div className={`${style.adminButtonSecGroup}`}>
 					<Link to='/login'>
