@@ -39,6 +39,7 @@ export default function ModalUserInfo() {
 			setBackground(data.backgroundImage)
 		})
 	}, [])
+	
 
 	const handleNameChange = (e) => {
 		setName(e.target.value)
@@ -103,8 +104,9 @@ export default function ModalUserInfo() {
 		formData.append('introduction', introduction)
 		formData.append('name', name)
 		console.log(formData)
+
 		userAPI
-			.putUserEdit(userId, formData, introduction)
+			.putUserEdit(userId, formData)
 			.then((res) => {
 				const { data } = res
 				console.log(data)
