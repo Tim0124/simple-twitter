@@ -47,7 +47,6 @@ export default function Register() {
 			setTimeout(() => {
 				setEmailError('')
 			}, 2000)
-
 		} else if (password.trim().length === 0) {
 			setPasswordError('密碼欄位不能為空白')
 			setTimeout(() => {

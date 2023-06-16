@@ -58,11 +58,12 @@ export const register = async ({
 		const message = data.message
 		if (success) {
 			return { success: true, ...data.data }
-		} else if (message === 'Error: account 已重複註冊！') {}
+		} else if (message === 'Error: account 已重複註冊！') {
+		}
 		return data
 	} catch (error) {
 		console.error('[Register Failed]', error)
-		const errorMessage = error.response.data.message;
+		const errorMessage = error.response.data.message
 		return { success: false, errorMessage }
 	}
 }
