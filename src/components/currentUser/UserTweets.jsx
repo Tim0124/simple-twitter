@@ -20,28 +20,28 @@ export default function UserTweets() {
 	const handleChangeTab = useContext(ChangeTabContext)
 	const [userId, setUserId] = useState('')
 	const currentUserId = localStorage.getItem('userId')
-	
+
 	useEffect(() => {
-    userAPI.getCurrentUser()
-      .then((res) => {
-        const { data } = res
-        setUserId(data.id)
+		userAPI
+			.getCurrentUser()
+			.then((res) => {
+				const { data } = res
+				setUserId(data.id)
 
-        tweetAPI.getUserAllTweet(currentUserId)
-          .then((response) => {
-            const { data } = response
-            setAllTweets(data)
-          })
-          .catch((error) => {
-            console.error(error)
-          })
-      })
-      .catch((error) => {
-        console.error(error)
-      })
-  }, [])
-
-
+				tweetAPI
+					.getUserAllTweet(currentUserId)
+					.then((response) => {
+						const { data } = response
+						setAllTweets(data)
+					})
+					.catch((error) => {
+						console.error(error)
+					})
+			})
+			.catch((error) => {
+				console.error(error)
+			})
+	}, [])
 
 	useEffect(() => {
 		if (pathname === '/user/self' || `/user/${userId}`) {

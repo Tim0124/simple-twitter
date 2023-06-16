@@ -20,7 +20,6 @@ export default function Layout() {
 		pathname.includes(`/user/self/following/${userId}`) ||
 		pathname.includes(`/user/self/follower/${userId}`)
 
-
 	useEffect(() => {
 		userAPI
 			.getCurrentUser()
@@ -63,7 +62,7 @@ export default function Layout() {
 			)}
 
 			<div className={`${style.UserLayoutMainContainer}`}>
-				<Outlet userId={userId}/>
+				<Outlet userId={userId} />
 			</div>
 			{useTweetModal && <ModalPostTweet />}
 			{ShowEditModal && <ModalUserInfo />}

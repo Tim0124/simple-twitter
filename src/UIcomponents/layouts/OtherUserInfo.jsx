@@ -21,7 +21,7 @@ export default function UserInfo({
 	following,
 	onHideUserInfo,
 	userId,
-	isFollow
+	isFollow,
 }) {
 	const render = useContext(GetRenderContext)
 	const [isNoti, setIsNoti] = useState(false)

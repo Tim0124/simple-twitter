@@ -17,26 +17,29 @@ export default function UserReplyList() {
 	const currentUserId = localStorage.getItem('userId')
 	const [userId, setUserId] = useState('')
 	const tweetId = useParams().tweet_id
-	
-	
+
 	useEffect(() => {
-		userAPI.getCurrentUser().then((res) => {
-			const { data } = res
-			setUserId(data.id)
+		userAPI
+			.getCurrentUser()
+			.then((res) => {
+				const { data } = res
+				setUserId(data.id)
 				console.log(data.id)
-		
-				tweetAPI.getUserReplies(currentUserId).then((response) => {
-					const { data } = response
-					setReplies(data)
-				})
-				.catch((error) => {
-					console.error(error)
-				})
-		})
-		.catch((error) => {
-			console.error(error)
-		})
-	},[])
+
+				tweetAPI
+					.getUserReplies(currentUserId)
+					.then((response) => {
+						const { data } = response
+						setReplies(data)
+					})
+					.catch((error) => {
+						console.error(error)
+					})
+			})
+			.catch((error) => {
+				console.error(error)
+			})
+	}, [])
 
 	useEffect(() => {
 		if (pathname === `/user/self/reply/${userId}`) {

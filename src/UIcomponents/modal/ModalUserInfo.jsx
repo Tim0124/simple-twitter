@@ -20,15 +20,15 @@ export default function ModalUserInfo() {
 	const [userData, setUserDate] = useState([])
 	const [userId, setUserId] = useState('')
 	const [avatar, setAvatar] = useState('')
-	const [backgroundImage , setBackground] = useState('')
+	const [backgroundImage, setBackground] = useState('')
 	const [name, setName] = useState('')
 	const [introduction, setIntroduction] = useState('')
 	const [inputError, setInputError] = useState(false)
-	
+
 	useEffect(() => {
 		userAPI.getCurrentUser().then((res) => {
 			const { data } = res
-			if(res.status !== 200) {
+			if (res.status !== 200) {
 				throw new Error(data.message)
 			}
 			setUserDate(data)
@@ -49,21 +49,20 @@ export default function ModalUserInfo() {
 
 	const handleBackgroundChange = (e) => {
 		const { files } = e.target
-		if(files.length === 0) {
+		if (files.length === 0) {
 			return
-		}else {
+		} else {
 			const imageURL = window.URL.createObjectURL(files[0])
 			console.log('image', imageURL)
 			setBackground(imageURL)
-
 		}
 	}
 
 	const handleAvatarChange = (e) => {
 		const { files } = e.target
-		if(files.length === 0 ) {
+		if (files.length === 0) {
 			return
-		}else {
+		} else {
 			const imageURL = window.URL.createObjectURL(files[0])
 			setAvatar(imageURL)
 		}
@@ -76,42 +75,44 @@ export default function ModalUserInfo() {
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
-		if(name.trim().length === 0) {
+		if (name.trim().length === 0) {
 			setInputError(true)
 			Toast.fire({
-				icon:'error',
-				title:'內容不可空白'
+				icon: 'error',
+				title: '內容不可空白',
 			})
 		}
-		if(introduction.trim().length === 0) {
+		if (introduction.trim().length === 0) {
 			setInputError(true)
 			Toast.fire({
-				icon:'error',
-				title:'內容不可空白'
+				icon: 'error',
+				title: '內容不可空白',
 			})
 		}
-		if(introduction.trim().length > 160) {
+		if (introduction.trim().length > 160) {
 			setInputError(true)
 			Toast.fire({
-				icon:'error',
-				title:'自我介紹不可超過160字'
+				icon: 'error',
+				title: '自我介紹不可超過160字',
 			})
 		}
 		const form = e.target
 		const formData = new FormData(form)
-		formData.append('avatar',avatar)
+		formData.append('avatar', avatar)
 		formData.append('backgroundImage', backgroundImage)
 		formData.append('introduction', introduction)
 		formData.append('name', name)
 		console.log(formData)
-		userAPI.putUserEdit(userId, formData,introduction).then((res) => {
-			const {data} = res
-			console.log(data)
-		}).catch((error) => {
-			console.error(error)
-		})
+		userAPI
+			.putUserEdit(userId, formData, introduction)
+			.then((res) => {
+				const { data } = res
+				console.log(data)
+			})
+			.catch((error) => {
+				console.error(error)
+			})
 	}
-
 
 	return (
 		<>
@@ -121,7 +122,10 @@ export default function ModalUserInfo() {
 					style={{ display: ShowEditModal ? 'block' : 'none' }}
 				>
 					<ModalBlackDrop onClick={handleEditModal} />
-					<form onSubmit={(e) => handleSubmit(e)} className={`${style.userInfoMdContainer}`}>
+					<form
+						onSubmit={(e) => handleSubmit(e)}
+						className={`${style.userInfoMdContainer}`}
+					>
 						<header className={`${style.userInfoMdHeader}`}>
 							<nav className={`${style.userInfoMdNavbar}`}>
 								<div className={`${style.userInfoMdTitle}`}>
@@ -158,7 +162,10 @@ export default function ModalUserInfo() {
 								>
 									<WhiteCamera />
 								</label>
-								<div className={`${style.userInfoMdWhite}`} onClick={handleChanelClick}>
+								<div
+									className={`${style.userInfoMdWhite}`}
+									onClick={handleChanelClick}
+								>
 									<WhiteX />
 								</div>
 							</div>
@@ -192,9 +199,9 @@ export default function ModalUserInfo() {
 									label='名稱'
 									value={name}
 									onChange={handleNameChange}
-									style={{border: inputError ? '1px solid red' : 'none'}}
+									style={{ border: inputError ? '1px solid red' : 'none' }}
 								/>
-								
+
 								<p className={`${style.userInfoInputText}`}>{name.length}/50</p>
 							</div>
 							<div className={`${style.userInfoInputContent}`}>
@@ -215,7 +222,9 @@ export default function ModalUserInfo() {
 										></textarea>
 									</label>
 								</div>
-								<p className={`${style.userInfoInputText}`}>{introduction.length}/160</p>
+								<p className={`${style.userInfoInputText}`}>
+									{introduction.length}/160
+								</p>
 							</div>
 						</div>
 						<input

@@ -25,7 +25,7 @@ export default function Layout() {
 	const render = useContext(GetRenderContext)
 	const setRender = useContext(SetRenderContext)
 	console.log(userInfo)
-	
+
 	useEffect(() => {
 		if (userId === localId) {
 			navigate('/user/self')

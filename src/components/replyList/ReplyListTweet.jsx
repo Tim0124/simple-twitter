@@ -25,7 +25,6 @@ export default function ReplyListTweet({
 	const [like, setLike] = useState(isSelfUserLike)
 	const [likeQuantity, setLikeQuantity] = useState(likesCount)
 
-
 	const handleLikeClick = () => {
 		setLike(!like)
 		if (!like) {

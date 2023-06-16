@@ -21,24 +21,27 @@ export default function UserFollowing() {
 	const id = localStorage.getItem('userId')
 
 	useEffect(() => {
-		userAPI.getCurrentUser().then((res) => {
-			const {data} = res
-			setUserId(data.id)
+		userAPI
+			.getCurrentUser()
+			.then((res) => {
+				const { data } = res
+				setUserId(data.id)
 				followingAPI
-				.getFollowings(id)
-				.then((response) => {
-					const { data } = response
-					setFollowing(data)
-					// setRender('false')
-				})
-				.catch((error) => {
-					console.error(error)
-					// setRender('false')
-				})
-		}).catch((error) => {
-			console.error(error)
-		})
-	},[])
+					.getFollowings(id)
+					.then((response) => {
+						const { data } = response
+						setFollowing(data)
+						// setRender('false')
+					})
+					.catch((error) => {
+						console.error(error)
+						// setRender('false')
+					})
+			})
+			.catch((error) => {
+				console.error(error)
+			})
+	}, [])
 
 	// useEffect(() => {
 	// 	// if (render === 'true' || render === 'init') {

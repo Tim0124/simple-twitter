@@ -30,9 +30,9 @@ export default {
 			'Content-Type': 'multipart/form-data',
 		}
 		return axios({
-			method:'put',
-			baseURL:'https://gentle-temple-56514.herokuapp.com/api',
-			url:`/users/${id}`,
+			method: 'put',
+			baseURL: 'https://gentle-temple-56514.herokuapp.com/api',
+			url: `/users/${id}`,
 			data: formData,
 			headers: headers,
 		})
@@ -44,29 +44,28 @@ export default {
 	// 	})
 	// },
 	// putUserEdit(id, formData) {
-  // const params = new URLSearchParams();
-  // params.append('formData', formData);
+	// const params = new URLSearchParams();
+	// params.append('formData', formData);
 
-  // return apiHelper.put(`/users/${id}`, params.toString(), {
-  //   headers: {
-  //     'Authorization': `Bearer ${getToken()}`,
-  //     'Content-Type': 'application/x-www-form-urlencoded',
+	// return apiHelper.put(`/users/${id}`, params.toString(), {
+	//   headers: {
+	//     'Authorization': `Bearer ${getToken()}`,
+	//     'Content-Type': 'application/x-www-form-urlencoded',
 	// 		},
 	// 	});
 	// },
-// 	putUserEdit(id, formData) {
-//   const jsonData = {
-//     formData: formData,
-//   };
+	// 	putUserEdit(id, formData) {
+	//   const jsonData = {
+	//     formData: formData,
+	//   };
 
-//   return apiHelper.put(`/users/${id}`, jsonData, {
-//     headers: {
-//       'Authorization': `Bearer ${getToken()}`,
-//       'Content-Type': 'multipart/form-data',
-//     },
-//   });
-// }
-
+	//   return apiHelper.put(`/users/${id}`, jsonData, {
+	//     headers: {
+	//       'Authorization': `Bearer ${getToken()}`,
+	//       'Content-Type': 'multipart/form-data',
+	//     },
+	//   });
+	// }
 }
 
 //拿到頁數跟categoryID

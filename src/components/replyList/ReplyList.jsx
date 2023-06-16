@@ -22,7 +22,6 @@ export default function ReplyList() {
 	const handleShowReplyModal = useContext(ShowReplyModalContext)
 	const tweetId = useParams().tweet_id
 	const navigate = useNavigate()
-	
 
 	useEffect(() => {
 		tweetAPI.getTweet(tweetId).then((response) => {
