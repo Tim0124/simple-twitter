@@ -40,6 +40,12 @@
 	color: #0062ff;
 }
 
+.errorMessage {
+	color: red;
+	display: flex;
+	flex-direction: column;
+}
+
 @media screen and (min-width: 991px) {
 	.registerWrapper {
 		width: 356px;

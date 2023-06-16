@@ -50,7 +50,6 @@ export default function PopularUserList() {
 						account={follower.account}
 						avatar={follower.avatar}
 						isUserFollowed={follower.isUserFollowed}
-						// followingId={follower.followingId}
 					/>
 				))}
 			</div>
