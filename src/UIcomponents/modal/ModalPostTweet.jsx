@@ -17,7 +17,7 @@ export default function ModalPostTweet({ onClick, onHiddenClick }) {
 	const ShowModal = useContext(TweetModalContext)
 	const ModalClick = useContext(ShowTweetModalContext)
 	const userId = localStorage.getItem('userId')
-	const [tweetError, setTweetError ] = useState(false)
+	const [tweetError, setTweetError] = useState(false)
 
 	const handleInputChange = (e) => {
 		setTweet(e.target.value)
@@ -33,7 +33,7 @@ export default function ModalPostTweet({ onClick, onHiddenClick }) {
 			})
 			setTimeout(() => {
 				setShowError(false)
-			},2000)
+			}, 2000)
 			return
 		}
 		if (tweet.trim().length > 140) {
@@ -95,22 +95,22 @@ export default function ModalPostTweet({ onClick, onHiddenClick }) {
 						onSubmit={handleTweetSubmit}
 					/>
 					<div className={`${style.footerButtonItem}`}>
-						{tweet.trim().length === 0 ?
-						<footer
-							className={`${style.footerText}`}
-							style={{ display: showError ? 'block' : 'none' }}
-						>
-							<p>內容不可空白</p>
-						</footer>
-						:
-						<footer
-							className={`${style.footerText}`}
-							style={{ display: showError ? 'block' : 'none' }}
-						>
-							<p>字數不可超過140字</p>
-						</footer>
-					}
-						
+						{tweet.trim().length === 0 ? (
+							<footer
+								className={`${style.footerText}`}
+								style={{ display: showError ? 'block' : 'none' }}
+							>
+								<p>內容不可空白</p>
+							</footer>
+						) : (
+							<footer
+								className={`${style.footerText}`}
+								style={{ display: showError ? 'block' : 'none' }}
+							>
+								<p>字數不可超過140字</p>
+							</footer>
+						)}
+
 						<div
 							className={`${style.footerButton}`}
 							onClick={handleTweetSubmit}
