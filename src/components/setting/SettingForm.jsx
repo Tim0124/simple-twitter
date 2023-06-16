@@ -152,7 +152,7 @@ export default function Setting() {
 					showConfirmButton: false,
 				})
 			}, 2000)
-		} 
+		}
 		// else {
 		// 	Toast.fire({
 		// 		title: '修改失敗！',
