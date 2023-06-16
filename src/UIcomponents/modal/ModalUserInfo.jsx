@@ -120,14 +120,14 @@ export default function ModalUserInfo() {
 					icon: 'success',
 					title: '儲存成功',
 				})
-			handleEditModal()
+				handleEditModal()
 			})
 			.catch((error) => {
 				console.error(error)
 				Toast.fire({
-				icon: 'error',
-				title: '儲存失敗，請聯絡管理員',
-			})
+					icon: 'error',
+					title: '儲存失敗，請聯絡管理員',
+				})
 			})
 	}
 
@@ -162,8 +162,12 @@ export default function ModalUserInfo() {
 									<h1>編輯個人資料</h1>
 								</div>
 								<div className={`${style.userInfoMdButtonGroup}`}>
-									<div className={`${style.userInfoMdButton}`} >
-										<Button size='middle' text='儲存' onClick={(e) =>handleSubmit(e)}/>
+									<div className={`${style.userInfoMdButton}`}>
+										<Button
+											size='middle'
+											text='儲存'
+											onClick={(e) => handleSubmit(e)}
+										/>
 									</div>
 								</div>
 							</nav>
@@ -209,17 +213,15 @@ export default function ModalUserInfo() {
 						</div>
 						<div className={`${style.userInfoInputArea}`}>
 							<div className={`${style.userInfoInputName}`}>
-								<Input
-									label='名稱'
-									value={name}
-									onChange={handleNameChange}
-								/>
+								<Input label='名稱' value={name} onChange={handleNameChange} />
 								<div className={style.userInfoNameGroup}>
 									<p className={`${style.userInfoInputNameError}`}>
-										內容不可空白</p>
-									<p className={`${style.userInfoInputText}`}>{name.length}/50</p>
+										內容不可空白
+									</p>
+									<p className={`${style.userInfoInputText}`}>
+										{name.length}/50
+									</p>
 								</div>
-								
 							</div>
 							<div className={`${style.userInfoInputContent}`}>
 								<div className={`${style.userInfoInput}`}>
@@ -227,7 +229,6 @@ export default function ModalUserInfo() {
 										label='自我介紹'
 										value={introduction}
 										onChange={handleIntroductionChange}
-										
 									/>
 								</div>
 								<div>
@@ -237,19 +238,22 @@ export default function ModalUserInfo() {
 											className={`${style.userInfoTextArea}`}
 											value={introduction}
 											onChange={handleIntroductionChange}
-											style={{borderBottom : areaError ? "2px solid #FC5A5A" : '2px solid #657786'}}
+											style={{
+												borderBottom: areaError
+													? '2px solid #FC5A5A'
+													: '2px solid #657786',
+											}}
 										></textarea>
 									</label>
 								</div>
 								<div className={style.userInfoTextGroup}>
 									<p className={`${style.userInfoInputTextError}`}>
-									內容不可空白
+										內容不可空白
 									</p>
-								<p className={`${style.userInfoInputText}`}>
-									{introduction.length}/160
-								</p>
+									<p className={`${style.userInfoInputText}`}>
+										{introduction.length}/160
+									</p>
 								</div>
-								
 							</div>
 						</div>
 						<input
