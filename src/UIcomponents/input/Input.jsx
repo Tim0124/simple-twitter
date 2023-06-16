@@ -8,6 +8,7 @@ export default function Input({
 	placeholder,
 	onChange,
 	isError,
+	name,
 }) {
 	return (
 		<label className={style.inputContainer}>
@@ -18,6 +19,7 @@ export default function Input({
 				value={value || ''}
 				placeholder={placeholder || ''}
 				onChange={onChange}
+				name={name}
 			></input>
 		</label>
 	)

@@ -26,7 +26,7 @@ export default function UserReplyContent({
 							<div className={`${style.userReplyName}`}>{name}</div>
 							<div className={`${style.userReplySmallAccount}`}>
 								<div className={`${style.userReplyAccount}`}>
-									<p>{account}</p>
+									<p>@{account}</p>
 								</div>
 								<div className={`${style.userReplyDot}`}>
 									<p>・</p>

@@ -25,20 +25,26 @@ export default function ModalUserInfo() {
 	const [introduction, setIntroduction] = useState('')
 	const [inputError, setInputError] = useState(false)
 	const [areaError, setAreaError] = useState(false)
+	const [overText, setOverText] = useState(false)
 
 	useEffect(() => {
-		userAPI.getCurrentUser().then((res) => {
-			const { data } = res
-			if (res.status !== 200) {
-				throw new Error(data.message)
-			}
-			setUserDate(data)
-			setUserId(data.id)
-			setName(data.name)
-			setAvatar(data.avatar)
-			setIntroduction(data.introduction ? data.introduction : '')
-			setBackground(data.backgroundImage)
-		})
+		userAPI
+			.getCurrentUser()
+			.then((res) => {
+				const { data } = res
+				if (res.status !== 200) {
+					throw new Error(data.message)
+				}
+				setUserDate(data)
+				setUserId(data.id)
+				setName(data.name)
+				setAvatar(data.avatar)
+				setIntroduction(data.introduction ? data.introduction : '')
+				setBackground(data.backgroundImage)
+			})
+			.catch((error) => {
+				console.error(error)
+			})
 	}, [])
 
 	const handleNameChange = (e) => {
@@ -102,29 +108,23 @@ export default function ModalUserInfo() {
 		}
 		if (introduction.trim().length > 160) {
 			setAreaError(true)
+			setTimeout(() => {
+				setAreaError(false)
+			}, 2000)
 			Toast.fire({
 				icon: 'error',
 				title: '字數超出上限！',
 			})
 			return
 		}
-		const form = document.querySelector('form')
-		console.log(form)
+		const form = e.target
 		const formData = new FormData(form)
-		console.log('大頭貼', avatar)
-		// formData.append('backgroundImage', document.getElementById('backgroundPhoto').files[0])
-		// formData.append('avatarPhoto', document.getElementById('avatarPhoto').files[0])
-		formData.append('avatar', avatar)
-		formData.append('backgroundImage', backgroundImage)
-		formData.append('introduction', introduction)
-		formData.append('name', name)
-		console.log(formData)
 
 		userAPI
 			.putUserEdit(userId, formData)
 			.then((res) => {
 				const { data } = res
-				console.log(res)
+				console.log('res', res)
 				Toast.fire({
 					icon: 'success',
 					title: '儲存成功',
@@ -135,7 +135,7 @@ export default function ModalUserInfo() {
 				console.error(error)
 				Toast.fire({
 					icon: 'error',
-					title: '儲存失敗，請聯絡管理員',
+					title: '儲存失敗，請稍後再試',
 				})
 			})
 	}
@@ -172,11 +172,7 @@ export default function ModalUserInfo() {
 								</div>
 								<div className={`${style.userInfoMdButtonGroup}`}>
 									<div className={`${style.userInfoMdButton}`}>
-										<Button
-											size='middle'
-											text='儲存'
-											onClick={(e) => handleSubmit(e)}
-										/>
+										<Button size='middle' text='儲存' />
 									</div>
 								</div>
 							</nav>
@@ -222,7 +218,12 @@ export default function ModalUserInfo() {
 						</div>
 						<div className={`${style.userInfoInputArea}`}>
 							<div className={`${style.userInfoInputName}`}>
-								<Input label='名稱' value={name} onChange={handleNameChange} />
+								<Input
+									label='名稱'
+									value={name}
+									onChange={handleNameChange}
+									name='name'
+								/>
 								<div className={style.userInfoNameGroup}>
 									<p className={`${style.userInfoInputNameError}`}>
 										內容不可空白
@@ -233,13 +234,14 @@ export default function ModalUserInfo() {
 								</div>
 							</div>
 							<div className={`${style.userInfoInputContent}`}>
-								<div className={`${style.userInfoInput}`}>
+								{/* <div className={`${style.userInfoInput}`}>
 									<Input
 										label='自我介紹'
 										value={introduction}
 										onChange={handleIntroductionChange}
+										name='introduction'
 									/>
-								</div>
+								</div> */}
 								<div>
 									<label className={`${style.userInfoLabel}`}>
 										<p className={`${style.userInfoLabelTitle}`}>自我介紹</p>
@@ -247,6 +249,7 @@ export default function ModalUserInfo() {
 											className={`${style.userInfoTextArea}`}
 											value={introduction}
 											onChange={handleIntroductionChange}
+											name='introduction'
 											style={{
 												borderBottom: areaError
 													? '2px solid #FC5A5A'
@@ -259,6 +262,9 @@ export default function ModalUserInfo() {
 									<p className={`${style.userInfoInputTextError}`}>
 										內容不可空白
 									</p>
+									<p className={`${style.userInfoInputTextError}`}>
+										文數超出上限
+									</p>
 									<p className={`${style.userInfoInputText}`}>
 										{introduction.length}/160
 									</p>
@@ -269,13 +275,17 @@ export default function ModalUserInfo() {
 							type='file'
 							id='backgroundPhoto'
 							className={style.inputPhoto}
+							name='backgroundImage'
 							onChange={(e) => handleBackgroundChange(e)}
+							accept='.jpeg,.jpg,.png'
 						></input>
 						<input
 							type='file'
 							id='avatarPhoto'
 							className={style.inputPhoto}
+							name='avatar'
 							onChange={(e) => handleAvatarChange(e)}
+							accept='.jpeg,.jpg,.png'
 						></input>
 					</form>
 				</div>,
