@@ -16,6 +16,7 @@ export default function UserReplyList() {
 	const [replies, setReplies] = useState([])
 	const userId = useParams().user_id
 
+
 	useEffect(() => {
 		tweetAPI.getUserReplies(userId).then((response) => {
 			const { data } = response
@@ -50,6 +51,7 @@ export default function UserReplyList() {
 						name={reply?.User?.name}
 						avatar={reply?.User?.avatar}
 						account={reply?.User?.account}
+						tweetUserId={reply?.tweetUser?.id}
 					/>
 				))}
 			</section>

@@ -16,15 +16,14 @@ export default function Layout() {
 	const useReplyModal = useContext(ReplyTweetModalContext)
 	const [userInfo, setUserInfo] = useState([])
 	const { pathname } = useLocation()
-	const userId = useParams().user_id
+	const userId = Number(useParams().user_id)
 	const isFollowPage =
 		pathname.includes(`/user/other/following/${userId}`) ||
 		pathname.includes(`/user/other/follower/${userId}`)
 	const localId = localStorage.getItem('userId')
 	const navigate = useNavigate()
-	const render = useContext(GetRenderContext)
-	const setRender = useContext(SetRenderContext)
-	console.log(userInfo)
+	// const render = useContext(GetRenderContext)
+	// const setRender = useContext(SetRenderContext)
 
 	useEffect(() => {
 		if (userId === localId) {
@@ -35,7 +34,7 @@ export default function Layout() {
 				setUserInfo(data)
 			})
 		}
-	}, [])
+	}, [userId])
 
 	// useEffect(() => {
 	// 	setRender('true')

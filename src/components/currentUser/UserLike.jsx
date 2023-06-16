@@ -16,6 +16,7 @@ export default function UserLike() {
 	const [likesTweet, setLikesTweet] = useState([])
 	const currentUserId = localStorage.getItem('userId')
 
+
 	useEffect(() => {
 		tweetAPI.getUserLikes(currentUserId).then((response) => {
 			const { data } = response
@@ -31,28 +32,20 @@ export default function UserLike() {
 
 	return (
 		<div className={`${style.userTweetsContainer}`}>
-			{/* <div className={`${style.userInfoHeaderContainer}`}>
-				<UserInfoHeader
-					name={data[0].name}
-					tweet={data[0].tweet}
-					page='/home'
-				/>
-			</div>
-			<UserInfo /> */}
-			{/* <UserTab /> */}
 			<section className={`${style.UserTweetsContent}`}>
 				{likesTweet.map((like) => (
 					<UserLikeContent
-						id={like.TweetId}
-						key={like.id}
-						name={like.User.name}
-						account={like.User.account}
-						avatar={like.User.avatar}
-						content={like.Tweet.description}
-						time={like.Tweet.relativeTimeFromNow}
-						likesCount={like.Tweet.likesCount}
-						repliesCount={like.Tweet.repliesCount}
-						isSelfUserLike={like.isSelfUserLike}
+						id={like?.TweetId}
+						key={like?.id}
+						name={like?.User?.name}
+						account={like?.User?.account}
+						avatar={like?.User?.avatar}
+						content={like?.Tweet?.description}
+						time={like?.Tweet?.relativeTimeFromNow}
+						likesCount={like?.Tweet?.likesCount}
+						repliesCount={like?.Tweet?.repliesCount}
+						isSelfUserLike={like?.isSelfUserLike}
+						tweetUserId={like?.User?.id}
 					/>
 				))}
 			</section>

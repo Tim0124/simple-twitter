@@ -61,7 +61,7 @@ export default function UserInfo({
 								{isFollow ? (
 									<Button size='middle' text='正在追隨' />
 								) : (
-									<Button size='white-exsmall' text='正在追隨' />
+									<Button size='white-exsmall' text='跟隨' />
 								)}
 							</div>
 						</div>

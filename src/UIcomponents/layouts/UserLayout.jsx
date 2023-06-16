@@ -58,11 +58,11 @@ export default function Layout() {
 			pathname.includes(`/user/self/follower/${userId}`) ? (
 				<FollowTab id={userId} />
 			) : (
-				<UserTab />
+				<UserTab id={userId}/>
 			)}
 
 			<div className={`${style.UserLayoutMainContainer}`}>
-				<Outlet userId={userId} />
+				<Outlet />
 			</div>
 			{useTweetModal && <ModalPostTweet />}
 			{ShowEditModal && <ModalUserInfo />}

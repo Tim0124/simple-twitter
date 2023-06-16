@@ -24,11 +24,11 @@ export default function PopularUser({
 		followingAPI
 			.postFollow(id)
 			.then((response) => {
-				setRender('true')
+				// setRender('true')
 			})
 			.catch((error) => {
 				console.error('Error:', error)
-				setRender('false')
+				// setRender('false')
 			})
 	}
 
