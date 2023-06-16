@@ -22,7 +22,6 @@ export default function UserTweets() {
 	const currentUserId = 14
 
 	useEffect(() => {
-		console.log('asd', currentUserId)
 		// tweetAPI.getCurrentUserTweet(currentUserId).then((response) => {
 		// 	const { data } = response
 		// 	setUserInfo(data)

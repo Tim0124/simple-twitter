@@ -9,12 +9,13 @@ import { Toast } from 'heplers/helpers'
 import { setting } from 'api/auth'
 import authorization from 'api/authorization'
 import tweetAPI from 'api/tweetAPI'
+import userAPI from 'api/userAPI'
 
 export default function Setting() {
 	const [accountAPI, setAccountAPI] = useState([])
-	const [account, setAccount] = useState(accountAPI.account)
-	const [name, setName] = useState(accountAPI.name)
-	const [email, setEmail] = useState(accountAPI.email)
+	const [account, setAccount] = useState('')
+	const [name, setName] = useState('')
+	const [email, setEmail] = useState('')
 	const [accountError, setAccountError] = useState('')
 	const [nameError, setNameError] = useState('')
 	const [password, setPassword] = useState('')
@@ -29,9 +30,12 @@ export default function Setting() {
 	const id = localStorage.getItem('userId')
 
 	useEffect(() => {
-		tweetAPI.getCurrentUserTweet(id).then((response) => {
+		userAPI.getCurrentUser().then((response) => {
 			const { data } = response
 			setAccountAPI(data)
+			setAccount(data.account)
+			setName(data.name)
+			setEmail(data.email)
 		})
 	}, [])
 
@@ -74,20 +78,28 @@ export default function Setting() {
 		e.preventDefault()
 		if (account.trim().length === 0) {
 			setAccountError('帳號欄位不能為空白')
+			setTimeout(() => { setAccountError('') }, 2000)
 		} else if (account.length > 50) {
 			setAccountError('帳號字數超過上限')
-		} else if (name.length === 0) {
+			setTimeout(() => { setAccountError('') }, 2000)
+		} else if (name.trim().length === 0) {
 			setNameError('名稱欄位不能為空白')
+			setTimeout(() => { setNameError('') }, 2000)
 		} else if (name.length > 50) {
 			setNameError('名稱字數超過上限')
-		} else if (password.length === 0) {
+			setTimeout(() => { setNameError('') }, 2000)
+		} else if (password.trim().length === 0) {
 			setPasswordError('密碼欄位不能為空白')
-		} else if (email.length === 0) {
+			setTimeout(() => { setPasswordError('') }, 2000)
+		} else if (email.trim().length === 0) {
 			setEmailError('Email欄位不能為空白')
-		} else if (checkPassword.length === 0) {
+			setTimeout(() => { setEmailError('') }, 2000)
+		} else if (checkPassword.trim().length === 0) {
 			setCheckError('密碼確認欄位不能為空')
+			setTimeout(() => { setCheckError('') }, 2000)
 		} else if (password !== checkPassword) {
 			setCheckError('密碼與密碼確認輸入值不同')
+			setTimeout(() => { setCheckError('') }, 2000)
 		}
 
 		const result = await setting({
@@ -127,6 +139,7 @@ export default function Setting() {
 									placeholder='請輸入帳號'
 									value={account}
 									onChange={handleAccountChange}
+									isError={!!accountError}
 								/>
 								{accountError && (
 									<div className={style.accountErrorMessage}>
@@ -140,6 +153,7 @@ export default function Setting() {
 									placeholder='請輸入使用者名稱'
 									value={name}
 									onChange={handleUsernameChange}
+									isError={!!nameError}
 								/>
 								{nameError && (
 									<div className={style.nameErrorMessage}>{nameError}</div>
@@ -151,6 +165,7 @@ export default function Setting() {
 									placeholder='請輸入Email'
 									value={email}
 									onChange={handleEmailChange}
+									isError={!!emailError}
 								/>
 								{emailError && (
 									<div className={style.emailErrorMessage}>{emailError}</div>
@@ -163,6 +178,7 @@ export default function Setting() {
 									type='password'
 									value={password}
 									onChange={handlePasswordChange}
+									isError={!!passwordError}
 								/>
 								{passwordError && (
 									<div className={style.passwordErrorMessage}>
@@ -177,6 +193,7 @@ export default function Setting() {
 									type='password'
 									value={checkPassword}
 									onChange={handleCheckPasswordChange}
+									isError={!!checkError}
 								/>
 								{checkError && (
 									<div className={style.checkPasswordErrorMessage}>

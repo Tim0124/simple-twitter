@@ -12,6 +12,7 @@ import ModalReplyTweet from 'UIcomponents/modal/ModalReplyTweet'
 import { useNavigate, useParams } from 'react-router-dom'
 import tweetAPI from 'api/tweetAPI'
 import { GetOtherUserIdContext } from 'context/OtherUserContext'
+import replyAPI from 'api/replyAPI'
 
 export default function ReplyList() {
 	const [currentTweet, setCurrentTweet] = useState([])
@@ -21,19 +22,18 @@ export default function ReplyList() {
 	const handleShowReplyModal = useContext(ShowReplyModalContext)
 	const tweetId = useParams().tweet_id
 	const navigate = useNavigate()
-	const [comment, setComment] = useState([])
 
 	useEffect(() => {
 		tweetAPI.getTweet(tweetId).then((response) => {
 			const { data } = response
+			console.log(data)
 			setCurrentTweet(data)
-		}, [])
-
+		})
 		navigate(`/reply/${tweetId}`)
 	}, [])
 
 	useEffect(() => {
-		tweetAPI.postReplyTweet(tweetId).then((response) => {
+		tweetAPI.getReplyTweet(tweetId).then((response) => {
 			const { data } = response
 			setTweetReply(data)
 		})

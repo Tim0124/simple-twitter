@@ -13,9 +13,9 @@ export default function PopularUserList() {
 	const render = useContext(GetRenderContext)
 	const setRender = useContext(SetRenderContext)
 	const { pathname } = useLocation()
-	console.log(followers)
+
 	useEffect(() => {
-		;(async () => {
+		(async () => {
 			if (render === 'true') {
 				try {
 					const response = await followingAPI.getTopFollower()
@@ -50,7 +50,6 @@ export default function PopularUserList() {
 						account={follower.account}
 						avatar={follower.avatar}
 						isUserFollowed={follower.isUserFollowed}
-						// followingId={follower.followingId}
 					/>
 				))}
 			</div>

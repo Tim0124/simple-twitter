@@ -8,6 +8,7 @@ import tweetAPI from 'api/tweetAPI'
 import OtherUserInfo from './OtherUserInfo'
 import OtherUserTab from 'UIcomponents/tabs/OtherUserTab'
 import OtherFollowTab from 'UIcomponents/tabs/OtherFollowTab'
+import userAPI from 'api/userAPI'
 
 export default function Layout() {
 	const useTweetModal = useContext(TweetModalContext)
@@ -25,7 +26,7 @@ export default function Layout() {
 		if (userId === localId) {
 			navigate('/user/self')
 		} else {
-			tweetAPI.getCurrentUserTweet(userId).then((response) => {
+			userAPI.getUser(userId).then((response) => {
 				const { data } = response
 				setUserInfo(data)
 			})

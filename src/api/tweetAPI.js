@@ -25,7 +25,6 @@ export default {
 		})
 	},
 	getUserAllTweet(tweetId) {
-		console.log('id', tweetId)
 		return apiHelper.get(`/users/${tweetId}/tweets`, {
 			headers: {
 				Authorization: `Bearer ${getToken()}`,

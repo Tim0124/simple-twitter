@@ -44,6 +44,7 @@ export const register = async ({
 	email,
 	password,
 	checkPassword,
+	message,
 }) => {
 	try {
 		const { data } = await axios.post(`${authURL}/users `, {
@@ -56,7 +57,7 @@ export const register = async ({
 		const success = data.status === 'success'
 		if (success) {
 			return { success: true, ...data.data }
-		}
+		} 
 		return data
 	} catch (error) {
 		console.error('[Register Failed]', error)

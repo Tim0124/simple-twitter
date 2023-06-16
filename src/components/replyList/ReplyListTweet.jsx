@@ -3,7 +3,7 @@ import { ReactComponent as Dislike } from '../../assets/unlike.svg'
 import { ReactComponent as Like } from '../../assets/redlike.svg'
 import { ReactComponent as Message } from '../../assets/message.svg'
 import Button from 'UIcomponents/buttons/Button'
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ShowReplyModalContext } from 'context/ModalContext'
 import likeAPI from 'api/likeAPI'
@@ -24,13 +24,21 @@ export default function ReplyListTweet({
 	const handleShowReplyModal = useContext(ShowReplyModalContext)
 	const [like, setLike] = useState(isSelfUserLike)
 	const [likeQuantity, setLikeQuantity] = useState(likesCount)
-	console.log(likeQuantity)
+
+	useEffect(() => {
+		setLike(isSelfUserLike); 
+	}, [isSelfUserLike]);
+
+	useEffect(() => {
+		setLikeQuantity(likesCount);
+	}, [likesCount]);
+
 
 	const handleLikeClick = () => {
 		setLike(!like)
 		if (!like) {
 			setLikeQuantity(likeQuantity + 1)
-			likeAPI.like(id).then((response) => {})
+			likeAPI.like(id).then(() => {})
 		} else {
 			setLikeQuantity(likeQuantity - 1)
 			likeAPI.unlike(id).then((response) => {})

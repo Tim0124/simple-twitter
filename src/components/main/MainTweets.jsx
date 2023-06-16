@@ -59,7 +59,7 @@ export default function MainTweets({ onTweetClick }) {
 	}, [])
 
 	useEffect(() => {
-		;(async () => {
+		(async () => {
 			try {
 				const response = await getTweets.get('/')
 				const tweetData = response.data

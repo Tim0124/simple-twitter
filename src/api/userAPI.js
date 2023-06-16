@@ -14,7 +14,6 @@ export default {
 		})
 	},
 	getUser(userId) {
-		console.log(userId)
 		return apiHelper.get(`/users/${userId}`, {
 			headers: { Authorization: `Bearer ${getToken()}` },
 		})

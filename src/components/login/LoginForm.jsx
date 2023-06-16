@@ -18,10 +18,13 @@ function LoginForm() {
 		try {
 			if (account.trim().length === 0) {
 				setAccountError('帳號欄位不能為空白')
+				setTimeout(() => { setAccountError('') }, 2000)
 			} else if (account.length > 50) {
 				setAccountError('帳號字數超過上限')
-			} else if (password.length === 0) {
+				setTimeout(() => { setAccountError('') }, 2000)
+			} else if (password.trim().length === 0) {
 				setPasswordError('密碼欄位不能為空白')
+				setTimeout(() => {setPasswordError('')},2000)
 			}
 
 			const { success, token, user } = await login({
@@ -90,6 +93,7 @@ function LoginForm() {
 						placeholder='請輸入帳號'
 						value={account}
 						onChange={handleAccountChange}
+						isError={!!accountError}
 					/>
 					{accountError && (
 						<div className={style.accountErrorMessage}>{accountError}</div>
@@ -102,6 +106,7 @@ function LoginForm() {
 						placeholder='請輸入密碼'
 						value={password}
 						onChange={handlePasswordChange}
+						isError={!!passwordError}
 					/>
 					{passwordError && (
 						<div className={style.passwordErrorMessage}>{passwordError}</div>
