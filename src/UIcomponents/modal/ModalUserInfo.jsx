@@ -84,6 +84,14 @@ export default function ModalUserInfo() {
 			})
 			return
 		}
+		if (name.trim().length > 50) {
+			setInputError(true)
+			Toast.fire({
+				icon: 'error',
+				title: '名稱不可超過50字',
+			})
+			return
+		}
 		if (introduction.trim().length === 0) {
 			setAreaError(true)
 			Toast.fire({
@@ -96,7 +104,7 @@ export default function ModalUserInfo() {
 			setAreaError(true)
 			Toast.fire({
 				icon: 'error',
-				title: '自我介紹不可超過160字',
+				title: '字數超出上限！',
 			})
 			return
 		}
