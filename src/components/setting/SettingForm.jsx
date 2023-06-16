@@ -94,15 +94,15 @@ export default function Setting() {
 			setTimeout(() => {
 				setNameError('')
 			}, 2000)
-		} else if (email.trim().length === 0) {
-			setEmailError('Email欄位不能為空白')
-			setTimeout(() => {
-				setEmailError('')
-			}, 2000)
 		} else if (password.trim().length === 0) {
 			setPasswordError('密碼欄位不能為空白')
 			setTimeout(() => {
 				setPasswordError('')
+			}, 2000)
+		} else if (email.trim().length === 0) {
+			setEmailError('Email欄位不能為空白')
+			setTimeout(() => {
+				setEmailError('')
 			}, 2000)
 		} else if (checkPassword.trim().length === 0) {
 			setCheckError('密碼確認欄位不能為空')
@@ -116,7 +116,7 @@ export default function Setting() {
 			}, 2000)
 		}
 
-		const result = await setting({
+		const { success, errorMessage } = await setting({
 			id,
 			token,
 			account,
@@ -125,17 +125,42 @@ export default function Setting() {
 			password,
 			checkPassword,
 		})
-
-		if (result) {
+		if (success) {
 			Toast.fire({
 				title: '修改成功！',
+				timer: 1000,
 				icon: 'success',
+				showConfirmButton: false,
 			})
+		} else if (errorMessage === 'Error: account 已重複註冊') {
+			setTimeout(() => {
+				setAccountError('')
+				Toast.fire({
+					title: '此帳號已存在',
+					timer: 1000,
+					icon: 'error',
+					showConfirmButton: false,
+				})
+			}, 2000)
+		} else if (errorMessage === 'Error: 此信箱已被註冊') {
+			setTimeout(() => {
+				setEmailError('')
+				Toast.fire({
+					title: '此信箱已被註冊',
+					timer: 1000,
+					icon: 'error',
+					showConfirmButton: false,
+				})
+			}, 2000)
 		}
-		Toast.fire({
-			title: '修改失敗！',
-			icon: 'error',
-		})
+		// else {
+		// 	Toast.fire({
+		// 		title: '修改失敗！',
+		// 		timer: 1000,
+		// 		icon: 'error',
+		// 		showConfirmButton: false,
+		// 	})
+		// }
 	}
 
 	return (
