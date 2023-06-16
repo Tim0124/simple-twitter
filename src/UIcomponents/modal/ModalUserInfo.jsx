@@ -106,6 +106,7 @@ export default function ModalUserInfo() {
 		formData.append('backgroundImage', backgroundImage)
 		formData.append('introduction', introduction)
 		formData.append('name', name)
+		console.log(formData)
 
 		userAPI
 			.putUserEdit(userId, formData)
