@@ -259,6 +259,11 @@ export default function ModalUserInfo() {
 											value={introduction}
 											onChange={handleIntroductionChange}
 											name='introduction'
+											style={{
+												borderBottom:
+													(areaError && '2px solid red') ||
+													(overText && '2px solid red'),
+											}}
 										></textarea>
 									</label>
 								</div>

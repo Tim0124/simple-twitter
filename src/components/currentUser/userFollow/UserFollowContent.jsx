@@ -19,7 +19,10 @@ export default function UserFollowerContent({
 	const handleFollowClick = () => {
 		followingAPI
 			.postFollow(id)
-			.then((res) => {
+			.then((response) => {
+				if (response.status !== 200) {
+					throw new Error(response.message)
+				}
 				// setRender('true')
 			})
 			.catch((error) => {
@@ -31,7 +34,10 @@ export default function UserFollowerContent({
 	const handleUnFollowClick = () => {
 		followingAPI
 			.deleteFollow(id)
-			.then((res) => {
+			.then((response) => {
+				if (response.status !== 200) {
+					throw new Error(response.message)
+				}
 				// setRender('false')
 			})
 			.catch((error) => {

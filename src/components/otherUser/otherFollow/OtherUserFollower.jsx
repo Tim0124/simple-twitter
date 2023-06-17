@@ -1,11 +1,8 @@
 import style from './OtherUserFollower.module.scss'
-import FollowTab from 'UIcomponents/tabs/FollowTab'
 import UserFollowerContent from './OtherUserFollowContent'
-import UserInfo from 'UIcomponents/layouts/UserInfo'
-import UserInfoHeader from 'UIcomponents/layouts/UserInfoHeader'
 import { useContext, useEffect, useState } from 'react'
 import followingAPI from 'api/followingAPI'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import { ChangeTabContext } from 'context/UserTabContext'
 import { OtherUserContext } from 'context/OtherUserContext'
 
@@ -17,10 +14,18 @@ export default function UserFollower() {
 	const id = OtherUserId
 
 	useEffect(() => {
-		followingAPI.getFollowers(id).then((response) => {
-			const { data } = response
-			setFollowers(data)
-		})
+		followingAPI
+			.getFollowers(id)
+			.then((response) => {
+				if (response.status !== 200) {
+					throw new Error(response.message)
+				}
+				const { data } = response
+				setFollowers(data)
+			})
+			.catch((error) => {
+				console.error(error)
+			})
 	}, [])
 
 	useEffect(() => {

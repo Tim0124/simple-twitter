@@ -1,10 +1,5 @@
-import UserNavbar from './UserNavbar'
 import style from './UserLike.module.scss'
 import UserLikeContent from './UserLikeContent'
-import FollowTab from 'UIcomponents/tabs/FollowTab'
-import UserTab from 'UIcomponents/tabs/UserTab'
-import UserInfo from 'UIcomponents/layouts/UserInfo'
-import UserInfoHeader from 'UIcomponents/layouts/UserInfoHeader'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useContext, useEffect, useState } from 'react'
 import { ChangeTabContext } from 'context/UserTabContext'
@@ -18,6 +13,9 @@ export default function UserLike() {
 
 	useEffect(() => {
 		tweetAPI.getUserLikes(currentUserId).then((response) => {
+			if (response.status !== 200) {
+				throw new Error(response.message)
+			}
 			const { data } = response
 			setLikesTweet(data)
 		})

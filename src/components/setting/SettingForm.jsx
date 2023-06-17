@@ -6,7 +6,6 @@ import { useContext, useEffect, useState } from 'react'
 import { ChangeStepContext } from 'context/SideBarContext'
 import { Toast } from 'heplers/helpers'
 import { setting } from 'api/auth'
-import tweetAPI from 'api/tweetAPI'
 import userAPI from 'api/userAPI'
 
 export default function Setting() {

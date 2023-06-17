@@ -1,9 +1,5 @@
 import style from './UserReplyContent.module.scss'
-import { ReactComponent as Like } from '../../assets/redlike.svg'
-import { ReactComponent as Message } from '../../assets/message.svg'
-import { ReactComponent as Dislike } from '../../assets/unlike.svg'
-import { useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export default function UserReplyContent({
 	name,
@@ -13,6 +9,7 @@ export default function UserReplyContent({
 	time,
 	replyAccount,
 	tweetUserId,
+	tweetId,
 }) {
 	return (
 		<div className={`${style.userReplyContainer}`}>
@@ -43,9 +40,11 @@ export default function UserReplyContent({
 							<p className={`${style.replyListItemAccount}`}>@{replyAccount}</p>
 						</Link>
 					</div>
-					<div className={`${style.replyListItemContentGroup}`}>
-						<p className={`${style.replyListItemContentItem}`}>{comment}</p>
-					</div>
+					<Link to={`/reply/${tweetId}`}>
+						<div className={`${style.replyListItemContentGroup}`}>
+							<p className={`${style.replyListItemContentItem}`}>{comment}</p>
+						</div>
+					</Link>
 				</div>
 			</div>
 		</div>

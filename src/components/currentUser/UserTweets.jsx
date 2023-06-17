@@ -24,13 +24,19 @@ export default function UserTweets() {
 	useEffect(() => {
 		userAPI
 			.getCurrentUser()
-			.then((res) => {
-				const { data } = res
+			.then((response) => {
+				if (response.status !== 200) {
+					throw new Error(response.message)
+				}
+				const { data } = response
 				setUserId(data.id)
 
 				tweetAPI
 					.getUserAllTweet(currentUserId)
 					.then((response) => {
+						if (response.status !== 200) {
+							throw new Error(response.message)
+						}
 						const { data } = response
 						setAllTweets(data)
 					})

@@ -27,10 +27,28 @@ export default function UserLikeContent({
 		setLike(!like)
 		if (like) {
 			setLikeQuantity(likeQuantity - 1)
-			likeAPI.unlike(id).then((response) => {})
+			likeAPI
+				.unlike(id)
+				.then((response) => {
+					if (response.status !== 200) {
+						throw new Error(response.message)
+					}
+				})
+				.catch((error) => {
+					console.error(error)
+				})
 		} else {
 			setLikeQuantity(likeQuantity + 1)
-			likeAPI.like(id).then((response) => {})
+			likeAPI
+				.like(id)
+				.then((response) => {
+					if (response.status !== 200) {
+						throw new Error(response.message)
+					}
+				})
+				.catch((error) => {
+					console.error(error)
+				})
 		}
 	}
 
@@ -59,7 +77,9 @@ export default function UserLikeContent({
 							</div>
 						</div>
 					</div>
-					<div className={`${style.mainTweetsContent}`}>{content}</div>
+					<Link to={`/reply/${id}`}>
+						<div className={`${style.mainTweetsContent}`}>{content}</div>
+					</Link>
 					<div className={`${style.mainTweetsQuantityGroup}`}>
 						<div className={`${style.mainTweetsQuantity}`}>
 							<Message

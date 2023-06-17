@@ -4,20 +4,13 @@ import { ReactComponent as Logo } from '../../assets/logo.svg'
 import Button from 'UIcomponents/buttons/Button'
 import { Link, useNavigate } from 'react-router-dom'
 import { useContext } from 'react'
-import {
-	ModalHiddenContext,
-	ShowTweetModalContext,
-	TweetModalContext,
-} from 'context/ModalContext'
-import ModalPostTweet from 'UIcomponents/modal/ModalPostTweet'
-import { ChangeStepContext, StepContext } from 'context/SideBarContext'
+import { ShowTweetModalContext } from 'context/ModalContext'
+import { StepContext } from 'context/SideBarContext'
 import { Toast } from 'heplers/helpers'
 
 export default function Sidebar() {
 	const navigate = useNavigate()
 	const useModalClick = useContext(ShowTweetModalContext)
-	const useTweetModal = useContext(TweetModalContext)
-	const useChangeStep = useContext(ChangeStepContext)
 	const step = useContext(StepContext)
 
 	const handleClick = () => {

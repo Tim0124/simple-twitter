@@ -23,8 +23,11 @@ export default function Layout() {
 	useEffect(() => {
 		userAPI
 			.getCurrentUser()
-			.then((res) => {
-				const { data } = res
+			.then((response) => {
+				if (response.status !== 200) {
+					throw new Error(response.message)
+				}
+				const { data } = response
 				setUserId(data.id)
 				setUserInfo(data)
 			})
@@ -39,7 +42,7 @@ export default function Layout() {
 				<UserInfoHeader
 					name={userInfo?.name}
 					tweet={userInfo?.tweetsCount}
-					page='/home'
+					page='/user/self'
 				/>
 			</div>
 			<UserInfo

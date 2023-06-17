@@ -1,9 +1,7 @@
 import style from './UserInfo.module.scss'
 import Button from 'UIcomponents/buttons/Button'
-import UserInfoHeader from './UserInfoHeader'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { useContext, useEffect, useState } from 'react'
-import followingAPI from 'api/followingAPI'
+import { Link } from 'react-router-dom'
+import { useContext } from 'react'
 import { ShowEditModalContext } from 'context/ModalContext'
 
 export default function UserInfo({

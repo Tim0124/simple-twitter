@@ -21,8 +21,11 @@ export default function UserReplyList() {
 	useEffect(() => {
 		userAPI
 			.getCurrentUser()
-			.then((res) => {
-				const { data } = res
+			.then((response) => {
+				if (response.status !== 200) {
+					throw new Error(response.message)
+				}
+				const { data } = response
 				setUserId(data.id)
 			})
 			.catch((error) => {
@@ -35,6 +38,9 @@ export default function UserReplyList() {
 			tweetAPI
 				.getUserReplies(userId)
 				.then((response) => {
+					if (response.status !== 200) {
+						throw new Error(response.message)
+					}
 					const { data } = response
 					setReplies(data)
 				})
@@ -52,15 +58,6 @@ export default function UserReplyList() {
 
 	return (
 		<div className={`${style.userReplyContainer}`}>
-			{/* <div className={`${style.userInfoHeaderContainer}`}>
-				<UserInfoHeader
-					name={data[0].name}
-					tweet={data[0].tweet}
-					page='/home'
-				/>
-			</div>
-			<UserInfo /> */}
-			{/* <UserTab /> */}
 			<section className={`${style.userReplyContent}`}>
 				{replies.map((reply) => (
 					<UserReplyContent
@@ -72,6 +69,7 @@ export default function UserReplyList() {
 						avatar={reply?.User.avatar}
 						account={reply?.User.account}
 						tweetUserId={reply?.tweetUser.id}
+						tweetId={reply?.TweetId}
 					/>
 				))}
 			</section>

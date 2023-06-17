@@ -1,5 +1,4 @@
 import style from './PopularUser.module.scss'
-import { ReactComponent as Logo } from '../../assets/logo.svg'
 import Button from '../../UIcomponents/buttons/Button'
 import { useContext, useState } from 'react'
 import followingAPI from 'api/followingAPI'
@@ -24,6 +23,9 @@ export default function PopularUser({
 		followingAPI
 			.postFollow(id)
 			.then((response) => {
+				if (response.status !== 200) {
+					throw new Error(response.message)
+				}
 				// setRender('true')
 			})
 			.catch((error) => {
@@ -37,6 +39,9 @@ export default function PopularUser({
 		followingAPI
 			.deleteFollow(id)
 			.then((response) => {
+				if (response.status !== 200) {
+					throw new Error(response.message)
+				}
 				setRender('false')
 			})
 			.catch((error) => {

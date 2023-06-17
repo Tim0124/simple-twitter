@@ -16,17 +16,22 @@ export default function UserTweets() {
 	const { pathname } = useLocation()
 	const userId = useParams().user_id
 	const handleChangeStep = useContext(ChangeStepContext)
-	const [userInfo, setUserInfo] = useState([])
-	const [allTweets, setAllTweets] = useState([])
 	const [otherUser, setOtherUser] = useState([])
 	const handleChangeTab = useContext(ChangeTabContext)
-	const OtherUserData = useContext(OtherUserContext)
 
 	useEffect(() => {
-		tweetAPI.getUserAllTweet(userId).then((response) => {
-			const { data } = response
-			setOtherUser(data)
-		})
+		tweetAPI
+			.getUserAllTweet(userId)
+			.then((response) => {
+				if (response.status !== 200) {
+					throw new Error(response.message)
+				}
+				const { data } = response
+				setOtherUser(data)
+			})
+			.catch((error) => {
+				console.error(error)
+			})
 	}, [userId])
 
 	useEffect(() => {
