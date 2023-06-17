@@ -152,15 +152,14 @@ export default function Setting() {
 					showConfirmButton: false,
 				})
 			}, 2000)
+		} else {
+			Toast.fire({
+				title: '修改失敗！',
+				timer: 1000,
+				icon: 'error',
+				showConfirmButton: false,
+			})
 		}
-		// else {
-		// 	Toast.fire({
-		// 		title: '修改失敗！',
-		// 		timer: 1000,
-		// 		icon: 'error',
-		// 		showConfirmButton: false,
-		// 	})
-		// }
 	}
 
 	return (
