@@ -52,7 +52,7 @@ export default function Layout() {
 				<UserInfoHeader
 					name={userInfo?.name}
 					tweet={userInfo?.tweetsCount}
-					page='/home'
+					page={`/user/other/${userId}`}
 				/>
 			</div>
 			<OtherUserInfo

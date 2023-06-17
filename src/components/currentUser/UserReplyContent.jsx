@@ -9,6 +9,7 @@ export default function UserReplyContent({
 	time,
 	replyAccount,
 	tweetUserId,
+	tweetId
 }) {
 	return (
 		<div className={`${style.userReplyContainer}`}>
@@ -39,9 +40,12 @@ export default function UserReplyContent({
 							<p className={`${style.replyListItemAccount}`}>@{replyAccount}</p>
 						</Link>
 					</div>
-					<div className={`${style.replyListItemContentGroup}`}>
+					<Link to={`/reply/${tweetId}`}>
+						<div className={`${style.replyListItemContentGroup}`}>
 						<p className={`${style.replyListItemContentItem}`}>{comment}</p>
 					</div>
+					</Link>
+
 				</div>
 			</div>
 		</div>

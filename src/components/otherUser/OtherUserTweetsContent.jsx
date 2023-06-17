@@ -5,6 +5,7 @@ import { ReactComponent as Dislike } from '../../assets/unlike.svg'
 import { useContext, useState } from 'react'
 import likeAPI from 'api/likeAPI'
 import { ShowReplyModalContext } from 'context/ModalContext'
+import { Link } from 'react-router-dom'
 
 export default function UserTweetsContent({
 	id,
@@ -60,7 +61,7 @@ export default function UserTweetsContent({
 						<div className={`${style.mainTweetsNameGroup}`}>
 							<div className={`${style.mainTweetsName}`}>{name}</div>
 							<div className={`${style.mainTweetsSmallAccount}`}>
-								<div className={`${style.mainTweetsAccount}`}>{account}</div>
+								<div className={`${style.mainTweetsAccount}`}>@{account}</div>
 								<div className={`${style.mainTweetsdot}`}>・</div>
 								<div className={`${style.mainTweetsTime}`}>
 									<p>{time}</p>
@@ -68,7 +69,9 @@ export default function UserTweetsContent({
 							</div>
 						</div>
 					</div>
-					<div className={`${style.mainTweetsContent}`}>{description}</div>
+					<Link to={`/reply/${id}`}>
+						<div className={`${style.mainTweetsContent}`}>{description}</div>
+					</Link>
 					<div className={`${style.mainTweetsQuantityGroup}`}>
 						<div className={`${style.mainTweetsQuantity}`}>
 							<Message

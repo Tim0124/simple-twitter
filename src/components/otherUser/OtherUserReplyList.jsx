@@ -29,6 +29,7 @@ export default function UserReplyList() {
 			<section className={`${style.userReplyContent}`}>
 				{replies.map((reply) => (
 					<UserReplyContent
+						id={reply?.TweetId}
 						key={reply?.id}
 						comment={reply?.comment}
 						replyAccount={reply?.tweetUser.account}

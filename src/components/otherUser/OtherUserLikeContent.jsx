@@ -77,7 +77,9 @@ export default function UserLikeContent({
 							</div>
 						</div>
 					</div>
-					<div className={`${style.mainTweetsContent}`}>{content}</div>
+					<Link to={`/reply/${id}`}>
+						<div className={`${style.mainTweetsContent}`}>{content}</div>
+					</Link>
 					<div className={`${style.mainTweetsQuantityGroup}`}>
 						<div className={`${style.mainTweetsQuantity}`}>
 							<Message

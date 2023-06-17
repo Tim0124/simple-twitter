@@ -2,6 +2,7 @@ import style from './OtherUserReplyContent.module.scss'
 import { Link } from 'react-router-dom'
 
 export default function UserReplyContent({
+	id,
 	name,
 	account,
 	avatar,
@@ -22,7 +23,7 @@ export default function UserReplyContent({
 							<div className={`${style.userReplyName}`}>{name}</div>
 							<div className={`${style.userReplySmallAccount}`}>
 								<div className={`${style.userReplyAccount}`}>
-									<p>{account}</p>
+									<p>@{account}</p>
 								</div>
 								<div className={`${style.userReplyDot}`}>
 									<p>・</p>
@@ -39,9 +40,11 @@ export default function UserReplyContent({
 							<p className={`${style.replyListItemAccount}`}>@{replyAccount}</p>
 						</Link>
 					</div>
+					<Link to={`/reply/${id}`}>
 					<div className={`${style.replyListItemContentGroup}`}>
 						<p className={`${style.replyListItemContentItem}`}>{comment}</p>
 					</div>
+					</Link>
 				</div>
 			</div>
 		</div>
