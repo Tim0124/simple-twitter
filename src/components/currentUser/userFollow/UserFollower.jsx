@@ -19,19 +19,19 @@ export default function UserFollower() {
 
 	useEffect(() => {
 		// if (render === 'true' || render === 'init')
-			followingAPI
-				.getFollowers(id)
-				.then((response) => {
-					if (response.status !== 200) {
+		followingAPI
+			.getFollowers(id)
+			.then((response) => {
+				if (response.status !== 200) {
 					throw new Error(response.message)
 				}
-					const { data } = response
-					setFollowers(data)
-					setRender('false')
-				})
-				.catch(() => {
-					setRender('false')
-				})
+				const { data } = response
+				setFollowers(data)
+				setRender('false')
+			})
+			.catch(() => {
+				setRender('false')
+			})
 	}, [render])
 
 	// useEffect(() => {

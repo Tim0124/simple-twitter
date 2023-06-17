@@ -24,8 +24,8 @@ export default function PopularUser({
 			.postFollow(id)
 			.then((response) => {
 				if (response.status !== 200) {
-				throw new Error(response.message)
-			}
+					throw new Error(response.message)
+				}
 				// setRender('true')
 			})
 			.catch((error) => {
@@ -40,8 +40,8 @@ export default function PopularUser({
 			.deleteFollow(id)
 			.then((response) => {
 				if (response.status !== 200) {
-				throw new Error(response.message)
-			}
+					throw new Error(response.message)
+				}
 				setRender('false')
 			})
 			.catch((error) => {

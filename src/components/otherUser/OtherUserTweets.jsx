@@ -20,15 +20,18 @@ export default function UserTweets() {
 	const handleChangeTab = useContext(ChangeTabContext)
 
 	useEffect(() => {
-		tweetAPI.getUserAllTweet(userId).then((response) => {
-			if (response.status !== 200) {
+		tweetAPI
+			.getUserAllTweet(userId)
+			.then((response) => {
+				if (response.status !== 200) {
 					throw new Error(response.message)
 				}
-			const { data } = response
-			setOtherUser(data)
-		}).catch((error) => {
-			console.error(error)
-		})
+				const { data } = response
+				setOtherUser(data)
+			})
+			.catch((error) => {
+				console.error(error)
+			})
 	}, [userId])
 
 	useEffect(() => {

@@ -14,15 +14,18 @@ export default function UserFollower() {
 	const id = OtherUserId
 
 	useEffect(() => {
-		followingAPI.getFollowers(id).then((response) => {
-			if (response.status !== 200) {
+		followingAPI
+			.getFollowers(id)
+			.then((response) => {
+				if (response.status !== 200) {
 					throw new Error(response.message)
 				}
-			const { data } = response
-			setFollowers(data)
-		}).catch((error) => {
-			console.error(error)
-		})
+				const { data } = response
+				setFollowers(data)
+			})
+			.catch((error) => {
+				console.error(error)
+			})
 	}, [])
 
 	useEffect(() => {

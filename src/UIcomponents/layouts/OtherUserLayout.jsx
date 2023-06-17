@@ -27,15 +27,18 @@ export default function Layout() {
 		if (userId === localId) {
 			navigate('/user/self')
 		} else {
-			userAPI.getUser(userId).then((response) => {
-				if (response.status !== 200) {
-				throw new Error(response.message)
-			}
-				const { data } = response
-				setUserInfo(data)
-			}).catch((error) => {
-				console.error(error)
-			})
+			userAPI
+				.getUser(userId)
+				.then((response) => {
+					if (response.status !== 200) {
+						throw new Error(response.message)
+					}
+					const { data } = response
+					setUserInfo(data)
+				})
+				.catch((error) => {
+					console.error(error)
+				})
 		}
 	}, [userId])
 

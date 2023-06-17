@@ -4,7 +4,7 @@ import { ReactComponent as Logo } from '../../assets/logo.svg'
 import style from './RegisterForm.module.scss'
 import { checkPermission, register } from 'api/auth'
 import { Link, useNavigate } from 'react-router-dom'
-import {  useState } from 'react'
+import { useState } from 'react'
 import { Toast } from 'heplers/helpers'
 
 export default function Register() {

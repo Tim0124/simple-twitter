@@ -4,8 +4,7 @@ import { ReactComponent as Logo } from '../../assets/logo.svg'
 import Button from 'UIcomponents/buttons/Button'
 import { Link, useNavigate } from 'react-router-dom'
 import { useContext } from 'react'
-import {
-	ShowTweetModalContext } from 'context/ModalContext'
+import { ShowTweetModalContext } from 'context/ModalContext'
 import { StepContext } from 'context/SideBarContext'
 import { Toast } from 'heplers/helpers'
 

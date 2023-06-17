@@ -11,15 +11,18 @@ export default function AdminUsers() {
 	const handleChangeStep = useContext(ChangeStepContext)
 
 	useEffect(() => {
-		userAPI.getAdminUsers().then((response) => {
-			if (response.status !== 200) {
-				throw new Error(response.message)
-			}
-			const { data } = response
-			setUsers(data)
-		}).catch((error) => {
-			console.error(error)
-		})
+		userAPI
+			.getAdminUsers()
+			.then((response) => {
+				if (response.status !== 200) {
+					throw new Error(response.message)
+				}
+				const { data } = response
+				setUsers(data)
+			})
+			.catch((error) => {
+				console.error(error)
+			})
 	}, [])
 
 	useEffect(() => {

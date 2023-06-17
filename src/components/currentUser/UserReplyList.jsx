@@ -23,8 +23,8 @@ export default function UserReplyList() {
 			.getCurrentUser()
 			.then((response) => {
 				if (response.status !== 200) {
-				throw new Error(response.message)
-			}
+					throw new Error(response.message)
+				}
 				const { data } = response
 				setUserId(data.id)
 			})
@@ -39,8 +39,8 @@ export default function UserReplyList() {
 				.getUserReplies(userId)
 				.then((response) => {
 					if (response.status !== 200) {
-					throw new Error(response.message)
-				}
+						throw new Error(response.message)
+					}
 					const { data } = response
 					setReplies(data)
 				})

@@ -42,30 +42,36 @@ export default function MainTweets({ onTweetClick }) {
 			}, 2000)
 			return
 		}
-		tweetAPI.postTweet(userId, isPostText).then((response) => {
-			if (response.status !== 200) {
+		tweetAPI
+			.postTweet(userId, isPostText)
+			.then((response) => {
+				if (response.status !== 200) {
 					throw new Error(response.message)
 				}
-			Toast.fire({
-				icon: 'success',
-				title: '推文成功',
+				Toast.fire({
+					icon: 'success',
+					title: '推文成功',
+				})
+				setIsPostText('')
 			})
-			setIsPostText('')
-		}).catch((error) => {
-			console.error(error)
-		})
+			.catch((error) => {
+				console.error(error)
+			})
 	}
 
 	useEffect(() => {
-		userAPI.getCurrentUser().then((response) => {
-			if (response.status !== 200) {
+		userAPI
+			.getCurrentUser()
+			.then((response) => {
+				if (response.status !== 200) {
 					throw new Error(response.message)
 				}
-			const { data } = response
-			setCurrentUser(data)
-		}).catch((error) => {
-			console.error(error)
-		})
+				const { data } = response
+				setCurrentUser(data)
+			})
+			.catch((error) => {
+				console.error(error)
+			})
 	}, [])
 
 	useEffect(() => {
@@ -82,17 +88,16 @@ export default function MainTweets({ onTweetClick }) {
 
 	useEffect(() => {
 		const checkTokenIsValid = async () => {
-			try{
+			try {
 				const authToken = localStorage.getItem('authToken')
-			if (!authToken) {
-				navigate('/login')
+				if (!authToken) {
+					navigate('/login')
 				}
-			const result = await checkPermission(authToken)
-			if (!result) {
-				navigate('/login')
+				const result = await checkPermission(authToken)
+				if (!result) {
+					navigate('/login')
 				}
-			}
-			catch(error) {
+			} catch (error) {
 				console.error(error)
 			}
 		}

@@ -14,15 +14,18 @@ export default function UserFollowing() {
 	const id = OtherUserId
 
 	useEffect(() => {
-		followingAPI.getFollowings(id).then((response) => {
-			if (response.status !== 200) {
+		followingAPI
+			.getFollowings(id)
+			.then((response) => {
+				if (response.status !== 200) {
 					throw new Error(response.message)
 				}
-			const { data } = response
-			setFollowing(data)
-		}).catch((error) => {
-			console.error(error)
-		})
+				const { data } = response
+				setFollowing(data)
+			})
+			.catch((error) => {
+				console.error(error)
+			})
 	}, [])
 
 	useEffect(() => {

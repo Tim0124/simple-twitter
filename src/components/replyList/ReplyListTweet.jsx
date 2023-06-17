@@ -39,22 +39,28 @@ export default function ReplyListTweet({
 		setLike(!like)
 		if (!like) {
 			setLikeQuantity(likeQuantity + 1)
-			likeAPI.like(id).then((response) => {
-				if (response.status !== 200) {
-					throw new Error(response.message)
-				}
-			}).catch((error) => {
-				console.error(error)
-			})
+			likeAPI
+				.like(id)
+				.then((response) => {
+					if (response.status !== 200) {
+						throw new Error(response.message)
+					}
+				})
+				.catch((error) => {
+					console.error(error)
+				})
 		} else {
 			setLikeQuantity(likeQuantity - 1)
-			likeAPI.unlike(id).then((response) => {
-				if (response.status !== 200) {
-					throw new Error(response.message)
-				}
-			}).catch((error) => {
-				console.error(error)
-			})
+			likeAPI
+				.unlike(id)
+				.then((response) => {
+					if (response.status !== 200) {
+						throw new Error(response.message)
+					}
+				})
+				.catch((error) => {
+					console.error(error)
+				})
 		}
 	}
 

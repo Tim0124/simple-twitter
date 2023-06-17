@@ -35,8 +35,8 @@ export default function UserTweets() {
 					.getUserAllTweet(currentUserId)
 					.then((response) => {
 						if (response.status !== 200) {
-					throw new Error(response.message)
-				}
+							throw new Error(response.message)
+						}
 						const { data } = response
 						setAllTweets(data)
 					})

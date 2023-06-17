@@ -32,8 +32,8 @@ export default function UserInfo({
 			.postFollow(id)
 			.then((response) => {
 				if (response.status !== 200) {
-				throw new Error(response.message)
-			}
+					throw new Error(response.message)
+				}
 				setRender('true')
 			})
 			.catch((error) => {
@@ -48,8 +48,8 @@ export default function UserInfo({
 			.deleteFollow(id)
 			.then((response) => {
 				if (response.status !== 200) {
-				throw new Error(response.message)
-			}
+					throw new Error(response.message)
+				}
 				setRender('false')
 			})
 			.catch((error) => {

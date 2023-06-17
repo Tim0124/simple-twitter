@@ -53,28 +53,34 @@ export default function ReplyList() {
 	}
 
 	useEffect(() => {
-		tweetAPI.getTweet(tweetId).then((response) => {
-			if (response.status !== 200) {
+		tweetAPI
+			.getTweet(tweetId)
+			.then((response) => {
+				if (response.status !== 200) {
 					throw new Error(response.message)
 				}
-			const { data } = response
-			setCurrentTweet(data)
-		}).catch((error) => {
-			console.error(error)
-		})
+				const { data } = response
+				setCurrentTweet(data)
+			})
+			.catch((error) => {
+				console.error(error)
+			})
 		navigate(`/reply/${tweetId}`)
 	}, [])
 
 	useEffect(() => {
-		tweetAPI.getReplyTweet(tweetId).then((response) => {
-			if (response.status !== 200) {
+		tweetAPI
+			.getReplyTweet(tweetId)
+			.then((response) => {
+				if (response.status !== 200) {
 					throw new Error(response.message)
 				}
-			const { data } = response
-			setTweetReply(data)
-		}).catch((error) => {
-			console.error(error)
-		})
+				const { data } = response
+				setTweetReply(data)
+			})
+			.catch((error) => {
+				console.error(error)
+			})
 	}, [])
 
 	useEffect(() => {

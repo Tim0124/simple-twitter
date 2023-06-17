@@ -33,8 +33,8 @@ export default function UserFollowing() {
 					.getFollowings(id)
 					.then((response) => {
 						if (response.status !== 200) {
-					throw new Error(response.message)
-				}
+							throw new Error(response.message)
+						}
 						const { data } = response
 						setFollowing(data)
 						// setRender('false')
