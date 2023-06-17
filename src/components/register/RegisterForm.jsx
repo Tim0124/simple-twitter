@@ -89,7 +89,7 @@ export default function Register() {
 					showConfirmButton: false,
 				})
 			}, 2000)
-		} else if (errorMessage === 'Error: 此信箱已被註冊') {
+		} else if (errorMessage === 'Error: email 已重複註冊！') {
 			setTimeout(() => {
 				setEmailError('')
 				Toast.fire({
