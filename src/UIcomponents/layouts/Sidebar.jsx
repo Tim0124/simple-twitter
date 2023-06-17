@@ -15,6 +15,7 @@ export default function Sidebar() {
 
 	const handleClick = () => {
 		localStorage.removeItem('authToken')
+		localStorage.removeItem('userId')
 		Toast.fire({
 			title: '已登出',
 			icon: 'info',

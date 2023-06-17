@@ -232,7 +232,7 @@ export default function ModalUserInfo() {
 									value={name}
 									onChange={handleNameChange}
 									name='name'
-									onError={inputError}
+									isError={!!inputError || !!inputOverError}
 								/>
 								<div className={style.userInfoNameGroup}>
 									{inputError === true && (
