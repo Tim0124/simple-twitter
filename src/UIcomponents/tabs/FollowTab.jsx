@@ -15,7 +15,12 @@ export default function FollowTab({ id }) {
 							tab === 4 ? style.userActive : ''
 						}`}
 					>
-						<p style={{ color: tab === 4 ? '#ff6600' : '#000' }}>追隨者</p>
+						<p
+							className={style.userTabText}
+							style={{ color: tab === 4 ? '#ff6600' : '#657786' }}
+						>
+							追隨者
+						</p>
 					</div>
 				</Link>
 				<Link
@@ -27,7 +32,12 @@ export default function FollowTab({ id }) {
 							tab === 5 ? style.userActive : ''
 						}`}
 					>
-						<p style={{ color: tab === 5 ? '#ff6600' : '#000' }}>正在追隨</p>
+						<p
+							className={style.userTabText}
+							style={{ color: tab === 5 ? '#ff6600' : '#657786' }}
+						>
+							正在追隨
+						</p>
 					</div>
 				</Link>
 			</div>

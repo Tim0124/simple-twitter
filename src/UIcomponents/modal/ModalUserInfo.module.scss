@@ -22,13 +22,15 @@
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+	height: 57px;
 }
 
 .userInfoMdTitle {
 	display: flex;
 	justify-content: center;
-	margin: 24px 28px;
-	gap: 19px;
+	align-items: center;
+	gap: 10px;
+	padding-left: 24px;
 }
 
 .userInfoMdButton {
@@ -127,31 +129,35 @@
 	cursor: pointer;
 }
 
-.userInfoInputText {
-	display: none;
-}
-
 .inputPhoto {
 	display: none;
 }
 
 .userInfoNameGroup {
+	position: relative;
 	display: flex;
-	justify-content: space-between;
+	width: 100%;
+	justify-content: end;
+
 	.userInfoInputNameError {
-		opacity: 0;
+		position: absolute;
+		left: 0;
 		color: #fc5a5a;
 		font-size: 12px;
 	}
 }
 
 .userInfoTextGroup {
+	position: relative;
 	display: flex;
-	justify-content: space-between;
+	width: 100%;
+	justify-content: end;
 
 	.userInfoInputTextError {
-		opacity: 0;
+		position: absolute;
+		left: 0;
 		color: #fc5a5a;
+		font-size: 12px;
 	}
 }
 .userInfoLabel {
@@ -172,12 +178,8 @@
 	border: none;
 	padding-top: 25px;
 	padding-left: 10px;
+	padding-bottom: 5px;
 	background-color: #f5f8fa;
-	border-bottom: 2px solid #657786;
-}
-
-.userInfoTextArea:hover {
-	border-color: #50b5ff;
 }
 
 .userInfoTextArea:focus {
@@ -190,6 +192,7 @@
 	color: #696974;
 	top: 5px;
 	left: 10px;
+	z-index: 1;
 }
 
 @media screen and (min-width: 991px) {
@@ -220,11 +223,9 @@
 
 	.userInfoInputContent,
 	.userInfoInputText {
-		display: block;
 		font-weight: 500;
 		font-size: 12px;
 		color: #696974;
-		text-align: end;
 	}
 
 	.userInfoLabel {
@@ -248,8 +249,9 @@
 			height: 125px;
 			border: none;
 			background-color: #f5f8fa;
-			margin-top: 20px;
-			padding: 8px 9.69px;
+			padding-top: 0;
+			padding-bottom: 0;
+			border-bottom: 2px solid #657786;
 		}
 
 		.userInfoTextArea:focus,
@@ -265,8 +267,8 @@
 		display: none;
 	}
 
-	.userInfoTextArea {
-		height: 115px;
-		padding-top: 0;
+	.userInfoMdTitle {
+		font-size: 13px;
+		gap: 32px;
 	}
 }

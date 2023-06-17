@@ -24,6 +24,7 @@ export default function ModalUserInfo() {
 	const [name, setName] = useState('')
 	const [introduction, setIntroduction] = useState('')
 	const [inputError, setInputError] = useState(false)
+	const [inputOverError, setInputOverError] = useState(false)
 	const [areaError, setAreaError] = useState(false)
 	const [overText, setOverText] = useState(false)
 
@@ -84,6 +85,9 @@ export default function ModalUserInfo() {
 		e.preventDefault()
 		if (name.trim().length === 0) {
 			setInputError(true)
+			setTimeout(() => {
+				setInputError(false)
+			}, 2000)
 			Toast.fire({
 				icon: 'error',
 				title: '內容不可空白',
@@ -91,7 +95,10 @@ export default function ModalUserInfo() {
 			return
 		}
 		if (name.trim().length > 50) {
-			setInputError(true)
+			setInputOverError(true)
+			setTimeout(() => {
+				setInputOverError(false)
+			}, 2000)
 			Toast.fire({
 				icon: 'error',
 				title: '名稱不可超過50字',
@@ -100,6 +107,9 @@ export default function ModalUserInfo() {
 		}
 		if (introduction.trim().length === 0) {
 			setAreaError(true)
+			setTimeout(() => {
+				setAreaError(false)
+			}, 2000)
 			Toast.fire({
 				icon: 'error',
 				title: '內容不可空白',
@@ -107,9 +117,9 @@ export default function ModalUserInfo() {
 			return
 		}
 		if (introduction.trim().length > 160) {
-			setAreaError(true)
+			setOverText(true)
 			setTimeout(() => {
-				setAreaError(false)
+				setOverText(false)
 			}, 2000)
 			Toast.fire({
 				icon: 'error',
@@ -124,7 +134,6 @@ export default function ModalUserInfo() {
 			.putUserEdit(userId, formData)
 			.then((res) => {
 				const { data } = res
-				console.log('res', res)
 				Toast.fire({
 					icon: 'success',
 					title: '儲存成功',
@@ -165,7 +174,7 @@ export default function ModalUserInfo() {
 											className={`${style.userInfoClose}`}
 											onClick={handleEditModal}
 										>
-											<Close style={{ color: '#ff6600' }} />
+											<Close />
 										</h1>
 									</Link>
 									<h1>編輯個人資料</h1>
@@ -225,23 +234,22 @@ export default function ModalUserInfo() {
 									name='name'
 								/>
 								<div className={style.userInfoNameGroup}>
-									<p className={`${style.userInfoInputNameError}`}>
-										內容不可空白
-									</p>
-									<p className={`${style.userInfoInputText}`}>
+									{inputError === true && (
+										<p className={`${style.userInfoInputNameError}`}>
+											內容不可空白
+										</p>
+									)}
+									{inputOverError === true && (
+										<p className={`${style.userInfoInputNameError}`}>
+											字數超出上限
+										</p>
+									)}
+									<div className={`${style.userInfoInputText}`}>
 										{name.length}/50
-									</p>
+									</div>
 								</div>
 							</div>
 							<div className={`${style.userInfoInputContent}`}>
-								{/* <div className={`${style.userInfoInput}`}>
-									<Input
-										label='自我介紹'
-										value={introduction}
-										onChange={handleIntroductionChange}
-										name='introduction'
-									/>
-								</div> */}
 								<div>
 									<label className={`${style.userInfoLabel}`}>
 										<p className={`${style.userInfoLabelTitle}`}>自我介紹</p>
@@ -250,21 +258,20 @@ export default function ModalUserInfo() {
 											value={introduction}
 											onChange={handleIntroductionChange}
 											name='introduction'
-											style={{
-												borderBottom: areaError
-													? '2px solid #FC5A5A'
-													: '2px solid #657786',
-											}}
 										></textarea>
 									</label>
 								</div>
 								<div className={style.userInfoTextGroup}>
-									<p className={`${style.userInfoInputTextError}`}>
-										內容不可空白
-									</p>
-									<p className={`${style.userInfoInputTextError}`}>
-										文數超出上限
-									</p>
+									{areaError === true && (
+										<p className={`${style.userInfoInputTextError}`}>
+											內容不可空白
+										</p>
+									)}
+									{overText === true && (
+										<p className={`${style.userInfoInputTextError}`}>
+											字數超出上限
+										</p>
+									)}
 									<p className={`${style.userInfoInputText}`}>
 										{introduction.length}/160
 									</p>

@@ -17,7 +17,7 @@ export default function UserTab({ id }) {
 					<Link to={`/user/${id}`} className={`${style.linkStyle}`}>
 						<p
 							className={style.userTabText}
-							style={{ color: tab === 1 ? '#ff6600' : '#6C757D' }}
+							style={{ color: tab === 1 ? '#ff6600' : '#657786' }}
 						>
 							推文
 						</p>
@@ -31,7 +31,7 @@ export default function UserTab({ id }) {
 					<Link to={`/user/self/reply/${id}`} className={`${style.linkStyle}`}>
 						<p
 							className={style.userTabText}
-							style={{ color: tab === 2 ? '#ff6600' : '#6C757D' }}
+							style={{ color: tab === 2 ? '#ff6600' : '#657786' }}
 						>
 							回覆
 						</p>
@@ -45,7 +45,7 @@ export default function UserTab({ id }) {
 					<Link to={`/user/self/like/${id}`} className={`${style.linkStyle}`}>
 						<p
 							className={style.userTabText}
-							style={{ color: tab === 3 ? '#ff6600' : '#6C757D' }}
+							style={{ color: tab === 3 ? '#ff6600' : '#657786' }}
 						>
 							喜歡的內容
 						</p>

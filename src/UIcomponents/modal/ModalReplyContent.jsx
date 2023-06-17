@@ -65,9 +65,6 @@ export default function ModalReplyContent({
 						value={comment}
 						onChange={onInputChange}
 					/>
-					{/* <footer className={`${style.footerText}`} style={{display: onShowError ? "block" : 'none'}}>
-						<p>內容不可空白</p>
-					</footer> */}
 				</div>
 			</form>
 		</main>
