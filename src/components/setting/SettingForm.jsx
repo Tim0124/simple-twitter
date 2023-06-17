@@ -152,8 +152,7 @@ export default function Setting() {
 					showConfirmButton: false,
 				})
 			}, 2000)
-		}
-		else {
+		} else {
 			Toast.fire({
 				title: '修改失敗！',
 				timer: 1000,
