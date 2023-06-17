@@ -4,12 +4,10 @@ import ModalPostTweet from '../modal/ModalPostTweet'
 import { useContext, useEffect, useState } from 'react'
 import { ReplyTweetModalContext, TweetModalContext } from 'context/ModalContext'
 import UserInfoHeader from './UserInfoHeader'
-import tweetAPI from 'api/tweetAPI'
 import OtherUserInfo from './OtherUserInfo'
 import OtherUserTab from 'UIcomponents/tabs/OtherUserTab'
 import OtherFollowTab from 'UIcomponents/tabs/OtherFollowTab'
 import userAPI from 'api/userAPI'
-import { GetRenderContext, SetRenderContext } from 'context/FollowContext'
 
 export default function Layout() {
 	const useTweetModal = useContext(TweetModalContext)
@@ -30,8 +28,13 @@ export default function Layout() {
 			navigate('/user/self')
 		} else {
 			userAPI.getUser(userId).then((response) => {
+				if (response.status !== 200) {
+				throw new Error(response.message)
+			}
 				const { data } = response
 				setUserInfo(data)
+			}).catch((error) => {
+				console.error(error)
 			})
 		}
 	}, [userId])

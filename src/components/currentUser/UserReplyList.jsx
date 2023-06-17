@@ -21,8 +21,11 @@ export default function UserReplyList() {
 	useEffect(() => {
 		userAPI
 			.getCurrentUser()
-			.then((res) => {
-				const { data } = res
+			.then((response) => {
+				if (response.status !== 200) {
+				throw new Error(response.message)
+			}
+				const { data } = response
 				setUserId(data.id)
 			})
 			.catch((error) => {
@@ -35,6 +38,9 @@ export default function UserReplyList() {
 			tweetAPI
 				.getUserReplies(userId)
 				.then((response) => {
+					if (response.status !== 200) {
+					throw new Error(response.message)
+				}
 					const { data } = response
 					setReplies(data)
 				})

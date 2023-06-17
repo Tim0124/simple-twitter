@@ -1,6 +1,5 @@
 import PopularUser from './PopularUser'
 import style from './PopularUserList.module.scss'
-import { ReactComponent as Logo } from '../../assets/logo.svg'
 import followingAPI from 'api/followingAPI'
 import { useContext, useEffect, useState } from 'react'
 import { GetOtherUserIdContext } from 'context/OtherUserContext'
@@ -23,7 +22,7 @@ export default function PopularUserList() {
 					setFollowers(followerData)
 					setRender('false')
 				} catch (error) {
-					console.log('Failed to follower:', error)
+					console.error('Failed to follower:', error)
 					setRender('false')
 				}
 			}

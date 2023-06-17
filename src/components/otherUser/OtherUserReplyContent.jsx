@@ -1,8 +1,4 @@
 import style from './OtherUserReplyContent.module.scss'
-import { ReactComponent as Like } from '../../assets/redlike.svg'
-import { ReactComponent as Message } from '../../assets/message.svg'
-import { ReactComponent as Dislike } from '../../assets/unlike.svg'
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 export default function UserReplyContent({
@@ -10,9 +6,6 @@ export default function UserReplyContent({
 	account,
 	avatar,
 	comment,
-	isLike,
-	quantity,
-	likeQuantity,
 	time,
 	replyAccount,
 	tweetUserId,

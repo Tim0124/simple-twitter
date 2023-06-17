@@ -1,7 +1,6 @@
 import SideItem from './SideItem'
 import style from './AdminSidebar.module.scss'
 import { ReactComponent as Logo } from '../../assets/logo.svg'
-import Button from 'UIcomponents/buttons/Button'
 import { Link, useNavigate } from 'react-router-dom'
 import { Toast } from 'heplers/helpers'
 import { useContext } from 'react'

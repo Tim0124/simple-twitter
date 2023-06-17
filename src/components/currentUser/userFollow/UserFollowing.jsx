@@ -23,12 +23,18 @@ export default function UserFollowing() {
 	useEffect(() => {
 		userAPI
 			.getCurrentUser()
-			.then((res) => {
-				const { data } = res
+			.then((response) => {
+				if (response.status !== 200) {
+					throw new Error(response.message)
+				}
+				const { data } = response
 				setUserId(data.id)
 				followingAPI
 					.getFollowings(id)
 					.then((response) => {
+						if (response.status !== 200) {
+					throw new Error(response.message)
+				}
 						const { data } = response
 						setFollowing(data)
 						// setRender('false')

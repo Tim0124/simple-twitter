@@ -1,12 +1,8 @@
 import style from './OtherUserFollowing.module.scss'
-import FollowTab from 'UIcomponents/tabs/FollowTab'
 import OtherUserFollowerContent from './OtherUserFollowContent'
-import UserInfo from 'UIcomponents/layouts/UserInfo'
-import UserInfoHeader from 'UIcomponents/layouts/UserInfoHeader'
 import { useContext, useEffect, useState } from 'react'
-import tweetAPI from 'api/tweetAPI'
 import followingAPI from 'api/followingAPI'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import { ChangeTabContext } from 'context/UserTabContext'
 import { OtherUserContext } from 'context/OtherUserContext'
 
@@ -19,8 +15,13 @@ export default function UserFollowing() {
 
 	useEffect(() => {
 		followingAPI.getFollowings(id).then((response) => {
+			if (response.status !== 200) {
+					throw new Error(response.message)
+				}
 			const { data } = response
 			setFollowing(data)
+		}).catch((error) => {
+			console.error(error)
 		})
 	}, [])
 

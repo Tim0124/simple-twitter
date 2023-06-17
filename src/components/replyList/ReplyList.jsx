@@ -1,13 +1,9 @@
 import ReplyListHeader from './ReplyListHeader'
 import ReplyListTweet from './ReplyListTweet'
 import style from './ReplyList.module.scss'
-import { data } from 'UIcomponents/layouts/PopularUserList'
 import ReplyListItem from './ReplyListItem'
 import { useContext, useEffect, useState } from 'react'
-import {
-	ReplyTweetModalContext,
-	ShowReplyModalContext,
-} from 'context/ModalContext'
+import { ShowReplyModalContext } from 'context/ModalContext'
 import ModalReplyTweet from 'UIcomponents/modal/ModalReplyTweet'
 import { useNavigate, useParams } from 'react-router-dom'
 import tweetAPI from 'api/tweetAPI'
@@ -18,7 +14,6 @@ import { Toast } from 'heplers/helpers'
 export default function ReplyList() {
 	const [currentTweet, setCurrentTweet] = useState([])
 	const [tweetReply, setTweetReply] = useState([])
-	const useReplyModal = useContext(ReplyTweetModalContext)
 	const handleOtherUser = useContext(GetOtherUserIdContext)
 	const handleShowReplyModal = useContext(ShowReplyModalContext)
 	const tweetId = useParams().tweet_id
@@ -43,6 +38,9 @@ export default function ReplyList() {
 		replyAPI
 			.postReplyTweet(tweetId, isReplyText)
 			.then((response) => {
+				if (response.status !== 200) {
+					throw new Error(response.message)
+				}
 				Toast.fire({
 					icon: 'success',
 					title: '回覆成功',
@@ -56,16 +54,26 @@ export default function ReplyList() {
 
 	useEffect(() => {
 		tweetAPI.getTweet(tweetId).then((response) => {
+			if (response.status !== 200) {
+					throw new Error(response.message)
+				}
 			const { data } = response
 			setCurrentTweet(data)
+		}).catch((error) => {
+			console.error(error)
 		})
 		navigate(`/reply/${tweetId}`)
 	}, [])
 
 	useEffect(() => {
 		tweetAPI.getReplyTweet(tweetId).then((response) => {
+			if (response.status !== 200) {
+					throw new Error(response.message)
+				}
 			const { data } = response
 			setTweetReply(data)
+		}).catch((error) => {
+			console.error(error)
 		})
 	}, [])
 

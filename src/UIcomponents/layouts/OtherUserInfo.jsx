@@ -5,8 +5,6 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useContext, useEffect, useState } from 'react'
 import followingAPI from 'api/followingAPI'
 import { ReactComponent as Message } from '../../assets/orangemsg.svg'
-import { ReactComponent as Noti } from '../../assets/orangenoti.svg'
-import { ReactComponent as CheckNoti } from '../../assets/chekcnoti.svg'
 import { ReactComponent as WhiteNoti } from '../../assets/white_btn_notfi.svg'
 import { ReactComponent as OragneNoti } from '../../assets/btn_notfi.svg'
 import { GetRenderContext, SetRenderContext } from 'context/FollowContext'
@@ -24,7 +22,6 @@ export default function UserInfo({
 	userId,
 	isUserFollowed,
 }) {
-	const render = useContext(GetRenderContext)
 	const [follow, setFollow] = useState(isUserFollowed)
 	const setRender = useContext(SetRenderContext)
 	const [isNoti, setIsNoti] = useState(false)
@@ -34,6 +31,9 @@ export default function UserInfo({
 		followingAPI
 			.postFollow(id)
 			.then((response) => {
+				if (response.status !== 200) {
+				throw new Error(response.message)
+			}
 				setRender('true')
 			})
 			.catch((error) => {
@@ -47,6 +47,9 @@ export default function UserInfo({
 		followingAPI
 			.deleteFollow(id)
 			.then((response) => {
+				if (response.status !== 200) {
+				throw new Error(response.message)
+			}
 				setRender('false')
 			})
 			.catch((error) => {

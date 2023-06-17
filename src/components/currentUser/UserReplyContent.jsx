@@ -1,9 +1,5 @@
 import style from './UserReplyContent.module.scss'
-import { ReactComponent as Like } from '../../assets/redlike.svg'
-import { ReactComponent as Message } from '../../assets/message.svg'
-import { ReactComponent as Dislike } from '../../assets/unlike.svg'
-import { useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export default function UserReplyContent({
 	name,

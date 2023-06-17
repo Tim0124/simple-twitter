@@ -1,4 +1,3 @@
-import Button from 'UIcomponents/buttons/Button'
 import style from './ReplyListHeader.module.scss'
 import { ReactComponent as Arrow } from '../../assets/arrow.svg'
 import { Link } from 'react-router-dom'

@@ -42,19 +42,29 @@ export default function MainTweets({ onTweetClick }) {
 			}, 2000)
 			return
 		}
-		tweetAPI.postTweet(userId, isPostText).then((res) => {
+		tweetAPI.postTweet(userId, isPostText).then((response) => {
+			if (response.status !== 200) {
+					throw new Error(response.message)
+				}
 			Toast.fire({
 				icon: 'success',
 				title: '推文成功',
 			})
 			setIsPostText('')
+		}).catch((error) => {
+			console.error(error)
 		})
 	}
 
 	useEffect(() => {
 		userAPI.getCurrentUser().then((response) => {
+			if (response.status !== 200) {
+					throw new Error(response.message)
+				}
 			const { data } = response
 			setCurrentUser(data)
+		}).catch((error) => {
+			console.error(error)
 		})
 	}, [])
 
@@ -65,20 +75,25 @@ export default function MainTweets({ onTweetClick }) {
 				const tweetData = response.data
 				setTweets(tweetData)
 			} catch (error) {
-				console.log('Failed to tweets:', error)
+				console.error('Failed to tweets:', error)
 			}
 		})()
 	}, [])
 
 	useEffect(() => {
 		const checkTokenIsValid = async () => {
-			const authToken = localStorage.getItem('authToken')
+			try{
+				const authToken = localStorage.getItem('authToken')
 			if (!authToken) {
 				navigate('/login')
-			}
+				}
 			const result = await checkPermission(authToken)
 			if (!result) {
 				navigate('/login')
+				}
+			}
+			catch(error) {
+				console.error(error)
 			}
 		}
 

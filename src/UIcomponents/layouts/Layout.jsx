@@ -1,4 +1,4 @@
-import { Outlet, useLocation, useParams } from 'react-router-dom'
+import { Outlet} from 'react-router-dom'
 import PopularUserList from './PopularUserList'
 import Sidebar from './Sidebar'
 import style from './Layout.module.scss'
@@ -6,7 +6,6 @@ import ModalPostTweet from '../modal/ModalPostTweet'
 import { useContext } from 'react'
 import ModalReplyTweet from 'UIcomponents/modal/ModalReplyTweet'
 import {
-	ModalHiddenContext,
 	ReplyTweetModalContext,
 	TweetModalContext,
 } from 'context/ModalContext'

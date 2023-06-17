@@ -10,7 +10,7 @@ import tweetAPI from 'api/tweetAPI'
 import userAPI from 'api/userAPI'
 import { Toast } from 'heplers/helpers'
 
-export default function ModalPostTweet({ onClick, onHiddenClick }) {
+export default function ModalPostTweet() {
 	const [currentUser, setCurrentUser] = useState([])
 	const [tweet, setTweet] = useState('')
 	const [showError, setShowError] = useState(false)

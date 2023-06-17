@@ -18,10 +18,13 @@ export default function UserFollower() {
 	const render = useContext(GetRenderContext)
 
 	useEffect(() => {
-		if (render === 'true' || render === 'init')
+		// if (render === 'true' || render === 'init')
 			followingAPI
 				.getFollowers(id)
 				.then((response) => {
+					if (response.status !== 200) {
+					throw new Error(response.message)
+				}
 					const { data } = response
 					setFollowers(data)
 					setRender('false')
@@ -31,9 +34,9 @@ export default function UserFollower() {
 				})
 	}, [render])
 
-	useEffect(() => {
-		setRender('init')
-	}, [])
+	// useEffect(() => {
+	// 	setRender('init')
+	// }, [])
 
 	useEffect(() => {
 		if (pathname === `/user/self/follower/${id}`) {

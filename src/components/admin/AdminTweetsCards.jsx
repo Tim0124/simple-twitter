@@ -36,7 +36,7 @@ export default function AdminTweetsCard({
 							<p>{name}</p>
 						</div>
 						<div className={`${style.adminTweetsCardAccount}`}>
-							<p>{account}</p>
+							<p>@{account}</p>
 						</div>
 					</div>
 					<div className={`${style.adminTweetsCardSecInfo}`}>

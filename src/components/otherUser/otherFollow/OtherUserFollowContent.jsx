@@ -1,6 +1,4 @@
 import style from './OtherUserFollowContent.module.scss'
-import { ReactComponent as Like } from '../../../assets/like.svg'
-import { ReactComponent as Message } from '../../../assets/message.svg'
 import Button from 'UIcomponents/buttons/Button'
 
 export default function UserFollowerContent({

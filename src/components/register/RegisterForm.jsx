@@ -3,9 +3,8 @@ import Input from '../../UIcomponents/input/Input'
 import { ReactComponent as Logo } from '../../assets/logo.svg'
 import style from './RegisterForm.module.scss'
 import { checkPermission, register } from 'api/auth'
-import Swal from 'sweetalert2'
 import { Link, useNavigate } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import {  useState } from 'react'
 import { Toast } from 'heplers/helpers'
 
 export default function Register() {

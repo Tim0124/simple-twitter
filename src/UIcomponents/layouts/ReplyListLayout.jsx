@@ -1,6 +1,5 @@
 import { Outlet } from 'react-router-dom'
 import PopularUserList from './PopularUserList'
-import SideItem from './SideItem'
 import Sidebar from './Sidebar'
 import style from './ReplyListLayout.module.scss'
 import ModalReplyTweet from '../modal/ModalReplyTweet'

@@ -1,14 +1,9 @@
-import UserNavbar from './UserNavbar'
 import style from './OtherUserReplyList.module.scss'
 import UserReplyContent from './OtherUserReplyContent'
-import UserTab from 'UIcomponents/tabs/UserTab'
-import UserInfo from 'UIcomponents/layouts/UserInfo'
-import UserInfoHeader from 'UIcomponents/layouts/UserInfoHeader'
 import { useLocation, useParams } from 'react-router-dom'
 import { useContext, useEffect, useState } from 'react'
 import { ChangeTabContext } from 'context/UserTabContext'
 import tweetAPI from 'api/tweetAPI'
-import { OtherUserContext } from 'context/OtherUserContext'
 
 export default function UserReplyList() {
 	const { pathname } = useLocation()
@@ -31,15 +26,6 @@ export default function UserReplyList() {
 
 	return (
 		<div className={`${style.userReplyContainer}`}>
-			{/* <div className={`${style.userInfoHeaderContainer}`}>
-				<UserInfoHeader
-					name={data[0].name}
-					tweet={data[0].tweet}
-					page='/home'
-				/>
-			</div>
-			<UserInfo /> */}
-			{/* <UserTab /> */}
 			<section className={`${style.userReplyContent}`}>
 				{replies.map((reply) => (
 					<UserReplyContent
