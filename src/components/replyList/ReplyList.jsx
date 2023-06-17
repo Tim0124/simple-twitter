@@ -33,7 +33,7 @@ export default function ReplyList() {
 
 	const handleReplySubmit = (e) => {
 		e.preventDefault()
-		if(isReplyText.trim().length > 140) {
+		if (isReplyText.trim().length > 140) {
 			Toast.fire({
 				icon: 'error',
 				title: '字數不可超過140字',
@@ -41,7 +41,7 @@ export default function ReplyList() {
 			return
 		}
 		replyAPI
-			.postReplyTweet(tweetId,isReplyText)
+			.postReplyTweet(tweetId, isReplyText)
 			.then((response) => {
 				Toast.fire({
 					icon: 'success',
@@ -76,7 +76,6 @@ export default function ReplyList() {
 			setIsDisable(false)
 		}
 	}, [isReplyText.trim().length === 0])
-	
 
 	return (
 		<div className={`${style.replyContainer}`}>

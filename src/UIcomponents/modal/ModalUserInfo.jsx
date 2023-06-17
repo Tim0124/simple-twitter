@@ -25,7 +25,7 @@ export default function ModalUserInfo() {
 	const [introduction, setIntroduction] = useState('')
 	const [inputError, setInputError] = useState(false)
 	const [inputOverError, setInputOverError] = useState(false)
-	const [areaError , setAreaError] =useState(false)
+	const [areaError, setAreaError] = useState(false)
 	const [overText, setOverText] = useState(false)
 
 	useEffect(() => {
@@ -87,7 +87,7 @@ export default function ModalUserInfo() {
 			setInputError(true)
 			setTimeout(() => {
 				setInputError(false)
-			},2000)
+			}, 2000)
 			Toast.fire({
 				icon: 'error',
 				title: '內容不可空白',
@@ -98,7 +98,7 @@ export default function ModalUserInfo() {
 			setInputOverError(true)
 			setTimeout(() => {
 				setInputOverError(false)
-			},2000)
+			}, 2000)
 			Toast.fire({
 				icon: 'error',
 				title: '名稱不可超過50字',
@@ -109,7 +109,7 @@ export default function ModalUserInfo() {
 			setAreaError(true)
 			setTimeout(() => {
 				setAreaError(false)
-			},2000)
+			}, 2000)
 			Toast.fire({
 				icon: 'error',
 				title: '內容不可空白',
@@ -174,7 +174,7 @@ export default function ModalUserInfo() {
 											className={`${style.userInfoClose}`}
 											onClick={handleEditModal}
 										>
-											<Close/>
+											<Close />
 										</h1>
 									</Link>
 									<h1>編輯個人資料</h1>
@@ -234,12 +234,16 @@ export default function ModalUserInfo() {
 									name='name'
 								/>
 								<div className={style.userInfoNameGroup}>
-									{inputError === true &&	<p className={`${style.userInfoInputNameError}`} >
-										內容不可空白
-									</p>}
-									{inputOverError === true && <p className={`${style.userInfoInputNameError}`} >
-										字數超出上限
-									</p>}
+									{inputError === true && (
+										<p className={`${style.userInfoInputNameError}`}>
+											內容不可空白
+										</p>
+									)}
+									{inputOverError === true && (
+										<p className={`${style.userInfoInputNameError}`}>
+											字數超出上限
+										</p>
+									)}
 									<div className={`${style.userInfoInputText}`}>
 										{name.length}/50
 									</div>
@@ -258,12 +262,16 @@ export default function ModalUserInfo() {
 									</label>
 								</div>
 								<div className={style.userInfoTextGroup}>
-									{areaError === true && <p className={`${style.userInfoInputTextError}`}>
-										內容不可空白
-									</p>}
-									{overText === true && <p className={`${style.userInfoInputTextError}`}>
-										字數超出上限
-									</p>}
+									{areaError === true && (
+										<p className={`${style.userInfoInputTextError}`}>
+											內容不可空白
+										</p>
+									)}
+									{overText === true && (
+										<p className={`${style.userInfoInputTextError}`}>
+											字數超出上限
+										</p>
+									)}
 									<p className={`${style.userInfoInputText}`}>
 										{introduction.length}/160
 									</p>

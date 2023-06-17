@@ -35,12 +35,12 @@ export default function ModalReplyTweet() {
 			setShowError(true)
 			setTimeout(() => {
 				setShowError(false)
-			},2000)
+			}, 2000)
 			Toast.fire({
 				icon: 'error',
 				title: '內容不可空白',
 			})
-			
+
 			return
 		}
 		const tweetId = ReplyTweetId

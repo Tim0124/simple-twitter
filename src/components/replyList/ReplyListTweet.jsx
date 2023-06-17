@@ -21,7 +21,7 @@ export default function ReplyListTweet({
 	date,
 	onDisable,
 	onButtonChange,
-	onSubmit
+	onSubmit,
 }) {
 	const handleShowReplyModal = useContext(ShowReplyModalContext)
 	const [like, setLike] = useState(isSelfUserLike)
@@ -115,18 +115,22 @@ export default function ReplyListTweet({
 							/>
 						</div>
 						<div className={`${style.replyTweetsInputItem}`}>
-							<textarea 
-							className={style.replyTweetTextArea}
-							type='text'
-							placeholder='推你的回覆'
-							onChange={onButtonChange}
-							>
-							</textarea>
+							<textarea
+								className={style.replyTweetTextArea}
+								type='text'
+								placeholder='推你的回覆'
+								onChange={onButtonChange}
+							></textarea>
 						</div>
 					</div>
 					<div className={`${style.replyTweetsButtonGroup}`}>
 						<div className={`${style.replyTweetsButtonItem}`}>
-							<Button text='回覆' size='middle' onDisabled={onDisable} onClick={onSubmit}/>
+							<Button
+								text='回覆'
+								size='middle'
+								onDisabled={onDisable}
+								onClick={onSubmit}
+							/>
 						</div>
 					</div>
 				</div>
