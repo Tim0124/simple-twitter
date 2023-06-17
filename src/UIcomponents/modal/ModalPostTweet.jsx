@@ -94,6 +94,9 @@ export default function ModalPostTweet({ onClick, onHiddenClick }) {
 						onInput={tweet}
 						onSubmit={handleTweetSubmit}
 					/>
+					<div className={style.textLength}>
+						<p>{tweet.length}/140</p>
+					</div>
 					<div className={`${style.footerButtonItem}`}>
 						{tweet.trim().length === 0 ? (
 							<footer

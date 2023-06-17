@@ -15,7 +15,7 @@ export default function UserTab({ id }) {
 					}`}
 				>
 					<Link to={`/user/other/${id}`} className={`${style.linkStyle}`}>
-						<p style={{ color: tab === 1 ? '#ff6600' : '#000' }}>推文</p>
+						<p className={style.userTabText} style={{ color: tab === 1 ? '#ff6600' : '#657786' }}>推文</p>
 					</Link>
 				</div>
 				<div
@@ -24,7 +24,7 @@ export default function UserTab({ id }) {
 					}`}
 				>
 					<Link to={`/user/other/reply/${id}`} className={`${style.linkStyle}`}>
-						<p style={{ color: tab === 2 ? '#ff6600' : '#000' }}>回覆</p>
+						<p className={style.userTabText} style={{ color: tab === 2 ? '#ff6600' : '#657786' }}>回覆</p>
 					</Link>
 				</div>
 				<div
@@ -33,7 +33,7 @@ export default function UserTab({ id }) {
 					}`}
 				>
 					<Link to={`/user/other/like/${id}`} className={`${style.linkStyle}`}>
-						<p style={{ color: tab === 3 ? '#ff6600' : '#000' }}>喜歡的內容</p>
+						<p className={style.userTabText} style={{ color: tab === 3 ? '#ff6600' : '#657786' }}>喜歡的內容</p>
 					</Link>
 				</div>
 			</div>

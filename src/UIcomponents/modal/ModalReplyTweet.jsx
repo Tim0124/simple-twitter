@@ -32,11 +32,15 @@ export default function ModalReplyTweet() {
 	const handleReplySubmit = (e) => {
 		e.preventDefault()
 		if (comment.trim().length === 0) {
+			setShowError(true)
+			setTimeout(() => {
+				setShowError(false)
+			},2000)
 			Toast.fire({
 				icon: 'error',
 				title: '內容不可空白',
 			})
-			setShowError(true)
+			
 			return
 		}
 		const tweetId = ReplyTweetId
@@ -119,6 +123,9 @@ export default function ModalReplyTweet() {
 							onShowError={showError}
 						/>
 					)}
+					<div className={style.textLength}>
+						<p>{comment.length}/140</p>
+					</div>
 					<div className={`${style.footerButtonItem}`}>
 						<footer
 							className={`${style.footerText}`}

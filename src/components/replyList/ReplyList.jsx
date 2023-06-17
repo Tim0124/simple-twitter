@@ -13,6 +13,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import tweetAPI from 'api/tweetAPI'
 import { GetOtherUserIdContext } from 'context/OtherUserContext'
 import replyAPI from 'api/replyAPI'
+import { Toast } from 'heplers/helpers'
 
 export default function ReplyList() {
 	const [currentTweet, setCurrentTweet] = useState([])
@@ -22,11 +23,40 @@ export default function ReplyList() {
 	const handleShowReplyModal = useContext(ShowReplyModalContext)
 	const tweetId = useParams().tweet_id
 	const navigate = useNavigate()
+	const [isDisable, setIsDisable] = useState(true)
+	const [isReplyText, setIsReplyText] = useState('')
+	const userId = localStorage.getItem('userId')
+
+	const handleButtonChange = (e) => {
+		setIsReplyText(e.target.value)
+	}
+
+	const handleReplySubmit = (e) => {
+		e.preventDefault()
+		if(isReplyText.trim().length > 140) {
+			Toast.fire({
+				icon: 'error',
+				title: '字數不可超過140字',
+			})
+			return
+		}
+		replyAPI
+			.postReplyTweet(tweetId,isReplyText)
+			.then((response) => {
+				Toast.fire({
+					icon: 'success',
+					title: '回覆成功',
+				})
+				setIsReplyText('')
+			})
+			.catch((error) => {
+				console.error(error)
+			})
+	}
 
 	useEffect(() => {
 		tweetAPI.getTweet(tweetId).then((response) => {
 			const { data } = response
-			console.log(data)
 			setCurrentTweet(data)
 		})
 		navigate(`/reply/${tweetId}`)
@@ -38,6 +68,15 @@ export default function ReplyList() {
 			setTweetReply(data)
 		})
 	}, [])
+
+	useEffect(() => {
+		if (isReplyText.trim().length === 0) {
+			setIsDisable(true)
+		} else {
+			setIsDisable(false)
+		}
+	}, [isReplyText.trim().length === 0])
+	
 
 	return (
 		<div className={`${style.replyContainer}`}>
@@ -53,6 +92,9 @@ export default function ReplyList() {
 				time={currentTweet?.relativeTimeFromNow}
 				date={currentTweet?.switchTime}
 				isSelfUserLike={currentTweet?.isSelfUserLike}
+				onDisable={isDisable}
+				onButtonChange={handleButtonChange}
+				onSubmit={handleReplySubmit}
 			/>
 			<div className={`${style.replyListContent}`}>
 				{tweetReply.map((tweet) => (

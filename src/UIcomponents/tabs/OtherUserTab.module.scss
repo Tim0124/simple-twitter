@@ -39,6 +39,10 @@
 	overflow-y: scroll;
 }
 
+.userTabText {
+	font-weight: 700;
+}
+
 @media screen and (min-width: 1200px) {
 	.userTweetsItem,
 	.userReplyItem,
