@@ -41,9 +41,9 @@ export default function UserReplyContent({
 						</Link>
 					</div>
 					<Link to={`/reply/${id}`}>
-					<div className={`${style.replyListItemContentGroup}`}>
-						<p className={`${style.replyListItemContentItem}`}>{comment}</p>
-					</div>
+						<div className={`${style.replyListItemContentGroup}`}>
+							<p className={`${style.replyListItemContentItem}`}>{comment}</p>
+						</div>
 					</Link>
 				</div>
 			</div>
