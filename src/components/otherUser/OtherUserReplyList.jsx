@@ -12,10 +12,15 @@ export default function UserReplyList() {
 	const userId = useParams().user_id
 
 	useEffect(() => {
-		tweetAPI.getUserReplies(userId).then((response) => {
-			const { data } = response
-			setReplies(data)
-		})
+		tweetAPI
+			.getUserReplies(userId)
+			.then((response) => {
+				const { data } = response
+				setReplies(data)
+			})
+			.catch((error) => {
+				console.error('[Other user reply error]', error)
+			})
 	}, [])
 
 	useEffect(() => {
