@@ -1,8 +1,7 @@
 import style from './UserFollowContent.module.scss'
 import Button from 'UIcomponents/buttons/Button'
 import followingAPI from 'api/followingAPI'
-import { useContext } from 'react'
-import { SetRenderContext } from 'context/FollowContext'
+import { useState } from 'react'
 
 export default function UserFollowerContent({
 	id,
@@ -10,11 +9,13 @@ export default function UserFollowerContent({
 	account,
 	avatar,
 	content,
-	isFollow,
+	isSelfUserFollow,
 }) {
-	const setRender = useContext(SetRenderContext)
+	// const setRender = useContext(SetRenderContext)
+	const [follow, setFollow] = useState(isSelfUserFollow)
 
 	const handleFollowClick = () => {
+		setFollow(true)
 		followingAPI
 			.postFollow(id)
 			.then((response) => {
@@ -24,12 +25,13 @@ export default function UserFollowerContent({
 				// setRender('true')
 			})
 			.catch((error) => {
-				console.error(error)
+				console.error('Error:', error)
 				// setRender('false')
 			})
 	}
 
 	const handleUnFollowClick = () => {
+		setFollow(false)
 		followingAPI
 			.deleteFollow(id)
 			.then((response) => {
@@ -39,7 +41,7 @@ export default function UserFollowerContent({
 				// setRender('false')
 			})
 			.catch((error) => {
-				console.error(error)
+				console.error('Error:', error)
 				// setRender('false')
 			})
 	}
@@ -62,20 +64,20 @@ export default function UserFollowerContent({
 								<div className={`${style.userFollowAccount}`}>@{account}</div>
 							</div>
 						</div>
-						{isFollow === true ? (
-							<div className={`${style.userFollowingButton}`}>
+						{follow === true ? (
+							<div className={`${style.popularUserfollowing}`}>
 								<Button
 									size='middle'
 									text='正在跟隨'
-									onClick={handleFollowClick}
+									onClick={handleUnFollowClick}
 								/>
 							</div>
 						) : (
-							<div className={`${style.userFollowButton}`}>
+							<div className={`${style.popularUserFollower}`}>
 								<Button
 									size='white-exsmall'
 									text='跟隨'
-									onClick={handleUnFollowClick}
+									onClick={handleFollowClick}
 								/>
 							</div>
 						)}
