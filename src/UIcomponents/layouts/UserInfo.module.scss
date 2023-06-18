@@ -56,14 +56,14 @@
 
 .userInfoAllContent {
 	display: flex;
-	justify-content: end;
+	justify-content: flex-end;
 	flex-direction: column;
 	margin: 0px 24px;
 }
 
 .userInfoBottonArea {
 	display: flex;
-	justify-content: end;
+	justify-content: flex-end;
 }
 
 .userInfoBottomArea {
@@ -132,7 +132,7 @@
 
 	.userInfoAllContent {
 		display: flex;
-		justify-content: end;
+		justify-content: flex-end;
 		flex-direction: column;
 		margin: 0px 16px;
 	}

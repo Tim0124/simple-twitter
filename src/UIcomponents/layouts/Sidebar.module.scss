@@ -75,7 +75,7 @@
 	.sideBarWrapper {
 		.iconGroup {
 			display: flex;
-			align-items: start;
+			align-items: flex-start;
 			justify-content: space-between;
 			padding: 0 15px;
 			gap: 20px;
@@ -92,13 +92,13 @@
 
 	.sideBarItems {
 		display: flex;
-		align-items: start;
+		align-items: flex-start;
 		width: 100%;
 
 		.logo {
 			width: 100%;
 			display: flex;
-			justify-content: start;
+			justify-content: flex-start;
 			padding: 0 15px;
 		}
 	}

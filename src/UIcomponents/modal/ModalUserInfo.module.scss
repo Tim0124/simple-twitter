@@ -137,7 +137,7 @@
 	position: relative;
 	display: flex;
 	width: 100%;
-	justify-content: end;
+	justify-content: flex-end;
 
 	.userInfoInputNameError {
 		position: absolute;
@@ -151,7 +151,7 @@
 	position: relative;
 	display: flex;
 	width: 100%;
-	justify-content: end;
+	justify-content: flex-end;
 
 	.userInfoInputTextError {
 		position: absolute;
