@@ -1,6 +1,6 @@
 import style from './UserLike.module.scss'
 import UserLikeContent from './UserLikeContent'
-import { useLocation} from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import { useContext, useEffect, useState } from 'react'
 import { ChangeTabContext } from 'context/UserTabContext'
 import tweetAPI from 'api/tweetAPI'

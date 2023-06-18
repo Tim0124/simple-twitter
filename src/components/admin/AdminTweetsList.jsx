@@ -5,8 +5,7 @@ export default function AdminTweetsList() {
 		<div className={`${style.adminTweetsWrapper}`}>
 			<div className={`${style.adminTweetsContainer}`}>
 				<div className={`${style.adminTweetsHeader}`}>推文清單</div>
-				<div className={`${style.adminTweetsItem}`}>
-				</div>
+				<div className={`${style.adminTweetsItem}`}></div>
 			</div>
 		</div>
 	)

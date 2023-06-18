@@ -1,6 +1,6 @@
 import style from './UserReplyList.module.scss'
 import UserReplyContent from './UserReplyContent'
-import {  useLocation, useParams } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import { useContext, useEffect, useState } from 'react'
 import { ChangeTabContext } from 'context/UserTabContext'
 import tweetAPI from 'api/tweetAPI'
