@@ -25,6 +25,7 @@ export default function UserFollower() {
 					throw new Error(response.message)
 				}
 				const { data } = response
+				console.log(data)
 				setFollowers(data)
 				setRender('false')
 			})
@@ -68,13 +69,14 @@ export default function UserFollower() {
 			<section className={`${style.userFollowerContent}`}>
 				{followers.map((follower) => (
 					<UserFollowerContent
+						id={follower.followerId}
 						key={follower.id}
 						followerId={follower.followerId}
 						followingId={follower.followingId}
 						name={follower.User.name}
 						avatar={follower.User.avatar}
 						account={follower.User.account}
-						isFollow={follower.isSelfUserFollow}
+						isSelfUserFollow={follower.isSelfUserFollow}
 						content={follower.User.introduction}
 					/>
 				))}
