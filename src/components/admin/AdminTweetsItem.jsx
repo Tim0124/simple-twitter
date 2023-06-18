@@ -25,7 +25,7 @@ export default function AdminTweetsItem({
 						<div className={`${style.adminTweetsNameGroup}`}>
 							<div className={`${style.adminTweetsName}`}>{name}</div>
 							<div className={`${style.adminTweetsSmallAccount}`}>
-								<div className={`${style.adminTweetsAccount}`}>{account}</div>
+								<div className={`${style.adminTweetsAccount}`}>@{account}</div>
 								<div className={`${style.adminTweetsdot}`}>・</div>
 								<div className={`${style.adminTweetsTime}`}>{time}</div>
 							</div>
