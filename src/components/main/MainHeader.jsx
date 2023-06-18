@@ -1,4 +1,3 @@
-import Button from 'UIcomponents/buttons/Button'
 import style from './MainHeader.module.scss'
 
 export default function MainHeader({ title, arrow, avatar }) {

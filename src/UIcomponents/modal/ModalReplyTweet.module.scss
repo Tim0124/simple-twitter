@@ -88,7 +88,7 @@
 
 .textLength {
 	display: flex;
-	justify-content: end;
+	justify-content: flex-end;
 	padding: 25px 0;
 	padding-right: 25px;
 	color: #6c757d;
@@ -191,7 +191,7 @@
 	}
 	.textLength {
 		display: flex;
-		justify-content: end;
+		justify-content: flex-end;
 		padding: 5px 0;
 		padding-right: 35px;
 	}

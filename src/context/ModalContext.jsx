@@ -1,4 +1,3 @@
-import tweetAPI from 'api/tweetAPI'
 import { createContext, useState } from 'react'
 
 export const TweetModalContext = createContext()

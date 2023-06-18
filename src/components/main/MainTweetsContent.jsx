@@ -5,8 +5,6 @@ import { ReactComponent as Message } from '../../assets/message.svg'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import likeAPI from 'api/likeAPI'
-import tweetAPI from 'api/tweetAPI'
-import { getTweets } from '../../api/allAPI'
 
 export default function MainTweetsContent({
 	id,

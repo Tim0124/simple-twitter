@@ -10,7 +10,6 @@ export default function ModalReplyContent({
 	comment,
 	onInputChange,
 	onSubmit,
-	onShowError,
 }) {
 	return (
 		<main className={`${style.replyTweetContent}`}>

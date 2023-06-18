@@ -1,16 +1,10 @@
-import UserNavbar from './UserNavbar'
 import style from './OtherUserTweets.module.scss'
 import UserTweetsContent from './OtherUserTweetsContent'
-import UserTab from 'UIcomponents/tabs/UserTab'
-import UserInfo from 'UIcomponents/layouts/UserInfo'
-import UserInfoHeader from 'UIcomponents/layouts/UserInfoHeader'
 import { useLocation, useParams, useNavigate } from 'react-router-dom'
 import { useContext, useEffect, useState } from 'react'
 import { ChangeStepContext } from 'context/SideBarContext'
 import tweetAPI from 'api/tweetAPI'
 import { ChangeTabContext } from 'context/UserTabContext'
-import { OtherUserContext } from 'context/OtherUserContext'
-import otherUserAPI from 'api/otherUserAPI'
 import { checkPermission } from 'api/auth'
 
 export default function UserTweets() {

@@ -1,20 +1,11 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Register from './components/register/RegisterForm'
 import LoginForm from 'components/login/LoginForm'
-import AdminForm from './components/admin/AdminForm'
-import Setting from './components/setting/SettingForm'
-import PopularUserList from './UIcomponents/layouts/PopularUserList'
-import PopularUser from 'UIcomponents/layouts/PopularUser'
 import MainTweets from 'components/main/MainTweets'
 import Layout from 'UIcomponents/layouts/Layout'
-import AdminTweetsCardList from 'components/admin/AdminTweetsCardsList'
-import AdminTweetsList from 'components/admin/AdminTweetsList'
 import AdminLayout from 'UIcomponents/layouts/AdminLayout'
-import UserInfo from 'UIcomponents/layouts/UserInfo'
-import ReplyListLayout from 'UIcomponents/layouts/ReplyListLayout'
 import ReplyList from 'components/replyList/ReplyList'
 import UserTweets from 'components/currentUser/UserTweets'
-import UserReplyContent from 'components/currentUser/UserReplyContent'
 import UserReplyList from 'components/currentUser/UserReplyList'
 import UserLike from 'components/currentUser/UserLike'
 import UserFollower from 'components/currentUser/userFollow/UserFollower'
@@ -85,7 +76,7 @@ export default function Router() {
 							/>
 						</Route>
 					</Route>
-					<Route path='/' element={<LoginForm />} />
+					<Route path='/*' element={<LoginForm />} />
 				</Routes>
 			</BrowserRouter>
 		</>
