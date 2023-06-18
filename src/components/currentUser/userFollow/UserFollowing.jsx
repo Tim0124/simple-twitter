@@ -4,7 +4,6 @@ import { useContext, useEffect, useState } from 'react'
 import followingAPI from 'api/followingAPI'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { ChangeTabContext } from 'context/UserTabContext'
-import { GetRenderContext, SetRenderContext } from 'context/FollowContext'
 import userAPI from 'api/userAPI'
 import { checkPermission } from 'api/auth'
 
@@ -101,7 +100,7 @@ export default function UserFollowing() {
 						avatar={follow?.User?.avatar}
 						account={follow?.User?.account}
 						content={follow?.User?.introduction}
-						isFollow={follow?.isSelfUserFollow}
+						isSelfUserFollow={follow?.isSelfUserFollow}
 					/>
 				))}
 			</section>
