@@ -56,7 +56,6 @@ export default function UserFollowing() {
 		checkTokenIsValid()
 	}, [])
 
-
 	return (
 		<div className={`${style.userFollowingContainer}`}>
 			{/* <div className={`${style.userInfoHeaderContainer}`}>

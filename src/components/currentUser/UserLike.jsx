@@ -14,15 +14,18 @@ export default function UserLike() {
 	const navigate = useNavigate()
 
 	useEffect(() => {
-		tweetAPI.getUserLikes(currentUserId).then((response) => {
-			if (response.status !== 200) {
-				throw new Error(response.message)
-			}
-			const { data } = response
-			setLikesTweet(data)
-		}).catch((error) => {
-			console.error('[Userlike error]', error)
-		})
+		tweetAPI
+			.getUserLikes(currentUserId)
+			.then((response) => {
+				if (response.status !== 200) {
+					throw new Error(response.message)
+				}
+				const { data } = response
+				setLikesTweet(data)
+			})
+			.catch((error) => {
+				console.error('[Userlike error]', error)
+			})
 	}, [])
 
 	useEffect(() => {

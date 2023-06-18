@@ -27,18 +27,21 @@ export default function Setting() {
 	const id = localStorage.getItem('userId')
 
 	useEffect(() => {
-		userAPI.getCurrentUser().then((response) => {
-			if (response.status !== 200) {
-				throw new Error(data.message)
-			}
-			const { data } = response
-			setAccountAPI(data)
-			setAccount(data.account)
-			setName(data.name)
-			setEmail(data.email)
-		}).catch((error) => {
-			console.error('[Setting error: ]', error)
-		})
+		userAPI
+			.getCurrentUser()
+			.then((response) => {
+				if (response.status !== 200) {
+					throw new Error(data.message)
+				}
+				const { data } = response
+				setAccountAPI(data)
+				setAccount(data.account)
+				setName(data.name)
+				setEmail(data.email)
+			})
+			.catch((error) => {
+				console.error('[Setting error: ]', error)
+			})
 	}, [])
 
 	useEffect(() => {

@@ -15,12 +15,15 @@ export default function UserLike() {
 	const userId = useParams().user_id
 
 	useEffect(() => {
-		tweetAPI.getUserLikes(userId).then((response) => {
-			const { data } = response
-			setLikesTweet(data)
-		}).catch((error) => {
-			console.error('[Other user like error: ]', error)
-		})
+		tweetAPI
+			.getUserLikes(userId)
+			.then((response) => {
+				const { data } = response
+				setLikesTweet(data)
+			})
+			.catch((error) => {
+				console.error('[Other user like error: ]', error)
+			})
 	}, [])
 
 	useEffect(() => {
@@ -47,7 +50,6 @@ export default function UserLike() {
 
 		checkTokenIsValid()
 	}, [])
-
 
 	return (
 		<div className={`${style.userTweetsContainer}`}>
