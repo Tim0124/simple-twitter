@@ -1,11 +1,8 @@
 import style from './UserFollower.module.scss'
-import FollowTab from 'UIcomponents/tabs/FollowTab'
 import UserFollowerContent from './UserFollowContent'
-import UserInfo from 'UIcomponents/layouts/UserInfo'
-import UserInfoHeader from 'UIcomponents/layouts/UserInfoHeader'
 import { useContext, useEffect, useState } from 'react'
 import followingAPI from 'api/followingAPI'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import { ChangeTabContext } from 'context/UserTabContext'
 import { GetRenderContext, SetRenderContext } from 'context/FollowContext'
 

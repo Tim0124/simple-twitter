@@ -1,10 +1,6 @@
-import UserNavbar from './UserNavbar'
 import style from './UserTweets.module.scss'
 import UserTweetsContent from './UserTweetsContent'
-import UserTab from 'UIcomponents/tabs/UserTab'
-import UserInfo from 'UIcomponents/layouts/UserInfo'
-import UserInfoHeader from 'UIcomponents/layouts/UserInfoHeader'
-import { useLocation, useNavigate, useParams } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import { useContext, useEffect, useState } from 'react'
 import { ChangeStepContext } from 'context/SideBarContext'
 import tweetAPI from 'api/tweetAPI'
@@ -13,7 +9,6 @@ import userAPI from 'api/userAPI'
 
 export default function UserTweets() {
 	const { pathname } = useLocation()
-	const tweetId = useParams().tweet_id
 	const handleChangeStep = useContext(ChangeStepContext)
 	// const [userInfo, setUserInfo] = useState([])
 	const [allTweets, setAllTweets] = useState([])

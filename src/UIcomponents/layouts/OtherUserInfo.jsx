@@ -7,7 +7,7 @@ import followingAPI from 'api/followingAPI'
 import { ReactComponent as Message } from '../../assets/orangemsg.svg'
 import { ReactComponent as WhiteNoti } from '../../assets/white_btn_notfi.svg'
 import { ReactComponent as OragneNoti } from '../../assets/btn_notfi.svg'
-import { GetRenderContext, SetRenderContext } from 'context/FollowContext'
+import { SetRenderContext } from 'context/FollowContext'
 
 export default function UserInfo({
 	id,

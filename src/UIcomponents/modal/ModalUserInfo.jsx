@@ -61,7 +61,6 @@ export default function ModalUserInfo() {
 			return
 		} else {
 			const imageURL = window.URL.createObjectURL(files[0])
-			console.log('image', imageURL)
 			setBackground(imageURL)
 		}
 	}

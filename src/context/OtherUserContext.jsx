@@ -1,6 +1,3 @@
-import otherUserAPI from 'api/otherUserAPI'
-import { useNavigate } from 'react-router-dom'
-
 const { createContext, useState } = require('react')
 
 export const OtherUserContext = createContext()

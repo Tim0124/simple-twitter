@@ -12,7 +12,6 @@ export default function PopularUser({
 	account,
 	isUserFollowed,
 	onOtherUserId,
-	// followingId
 }) {
 	const [follow, setFollow] = useState(isUserFollowed)
 	const setRender = useContext(SetRenderContext)

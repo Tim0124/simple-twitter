@@ -6,7 +6,6 @@ import tweetAPI from 'api/tweetAPI'
 import { ToastAlert, Toast } from 'heplers/helpers'
 import Swal from 'sweetalert2'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { checkPermission } from '../../api/auth'
 import { ChangeStepContext } from 'context/SideBarContext'
 
 export default function AdminTweets() {

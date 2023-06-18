@@ -3,7 +3,6 @@ import { ReactComponent as Tweet } from '../../assets/greytweet.svg'
 import { ReactComponent as Like } from '../../assets/greylike.svg'
 
 export default function AdminTweetsCard({
-	background,
 	name,
 	avatar,
 	account,
