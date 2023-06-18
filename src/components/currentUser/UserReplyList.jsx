@@ -5,6 +5,7 @@ import { useContext, useEffect, useState } from 'react'
 import { ChangeTabContext } from 'context/UserTabContext'
 import tweetAPI from 'api/tweetAPI'
 import userAPI from 'api/userAPI'
+import { checkPermission } from 'api/auth'
 
 export default function UserReplyList() {
 	const { pathname } = useLocation()
@@ -13,6 +14,7 @@ export default function UserReplyList() {
 	const currentUserId = localStorage.getItem('userId')
 	const [userId, setUserId] = useState('')
 	const pageId = useParams().user_id
+	const navigate = useNavigate()
 
 	useEffect(() => {
 		userAPI
@@ -51,6 +53,25 @@ export default function UserReplyList() {
 			handleChangeTab(2)
 		}
 	}, [pathname])
+
+	useEffect(() => {
+		const checkTokenIsValid = async () => {
+			try {
+				const authToken = localStorage.getItem('authToken')
+				if (!authToken) {
+					navigate('/login')
+				}
+				const result = await checkPermission(authToken)
+				if (!result) {
+					navigate('/login')
+				}
+			} catch (error) {
+				console.error(error)
+			}
+		}
+
+		checkTokenIsValid()
+	}, [])
 
 	return (
 		<div className={`${style.userReplyContainer}`}>
