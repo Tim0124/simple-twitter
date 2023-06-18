@@ -56,7 +56,7 @@ export default function AdminTweetsCard({
 							</div>
 							<div className={`${style.adminTweetsCardFollower}`}>
 								<p className={`${style.follower}`}>{follower}&nbsp;位</p>
-								<p>跟隨中</p>
+								<p>跟隨者</p>
 							</div>
 						</div>
 					</div>

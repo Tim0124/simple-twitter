@@ -44,8 +44,8 @@ export default function AdminUsers() {
 							account={user.account}
 							tweet={user.tweetsCount}
 							like={user.likesCount}
-							following={user.followersCount}
-							follower={user.followingsCount}
+							following={user.followingsCount}
+							follower={user.followersCount}
 							backgroundImage={user.backgroundImage}
 						/>
 					))}
