@@ -2,7 +2,7 @@ import style from './ReplyListHeader.module.scss'
 import { ReactComponent as Arrow } from '../../assets/arrow.svg'
 import { Link } from 'react-router-dom'
 
-export default function ReplyListHeader({ title, arrow }) {
+export default function ReplyListHeader() {
 	return (
 		<header className={`${style.tweetsHeader}`}>
 			<nav className={`${style.tweetsNavbar}`}>

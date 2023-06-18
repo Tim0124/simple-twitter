@@ -115,6 +115,7 @@ export default function ReplyList() {
 			<ReplyListHeader />
 			<ReplyListTweet
 				id={currentTweet?.id}
+				userId={currentTweet.UserId}
 				avatar={currentTweet.User?.avatar}
 				name={currentTweet.User?.name}
 				account={currentTweet.User?.account}

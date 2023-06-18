@@ -25,7 +25,6 @@ export default function UserFollower() {
 					throw new Error(response.message)
 				}
 				const { data } = response
-				console.log(data)
 				setFollowers(data)
 				setRender('false')
 			})
