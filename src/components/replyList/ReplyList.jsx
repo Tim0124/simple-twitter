@@ -21,7 +21,6 @@ export default function ReplyList() {
 	const navigate = useNavigate()
 	const [isDisable, setIsDisable] = useState(true)
 	const [isReplyText, setIsReplyText] = useState('')
-	const userId = localStorage.getItem('userId')
 
 	const handleButtonChange = (e) => {
 		setIsReplyText(e.target.value)

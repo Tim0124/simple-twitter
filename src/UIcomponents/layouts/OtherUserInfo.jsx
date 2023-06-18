@@ -1,7 +1,6 @@
 import style from './OtherUserInfo.module.scss'
 import Button from 'UIcomponents/buttons/Button'
-import UserInfoHeader from './UserInfoHeader'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useContext, useEffect, useState } from 'react'
 import followingAPI from 'api/followingAPI'
 import { ReactComponent as Message } from '../../assets/orangemsg.svg'
