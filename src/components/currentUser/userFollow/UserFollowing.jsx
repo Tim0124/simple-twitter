@@ -2,7 +2,7 @@ import style from './UserFollowing.module.scss'
 import UserFollowerContent from './UserFollowContent'
 import { useContext, useEffect, useState } from 'react'
 import followingAPI from 'api/followingAPI'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { ChangeTabContext } from 'context/UserTabContext'
 import { GetRenderContext, SetRenderContext } from 'context/FollowContext'
 import userAPI from 'api/userAPI'
@@ -12,9 +12,6 @@ export default function UserFollowing() {
 	const [following, setFollowing] = useState([])
 	const { pathname } = useLocation()
 	const handleChangeTab = useContext(ChangeTabContext)
-	const setRender = useContext(SetRenderContext)
-	const render = useContext(GetRenderContext)
-	const [userId, setUserId] = useState('')
 	const id = localStorage.getItem('userId')
 	const navigate = useNavigate()
 
@@ -26,7 +23,6 @@ export default function UserFollowing() {
 					throw new Error(response.message)
 				}
 				const { data } = response
-				setUserId(data.id)
 				followingAPI
 					.getFollowings(id)
 					.then((response) => {

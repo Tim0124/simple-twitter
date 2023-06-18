@@ -9,7 +9,6 @@ import { checkPermission, setting } from 'api/auth'
 import userAPI from 'api/userAPI'
 
 export default function Setting() {
-	const [accountAPI, setAccountAPI] = useState([])
 	const [account, setAccount] = useState('')
 	const [name, setName] = useState('')
 	const [email, setEmail] = useState('')
@@ -34,7 +33,6 @@ export default function Setting() {
 					throw new Error(data.message)
 				}
 				const { data } = response
-				setAccountAPI(data)
 				setAccount(data.account)
 				setName(data.name)
 				setEmail(data.email)

@@ -1,6 +1,6 @@
 import style from './OtherUserLike.module.scss'
 import OtherUserLikeContent from './OtherUserLikeContent'
-import { useLocation, useParams } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import { useContext, useEffect, useState } from 'react'
 import { ChangeTabContext } from 'context/UserTabContext'
 import tweetAPI from 'api/tweetAPI'

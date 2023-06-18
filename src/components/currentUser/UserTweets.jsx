@@ -1,6 +1,6 @@
 import style from './UserTweets.module.scss'
 import UserTweetsContent from './UserTweetsContent'
-import { useLocation, useParams } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useContext, useEffect, useState } from 'react'
 import { ChangeStepContext } from 'context/SideBarContext'
 import tweetAPI from 'api/tweetAPI'
