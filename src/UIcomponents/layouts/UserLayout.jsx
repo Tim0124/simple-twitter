@@ -39,10 +39,7 @@ export default function Layout() {
 	return (
 		<div className={`${style.userTweetsContainer}`}>
 			<div className={`${style.userInfoHeaderContainer}`}>
-				<UserInfoHeader
-					name={userInfo?.name}
-					tweet={userInfo?.tweetsCount}
-				/>
+				<UserInfoHeader name={userInfo?.name} tweet={userInfo?.tweetsCount} />
 			</div>
 			<UserInfo
 				key={userInfo?.id}

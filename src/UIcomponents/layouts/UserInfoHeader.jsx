@@ -7,11 +7,14 @@ export default function UserInfoHeader({ name, tweet }) {
 	return (
 		<header className={`${style.userInfoHeader}`}>
 			<nav className={`${style.userInfoNavbar}`}>
-					<div className={`${style.userInfoNavTitle}`} onClick={() => navigate(-1)}>
-						<h1 className={`${style.userInfoText}`}>
-							<Arrow />
-						</h1>
-					</div>
+				<div
+					className={`${style.userInfoNavTitle}`}
+					onClick={() => navigate(-1)}
+				>
+					<h1 className={`${style.userInfoText}`}>
+						<Arrow />
+					</h1>
+				</div>
 				<div className={`${style.userInfoHeaderGroup}`}>
 					<div className={`${style.userInfoNavName}`}>{name}</div>
 					<div className={`${style.userInfoTweet}`}>{tweet}&nbsp;推文</div>
