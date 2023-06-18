@@ -10,6 +10,7 @@ import likeAPI from 'api/likeAPI'
 
 export default function ReplyListTweet({
 	id,
+	userId,
 	avatar,
 	name,
 	account,
@@ -17,7 +18,6 @@ export default function ReplyListTweet({
 	quantity,
 	likesCount,
 	isSelfUserLike,
-	time,
 	date,
 	onDisable,
 	onButtonChange,
@@ -69,7 +69,7 @@ export default function ReplyListTweet({
 			<div className={`${style.replyTweetsList}`}>
 				<div className={`${style.replyTweetsInfo}`}>
 					<div className={`${style.replyTweetsSecInfo}`}>
-						<Link>
+						<Link to={`/user/other/${userId}`}>
 							<div className={`${style.replyTweetsLogo}`}>
 								<img
 									src={avatar}
