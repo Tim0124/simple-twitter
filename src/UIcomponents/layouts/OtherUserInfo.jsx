@@ -8,6 +8,7 @@ import { ReactComponent as Message } from '../../assets/orangemsg.svg'
 import { ReactComponent as WhiteNoti } from '../../assets/white_btn_notfi.svg'
 import { ReactComponent as OragneNoti } from '../../assets/btn_notfi.svg'
 import { GetRenderContext, SetRenderContext } from 'context/FollowContext'
+import { checkPermission } from 'api/auth'
 
 export default function UserInfo({
 	id,
@@ -25,6 +26,7 @@ export default function UserInfo({
 	const [follow, setFollow] = useState(isUserFollowed)
 	const setRender = useContext(SetRenderContext)
 	const [isNoti, setIsNoti] = useState(false)
+	const navigate = useNavigate()
 
 	const handleFollowClick = () => {
 		setFollow(true)
@@ -61,6 +63,26 @@ export default function UserInfo({
 	const handleNotiClick = () => {
 		setIsNoti(!isNoti)
 	}
+
+	useEffect(() => {
+		const checkTokenIsValid = async () => {
+			try {
+				const authToken = localStorage.getItem('authToken')
+				if (!authToken) {
+					navigate('/login')
+				}
+				const result = await checkPermission(authToken)
+				if (!result) {
+					navigate('/login')
+				}
+			} catch (error) {
+				console.error(error)
+			}
+		}
+
+		checkTokenIsValid()
+	}, [])
+
 	return (
 		<div className={`${style.userInfoContainer} ${style[onHideUserInfo]}`}>
 			<div className={`${style.userInfoWrapper}`}>

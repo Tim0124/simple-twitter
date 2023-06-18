@@ -4,13 +4,14 @@ import UserTweetsContent from './OtherUserTweetsContent'
 import UserTab from 'UIcomponents/tabs/UserTab'
 import UserInfo from 'UIcomponents/layouts/UserInfo'
 import UserInfoHeader from 'UIcomponents/layouts/UserInfoHeader'
-import { useLocation, useParams } from 'react-router-dom'
-import { useContext, useEffect, useState } from 'react'
+import { useLocation, useParams, useNavigate  } from 'react-router-dom'
+import { useContext, useEffect, useState} from 'react'
 import { ChangeStepContext } from 'context/SideBarContext'
 import tweetAPI from 'api/tweetAPI'
 import { ChangeTabContext } from 'context/UserTabContext'
 import { OtherUserContext } from 'context/OtherUserContext'
 import otherUserAPI from 'api/otherUserAPI'
+import { checkPermission } from 'api/auth'
 
 export default function UserTweets() {
 	const { pathname } = useLocation()
@@ -18,6 +19,7 @@ export default function UserTweets() {
 	const handleChangeStep = useContext(ChangeStepContext)
 	const [otherUser, setOtherUser] = useState([])
 	const handleChangeTab = useContext(ChangeTabContext)
+	const navigate = useNavigate()
 
 	useEffect(() => {
 		tweetAPI
@@ -40,6 +42,26 @@ export default function UserTweets() {
 			handleChangeTab(1)
 		}
 	}, [pathname])
+
+	useEffect(() => {
+		const checkTokenIsValid = async () => {
+			try {
+				const authToken = localStorage.getItem('authToken')
+				if (!authToken) {
+					navigate('/login')
+				}
+				const result = await checkPermission(authToken)
+				if (!result) {
+					navigate('/login')
+				}
+			} catch (error) {
+				console.error(error)
+			}
+		}
+
+		checkTokenIsValid()
+	}, [])
+
 	return (
 		<div className={`${style.userTweetsContainer}`}>
 			<section className={`${style.UserTweetsContent}`}>

@@ -4,11 +4,13 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import { useContext, useEffect, useState } from 'react'
 import { ChangeTabContext } from 'context/UserTabContext'
 import tweetAPI from 'api/tweetAPI'
+import { checkPermission } from 'api/auth'
 
 export default function UserLike() {
 	const { pathname } = useLocation()
 	const handleChangeTab = useContext(ChangeTabContext)
 	const [likesTweet, setLikesTweet] = useState([])
+	const navigate = useNavigate()
 
 	const userId = useParams().user_id
 
@@ -16,6 +18,8 @@ export default function UserLike() {
 		tweetAPI.getUserLikes(userId).then((response) => {
 			const { data } = response
 			setLikesTweet(data)
+		}).catch((error) => {
+			console.error('[Other user like error: ]', error)
 		})
 	}, [])
 
@@ -24,6 +28,26 @@ export default function UserLike() {
 			handleChangeTab(3)
 		}
 	}, [pathname])
+
+	useEffect(() => {
+		const checkTokenIsValid = async () => {
+			try {
+				const authToken = localStorage.getItem('authToken')
+				if (!authToken) {
+					navigate('/login')
+				}
+				const result = await checkPermission(authToken)
+				if (!result) {
+					navigate('/login')
+				}
+			} catch (error) {
+				console.error(error)
+			}
+		}
+
+		checkTokenIsValid()
+	}, [])
+
 
 	return (
 		<div className={`${style.userTweetsContainer}`}>

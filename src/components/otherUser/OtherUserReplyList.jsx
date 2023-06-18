@@ -15,6 +15,8 @@ export default function UserReplyList() {
 		tweetAPI.getUserReplies(userId).then((response) => {
 			const { data } = response
 			setReplies(data)
+		}).catch((error) => {
+			console.error('[Other user reply error]', error)
 		})
 	}, [])
 

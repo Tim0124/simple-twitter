@@ -10,6 +10,7 @@ import tweetAPI from 'api/tweetAPI'
 import { GetOtherUserIdContext } from 'context/OtherUserContext'
 import replyAPI from 'api/replyAPI'
 import { Toast } from 'heplers/helpers'
+import { checkPermission } from 'api/auth'
 
 export default function ReplyList() {
 	const [currentTweet, setCurrentTweet] = useState([])
@@ -90,6 +91,25 @@ export default function ReplyList() {
 			setIsDisable(false)
 		}
 	}, [isReplyText.trim().length === 0])
+
+	useEffect(() => {
+		const checkTokenIsValid = async () => {
+			try {
+				const authToken = localStorage.getItem('authToken')
+				if (!authToken) {
+					navigate('/login')
+				}
+				const result = await checkPermission(authToken)
+				if (!result) {
+					navigate('/login')
+				}
+			} catch (error) {
+				console.error(error)
+			}
+		}
+
+		checkTokenIsValid()
+	}, [])
 
 	return (
 		<div className={`${style.replyContainer}`}>
