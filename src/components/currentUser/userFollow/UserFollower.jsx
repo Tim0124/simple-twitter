@@ -5,6 +5,7 @@ import followingAPI from 'api/followingAPI'
 import { useLocation } from 'react-router-dom'
 import { ChangeTabContext } from 'context/UserTabContext'
 import { GetRenderContext, SetRenderContext } from 'context/FollowContext'
+import { checkPermission } from 'api/auth'
 
 export default function UserFollower() {
 	const [followers, setFollowers] = useState([])
@@ -13,6 +14,7 @@ export default function UserFollower() {
 	const id = localStorage.getItem('userId')
 	const setRender = useContext(SetRenderContext)
 	const render = useContext(GetRenderContext)
+	const navigate = useNavigate()
 
 	useEffect(() => {
 		// if (render === 'true' || render === 'init')
@@ -26,8 +28,9 @@ export default function UserFollower() {
 				setFollowers(data)
 				setRender('false')
 			})
-			.catch(() => {
+			.catch((error) => {
 				setRender('false')
+				console.error('[User follow: ]', error)
 			})
 	}, [render])
 
@@ -40,6 +43,25 @@ export default function UserFollower() {
 			handleChangeTab(4)
 		}
 	}, [pathname])
+
+	useEffect(() => {
+		const checkTokenIsValid = async () => {
+			try {
+				const authToken = localStorage.getItem('authToken')
+				if (!authToken) {
+					navigate('/login')
+				}
+				const result = await checkPermission(authToken)
+				if (!result) {
+					navigate('/login')
+				}
+			} catch (error) {
+				console.error(error)
+			}
+		}
+
+		checkTokenIsValid()
+	}, [])
 
 	return (
 		<div className={`${style.userFollowerContainer}`}>

@@ -6,6 +6,7 @@ import { ChangeStepContext } from 'context/SideBarContext'
 import tweetAPI from 'api/tweetAPI'
 import { ChangeTabContext } from 'context/UserTabContext'
 import userAPI from 'api/userAPI'
+import { checkPermission } from 'api/auth'
 
 export default function UserTweets() {
 	const { pathname } = useLocation()
@@ -15,6 +16,7 @@ export default function UserTweets() {
 	const handleChangeTab = useContext(ChangeTabContext)
 	const [userId, setUserId] = useState('')
 	const currentUserId = localStorage.getItem('userId')
+	const navigate = useNavigate()
 
 	useEffect(() => {
 		userAPI
@@ -50,6 +52,26 @@ export default function UserTweets() {
 			handleChangeTab(1)
 		}
 	}, [pathname])
+
+	useEffect(() => {
+		const checkTokenIsValid = async () => {
+			try {
+				const authToken = localStorage.getItem('authToken')
+				if (!authToken) {
+					navigate('/login')
+				}
+				const result = await checkPermission(authToken)
+				if (!result) {
+					navigate('/login')
+				}
+			} catch (error) {
+				console.error(error)
+			}
+		}
+
+		checkTokenIsValid()
+	}, [])
+
 	return (
 		<div className={`${style.userTweetsContainer}`}>
 			<section className={`${style.UserTweetsContent}`}>

@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { useContext, useEffect, useState } from 'react'
 import { ChangeStepContext } from 'context/SideBarContext'
 import { Toast } from 'heplers/helpers'
-import { setting } from 'api/auth'
+import { checkPermission, setting } from 'api/auth'
 import userAPI from 'api/userAPI'
 
 export default function Setting() {
@@ -27,13 +27,21 @@ export default function Setting() {
 	const id = localStorage.getItem('userId')
 
 	useEffect(() => {
-		userAPI.getCurrentUser().then((response) => {
-			const { data } = response
-			setAccountAPI(data)
-			setAccount(data.account)
-			setName(data.name)
-			setEmail(data.email)
-		})
+		userAPI
+			.getCurrentUser()
+			.then((response) => {
+				if (response.status !== 200) {
+					throw new Error(data.message)
+				}
+				const { data } = response
+				setAccountAPI(data)
+				setAccount(data.account)
+				setName(data.name)
+				setEmail(data.email)
+			})
+			.catch((error) => {
+				console.error('[Setting error: ]', error)
+			})
 	}, [])
 
 	useEffect(() => {
@@ -150,6 +158,25 @@ export default function Setting() {
 			})
 		}
 	}
+
+	useEffect(() => {
+		const checkTokenIsValid = async () => {
+			try {
+				const authToken = localStorage.getItem('authToken')
+				if (!authToken) {
+					navigate('/login')
+				}
+				const result = await checkPermission(authToken)
+				if (!result) {
+					navigate('/login')
+				}
+			} catch (error) {
+				console.error(error)
+			}
+		}
+
+		checkTokenIsValid()
+	}, [])
 
 	return (
 		<>
