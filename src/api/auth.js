@@ -32,7 +32,7 @@ export const adminLogin = async ({ account, password }) => {
 			return { success: true, ...data.data }
 		}
 		return data.data
-	} catch (error) {	
+	} catch (error) {
 		console.error('[Login Failed]', error)
 		return { success: false, error: error.message }
 	}

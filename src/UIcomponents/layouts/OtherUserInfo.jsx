@@ -74,11 +74,11 @@ export default function UserInfo({
 				const result = await checkPermission(authToken)
 				if (!result) {
 					Toast.fire({
-					title: '帳號不存在',
-					timer: 2000,
-					icon: 'error',
-					showConfirmButton: false,
-				})
+						title: '帳號不存在',
+						timer: 2000,
+						icon: 'error',
+						showConfirmButton: false,
+					})
 					navigate('/login')
 				}
 			} catch (error) {
