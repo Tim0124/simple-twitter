@@ -8,6 +8,7 @@ import { ReactComponent as WhiteNoti } from '../../assets/white_btn_notfi.svg'
 import { ReactComponent as OragneNoti } from '../../assets/btn_notfi.svg'
 import { SetRenderContext } from 'context/FollowContext'
 import { checkPermission } from 'api/auth'
+import { Toast } from 'heplers/helpers'
 
 export default function UserInfo({
 	id,
@@ -72,6 +73,12 @@ export default function UserInfo({
 				}
 				const result = await checkPermission(authToken)
 				if (!result) {
+					Toast.fire({
+					title: '帳號不存在',
+					timer: 2000,
+					icon: 'error',
+					showConfirmButton: false,
+				})
 					navigate('/login')
 				}
 			} catch (error) {

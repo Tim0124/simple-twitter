@@ -83,7 +83,7 @@ export default function Register() {
 			setTimeout(() => {
 				setAccountError('')
 				Toast.fire({
-					title: '此帳號已被註冊',
+					title: 'account已重複註冊',
 					timer: 1000,
 					icon: 'error',
 					showConfirmButton: false,
@@ -93,7 +93,7 @@ export default function Register() {
 			setTimeout(() => {
 				setEmailError('')
 				Toast.fire({
-					title: '此信箱已被註冊',
+					title: 'email已重複註冊',
 					timer: 1000,
 					icon: 'error',
 					showConfirmButton: false,

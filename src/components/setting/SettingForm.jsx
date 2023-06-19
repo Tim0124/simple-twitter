@@ -131,7 +131,7 @@ export default function Setting() {
 			setTimeout(() => {
 				setAccountError('')
 				Toast.fire({
-					title: '此帳號已存在',
+					title: 'account已重複註冊',
 					timer: 1000,
 					icon: 'error',
 					showConfirmButton: false,
@@ -141,7 +141,7 @@ export default function Setting() {
 			setTimeout(() => {
 				setEmailError('')
 				Toast.fire({
-					title: '此信箱已被註冊',
+					title: 'email已重複註冊',
 					timer: 1000,
 					icon: 'error',
 					showConfirmButton: false,
@@ -166,6 +166,12 @@ export default function Setting() {
 				}
 				const result = await checkPermission(authToken)
 				if (!result) {
+					Toast.fire({
+					title: '帳號不存在',
+					timer: 2000,
+					icon: 'error',
+					showConfirmButton: false,
+				})
 					navigate('/login')
 				}
 			} catch (error) {
