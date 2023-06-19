@@ -6,6 +6,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { ChangeTabContext } from 'context/UserTabContext'
 import { GetRenderContext, SetRenderContext } from 'context/FollowContext'
 import { checkPermission } from 'api/auth'
+import { Toast } from 'heplers/helpers'
 
 export default function UserFollower() {
 	const [followers, setFollowers] = useState([])
@@ -53,6 +54,12 @@ export default function UserFollower() {
 				}
 				const result = await checkPermission(authToken)
 				if (!result) {
+					Toast.fire({
+						title: '帳號不存在',
+						timer: 2000,
+						icon: 'error',
+						showConfirmButton: false,
+					})
 					navigate('/login')
 				}
 			} catch (error) {

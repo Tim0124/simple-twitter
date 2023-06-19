@@ -73,7 +73,7 @@ export default function AdminTweets() {
 		if (pathname === '/admin/tweets') {
 			handleChangeStep(1)
 		}
-	}, [])
+	}, [pathname])
 
 	return (
 		<div className={`${style.adminTweetsWrapper}`}>
