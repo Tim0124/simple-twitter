@@ -51,12 +51,18 @@ function LoginForm() {
 				return
 			}
 			Toast.fire({
-				title: '登入失敗！',
+				title: '帳號不存在！',
 				timer: 2000,
 				icon: 'error',
 				showConfirmButton: false,
 			})
 		} catch (error) {
+			Toast.fire({
+				title: '登入失敗',
+				timer: 2000,
+				icon: 'error',
+				showConfirmButton: false,
+			})
 			console.error(error)
 		}
 	}
