@@ -33,6 +33,7 @@ export default function PostContent({
 							>
 								<p>字數不可超過140字</p>
 							</div>
+							<p className={style.textLength}>{onPostText.length}/140</p>
 							<div className={`${style.footerButton}`}>
 								<Button
 									text='推文'

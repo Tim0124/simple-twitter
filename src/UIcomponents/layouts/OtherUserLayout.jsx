@@ -2,16 +2,16 @@ import { Outlet, useLocation, useNavigate, useParams } from 'react-router-dom'
 import style from './OtherUserLayout.module.scss'
 import ModalPostTweet from '../modal/ModalPostTweet'
 import { useContext, useEffect, useState } from 'react'
-import { ReplyTweetModalContext, TweetModalContext } from 'context/ModalContext'
+import { TweetModalContext } from 'context/ModalContext'
 import UserInfoHeader from './UserInfoHeader'
 import OtherUserInfo from './OtherUserInfo'
 import OtherUserTab from 'UIcomponents/tabs/OtherUserTab'
 import OtherFollowTab from 'UIcomponents/tabs/OtherFollowTab'
 import userAPI from 'api/userAPI'
+import { GetRenderContext, SetRenderContext } from 'context/FollowContext'
 
 export default function Layout() {
 	const useTweetModal = useContext(TweetModalContext)
-	const useReplyModal = useContext(ReplyTweetModalContext)
 	const [userInfo, setUserInfo] = useState([])
 	const { pathname } = useLocation()
 	const userId = Number(useParams().user_id)
@@ -20,14 +20,14 @@ export default function Layout() {
 		pathname.includes(`/user/other/follower/${userId}`)
 	const localId = localStorage.getItem('userId')
 	const navigate = useNavigate()
-	// const render = useContext(GetRenderContext)
-	// const setRender = useContext(SetRenderContext)
+	const render = useContext(GetRenderContext)
+	const setRender = useContext(SetRenderContext)
 
 	useEffect(() => {
 		if (userId === localId) {
 			navigate('/user/self')
 		} else {
-			userAPI
+				userAPI
 				.getUser(userId)
 				.then((response) => {
 					if (response.status !== 200) {
@@ -35,16 +35,16 @@ export default function Layout() {
 					}
 					const { data } = response
 					setUserInfo(data)
+					setRender('false')
 				})
 				.catch((error) => {
 					console.error(error)
+					setRender('false')
 				})
+			
 		}
-	}, [userId])
+	}, [userId, render])
 
-	// useEffect(() => {
-	// 	setRender('true')
-	// },[])
 
 	return (
 		<div className={`${style.userTweetsContainer}`}>

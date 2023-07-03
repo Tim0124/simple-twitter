@@ -3,7 +3,7 @@ import Button from '../../UIcomponents/buttons/Button'
 import { useContext, useState } from 'react'
 import followingAPI from 'api/followingAPI'
 import { Link } from 'react-router-dom'
-import { GetRenderContext, SetRenderContext } from 'context/FollowContext'
+import { SetRenderContext } from 'context/FollowContext'
 
 export default function PopularUser({
 	id,
@@ -15,7 +15,6 @@ export default function PopularUser({
 }) {
 	const [follow, setFollow] = useState(isUserFollowed)
 	const setRender = useContext(SetRenderContext)
-	const render = useContext(GetRenderContext)
 
 	const handleFollowClick = () => {
 		setFollow(true)
@@ -25,11 +24,11 @@ export default function PopularUser({
 				if (response.status !== 200) {
 					throw new Error(response.message)
 				}
-				// setRender('true')
+				setRender('true')
 			})
 			.catch((error) => {
 				console.error('Error:', error)
-				// setRender('false')
+				setRender('false')
 			})
 	}
 
@@ -41,7 +40,7 @@ export default function PopularUser({
 				if (response.status !== 200) {
 					throw new Error(response.message)
 				}
-				setRender('false')
+				setRender('true')
 			})
 			.catch((error) => {
 				console.error('Error:', error)

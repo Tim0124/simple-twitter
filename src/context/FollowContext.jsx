@@ -5,11 +5,15 @@ export const SetRenderContext = createContext()
 
 export function GetFollowContextProvider({ children }) {
 	const [render, setRender] = useState('init')
+	console.log(render)
+	const handleRender = (value) => {
+		setRender(value)
+	}
 	return (
-		<SetRenderContext.Provider value={setRender}>
 			<GetRenderContext.Provider value={render}>
-				{children}
+				<SetRenderContext.Provider value={handleRender}>
+					{children}
+				</SetRenderContext.Provider>
 			</GetRenderContext.Provider>
-		</SetRenderContext.Provider>
 	)
 }

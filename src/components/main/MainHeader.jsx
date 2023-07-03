@@ -1,6 +1,6 @@
 import style from './MainHeader.module.scss'
 
-export default function MainHeader({ title, arrow, avatar }) {
+export default function MainHeader({ avatar }) {
 	return (
 		<header className={`${style.tweetsHeaderContainer}`}>
 			<nav className={`${style.tweetsNavbar}`}>

@@ -8,6 +8,7 @@ import { ChangeTabContext } from 'context/UserTabContext'
 import userAPI from 'api/userAPI'
 import { checkPermission } from 'api/auth'
 import { Toast } from 'heplers/helpers'
+import Loader from 'styles/Loader'
 
 export default function UserTweets() {
 	const { pathname } = useLocation()

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { useContext } from 'react'
 import { ShowEditModalContext } from 'context/ModalContext'
 
+
 export default function UserInfo({
 	name,
 	account,
@@ -26,13 +27,13 @@ export default function UserInfo({
 							src={backgroundImage}
 							className={`${style.userInfoCardImg}`}
 							alt=''
-						/>
+						/> 
 					</div>
 					<div className={`${style.userInfoCardAvatar}`}>
 						<img
 							src={avatar}
 							className={`${style.userInfoImgAvatar}`}
-							alt={account}
+							alt=''
 						/>
 					</div>
 				</div>

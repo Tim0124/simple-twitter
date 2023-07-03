@@ -25,23 +25,23 @@ export default function AdminSidebar() {
 				<div className={`${style.sideBarGroup}`}>
 					<div className={`${style.sideBarItems}`}>
 						<div className={`${style.logo}`}>
-							<Link to='admin/tweets'>
+							<Link to='/admin/tweets'>
 								<Logo />
 							</Link>
 						</div>
 						<div className={`${style.iconGroup}`}>
-							<SideItem
+								<SideItem
 								styleName={step === 1 ? 'actionHome' : 'iconHome'}
 								itemName='推文清單'
 								page='admin/tweets'
 								iconName={step === 1 ? 'onName' : 'itemName'}
-							/>
-							<SideItem
+								/>
+								<SideItem
 								styleName={step === 2 ? 'actionUser' : 'iconPerson'}
 								itemName='使用者列表'
 								page='admin/users'
 								iconName={step === 2 ? 'onName' : 'itemName'}
-							/>
+								/>
 						</div>
 					</div>
 					<div className={`${style.loginOut}`} onClick={handleClick}>
