@@ -7,6 +7,7 @@ import { ChangeTabContext } from 'context/UserTabContext'
 import userAPI from 'api/userAPI'
 import { checkPermission } from 'api/auth'
 import { Toast } from 'heplers/helpers'
+import UserFollowSkeleton from 'components/skeleton/UserFollowSkeleton'
 
 export default function UserFollowing() {
 	const [following, setFollowing] = useState([])
@@ -14,6 +15,7 @@ export default function UserFollowing() {
 	const handleChangeTab = useContext(ChangeTabContext)
 	const id = localStorage.getItem('userId')
 	const navigate = useNavigate()
+	const [isLoading, setIsLoading] = useState(true)
 
 	useEffect(() => {
 		userAPI
@@ -31,6 +33,7 @@ export default function UserFollowing() {
 						}
 						const { data } = response
 						setFollowing(data)
+						setIsLoading(false)
 						// setRender('false')
 					})
 					.catch((error) => {
@@ -97,7 +100,12 @@ export default function UserFollowing() {
 	return (
 		<div className={`${style.userFollowingContainer}`}>
 			<section className={`${style.userFollowingContent}`}>
-				{following.map((follow) => (
+				{isLoading ? (
+					<div>
+						{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((index) => <UserFollowSkeleton key={index}/>)}
+					</div>
+				) : (
+					following.map((follow) => (
 					<UserFollowerContent
 						id={follow?.followingId}
 						key={follow?.followingId}
@@ -109,7 +117,8 @@ export default function UserFollowing() {
 						content={follow?.User?.introduction}
 						isSelfUserFollow={follow?.isSelfUserFollow}
 					/>
-				))}
+				))
+				)}
 			</section>
 		</div>
 	)

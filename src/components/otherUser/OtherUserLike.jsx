@@ -6,14 +6,15 @@ import { ChangeTabContext } from 'context/UserTabContext'
 import tweetAPI from 'api/tweetAPI'
 import { checkPermission } from 'api/auth'
 import { Toast } from 'heplers/helpers'
+import TweetsSkeleton from 'components/skeleton/TweetsSkeleton'
 
 export default function UserLike() {
 	const { pathname } = useLocation()
 	const handleChangeTab = useContext(ChangeTabContext)
 	const [likesTweet, setLikesTweet] = useState([])
 	const navigate = useNavigate()
-
 	const userId = useParams().user_id
+	const [isLoading, setIsLoading] = useState(true)
 
 	useEffect(() => {
 		tweetAPI
@@ -21,6 +22,7 @@ export default function UserLike() {
 			.then((response) => {
 				const { data } = response
 				setLikesTweet(data)
+				setIsLoading(false)
 			})
 			.catch((error) => {
 				console.error('[Other user like error: ]', error)
@@ -61,7 +63,12 @@ export default function UserLike() {
 	return (
 		<div className={`${style.userTweetsContainer}`}>
 			<section className={`${style.UserTweetsContent}`}>
-				{likesTweet.map((like) => (
+				{isLoading ? (
+					<div>
+						{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((index) => <TweetsSkeleton key={index}/>)}
+					</div>
+				) : (
+					likesTweet.map((like) => (
 					<OtherUserLikeContent
 						id={like.TweetId}
 						key={like.id}
@@ -75,7 +82,8 @@ export default function UserLike() {
 						isSelfUserLike={like.isSelfUserLike}
 						tweetUserId={like.User?.id}
 					/>
-				))}
+				))
+				)}
 			</section>
 		</div>
 	)

@@ -6,10 +6,20 @@
 	height: calc(100% - var.$sidebar-height);
 }
 
-.avatar {
+.avatarItem {
 	width: 50px;
 	height: 50px;
 	border-radius: 50%;
+	overflow: hidden;
+	position: relative;
+}
+
+.avatar {
+	display: block;
+	height: 100%;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
 }
 
 .postTweetForm {
@@ -25,14 +35,12 @@
 .contentGroup {
 	display: flex;
 	gap: 8px;
-	height: 100%;
 
 	.postTweetInputGroup {
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
-		height: 100%;
-		width: 100%;
+		flex: 1;
 	}
 
 	.postTweetInput {

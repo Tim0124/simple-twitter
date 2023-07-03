@@ -8,6 +8,7 @@ import { OtherUserContext } from 'context/OtherUserContext'
 import { checkPermission } from 'api/auth'
 import { useNavigate } from 'react-router-dom'
 import { Toast } from 'heplers/helpers'
+import UserFollowSkeleton from 'components/skeleton/UserFollowSkeleton'
 
 export default function UserFollowing() {
 	const [following, setFollowing] = useState([])
@@ -16,6 +17,7 @@ export default function UserFollowing() {
 	const OtherUserId = useContext(OtherUserContext)
 	const id = OtherUserId
 	const navigate = useNavigate()
+	const [isLoading, setIsLoading] = useState(true)
 
 	useEffect(() => {
 		followingAPI
@@ -26,6 +28,7 @@ export default function UserFollowing() {
 				}
 				const { data } = response
 				setFollowing(data)
+				setIsLoading(false)
 			})
 			.catch((error) => {
 				console.error(error)
@@ -73,7 +76,12 @@ export default function UserFollowing() {
 			</div> */}
 
 			<section className={`${style.userFollowingContent}`}>
-				{following.map((follow) => (
+				{isLoading ? (
+					<div>
+						{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((index) => <UserFollowSkeleton key={index}/>)}
+					</div>
+				) : (
+					following.map((follow) => (
 					<OtherUserFollowerContent
 						key={follow.followingId}
 						followerId={follow.followerId}
@@ -84,7 +92,8 @@ export default function UserFollowing() {
 						content={follow.User.introduction}
 						isFollow={follow.isSelfUserFollow}
 					/>
-				))}
+				))
+				)}
 			</section>
 		</div>
 	)

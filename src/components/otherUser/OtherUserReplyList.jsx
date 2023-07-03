@@ -4,12 +4,14 @@ import { useLocation, useParams } from 'react-router-dom'
 import { useContext, useEffect, useState } from 'react'
 import { ChangeTabContext } from 'context/UserTabContext'
 import tweetAPI from 'api/tweetAPI'
+import TweetsSkeleton from 'components/skeleton/TweetsSkeleton'
 
 export default function UserReplyList() {
 	const { pathname } = useLocation()
 	const handleChangeTab = useContext(ChangeTabContext)
 	const [replies, setReplies] = useState([])
 	const userId = useParams().user_id
+	const [isLoading, setIsLoading] = useState(true)
 
 	useEffect(() => {
 		tweetAPI
@@ -17,6 +19,7 @@ export default function UserReplyList() {
 			.then((response) => {
 				const { data } = response
 				setReplies(data)
+				setIsLoading(false)
 			})
 			.catch((error) => {
 				console.error('[Other user reply error]', error)
@@ -32,7 +35,12 @@ export default function UserReplyList() {
 	return (
 		<div className={`${style.userReplyContainer}`}>
 			<section className={`${style.userReplyContent}`}>
-				{replies.map((reply) => (
+				{isLoading ? (
+					<div>
+						{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((index) => <TweetsSkeleton key={index}/>)}
+					</div>
+				) : (
+					replies.map((reply) => (
 					<UserReplyContent
 						id={reply?.TweetId}
 						key={reply?.id}
@@ -44,7 +52,8 @@ export default function UserReplyList() {
 						account={reply?.User?.account}
 						tweetUserId={reply?.tweetUser?.id}
 					/>
-				))}
+				))
+				)}
 			</section>
 		</div>
 	)

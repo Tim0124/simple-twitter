@@ -1,5 +1,7 @@
 import Button from 'UIcomponents/buttons/Button'
 import style from './MainContent.module.scss'
+import { useContext, useEffect, useState } from 'react'
+import { AvatarContext } from 'context/LoadedContext'
 
 export default function PostContent({
 	onDisabled,
@@ -9,11 +11,21 @@ export default function PostContent({
 	onSubmit,
 	showError,
 }) {
+	const {isAvatarLoaded, setIsAvatarLoaded} = useContext(AvatarContext)
+
+	useEffect(() => {
+		const image = new Image()
+		image.src = avatar
+		image.onload = () => {
+			setIsAvatarLoaded(true)
+		}
+	},[avatar])
+
 	return (
-		<main className={`${style.postTweetContent}`}>
+		<main className={`${style.postTweetContent} ${isAvatarLoaded ? '' : 'animate-pulse'}`}>
 			<form onSubmit={onSubmit} className={`${style.postTweetForm}`}>
 				<div className={`${style.contentGroup}`}>
-					<div className={`${style.avatarItem}`}>
+					<div className={`${style.avatarItem} avatar-load`}>
 						<img src={avatar} alt='' className={`${style.avatar}`} />
 					</div>
 					<div className={`${style.postTweetInputGroup}`}>

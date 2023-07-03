@@ -9,12 +9,14 @@ import OtherUserTab from 'UIcomponents/tabs/OtherUserTab'
 import OtherFollowTab from 'UIcomponents/tabs/OtherFollowTab'
 import userAPI from 'api/userAPI'
 import { GetRenderContext, SetRenderContext } from 'context/FollowContext'
+import HeaderSkeleton from 'components/skeleton/HeaderSkeleton'
+import UserInfoSkeleton from 'components/skeleton/UserInfoSkeleton'
 
 export default function Layout() {
 	const useTweetModal = useContext(TweetModalContext)
 	const [userInfo, setUserInfo] = useState([])
 	const { pathname } = useLocation()
-	const userId = Number(useParams().user_id)
+	const userId = useParams().user_id
 	const isFollowPage =
 		pathname.includes(`/user/other/following/${userId}`) ||
 		pathname.includes(`/user/other/follower/${userId}`)
@@ -22,9 +24,10 @@ export default function Layout() {
 	const navigate = useNavigate()
 	const render = useContext(GetRenderContext)
 	const setRender = useContext(SetRenderContext)
+	const [isLoading, setIsLoading] = useState(true)
 
 	useEffect(() => {
-		if (userId === localId) {
+		if (Number(userId) === Number(localId)) {
 			navigate('/user/self')
 		} else {
 				userAPI
@@ -36,6 +39,7 @@ export default function Layout() {
 					const { data } = response
 					setUserInfo(data)
 					setRender('false')
+					setIsLoading(false)
 				})
 				.catch((error) => {
 					console.error(error)
@@ -43,15 +47,22 @@ export default function Layout() {
 				})
 			
 		}
-	}, [userId, render])
+	}, [userId])
 
 
 	return (
 		<div className={`${style.userTweetsContainer}`}>
 			<div className={`${style.userInfoHeaderContainer}`}>
+				{isLoading ? (
+				<HeaderSkeleton/>
+			) : (
 				<UserInfoHeader name={userInfo?.name} tweet={userInfo?.tweetsCount} />
+			) }
 			</div>
-			<OtherUserInfo
+			{isLoading ? (
+				<UserInfoSkeleton/>
+			) : (
+				<OtherUserInfo
 				id={userInfo?.id}
 				key={userInfo?.id}
 				name={userInfo?.name}
@@ -65,6 +76,7 @@ export default function Layout() {
 				userId={userInfo?.id}
 				isUserFollowed={userInfo?.isSelfUserFollow}
 			/>
+			)}
 			{pathname.includes(`/user/other/following/${userId}`) ||
 			pathname.includes(`/user/other/follower/${userId}`) ? (
 				<OtherFollowTab id={userId} />

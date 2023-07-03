@@ -25,7 +25,7 @@ export default function UserInfo({
 					<div className={`${style.userInfoBackground}`}>
 						<img
 							src={backgroundImage}
-							className={`${style.userInfoCardImg}`}
+							className={`${style.userInfoCardImg} `}
 							alt=''
 						/> 
 					</div>
