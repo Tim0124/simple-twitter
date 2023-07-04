@@ -176,7 +176,7 @@ export default function ModalUserInfo() {
 											<Close />
 										</h1>
 									</Link>
-									<h1>編輯個人資料</h1>
+									<h1 className={style.userInfoTitle}>編輯個人資料</h1>
 								</div>
 								<div className={`${style.userInfoMdButtonGroup}`}>
 									<div className={`${style.userInfoMdButton}`}>

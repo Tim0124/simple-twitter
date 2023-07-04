@@ -7,10 +7,20 @@
 	width: 100%;
 }
 
-.avatar {
+.avatarItem {
+	position: relative;
 	width: 50px;
 	height: 50px;
 	border-radius: 50%;
+	overflow: hidden;
+}
+
+.avatar {
+	position: relative;
+	display: block;
+	height: 100%;
+	left: 50%;
+	transform: translateX(-50%);
 }
 
 .postTweetForm {
@@ -28,8 +38,7 @@
 	height: 100%;
 
 	.postTweetInputGroup {
-		height: 100%;
-		width: 100%;
+		flex: 1;
 		position: relative;
 	}
 

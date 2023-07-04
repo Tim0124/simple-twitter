@@ -9,6 +9,7 @@ import { ShowTweetModalContext, TweetModalContext } from 'context/ModalContext'
 import tweetAPI from 'api/tweetAPI'
 import userAPI from 'api/userAPI'
 import { Toast } from 'heplers/helpers'
+import { AvatarContext } from 'context/LoadedContext'
 
 export default function ModalPostTweet() {
 	const [currentUser, setCurrentUser] = useState([])
@@ -18,6 +19,7 @@ export default function ModalPostTweet() {
 	const ModalClick = useContext(ShowTweetModalContext)
 	const userId = localStorage.getItem('userId')
 	const [tweetError, setTweetError] = useState(false)
+
 
 	const handleInputChange = (e) => {
 		setTweet(e.target.value)
@@ -64,6 +66,7 @@ export default function ModalPostTweet() {
 			setCurrentUser(data)
 		})
 	}, [])
+
 
 	return (
 		<div

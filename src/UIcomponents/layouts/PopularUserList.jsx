@@ -5,6 +5,7 @@ import { useContext, useEffect, useState } from 'react'
 import { GetOtherUserIdContext } from 'context/OtherUserContext'
 import { GetRenderContext, SetRenderContext } from 'context/FollowContext'
 import { useLocation } from 'react-router-dom'
+import PopularSkeleton from 'components/skeleton/PopularSkeleton'
 
 export default function PopularUserList() {
 	const [followers, setFollowers] = useState([])
@@ -12,6 +13,7 @@ export default function PopularUserList() {
 	const render = useContext(GetRenderContext)
 	const setRender = useContext(SetRenderContext)
 	const { pathname } = useLocation()
+	const [isLoading, setIsLoading] = useState(true)
 
 	useEffect(() => {
 		;(async () => {
@@ -20,6 +22,7 @@ export default function PopularUserList() {
 					const response = await followingAPI.getTopFollower()
 					const followerData = response.data
 					setFollowers(followerData)
+					setIsLoading(false)
 					setRender('false')
 				} catch (error) {
 					console.error('Failed to follower:', error)
@@ -40,7 +43,12 @@ export default function PopularUserList() {
 		>
 			<h4 className={`${style.popularUserListHeader}`}>推薦跟隨</h4>
 			<div className={`${style.popularUserList}`}>
-				{followers.map((follower) => (
+				{isLoading ? (
+					<div>
+						{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((index) => <PopularSkeleton key={index}/>)}
+					</div>
+				) : (
+					followers.map((follower) => (
 					<PopularUser
 						onOtherUserId={handleOtherUser}
 						id={follower.id}
@@ -50,7 +58,8 @@ export default function PopularUserList() {
 						avatar={follower.avatar}
 						isUserFollowed={follower.isUserFollowed}
 					/>
-				))}
+				))
+				)}
 			</div>
 		</div>
 	)

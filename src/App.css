@@ -4,7 +4,7 @@
 
 @layer components {
 	 .avatar-load {
-	 @apply	bg-gray-200 rounded-full dark:bg-gray-200
+	 @apply	bg-gray-200 rounded-full 
 	}
 }
 
