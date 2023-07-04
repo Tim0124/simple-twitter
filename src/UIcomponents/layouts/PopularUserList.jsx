@@ -45,20 +45,22 @@ export default function PopularUserList() {
 			<div className={`${style.popularUserList}`}>
 				{isLoading ? (
 					<div>
-						{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((index) => <PopularSkeleton key={index}/>)}
+						{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((index) => (
+							<PopularSkeleton key={index} />
+						))}
 					</div>
 				) : (
 					followers.map((follower) => (
-					<PopularUser
-						onOtherUserId={handleOtherUser}
-						id={follower.id}
-						key={follower.id}
-						name={follower.name}
-						account={follower.account}
-						avatar={follower.avatar}
-						isUserFollowed={follower.isUserFollowed}
-					/>
-				))
+						<PopularUser
+							onOtherUserId={handleOtherUser}
+							id={follower.id}
+							key={follower.id}
+							name={follower.name}
+							account={follower.account}
+							avatar={follower.avatar}
+							isUserFollowed={follower.isUserFollowed}
+						/>
+					))
 				)}
 			</div>
 		</div>

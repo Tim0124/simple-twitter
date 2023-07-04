@@ -43,27 +43,27 @@ export default function Layout() {
 	return (
 		<div className={`${style.userTweetsContainer}`}>
 			{isLoading ? (
-				<HeaderSkeleton/>
+				<HeaderSkeleton />
 			) : (
 				<div className={`${style.userInfoHeaderContainer}`}>
-				<UserInfoHeader name={userInfo?.name} tweet={userInfo?.tweetsCount} />
-			</div>
+					<UserInfoHeader name={userInfo?.name} tweet={userInfo?.tweetsCount} />
+				</div>
 			)}
 			{isLoading ? (
-				<UserInfoSkeleton/>
+				<UserInfoSkeleton />
 			) : (
 				<UserInfo
-				key={userInfo?.id}
-				name={userInfo?.name}
-				account={userInfo?.account}
-				avatar={userInfo?.avatar}
-				backgroundImage={userInfo?.backgroundImage}
-				introduction={userInfo?.introduction}
-				follower={userInfo?.followersCount}
-				following={userInfo?.followingsCount}
-				onHideUserInfo={isFollowPage ? 'hideUserInfo' : ''}
-				userId={userId}
-			/>
+					key={userInfo?.id}
+					name={userInfo?.name}
+					account={userInfo?.account}
+					avatar={userInfo?.avatar}
+					backgroundImage={userInfo?.backgroundImage}
+					introduction={userInfo?.introduction}
+					follower={userInfo?.followersCount}
+					following={userInfo?.followingsCount}
+					onHideUserInfo={isFollowPage ? 'hideUserInfo' : ''}
+					userId={userId}
+				/>
 			)}
 			{pathname.includes(`/user/self/following/${userId}`) ||
 			pathname.includes(`/user/self/follower/${userId}`) ? (

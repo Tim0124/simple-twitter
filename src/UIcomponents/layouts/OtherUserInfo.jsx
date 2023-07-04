@@ -92,7 +92,7 @@ export default function UserInfo({
 
 	useEffect(() => {
 		setRender('true')
-	},[])
+	}, [])
 
 	return (
 		<div className={`${style.userInfoContainer} ${style[onHideUserInfo]}`}>

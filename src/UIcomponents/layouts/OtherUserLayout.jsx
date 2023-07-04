@@ -30,7 +30,7 @@ export default function Layout() {
 		if (Number(userId) === Number(localId)) {
 			navigate('/user/self')
 		} else {
-				userAPI
+			userAPI
 				.getUser(userId)
 				.then((response) => {
 					if (response.status !== 200) {
@@ -45,37 +45,35 @@ export default function Layout() {
 					console.error(error)
 					setRender('false')
 				})
-			
 		}
 	}, [userId])
-
 
 	return (
 		<div className={`${style.userTweetsContainer}`}>
 			<div className={`${style.userInfoHeaderContainer}`}>
 				{isLoading ? (
-				<HeaderSkeleton/>
-			) : (
-				<UserInfoHeader name={userInfo?.name} tweet={userInfo?.tweetsCount} />
-			) }
+					<HeaderSkeleton />
+				) : (
+					<UserInfoHeader name={userInfo?.name} tweet={userInfo?.tweetsCount} />
+				)}
 			</div>
 			{isLoading ? (
-				<UserInfoSkeleton/>
+				<UserInfoSkeleton />
 			) : (
 				<OtherUserInfo
-				id={userInfo?.id}
-				key={userInfo?.id}
-				name={userInfo?.name}
-				account={userInfo?.account}
-				avatar={userInfo?.avatar}
-				backgroundImage={userInfo?.backgroundImage}
-				introduction={userInfo?.introduction}
-				follower={userInfo?.followersCount}
-				following={userInfo?.followingsCount}
-				onHideUserInfo={isFollowPage ? 'hideUserInfo' : ''}
-				userId={userInfo?.id}
-				isUserFollowed={userInfo?.isSelfUserFollow}
-			/>
+					id={userInfo?.id}
+					key={userInfo?.id}
+					name={userInfo?.name}
+					account={userInfo?.account}
+					avatar={userInfo?.avatar}
+					backgroundImage={userInfo?.backgroundImage}
+					introduction={userInfo?.introduction}
+					follower={userInfo?.followersCount}
+					following={userInfo?.followingsCount}
+					onHideUserInfo={isFollowPage ? 'hideUserInfo' : ''}
+					userId={userInfo?.id}
+					isUserFollowed={userInfo?.isSelfUserFollow}
+				/>
 			)}
 			{pathname.includes(`/user/other/following/${userId}`) ||
 			pathname.includes(`/user/other/follower/${userId}`) ? (

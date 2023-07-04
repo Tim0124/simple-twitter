@@ -37,22 +37,24 @@ export default function UserReplyList() {
 			<section className={`${style.userReplyContent}`}>
 				{isLoading ? (
 					<div>
-						{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((index) => <TweetsSkeleton key={index}/>)}
+						{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((index) => (
+							<TweetsSkeleton key={index} />
+						))}
 					</div>
 				) : (
 					replies.map((reply) => (
-					<UserReplyContent
-						id={reply?.TweetId}
-						key={reply?.id}
-						comment={reply?.comment}
-						replyAccount={reply?.tweetUser.account}
-						time={reply?.relativeTimeFromNow}
-						name={reply?.User?.name}
-						avatar={reply?.User?.avatar}
-						account={reply?.User?.account}
-						tweetUserId={reply?.tweetUser?.id}
-					/>
-				))
+						<UserReplyContent
+							id={reply?.TweetId}
+							key={reply?.id}
+							comment={reply?.comment}
+							replyAccount={reply?.tweetUser.account}
+							time={reply?.relativeTimeFromNow}
+							name={reply?.User?.name}
+							avatar={reply?.User?.avatar}
+							account={reply?.User?.account}
+							tweetUserId={reply?.tweetUser?.id}
+						/>
+					))
 				)}
 			</section>
 		</div>

@@ -71,23 +71,25 @@ export default function UserTweets() {
 			<section className={`${style.UserTweetsContent}`}>
 				{isLoading ? (
 					<div>
-						{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((index) => <TweetsSkeleton key={index}/>)}
+						{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((index) => (
+							<TweetsSkeleton key={index} />
+						))}
 					</div>
 				) : (
 					otherUser.map((user) => (
-					<UserTweetsContent
-						id={user.id}
-						key={user.id}
-						name={user.User.name}
-						avatar={user.User.avatar}
-						account={user.User.account}
-						time={user.relativeTimeFromNow}
-						description={user.description}
-						repliesCount={user.repliesCount}
-						likeCount={user.likesCount}
-						isSelfUserLike={user.isSelfUserLike}
-					/>
-				))
+						<UserTweetsContent
+							id={user.id}
+							key={user.id}
+							name={user.User.name}
+							avatar={user.User.avatar}
+							account={user.User.account}
+							time={user.relativeTimeFromNow}
+							description={user.description}
+							repliesCount={user.repliesCount}
+							likeCount={user.likesCount}
+							isSelfUserLike={user.isSelfUserLike}
+						/>
+					))
 				)}
 			</section>
 		</div>

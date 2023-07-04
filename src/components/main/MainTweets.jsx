@@ -27,8 +27,8 @@ export default function MainTweets({ onTweetClick }) {
 	const handleOtherUserId = useContext(GetOtherUserIdContext)
 	const handleShowReplyModal = useContext(ShowReplyModalContext)
 	const userId = localStorage.getItem('userId')
-	const {isAvatarLoaded, setIsAvatarLoaded} = useContext(AvatarContext)
-	const {isTweetsLoaded, setIsTweetsLoaded} = useContext(TweetsContext)
+	const { isAvatarLoaded, setIsAvatarLoaded } = useContext(AvatarContext)
+	const { isTweetsLoaded, setIsTweetsLoaded } = useContext(TweetsContext)
 	const [isLoading, setIsLoading] = useState(true)
 
 	const handleButtonChange = (e) => {
@@ -132,9 +132,6 @@ export default function MainTweets({ onTweetClick }) {
 		}
 	}, [isPostText.trim().length === 0])
 
-
-
-
 	return (
 		<div className={`${style.tweetsContainer}`}>
 			<header className={`${style.tweetsHeader}`}>
@@ -152,28 +149,30 @@ export default function MainTweets({ onTweetClick }) {
 				/>
 			</div>
 			<main className={`${style.mainTweets} `}>
-				{isLoading ? ( 
+				{isLoading ? (
 					<div>
-						{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((index) => <TweetsSkeleton key={index}/>)}
+						{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((index) => (
+							<TweetsSkeleton key={index} />
+						))}
 					</div>
-				 ) :(
-				tweets.map((tweet) => (
-					<MainTweetsContent
-						key={tweet.id}
-						id={tweet.id}
-						userId={tweet.User.id}
-						name={tweet.User.name}
-						avatar={tweet.User.avatar}
-						account={tweet.User.account}
-						content={tweet.description}
-						time={tweet.relativeTimeFromNow}
-						quantity={tweet.repliesCount}
-						isLikeQuantity={tweet.likesCount}
-						isSelfUserLike={tweet.isSelfUserLike}
-						onOtherUserId={handleOtherUserId}
-						onShowReplyModal={handleShowReplyModal}
-					/>
-				))
+				) : (
+					tweets.map((tweet) => (
+						<MainTweetsContent
+							key={tweet.id}
+							id={tweet.id}
+							userId={tweet.User.id}
+							name={tweet.User.name}
+							avatar={tweet.User.avatar}
+							account={tweet.User.account}
+							content={tweet.description}
+							time={tweet.relativeTimeFromNow}
+							quantity={tweet.repliesCount}
+							isLikeQuantity={tweet.likesCount}
+							isSelfUserLike={tweet.isSelfUserLike}
+							onOtherUserId={handleOtherUserId}
+							onShowReplyModal={handleShowReplyModal}
+						/>
+					))
 				)}
 			</main>
 		</div>

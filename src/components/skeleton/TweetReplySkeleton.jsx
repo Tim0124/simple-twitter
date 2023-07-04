@@ -1,16 +1,18 @@
 import style from '../../UIcomponents/modal/ModalReplyContent.module.scss'
 
-export default function TweetReplySkeleton () {
-  return (
-    <main className={`${style.replyTweetContent} animate-pulse`}>
-			<form  className={`${style.replyTweetForm}`}>
+export default function TweetReplySkeleton() {
+	return (
+		<main className={`${style.replyTweetContent} animate-pulse`}>
+			<form className={`${style.replyTweetForm}`}>
 				<div className={`${style.contentGroup}`}>
 					<div className={`${style.avatarItem} `}>
 						<div src='' alt='' className={`${style.avatar} avatar-load`} />
 						<span className={`${style.line}`}></span>
 					</div>
 					<div className={`${style.replyTweetInfo} w-full`}>
-						<div className={`${style.replyTweetNameGroup} avatar-load h-6 w-1/3`}>
+						<div
+							className={`${style.replyTweetNameGroup} avatar-load h-6 w-1/3`}
+						>
 							<div className={`${style.replyTweetName}`}>
 								<p className={`${style.tweetName}`}></p>
 							</div>
@@ -26,7 +28,9 @@ export default function TweetReplySkeleton () {
 								</div>
 							</div>
 						</div>
-						<div className={`${style.replyTweetReplyGroup} avatar-load h-6 w-1/3`}>
+						<div
+							className={`${style.replyTweetReplyGroup} avatar-load h-6 w-1/3`}
+						>
 							<div className={`${style.replyTweetReplyTextItem}`}>
 								<p className={`${style.replyTweetText}`}></p>
 							</div>
@@ -41,11 +45,7 @@ export default function TweetReplySkeleton () {
 				</div>
 				<div className={`${style.replyTweetInputGroup}`}>
 					<div className={`${style.replyTweetAvatarItem} avatar-load`}>
-						<img
-							src=''
-							alt=''
-							className={`${style.replyTweetAvatar} `}
-						/>
+						<img src='' alt='' className={`${style.replyTweetAvatar} `} />
 					</div>
 					<textarea
 						className={`${style.replyTweetInput}`}
@@ -55,5 +55,5 @@ export default function TweetReplySkeleton () {
 				</div>
 			</form>
 		</main>
-  )
+	)
 }

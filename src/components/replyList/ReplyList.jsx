@@ -123,24 +123,24 @@ export default function ReplyList() {
 		<div className={`${style.replyContainer}`}>
 			<ReplyListHeader />
 			{isLoading ? (
-				<ReplySkeleton/>
+				<ReplySkeleton />
 			) : (
 				<ReplyListTweet
-				id={currentTweet?.id}
-				userId={currentTweet.UserId}
-				avatar={currentTweet.User?.avatar}
-				name={currentTweet.User?.name}
-				account={currentTweet.User?.account}
-				content={currentTweet?.description}
-				quantity={currentTweet?.repliesCount}
-				likesCount={currentTweet?.likesCount}
-				time={currentTweet?.relativeTimeFromNow}
-				date={currentTweet?.switchTime}
-				isSelfUserLike={currentTweet?.isSelfUserLike}
-				onDisable={isDisable}
-				onButtonChange={handleButtonChange}
-				onSubmit={handleReplySubmit}
-			/>
+					id={currentTweet?.id}
+					userId={currentTweet.UserId}
+					avatar={currentTweet.User?.avatar}
+					name={currentTweet.User?.name}
+					account={currentTweet.User?.account}
+					content={currentTweet?.description}
+					quantity={currentTweet?.repliesCount}
+					likesCount={currentTweet?.likesCount}
+					time={currentTweet?.relativeTimeFromNow}
+					date={currentTweet?.switchTime}
+					isSelfUserLike={currentTweet?.isSelfUserLike}
+					onDisable={isDisable}
+					onButtonChange={handleButtonChange}
+					onSubmit={handleReplySubmit}
+				/>
 			)}
 			<div className={`${style.replyListContent}`}>
 				{tweetReply.map((tweet) => (
@@ -157,7 +157,9 @@ export default function ReplyList() {
 					/>
 				))}
 				{tweetReply.length === 0 && (
-					<div className='my-5 text-center text-gray-400 animate-pulse'>尚有推文回覆</div>
+					<div className='my-5 text-center text-gray-400 animate-pulse'>
+						尚有推文回覆
+					</div>
 				)}
 			</div>
 			{handleShowReplyModal && <ModalReplyTweet />}

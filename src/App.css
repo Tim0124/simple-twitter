@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 @layer components {
-	 .avatar-load {
-	 @apply	bg-gray-200 rounded-full 
+	.avatar-load {
+		@apply bg-gray-200 rounded-full;
 	}
 }
 
@@ -53,4 +53,3 @@ a {
 	text-decoration: none;
 	color: black;
 }
-

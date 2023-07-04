@@ -20,7 +20,6 @@ export default function ModalPostTweet() {
 	const userId = localStorage.getItem('userId')
 	const [tweetError, setTweetError] = useState(false)
 
-
 	const handleInputChange = (e) => {
 		setTweet(e.target.value)
 	}
@@ -66,7 +65,6 @@ export default function ModalPostTweet() {
 			setCurrentUser(data)
 		})
 	}, [])
-
 
 	return (
 		<div

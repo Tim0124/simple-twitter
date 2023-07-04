@@ -68,24 +68,26 @@ export default function UserLike() {
 			<section className={`${style.UserTweetsContent}`}>
 				{isLoading ? (
 					<div>
-						{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((index) => <TweetsSkeleton key={index}/>)}
+						{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((index) => (
+							<TweetsSkeleton key={index} />
+						))}
 					</div>
 				) : (
 					likesTweet.map((like) => (
-					<UserLikeContent
-						id={like?.TweetId}
-						key={like?.id}
-						name={like?.User?.name}
-						account={like?.User?.account}
-						avatar={like?.User?.avatar}
-						content={like?.Tweet?.description}
-						time={like?.Tweet?.relativeTimeFromNow}
-						likesCount={like?.Tweet?.likesCount}
-						repliesCount={like?.Tweet?.repliesCount}
-						isSelfUserLike={like?.isSelfUserLike}
-						tweetUserId={like?.User?.id}
-					/>
-				))
+						<UserLikeContent
+							id={like?.TweetId}
+							key={like?.id}
+							name={like?.User?.name}
+							account={like?.User?.account}
+							avatar={like?.User?.avatar}
+							content={like?.Tweet?.description}
+							time={like?.Tweet?.relativeTimeFromNow}
+							likesCount={like?.Tweet?.likesCount}
+							repliesCount={like?.Tweet?.repliesCount}
+							isSelfUserLike={like?.isSelfUserLike}
+							tweetUserId={like?.User?.id}
+						/>
+					))
 				)}
 			</section>
 		</div>

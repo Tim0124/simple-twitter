@@ -3,24 +3,22 @@ import style from '../../components/replyList/ReplyListTweet.module.scss'
 import { ReactComponent as Dislike } from '../../assets/unlike.svg'
 import { ReactComponent as Message } from '../../assets/message.svg'
 
-export default function ReplySkeleton () {
-  return (
-    <div className={`${style.replyTweetsContainer} animate-pulse`}>
+export default function ReplySkeleton() {
+	return (
+		<div className={`${style.replyTweetsContainer} animate-pulse`}>
 			<div className={`${style.replyTweetsList}`}>
 				<div className={`${style.replyTweetsInfo}`}>
 					<div className={`${style.replyTweetsSecInfo}`}>
-							<div className={`${style.replyTweetsLogo} avatar-load`}>
-								<img
-									src=''
-									className={`${style.replyTweetsImg}`}
-									alt=''
-								/>
-							</div>
+						<div className={`${style.replyTweetsLogo} avatar-load`}>
+							<img src='' className={`${style.replyTweetsImg}`} alt='' />
+						</div>
 						<div className={`${style.replyTweetsNameGroup} w-1/3`}>
 							<div className={`${style.replyTweetsName} avatar-load h-5`}>
 								<p></p>
 							</div>
-							<div className={`${style.replyTweetsSmallAccount} avatar-load h-5 `}>
+							<div
+								className={`${style.replyTweetsSmallAccount} avatar-load h-5 `}
+							>
 								<p className={`${style.replyTweetsAccount}`}></p>
 							</div>
 						</div>
@@ -29,7 +27,9 @@ export default function ReplySkeleton () {
 						<p></p>
 					</div>
 					<div className={`${style.replyTweetsCreateGroup} `}>
-						<div className={`${style.replyTweetsDateItem} h-6 avatar-load w-full`}>
+						<div
+							className={`${style.replyTweetsDateItem} h-6 avatar-load w-full`}
+						>
 							<p className={`${style.replyTweetsDate}`}></p>
 						</div>
 					</div>
@@ -44,13 +44,11 @@ export default function ReplySkeleton () {
 						</div>
 					</div>
 					<div className={`${style.replyTweetsIconGroup}`}>
-						<div
-							className={`${style.replyTweetsIcon} `}
-						>
-              <Message width='24px' height='24px' />
+						<div className={`${style.replyTweetsIcon} `}>
+							<Message width='24px' height='24px' />
 						</div>
 						<div className={`${style.replyTweetsLikeIcon}`}>
-              <Dislike width='24px' height='24px'/>
+							<Dislike width='24px' height='24px' />
 						</div>
 					</div>
 				</div>
@@ -59,11 +57,7 @@ export default function ReplySkeleton () {
 				<div className={`${style.replyTweetsContentGroup}`}>
 					<div className={`${style.replyTweetsInputGroup}`}>
 						<div className={`${style.replyTweetsAvatarItem} avatar-load`}>
-							<img
-								src=''
-								alt=''
-								className={`${style.replyTweetsAvatar}`}
-							/>
+							<img src='' alt='' className={`${style.replyTweetsAvatar}`} />
 						</div>
 						<div className={`${style.replyTweetsInputItem}`}>
 							<textarea
@@ -75,14 +69,11 @@ export default function ReplySkeleton () {
 					</div>
 					<div className={`${style.replyTweetsButtonGroup}`}>
 						<div className={`${style.replyTweetsButtonItem}`}>
-							<Button
-								text='回覆'
-								size='middle'
-							/>
+							<Button text='回覆' size='middle' />
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-  )
+	)
 }

@@ -11,7 +11,7 @@ export default function PostContent({
 	onSubmit,
 	showError,
 }) {
-	const {isAvatarLoaded, setIsAvatarLoaded} = useContext(AvatarContext)
+	const { isAvatarLoaded, setIsAvatarLoaded } = useContext(AvatarContext)
 
 	useEffect(() => {
 		const image = new Image()
@@ -19,10 +19,14 @@ export default function PostContent({
 		image.onload = () => {
 			setIsAvatarLoaded(true)
 		}
-	},[avatar])
+	}, [avatar])
 
 	return (
-		<main className={`${style.postTweetContent} ${isAvatarLoaded ? '' : 'animate-pulse'}`}>
+		<main
+			className={`${style.postTweetContent} ${
+				isAvatarLoaded ? '' : 'animate-pulse'
+			}`}
+		>
 			<form onSubmit={onSubmit} className={`${style.postTweetForm}`}>
 				<div className={`${style.contentGroup}`}>
 					<div className={`${style.avatarItem} avatar-load`}>

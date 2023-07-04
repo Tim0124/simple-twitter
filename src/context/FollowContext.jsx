@@ -10,10 +10,10 @@ export function GetFollowContextProvider({ children }) {
 		setRender(value)
 	}
 	return (
-			<GetRenderContext.Provider value={render}>
-				<SetRenderContext.Provider value={handleRender}>
-					{children}
-				</SetRenderContext.Provider>
-			</GetRenderContext.Provider>
+		<GetRenderContext.Provider value={render}>
+			<SetRenderContext.Provider value={handleRender}>
+				{children}
+			</SetRenderContext.Provider>
+		</GetRenderContext.Provider>
 	)
 }

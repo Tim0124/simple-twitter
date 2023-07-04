@@ -3,14 +3,18 @@ import style from './MainHeader.module.scss'
 import { AvatarContext } from 'context/LoadedContext'
 
 export default function MainHeader({ avatar }) {
-	const {isAvatarLoaded, setIsAvatarLoaded} = useContext(AvatarContext)
+	const { isAvatarLoaded, setIsAvatarLoaded } = useContext(AvatarContext)
 
 	useEffect(() => {
-			setIsAvatarLoaded(true)
-	},[avatar])
-	
+		setIsAvatarLoaded(true)
+	}, [avatar])
+
 	return (
-		<header className={`${style.tweetsHeaderContainer} ${isAvatarLoaded ? '' : 'animate-pulse'}`}>
+		<header
+			className={`${style.tweetsHeaderContainer} ${
+				isAvatarLoaded ? '' : 'animate-pulse'
+			}`}
+		>
 			<nav className={`${style.tweetsNavbar}`}>
 				<div className={`${style.navAvatarItem} avatar-load`}>
 					<img className={`${style.navAvatar}`} src={avatar} alt='' />

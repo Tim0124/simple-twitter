@@ -102,22 +102,24 @@ export default function UserFollowing() {
 			<section className={`${style.userFollowingContent}`}>
 				{isLoading ? (
 					<div>
-						{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((index) => <UserFollowSkeleton key={index}/>)}
+						{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((index) => (
+							<UserFollowSkeleton key={index} />
+						))}
 					</div>
 				) : (
 					following.map((follow) => (
-					<UserFollowerContent
-						id={follow?.followingId}
-						key={follow?.followingId}
-						followerId={follow?.followerId}
-						followingId={follow?.followingId}
-						name={follow?.User?.name}
-						avatar={follow?.User?.avatar}
-						account={follow?.User?.account}
-						content={follow?.User?.introduction}
-						isSelfUserFollow={follow?.isSelfUserFollow}
-					/>
-				))
+						<UserFollowerContent
+							id={follow?.followingId}
+							key={follow?.followingId}
+							followerId={follow?.followerId}
+							followingId={follow?.followingId}
+							name={follow?.User?.name}
+							avatar={follow?.User?.avatar}
+							account={follow?.User?.account}
+							content={follow?.User?.introduction}
+							isSelfUserFollow={follow?.isSelfUserFollow}
+						/>
+					))
 				)}
 			</section>
 		</div>

@@ -8,18 +8,22 @@ export default function ModalContent({
 	onInput,
 	onSubmit,
 }) {
-		const {isAvatarLoaded, setIsAvatarLoaded} = useContext(AvatarContext)
+	const { isAvatarLoaded, setIsAvatarLoaded } = useContext(AvatarContext)
 
-		useEffect(() => {
+	useEffect(() => {
 		const image = new Image()
 		image.src = avatar
 		image.onload = () => {
 			setIsAvatarLoaded(true)
 		}
-	},[avatar])
+	}, [avatar])
 
 	return (
-		<main className={`${style.postTweetContent} ${isAvatarLoaded ? '' : 'animate-pulse'}`}>
+		<main
+			className={`${style.postTweetContent} ${
+				isAvatarLoaded ? '' : 'animate-pulse'
+			}`}
+		>
 			<form onSubmit={onSubmit} className={`${style.postTweetForm}`}>
 				<div className={`${style.contentGroup}`}>
 					<div className={`${style.avatarItem} avatar-load`}>
