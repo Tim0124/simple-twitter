@@ -1,3 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+	.avatar-load {
+		@apply bg-gray-200 rounded-full;
+	}
+}
+
 *,
 *::before,
 *::after {

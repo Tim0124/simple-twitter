@@ -25,7 +25,7 @@ export default function AdminSidebar() {
 				<div className={`${style.sideBarGroup}`}>
 					<div className={`${style.sideBarItems}`}>
 						<div className={`${style.logo}`}>
-							<Link to='admin/tweets'>
+							<Link to='/admin/tweets'>
 								<Logo />
 							</Link>
 						</div>

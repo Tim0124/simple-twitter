@@ -11,6 +11,7 @@ import { GetOtherUserIdContext } from 'context/OtherUserContext'
 import replyAPI from 'api/replyAPI'
 import { Toast } from 'heplers/helpers'
 import { checkPermission } from 'api/auth'
+import ReplySkeleton from 'components/skeleton/ReplySkeleton'
 
 export default function ReplyList() {
 	const [currentTweet, setCurrentTweet] = useState([])
@@ -21,6 +22,7 @@ export default function ReplyList() {
 	const navigate = useNavigate()
 	const [isDisable, setIsDisable] = useState(true)
 	const [isReplyText, setIsReplyText] = useState('')
+	const [isLoading, setIsLoading] = useState(true)
 
 	const handleButtonChange = (e) => {
 		setIsReplyText(e.target.value)
@@ -61,6 +63,7 @@ export default function ReplyList() {
 				}
 				const { data } = response
 				setCurrentTweet(data)
+				setIsLoading(false)
 			})
 			.catch((error) => {
 				console.error(error)
@@ -119,22 +122,26 @@ export default function ReplyList() {
 	return (
 		<div className={`${style.replyContainer}`}>
 			<ReplyListHeader />
-			<ReplyListTweet
-				id={currentTweet?.id}
-				userId={currentTweet.UserId}
-				avatar={currentTweet.User?.avatar}
-				name={currentTweet.User?.name}
-				account={currentTweet.User?.account}
-				content={currentTweet?.description}
-				quantity={currentTweet?.repliesCount}
-				likesCount={currentTweet?.likesCount}
-				time={currentTweet?.relativeTimeFromNow}
-				date={currentTweet?.switchTime}
-				isSelfUserLike={currentTweet?.isSelfUserLike}
-				onDisable={isDisable}
-				onButtonChange={handleButtonChange}
-				onSubmit={handleReplySubmit}
-			/>
+			{isLoading ? (
+				<ReplySkeleton />
+			) : (
+				<ReplyListTweet
+					id={currentTweet?.id}
+					userId={currentTweet.UserId}
+					avatar={currentTweet.User?.avatar}
+					name={currentTweet.User?.name}
+					account={currentTweet.User?.account}
+					content={currentTweet?.description}
+					quantity={currentTweet?.repliesCount}
+					likesCount={currentTweet?.likesCount}
+					time={currentTweet?.relativeTimeFromNow}
+					date={currentTweet?.switchTime}
+					isSelfUserLike={currentTweet?.isSelfUserLike}
+					onDisable={isDisable}
+					onButtonChange={handleButtonChange}
+					onSubmit={handleReplySubmit}
+				/>
+			)}
 			<div className={`${style.replyListContent}`}>
 				{tweetReply.map((tweet) => (
 					<ReplyListItem
@@ -149,6 +156,11 @@ export default function ReplyList() {
 						tweetAccount={tweet?.tweetUser?.account}
 					/>
 				))}
+				{tweetReply.length === 0 && (
+					<div className='my-5 text-center text-gray-400 animate-pulse'>
+						尚有推文回覆
+					</div>
+				)}
 			</div>
 			{handleShowReplyModal && <ModalReplyTweet />}
 		</div>

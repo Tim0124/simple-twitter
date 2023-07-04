@@ -2,29 +2,32 @@ import { Outlet, useLocation, useNavigate, useParams } from 'react-router-dom'
 import style from './OtherUserLayout.module.scss'
 import ModalPostTweet from '../modal/ModalPostTweet'
 import { useContext, useEffect, useState } from 'react'
-import { ReplyTweetModalContext, TweetModalContext } from 'context/ModalContext'
+import { TweetModalContext } from 'context/ModalContext'
 import UserInfoHeader from './UserInfoHeader'
 import OtherUserInfo from './OtherUserInfo'
 import OtherUserTab from 'UIcomponents/tabs/OtherUserTab'
 import OtherFollowTab from 'UIcomponents/tabs/OtherFollowTab'
 import userAPI from 'api/userAPI'
+import { GetRenderContext, SetRenderContext } from 'context/FollowContext'
+import HeaderSkeleton from 'components/skeleton/HeaderSkeleton'
+import UserInfoSkeleton from 'components/skeleton/UserInfoSkeleton'
 
 export default function Layout() {
 	const useTweetModal = useContext(TweetModalContext)
-	const useReplyModal = useContext(ReplyTweetModalContext)
 	const [userInfo, setUserInfo] = useState([])
 	const { pathname } = useLocation()
-	const userId = Number(useParams().user_id)
+	const userId = useParams().user_id
 	const isFollowPage =
 		pathname.includes(`/user/other/following/${userId}`) ||
 		pathname.includes(`/user/other/follower/${userId}`)
 	const localId = localStorage.getItem('userId')
 	const navigate = useNavigate()
-	// const render = useContext(GetRenderContext)
-	// const setRender = useContext(SetRenderContext)
+	const render = useContext(GetRenderContext)
+	const setRender = useContext(SetRenderContext)
+	const [isLoading, setIsLoading] = useState(true)
 
 	useEffect(() => {
-		if (userId === localId) {
+		if (Number(userId) === Number(localId)) {
 			navigate('/user/self')
 		} else {
 			userAPI
@@ -35,36 +38,43 @@ export default function Layout() {
 					}
 					const { data } = response
 					setUserInfo(data)
+					setRender('false')
+					setIsLoading(false)
 				})
 				.catch((error) => {
 					console.error(error)
+					setRender('false')
 				})
 		}
 	}, [userId])
 
-	// useEffect(() => {
-	// 	setRender('true')
-	// },[])
-
 	return (
 		<div className={`${style.userTweetsContainer}`}>
 			<div className={`${style.userInfoHeaderContainer}`}>
-				<UserInfoHeader name={userInfo?.name} tweet={userInfo?.tweetsCount} />
+				{isLoading ? (
+					<HeaderSkeleton />
+				) : (
+					<UserInfoHeader name={userInfo?.name} tweet={userInfo?.tweetsCount} />
+				)}
 			</div>
-			<OtherUserInfo
-				id={userInfo?.id}
-				key={userInfo?.id}
-				name={userInfo?.name}
-				account={userInfo?.account}
-				avatar={userInfo?.avatar}
-				backgroundImage={userInfo?.backgroundImage}
-				introduction={userInfo?.introduction}
-				follower={userInfo?.followersCount}
-				following={userInfo?.followingsCount}
-				onHideUserInfo={isFollowPage ? 'hideUserInfo' : ''}
-				userId={userInfo?.id}
-				isUserFollowed={userInfo?.isSelfUserFollow}
-			/>
+			{isLoading ? (
+				<UserInfoSkeleton />
+			) : (
+				<OtherUserInfo
+					id={userInfo?.id}
+					key={userInfo?.id}
+					name={userInfo?.name}
+					account={userInfo?.account}
+					avatar={userInfo?.avatar}
+					backgroundImage={userInfo?.backgroundImage}
+					introduction={userInfo?.introduction}
+					follower={userInfo?.followersCount}
+					following={userInfo?.followingsCount}
+					onHideUserInfo={isFollowPage ? 'hideUserInfo' : ''}
+					userId={userInfo?.id}
+					isUserFollowed={userInfo?.isSelfUserFollow}
+				/>
+			)}
 			{pathname.includes(`/user/other/following/${userId}`) ||
 			pathname.includes(`/user/other/follower/${userId}`) ? (
 				<OtherFollowTab id={userId} />

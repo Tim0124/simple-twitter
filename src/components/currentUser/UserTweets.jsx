@@ -8,6 +8,8 @@ import { ChangeTabContext } from 'context/UserTabContext'
 import userAPI from 'api/userAPI'
 import { checkPermission } from 'api/auth'
 import { Toast } from 'heplers/helpers'
+import Loader from 'styles/Loader'
+import TweetsSkeleton from 'components/skeleton/TweetsSkeleton'
 
 export default function UserTweets() {
 	const { pathname } = useLocation()
@@ -18,6 +20,7 @@ export default function UserTweets() {
 	const [userId, setUserId] = useState('')
 	const currentUserId = localStorage.getItem('userId')
 	const navigate = useNavigate()
+	const [isLoading, setIsLoading] = useState(true)
 
 	useEffect(() => {
 		userAPI
@@ -37,6 +40,7 @@ export default function UserTweets() {
 						}
 						const { data } = response
 						setAllTweets(data)
+						setIsLoading(false)
 					})
 					.catch((error) => {
 						console.error(error)
@@ -82,20 +86,28 @@ export default function UserTweets() {
 	return (
 		<div className={`${style.userTweetsContainer}`}>
 			<section className={`${style.UserTweetsContent}`}>
-				{allTweets.map((tweet) => (
-					<UserTweetsContent
-						id={tweet.id}
-						key={tweet.id}
-						description={tweet.description}
-						relativeTime={tweet.relativeTimeFromNow}
-						repliesCount={tweet.repliesCount}
-						likeCount={tweet.likesCount}
-						name={tweet.User.name}
-						account={tweet.User.account}
-						avatar={tweet.User.avatar}
-						isSelfUserLike={tweet.isSelfUserLike}
-					/>
-				))}
+				{isLoading ? (
+					<div>
+						{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((index) => (
+							<TweetsSkeleton key={index} />
+						))}
+					</div>
+				) : (
+					allTweets.map((tweet) => (
+						<UserTweetsContent
+							id={tweet.id}
+							key={tweet.id}
+							description={tweet.description}
+							relativeTime={tweet.relativeTimeFromNow}
+							repliesCount={tweet.repliesCount}
+							likeCount={tweet.likesCount}
+							name={tweet.User.name}
+							account={tweet.User.account}
+							avatar={tweet.User.avatar}
+							isSelfUserLike={tweet.isSelfUserLike}
+						/>
+					))
+				)}
 			</section>
 		</div>
 	)

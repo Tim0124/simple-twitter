@@ -12,6 +12,8 @@ import { ChangeStepContext } from 'context/SideBarContext'
 import { GetOtherUserIdContext } from 'context/OtherUserContext'
 import { Toast } from 'heplers/helpers'
 import userAPI from 'api/userAPI'
+import { AvatarContext, TweetsContext } from 'context/LoadedContext'
+import TweetsSkeleton from 'components/skeleton/TweetsSkeleton'
 
 export default function MainTweets({ onTweetClick }) {
 	const navigate = useNavigate()
@@ -25,6 +27,10 @@ export default function MainTweets({ onTweetClick }) {
 	const handleOtherUserId = useContext(GetOtherUserIdContext)
 	const handleShowReplyModal = useContext(ShowReplyModalContext)
 	const userId = localStorage.getItem('userId')
+	const { isAvatarLoaded, setIsAvatarLoaded } = useContext(AvatarContext)
+	const { isTweetsLoaded, setIsTweetsLoaded } = useContext(TweetsContext)
+	const [isLoading, setIsLoading] = useState(true)
+
 	const handleButtonChange = (e) => {
 		setIsPostText(e.target.value)
 	}
@@ -80,6 +86,7 @@ export default function MainTweets({ onTweetClick }) {
 				const response = await getTweets.get('/')
 				const tweetData = response.data
 				setTweets(tweetData)
+				setIsLoading(false)
 			} catch (error) {
 				console.error('Failed to tweets:', error)
 			}
@@ -141,24 +148,32 @@ export default function MainTweets({ onTweetClick }) {
 					showError={showError}
 				/>
 			</div>
-			<main className={`${style.mainTweets}`}>
-				{tweets.map((tweet) => (
-					<MainTweetsContent
-						key={tweet.id}
-						id={tweet.id}
-						userId={tweet.User.id}
-						name={tweet.User.name}
-						avatar={tweet.User.avatar}
-						account={tweet.User.account}
-						content={tweet.description}
-						time={tweet.relativeTimeFromNow}
-						quantity={tweet.repliesCount}
-						isLikeQuantity={tweet.likesCount}
-						isSelfUserLike={tweet.isSelfUserLike}
-						onOtherUserId={handleOtherUserId}
-						onShowReplyModal={handleShowReplyModal}
-					/>
-				))}
+			<main className={`${style.mainTweets} `}>
+				{isLoading ? (
+					<div>
+						{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((index) => (
+							<TweetsSkeleton key={index} />
+						))}
+					</div>
+				) : (
+					tweets.map((tweet) => (
+						<MainTweetsContent
+							key={tweet.id}
+							id={tweet.id}
+							userId={tweet.User.id}
+							name={tweet.User.name}
+							avatar={tweet.User.avatar}
+							account={tweet.User.account}
+							content={tweet.description}
+							time={tweet.relativeTimeFromNow}
+							quantity={tweet.repliesCount}
+							isLikeQuantity={tweet.likesCount}
+							isSelfUserLike={tweet.isSelfUserLike}
+							onOtherUserId={handleOtherUserId}
+							onShowReplyModal={handleShowReplyModal}
+						/>
+					))
+				)}
 			</main>
 		</div>
 	)

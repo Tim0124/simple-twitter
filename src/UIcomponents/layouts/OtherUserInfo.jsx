@@ -6,7 +6,7 @@ import followingAPI from 'api/followingAPI'
 import { ReactComponent as Message } from '../../assets/orangemsg.svg'
 import { ReactComponent as WhiteNoti } from '../../assets/white_btn_notfi.svg'
 import { ReactComponent as OragneNoti } from '../../assets/btn_notfi.svg'
-import { SetRenderContext } from 'context/FollowContext'
+import { GetRenderContext, SetRenderContext } from 'context/FollowContext'
 import { checkPermission } from 'api/auth'
 import { Toast } from 'heplers/helpers'
 
@@ -25,6 +25,7 @@ export default function UserInfo({
 }) {
 	const [follow, setFollow] = useState(isUserFollowed)
 	const setRender = useContext(SetRenderContext)
+	const render = useContext(GetRenderContext)
 	const [isNoti, setIsNoti] = useState(false)
 	const navigate = useNavigate()
 
@@ -52,7 +53,7 @@ export default function UserInfo({
 				if (response.status !== 200) {
 					throw new Error(response.message)
 				}
-				setRender('false')
+				setRender('true')
 			})
 			.catch((error) => {
 				console.error('Error:', error)
@@ -87,6 +88,10 @@ export default function UserInfo({
 		}
 
 		checkTokenIsValid()
+	}, [])
+
+	useEffect(() => {
+		setRender('true')
 	}, [])
 
 	return (

@@ -7,6 +7,7 @@ import tweetAPI from 'api/tweetAPI'
 import { ChangeTabContext } from 'context/UserTabContext'
 import { checkPermission } from 'api/auth'
 import { Toast } from 'heplers/helpers'
+import TweetsSkeleton from 'components/skeleton/TweetsSkeleton'
 
 export default function UserTweets() {
 	const { pathname } = useLocation()
@@ -15,6 +16,7 @@ export default function UserTweets() {
 	const [otherUser, setOtherUser] = useState([])
 	const handleChangeTab = useContext(ChangeTabContext)
 	const navigate = useNavigate()
+	const [isLoading, setIsLoading] = useState(true)
 
 	useEffect(() => {
 		tweetAPI
@@ -25,6 +27,7 @@ export default function UserTweets() {
 				}
 				const { data } = response
 				setOtherUser(data)
+				setIsLoading(false)
 			})
 			.catch((error) => {
 				console.error(error)
@@ -66,20 +69,28 @@ export default function UserTweets() {
 	return (
 		<div className={`${style.userTweetsContainer}`}>
 			<section className={`${style.UserTweetsContent}`}>
-				{otherUser.map((user) => (
-					<UserTweetsContent
-						id={user.id}
-						key={user.id}
-						name={user.User.name}
-						avatar={user.User.avatar}
-						account={user.User.account}
-						time={user.relativeTimeFromNow}
-						description={user.description}
-						repliesCount={user.repliesCount}
-						likeCount={user.likesCount}
-						isSelfUserLike={user.isSelfUserLike}
-					/>
-				))}
+				{isLoading ? (
+					<div>
+						{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((index) => (
+							<TweetsSkeleton key={index} />
+						))}
+					</div>
+				) : (
+					otherUser.map((user) => (
+						<UserTweetsContent
+							id={user.id}
+							key={user.id}
+							name={user.User.name}
+							avatar={user.User.avatar}
+							account={user.User.account}
+							time={user.relativeTimeFromNow}
+							description={user.description}
+							repliesCount={user.repliesCount}
+							likeCount={user.likesCount}
+							isSelfUserLike={user.isSelfUserLike}
+						/>
+					))
+				)}
 			</section>
 		</div>
 	)

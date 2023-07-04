@@ -9,6 +9,7 @@ import { ShowTweetModalContext, TweetModalContext } from 'context/ModalContext'
 import tweetAPI from 'api/tweetAPI'
 import userAPI from 'api/userAPI'
 import { Toast } from 'heplers/helpers'
+import { AvatarContext } from 'context/LoadedContext'
 
 export default function ModalPostTweet() {
 	const [currentUser, setCurrentUser] = useState([])

@@ -128,7 +128,7 @@ export default function ReplyListTweet({
 						<div className={`${style.replyTweetsAvatarItem}`}>
 							<img
 								src={avatar}
-								alt={account}
+								alt=''
 								className={`${style.replyTweetsAvatar}`}
 							/>
 						</div>

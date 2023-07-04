@@ -24,16 +24,12 @@ export default function UserInfo({
 					<div className={`${style.userInfoBackground}`}>
 						<img
 							src={backgroundImage}
-							className={`${style.userInfoCardImg}`}
+							className={`${style.userInfoCardImg} `}
 							alt=''
 						/>
 					</div>
 					<div className={`${style.userInfoCardAvatar}`}>
-						<img
-							src={avatar}
-							className={`${style.userInfoImgAvatar}`}
-							alt={account}
-						/>
+						<img src={avatar} className={`${style.userInfoImgAvatar}`} alt='' />
 					</div>
 				</div>
 				<div className={`${style.userInfoAllContent}`}>

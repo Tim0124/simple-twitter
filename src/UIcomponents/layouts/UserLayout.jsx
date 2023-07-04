@@ -9,6 +9,8 @@ import UserInfo from './UserInfo'
 import UserTab from 'UIcomponents/tabs/UserTab'
 import FollowTab from 'UIcomponents/tabs/FollowTab'
 import userAPI from 'api/userAPI'
+import UserInfoSkeleton from 'components/skeleton/UserInfoSkeleton'
+import HeaderSkeleton from 'components/skeleton/HeaderSkeleton'
 
 export default function Layout() {
 	const useTweetModal = useContext(TweetModalContext)
@@ -19,6 +21,7 @@ export default function Layout() {
 	const isFollowPage =
 		pathname.includes(`/user/self/following/${userId}`) ||
 		pathname.includes(`/user/self/follower/${userId}`)
+	const [isLoading, setIsLoading] = useState(true)
 
 	useEffect(() => {
 		userAPI
@@ -30,6 +33,7 @@ export default function Layout() {
 				const { data } = response
 				setUserId(data.id)
 				setUserInfo(data)
+				setIsLoading(false)
 			})
 			.catch((error) => {
 				console.error(error)
@@ -38,21 +42,29 @@ export default function Layout() {
 
 	return (
 		<div className={`${style.userTweetsContainer}`}>
-			<div className={`${style.userInfoHeaderContainer}`}>
-				<UserInfoHeader name={userInfo?.name} tweet={userInfo?.tweetsCount} />
-			</div>
-			<UserInfo
-				key={userInfo?.id}
-				name={userInfo?.name}
-				account={userInfo?.account}
-				avatar={userInfo?.avatar}
-				backgroundImage={userInfo?.backgroundImage}
-				introduction={userInfo?.introduction}
-				follower={userInfo?.followersCount}
-				following={userInfo?.followingsCount}
-				onHideUserInfo={isFollowPage ? 'hideUserInfo' : ''}
-				userId={userId}
-			/>
+			{isLoading ? (
+				<HeaderSkeleton />
+			) : (
+				<div className={`${style.userInfoHeaderContainer}`}>
+					<UserInfoHeader name={userInfo?.name} tweet={userInfo?.tweetsCount} />
+				</div>
+			)}
+			{isLoading ? (
+				<UserInfoSkeleton />
+			) : (
+				<UserInfo
+					key={userInfo?.id}
+					name={userInfo?.name}
+					account={userInfo?.account}
+					avatar={userInfo?.avatar}
+					backgroundImage={userInfo?.backgroundImage}
+					introduction={userInfo?.introduction}
+					follower={userInfo?.followersCount}
+					following={userInfo?.followingsCount}
+					onHideUserInfo={isFollowPage ? 'hideUserInfo' : ''}
+					userId={userId}
+				/>
+			)}
 			{pathname.includes(`/user/self/following/${userId}`) ||
 			pathname.includes(`/user/self/follower/${userId}`) ? (
 				<FollowTab id={userId} />

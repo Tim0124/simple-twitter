@@ -7,6 +7,7 @@ import { ChangeTabContext } from 'context/UserTabContext'
 import { GetRenderContext, SetRenderContext } from 'context/FollowContext'
 import { checkPermission } from 'api/auth'
 import { Toast } from 'heplers/helpers'
+import UserFollowSkeleton from 'components/skeleton/UserFollowSkeleton'
 
 export default function UserFollower() {
 	const [followers, setFollowers] = useState([])
@@ -16,6 +17,7 @@ export default function UserFollower() {
 	const setRender = useContext(SetRenderContext)
 	const render = useContext(GetRenderContext)
 	const navigate = useNavigate()
+	const [isLoading, setIsLoading] = useState(true)
 
 	useEffect(() => {
 		// if (render === 'true' || render === 'init')
@@ -28,6 +30,7 @@ export default function UserFollower() {
 				const { data } = response
 				setFollowers(data)
 				setRender('false')
+				setIsLoading(false)
 			})
 			.catch((error) => {
 				setRender('false')
@@ -73,19 +76,27 @@ export default function UserFollower() {
 	return (
 		<div className={`${style.userFollowerContainer}`}>
 			<section className={`${style.userFollowerContent}`}>
-				{followers.map((follower) => (
-					<UserFollowerContent
-						id={follower.followerId}
-						key={follower.id}
-						followerId={follower.followerId}
-						followingId={follower.followingId}
-						name={follower.User.name}
-						avatar={follower.User.avatar}
-						account={follower.User.account}
-						isSelfUserFollow={follower.isSelfUserFollow}
-						content={follower.User.introduction}
-					/>
-				))}
+				{isLoading ? (
+					<div>
+						{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((index) => (
+							<UserFollowSkeleton key={index} />
+						))}
+					</div>
+				) : (
+					followers.map((follower) => (
+						<UserFollowerContent
+							id={follower.followerId}
+							key={follower.id}
+							followerId={follower.followerId}
+							followingId={follower.followingId}
+							name={follower.User.name}
+							avatar={follower.User.avatar}
+							account={follower.User.account}
+							isSelfUserFollow={follower.isSelfUserFollow}
+							content={follower.User.introduction}
+						/>
+					))
+				)}
 			</section>
 		</div>
 	)

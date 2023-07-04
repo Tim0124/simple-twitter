@@ -54,7 +54,7 @@ export default function MainTweetsContent({
 
 	return (
 		<div className={`${style.mainTweetsContainer}`}>
-			<div className={`${style.mainTweetsList}`}>
+			<div className={`${style.mainTweetsList} `}>
 				<Link to={`/user/other/${userId}`}>
 					<div
 						className={`${style.mainTweetsLogo}`}

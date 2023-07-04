@@ -25,6 +25,11 @@
 	height: 57px;
 }
 
+.userInfoTitle {
+	font-size: 18px;
+	font-weight: 700;
+}
+
 .userInfoMdTitle {
 	display: flex;
 	justify-content: center;
@@ -174,13 +179,18 @@
 	transform: translateY(-100%);
 	resize: none;
 	width: 100%;
-	height: 27px;
 	border: none;
 	padding-top: 25px;
 	padding-left: 10px;
 	padding-bottom: 5px;
 	background-color: #f5f8fa;
 	border-bottom: 2px solid #657786;
+	font-size: 16px;
+	color: #000;
+}
+
+.userInfoTextArea:hover {
+	border-color: #50b5ff;
 }
 
 .userInfoTextArea:focus {
@@ -207,7 +217,7 @@
 
 	.userInfoMdContainer {
 		width: 634px;
-		height: 610px;
+		height: fit-content;
 		border-radius: 14px;
 		top: 56px;
 		left: 50%;

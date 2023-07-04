@@ -14,6 +14,7 @@ import tweetAPI from 'api/tweetAPI'
 import userAPI from 'api/userAPI'
 import { Toast } from 'heplers/helpers'
 import replyAPI from 'api/replyAPI'
+import TweetReplySkeleton from 'components/skeleton/TweetReplySkeleton'
 
 export default function ModalReplyTweet() {
 	const ShowModal = useContext(ReplyTweetModalContext)
@@ -63,14 +64,15 @@ export default function ModalReplyTweet() {
 		const userId = Number(localStorage.getItem('userId'))
 		const fetchData = async () => {
 			try {
-				setIsLoading(true)
 				await tweetAPI.getTweet(tweetId).then((response) => {
 					const { data } = response
 					setReplyTweet(data)
+					setIsLoading(false)
 				})
 				await userAPI.getUser(userId).then((response) => {
 					const { data } = response
 					setCurrentUser(data)
+					setIsLoading(false)
 				})
 			} catch (error) {
 				console.error(error)
@@ -108,7 +110,9 @@ export default function ModalReplyTweet() {
 							</div>
 						</nav>
 					</header>
-					{replyTweet && (
+					{isLoading ? (
+						<TweetReplySkeleton />
+					) : (
 						<ModalReplyContent
 							key={replyTweet?.id}
 							description={replyTweet?.description}
@@ -123,9 +127,7 @@ export default function ModalReplyTweet() {
 							onShowError={showError}
 						/>
 					)}
-					<div className={style.textLength}>
-						<p>{comment.length}/140</p>
-					</div>
+
 					<div className={`${style.footerButtonItem}`}>
 						<footer
 							className={`${style.footerText}`}
@@ -133,6 +135,9 @@ export default function ModalReplyTweet() {
 						>
 							<p>內容不可空白</p>
 						</footer>
+						<div className={style.textLength}>
+							<p>{comment.length}/140</p>
+						</div>
 						<div
 							className={`${style.footerButton}`}
 							onClick={handleReplySubmit}
