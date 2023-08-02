@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseURL = 'https://gentle-temple-56514.herokuapp.com/api/tweets'
+const baseURL = 'https://twitter-ac-daniel-4bc657e8f005.herokuapp.com/api/tweets'
 
 const axiosInstance = axios.create({
 	baseURL,
