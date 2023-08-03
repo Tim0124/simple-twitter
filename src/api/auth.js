@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { Toast } from 'heplers/helpers'
 
-const authURL = 'https://gentle-temple-56514.herokuapp.com/api'
+const authURL = 'https://twitter-ac-daniel-4bc657e8f005.herokuapp.com/api'
 
 export const login = async ({ account, password }) => {
 	try {
